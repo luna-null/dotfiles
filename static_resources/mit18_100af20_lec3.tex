@@ -1,0 +1,167 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+%\subsection*{Lecture 3:}
+%\textbf{\underline{Cantor's Remarkable Theorem and the Rationals' Lack of the Least Upper Bound Property}}
+\begin{question}
+Is anything bigger than $\NN$?
+\end{question}
+
+\noindent If $A$ is a set then $\mathcal P(A) = \{B\mid B\subset A\}$. Here are a few examples:
+\begin{enumerate}
+    \item $A = \emptyset$ then $\mathcal P(A) = \{\emptyset\}$.
+    \item $A = \{1\}$, then $\mathcal P(A) = \{\emptyset, \{1\}\}$.
+    \item $A = \{1,2\}$, then $\mathcal P(A) = \{\emptyset, \{1\}, \{2\}, \{1,2\}\}$.
+\end{enumerate}
+In general, if $|A| = n$ then $|\mathcal P(A)| = 2^n$. This is why we call $\mathcal P(A)$ the \vocab{power set} of $A$.%Is this something I should include?
+\begin{theorem}[Cantor]
+If $A$ is a set, then $|A| < |\mathcal P(A)|$.
+\end{theorem}
+\begin{remark}
+Therefore, 
+\[
+\NN < |\mathcal P(\NN)| < |\mathcal P(\mathcal P(\NN))| < \dots.
+\]
+Hence, there are an infinite number of infinite sets.
+\end{remark}
+
+\textbf{Proof}: Define the function $f:A\to \mathcal P(A)$ by $f(x) = \{x\}$. Then, $f$ is 1-1-- as if $\{x\} = \{y\}\implies x=y$. Thus, $|A| \leq |\mathcal P(A)|$. To finish the proof now all we need to show is that $|A|\neq |\mathcal P(A)|$. We will do so through contradiction. Suppose that $|A| = |\mathcal P(A)|$. Then, there exists a surjection $g:A\to \mathcal P(A)$. Let 
+\[
+B := \{x\in A\mid x\notin g(x)\}\in \mathcal P(A).
+\]
+Since $g$ is surjective, there exists a $b\in A$ such that $g(b) = B$. There are two cases:
+\begin{enumerate}
+    \item $b\in B$. If this is the case, then $b\notin g(b) = B \implies b\notin B$.
+    \item $b\notin B$. If this is the case, then $b\notin g(b) = B \implies b\in B$.
+\end{enumerate}
+In either case we obtain a contradiction. Thus, $g$ is not surjective $\implies |A|\neq |\mathcal P(A)|$. \qed
+
+\begin{remark}
+This is another proof method: casework. If the conclusion for every case is true, then the conclusion must be true.
+\end{remark}
+
+\begin{corollary}
+For all $n\in \NN\cup \{0\}$, $n<2^n$.
+\end{corollary}
+\begin{remark}
+This can also be shown by induction, see Assignment 1.
+\end{remark}
+
+\subsection*{Real Numbers}
+
+\begin{remark}
+In a sense, to be made precise, the set of real numbers is the unique set with all of the \underline{algebraic} and \underline{ordering} properties of the rational numbers, but none of the holes.
+\end{remark}
+
+\begin{problem}
+Now let's try to precisely describe $\RR$.
+\end{problem}
+We will start by stating what our end result will be, and then we will derive it:
+\begin{theorem}[Real Numbers ($\RR$)]
+There exists a unique \textbf{ordered field} containing $\QQ$ with the \textbf{least upper bound property}. We denote this field by $\RR$.
+\end{theorem}
+
+\noindent\underline{\textbf{Ordered Sets \& Fields}}
+
+\begin{definition}[Ordered set]
+An \vocab{ordered set} is a set $S$ with a relation $<$ called an "ordering" such that
+\begin{enumerate}
+    \item $\forall x,y\in S$ either $x<y$, $y<x$, or $x=y$.
+    \item If $x<y$ and $y<z$ then $x<z$.
+\end{enumerate}
+\end{definition}
+
+Here are a few examples and one non-example:
+\begin{itemize}
+    \item $\ZZ$ is an ordered set, with the relation that $m>n\iff m-n\in \NN$.
+    \item $\QQ$ is an ordered set, with the relation that $p>q\iff \exists m,n\in \NN$ such that $p-q = \frac{m}{n}$.
+    \item $\QQ\times \QQ$ is an ordered set with the relation $(q,r)>(s,t)\iff q>s$ or $q=s$ and $r>t$. 
+    \item Consider the set $\mathcal P(\NN)$. Let $A,B\in \mathcal P(\NN)$ and let $A\prec B$ if $A\subset B$. This is \textbf{NOT} an ordered set-- it doesn't satisfy the first property of an ordered set.
+\end{itemize}
+
+\begin{definition}[Bounded Above/Below]
+Let $S$ be an ordered set and let $E\subset S$. Then,
+\begin{enumerate}
+    \item If there exists a $b\in S$ such that $x\leq b$ for all $x\in E$, then $E$ is \vocab{bounded above} and $b$ is an \underline{vocab} of $E$. 
+    \item If $\exists c\in S$ such that $x\geq c$ for all $x\in E$, then $E$ is \vocab{bounded below} and $c$ is a \vocab{lower bound} of $E$. 
+\end{enumerate}
+\end{definition}
+
+From here, there are some very important definitions in real analysis. We say that $b_0$ is the \textbf{least upper bound}, or the \vocab{supremum} of $E$ if 
+    \begin{enumerate}[label=\Alph*)]
+        \item $b_0$ is an upper bound for $E$ and 
+        \item if $b$ is an upper bound for $E$ then $b_0 \leq b.$
+    \end{enumerate}
+We denote this as $b_0 = \sup E$. Similarly, we say that $c_0$ is the \textbf{greatest lower bound}, or the \vocab{infinimum} of $E$ if 
+    \begin{enumerate}[label=\Alph*)]
+        \item $c_0$ is a lower bound for $E$ and 
+        \item if $c$ is a lower bound for $E$ then $c<c_0.$
+    \end{enumerate}
+We denote this as $c_0 = \inf E$. 
+
+\begin{example}
+Here are a few examples of infimums and supremums:
+\begin{itemize}
+    \item $S=\ZZ$ and $E = \{-2,-1,0,1,2\}$. Then, $\inf E = -2$ and $\sup E = 2$.
+    \item But, note that the supremum nor the infimum need to be in $E$. Consider the sets $S = \QQ$ and \[E =\{q\in \QQ \mid 0\leq q<1\}.\] Then, $\inf E = 0\in E$, but $\sup E = 1 \notin E$. 
+    \item Furthermore, neither the supremum nor the infimum need exist. Consider the sets $S = \ZZ$ and $E = \NN$. Then, $\inf E = 1$, but $\sup E$ does not exist as there is not an integer greater than all natural numbers.
+\end{itemize}
+\end{example}
+
+\begin{definition}[Least Upper Bound Property]
+An ordered set $S$ has the \vocab{least upper bound property} if every $E\subset S$ which is nonempty and bounded above has a supremum in $S$.
+\end{definition}
+One example of such a set is \[-\NN = \{-1,-2.-3.\dots\}.\] Then, $E\subset S$ is bounded above if and only if $-E\subset \NN$ is bounded below. By the well-ordering principle, $-E$ has a least element $x\in -E$, and thus $-x = \sup E$.
+
+We will now show that $\QQ$ does not have the least upper bound property.
+\begin{theorem}
+ If $x\in \QQ$ and 
+ \[
+ x= \sup \{q\in \QQ \mid q>0, q^2 <2\}
+ \]
+ then $x>0$ and $x^2 = 2$.
+\end{theorem}
+ \textbf{Proof}: Let $E$ equal the set on the right hand side, and suppose $x\in \QQ$ such that $x = \sup E$. Then, since $1\in E$ and $x$ is an upper bound for $E$, $1\leq x\implies x>0$.
+ 
+ We now prove that $x^2 \geq 2$. Suppose that $x^2<2$. Define $h = \min\left\{\frac{1}{2}, \frac{2-x^2}{2(2x+1)}\right\}<1$. Then, if $x^2<2$ then $h>0$. We now prove that $x+h\in E$. Indeed, 
+ \begin{align*}
+     (x+h)^2 &= x^2 + 2xh+h^2 \\
+     &<x^2 +h(2x+1)
+    \intertext{as $h<1$. Hence}
+    (x+h)^2 &\leq x^2 + (2-x^2) \cdot \frac{2x+1}{2(2x+1)} \\
+    &= x^2 + \frac{2-x^2}{2} \\
+    &< 2+\frac{2-2}{2}\\
+    &=2.
+ \end{align*}
+Therefore, $x+h \in E$ and $x+h>x\implies x$ is not an upper bound for $E$. Therefore, $x\neq \sup E$ which is a contradiction. Hence, $x^2 \geq 2$.
+
+We now prove that $x^2 \leq2$. Suppose $x^2 > 2$. Let $h = \frac{x^2-2}{2x}.$ Hence, if $x^2>2$ then $h>0$ and $x-h>0$. We will show that $x-h$ is an upper bound for $E$. We have 
+\begin{align*}
+    (x-h)^2 &= x^2-2xh+h^2 \\
+    &= x^2 -(x^2-2)+h^2 \\
+    &= 2+h^2 \\
+    &>2.
+\end{align*}
+Let $q\in E$. Then, $q^2 <2<(x-h)^2 \implies (x-h)^2 -q^2 >0.$ Hence,
+\[
+((x-h)+q)((x-h)+q) >0 \implies (x-h)-q>0.
+\]
+Thus, for all $q\in E$, $q<x-h<x\implies x\neq \sup E$. This is a contradiction. Therefore, $x^2 = 2.$
+\qed 
+
+\begin{theorem}
+The set $E = \{q\in \QQ\mid q>0 \text{~and~} q^2<2\}$ does not have a supremum in $\QQ$.
+\end{theorem}
+\textbf{Proof}: Suppose there exists an $x\in \QQ$ such that $x=\sup E$. Then, by our previous theorem, $x^2 = 2$. In particular, note that $x>1$ as otherwise $x\leq 1 \implies 2=x^2 <1^2$. Thus, $\exists m,n\in \NN$ such that $m>n$ and $x=\frac{m}{n}$. Therefore, $\exists n\in \NN$ such that $nx \in \NN$. Let  
+\[
+S = \{k\in \NN\mid kx\in \NN\}.
+\]
+Then, $S\neq \emptyset$ since $n\in S$. By the well-ordering property of $\NN$, $S$ has a least element $k_0 \in S$. Let $k_1 = k_0x-k_0 \in \ZZ$. Then, $k_1 = k_0(x-1) >0$ since $k_0 \in \NN$ and $x>1.$ Therefore, $k_1 \in \NN$. Now $x^2 = 2 \implies x<2$, as otherwise $x^2>4>2$. Thus, $k_1 = k_0(x-1)<k_0(2-1) = k_0$. So, $k_1\in \NN$ and $k_1 <k_0 \implies k_1 \notin S$ as $k_0$ is the least element of $S$. But, 
+\[
+xk_1 = k_0x^2 -xk_0 = 2k_0-xk_0 = k_0-k_1 \in \NN\implies k_1 \in S.
+\]
+This is a contradiction. Thus, $\not\exists x\in \QQ$ such that $x = \sup E$.  \qed 
+
+$\QQ$ is an example of a field, which we will start to discuss in the next lecture.

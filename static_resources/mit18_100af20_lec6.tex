@@ -1,0 +1,175 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+%\subsection*{Lecture 6:}
+%\textbf{\underline{The Uncountability of the Real Numbers}}
+
+\begin{theorem}[Triangle Inequality]
+$\forall x,y\in \RR$, 
+\[
+|x+y| \leq |x|+|y|.
+\]
+\end{theorem}
+\textbf{Proof}: Let $x,y\in\RR$. Then, $x+y\leq |x|+|y|$ and
+\[
+(-x)+(-y) \leq |-x|+|-y| = |x|+|y|.
+\]
+Therefore, $-(|x|+|y|)\leq x+y \leq |x|+|y|$. Hence,
+\[
+|x+y|\leq |x|+|y|
+\]
+by our previous theorem. \qed 
+
+\begin{remark}
+We may denote the Triangle Inequality with $\triangle$-inequality as a shorthand.
+\end{remark}
+
+\begin{question}
+As we showed in Assignment 1, we know that $\QQ$ is countable. Is the set of real numbers countable?
+\end{question}
+
+\begin{recall}
+Recall that a set $A$ is countable if $A$ is either finite or $|A| = |\NN|$.
+\end{recall}
+We can think of $\QQ$ as decimal expansions. In other words, we can think of a rational number $x$ as being in the form
+\[
+x = 10^k d_k + \dots + 10 d_1 + d_0 + 10^{-1}d_{-1} + \dots + 10^{-M} d_{-M}
+\]
+with $d_i \in \{0,1,2,3,\dots, 9\}$. We may write
+\[
+x = d_kd_{k-1}\dots d_1 d_0 \bullet d_{-1} \dots d_{-M}
+\]
+where $\bullet$ is the decimal point. The same can be said about real numbers if we allow for infinite decimal expansions. 
+
+\begin{definition}
+Let $x\in (0,1]$ and let $d_{-j}\in\{0,1,\dots, 9\}$. We say that $x$ is \textbf{represented} by the digits $\{d_{-j}\mid j\in \NN\}$, i.e. $x= 0\bullet d_{-1} d_{-2}\dots$, if 
+\[
+x = \sup\{10^{-1}d_{-1}+10^{-2}d_{-2}+ \dots + 10^{-n}d_{-n} \mid n\in \NN\}.
+\]
+\end{definition}
+Here is an example: $.2500 = \sup \{2\cdot 10^{-1}, 2\cdot 10^{-1}+5\cdot 10^{-2}, 2\cdot 10^{-1}+5\cdot 10^{-2} + 0 \cdot 10^{-3}, \dots\}$. Notice here that after a while the previous set becomes $\frac{1}{4}$ repeating. Hence, we have $.2500 = \sup\left\{ \frac{1}{5}, \frac{1}{4}\right\} = \frac{1}{4}$.
+
+\begin{theorem}
+For every $x\in (0,1]$, there exists a unique sequence of digits $d_{-j}$ such that $x = 0\bullet d_{-1}d_{-2}\dots$ and 
+\[
+0\bullet d_{-1}d_{-2}\dots d_{-n} <x \leq 0\bullet d_{-1}d_{-2}\dots d_{-n} + 10^{-n}.
+\]
+Furthermore, for every set of digits $\{d_{-j}\mid j\in \NN\}$, there exists a unique $x\in [0,1]$ such that $x = 0\bullet d_{-1}\dots$.
+\end{theorem}
+Notice however that the representative of $\frac{1}{2}$ is $0.4999\dots$.
+
+\begin{theorem}[Cantor]
+(0,1] is uncountable.
+\end{theorem}
+\textbf{Proof}: We will prove this through contradiction. Suppose that $(0,1]$ is countable. Therefore, there exists a bijection $x:\NN \to (0,1]$. We now construct a $y\in (0,1]$ such that $y$ is not in the range of $x$. We write 
+\[
+x(n) = 0\bullet d_{-1}^{(n)} d_{-2}^{(n)}\dots.
+\]
+These are not exponents! This is the set of digits for a given $n\in \NN$. In other words, $x$ takes in a natural number $n$ and maps it to the sequence of digits $\left\{d_{-j}^{(n)} \mid n\in \NN\right\}$.
+Let 
+\[
+e_{-j} = \begin{cases}
+1, & d_{-j}^{(j)} \neq 1 \\
+2, &d_{-j}^{(j)} = 1
+\end{cases}.
+\]
+Let $y = 0\bullet e_{-1}e_{-2}\dots$. Then, $\forall n \in \NN$, \[
+0\bullet e_{-1}e_{-2}\dots e_{-n}\leq y 0\bullet e_{-1}\dots e_{-n} + 10^{-n}
+\]
+since all $e_{-j}$s are positive. Thus, $0\bullet e_{-1}\dots$ is the unique decimal expansion of $y$. However, for all $n\in \NN$, $d_{-n}^{(n)} \neq e_{-n}$. Therefore, $\forall n$, $x(n) \neq y$. This is a contradiction, and thus $(0,1]$ is uncountable. \qed 
+
+So $(0,1]\subset \RR$ is uncountable!
+\begin{corollary}
+The set of real numbers, $\RR$, is uncountable.
+\end{corollary}
+
+\subsection*{Sequences and Series}
+\begin{remark}
+Analysis is the study of limits.
+\end{remark}
+\noindent \underline{\textbf{Sequences and Limits}}
+
+\begin{definition}[Sequence of Reals]
+A \vocab{sequence} of real numbers is a function $x: \NN \to \RR$. We denote $x(n) = x_n$ and we denote the sequence by $\{x_n\}_{n=1}^\infty$, $\{x_n\}$, or $x_1,x_2,\dots$.
+\end{definition}
+
+\begin{definition}
+A sequence $\{x_n\}$ is \vocab{bounded} if $\exists B\geq 0$ such that $\forall n$, $|x_n| \leq B$.
+\end{definition}
+One example of a bounded sequence is $x_n = \frac{1}{n}$, since $\left|\frac{1}{n}\right| \leq 1$ for all $n\in \NN$. However, $x_n = n$ is not bounded.
+
+\begin{remark}
+A sequence is different from a set!
+\end{remark}
+For example, 
+\[
+-1,1,-1,1,\dots = \{(-1)^n\}^{\infty}_{n=1},
+\]
+while 
+\[
+\{(-1)^n \mid n\in\NN\} = \{-1,1\}.
+\]
+
+\begin{definition}[Sequence Convergence of Reals]
+A sequence $\{x_n\}$ \vocab{converges} to $x\in \RR$ if $\forall \epsilon >0$, $\exists M\in \NN$ such that $\forall n\geq M$, 
+\[
+|x_n - x| <\epsilon.
+\]
+\end{definition}
+A sequence that converges is said to be \textbf{convergent}, and otherwise is said to be \textbf{divergent}. We can also define divergence as the negation of convergent.
+\begin{negation}[Not Convergent]
+The sequence $\{x_n\}$ is \vocab{not convergent}, or \vocab{divergent} if $\exists \epsilon_0 >0$ such that $\forall M\in \NN$, $\exists n \geq M$ so that 
+\[
+|x_n-x|\geq \epsilon_0.
+\]
+\end{negation}
+
+We now prove two theorems:
+\begin{theorem}
+If $\{x_n\}$ converges for $x$ and $y$, then $x=y$. In other words, limits of convergent sequences of real numbers are unique.
+\end{theorem}
+\begin{theorem}
+Let $x,y\in \RR$. If $\forall \epsilon>0$, $|x-y|<\epsilon$, then $x=y$.
+\end{theorem}
+\textbf{Proof}: We first prove the second theorem. Suppose that $x\neq y$. Then, $|x-y|>0$. Hence, choosing $\epsilon  = \frac{|x-y|}{2}$, we have 
+\[
+|x-y| \leq \frac{|x-y|}{2} \implies \frac{|x-y|}{2} < 0
+\]
+which is a contradiction. \qed 
+
+Using this we prove the former theorem. Suppose $x_n$ converges to $x$ and to $y$. We will show that for all $\epsilon>0$, $|x-y|<\epsilon$. Firstly, given $x_n\to x$, for $\epsilon>0$ there exists an $N_1\in \NN$ such that $\forall n\geq N_1$, 
+\[
+|x_n-x|<\frac{\epsilon}{2}.
+\]
+Then, given $x_n\to y$, for $\epsilon>0$ there exists an $N_2\in \NN$ such that $\forall n\geq N_2$, 
+\[
+|x_n-y|<\frac{\epsilon}{2}.
+\]
+Let $N = \max \{N_1,N_2\}$. Then, for all $\epsilon>0$ there exists an $N = \max\{N_1,N_2\}$ such that for all $n\geq N$, 
+\[
+|x-y| \leq |x-x_n|+|x_n - y| <\frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+\]
+by the Triangle Inequality. Hence, for all $\epsilon >0$, $|x-y|<\epsilon$. Therefore, $x=y$. \qed 
+
+\begin{notation}
+We write $x = \lim_{n\to \infty}x_n$ or $x_n\to x$. 
+\end{notation}
+
+\begin{example}
+Given the sequence $x_n = c~\forall n$, $\lim_{n\to \infty} x_n = c$.
+\end{example}
+\begin{proof}
+Let $\epsilon>0$ and $M=1$. Thus, for all $n\geq 1$, 
+\[
+|x_n-c| = |c-c| = 0<\epsilon.
+\]
+\end{proof}
+
+\begin{example}
+$\lim_{n\to \infty} \frac{1}{n} = 0$.
+\end{example}
+\begin{proof}
+Let $\epsilon>0$. Choose $M\in \NN$ such that $M^{-1}>\epsilon^{-1}$. Hence, for all $n\geq M$, $\left|\frac{1}{n} - 0\right| = \frac{1}{n} \leq \frac{1}{M} \leq \epsilon.$
+\end{proof}

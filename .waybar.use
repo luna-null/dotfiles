@@ -1,0 +1,636 @@
+gui-apps/waybar experimental libbinput logind mpd network popups sndio systemd tray udev upower wifi
+# required by www-client/firefox-115.5.0::gentoo[wayland]
+# required by firefox (argument)
+>=x11-libs/gtk+-3.24.38 wayland
+# required by www-client/firefox-115.5.0::gentoo[wayland]
+# required by firefox (argument)
+>=x11-libs/libxkbcommon-1.6.0 wayland
+# required by x11-libs/gtk+-3.24.38::gentoo[wayland]
+# required by x11-themes/adwaita-icon-theme-44.0::gentoo
+# required by virtual/freedesktop-icon-theme-0-r4::gentoo
+# required by www-client/firefox-115.5.0::gentoo
+# required by firefox (argument)
+>=media-libs/mesa-23.1.9 wayland
+# required by media-sound/pulseaudio-daemon-16.1-r7::gentoo
+>=media-libs/libpulse-16.1-r2 X
+# required by media-sound/pulseaudio-daemon-16.1-r7::gentoo[alsa-plugin,alsa]
+# required by media-libs/libpulse-16.1-r2::gentoo
+# required by www-client/firefox-115.5.0::gentoo[pulseaudio]
+# required by firefox (argument)
+>=media-plugins/alsa-plugins-1.2.7.1-r1 pulseaudio
+# required by net-im/signal-desktop-bin-6.41.0::gentoo
+# required by net-im/signal-desktop-bin (argument)
+>=sys-apps/dbus-1.15.6 X
+# required by net-print/cups-filters-1.28.17-r2::gentoo[postscript]
+# required by net-print/cups-2.4.7-r1::gentoo
+# required by net-im/signal-desktop-bin-6.41.0::gentoo
+# required by net-im/signal-desktop-bin (argument)
+>=app-text/ghostscript-gpl-10.02.0 cups
+# required by dev-qt/qtwayland-5.15.11-r1::gentoo
+>=dev-qt/qtgui-5.15.11-r2 egl
+# required by gui-wm/sway-1.8.1::gentoo[wallpapers]
+# required by @selected
+# required by @world (argument)
+>=gui-apps/swaybg-1.2.0 gdk-pixbuf
+# required by gui-wm/sway-1.8.1::gentoo
+# required by @selected
+# required by @world (argument)
+>=gui-libs/wlroots-0.16.2-r2 X
+# required by sys-auth/polkit-122-r1::gentoo[systemd]
+>=sys-apps/systemd-254.5-r1 policykit
+# required by sci-astronomy/stellarium-23.3::gentoo[-qt6]
+# required by stellarium (argument)
+>=sci-astronomy/calcmysky-0.3.1 qt5
+# required by sci-astronomy/stellarium-23.3::gentoo[xlsx,-qt6]
+# required by stellarium (argument)
+>=dev-libs/qxlsx-1.4.6 qt5
+# required by app-office/libreoffice-7.5.6.2::gentoo
+# required by libreoffice (argument)
+>=dev-libs/xmlsec-1.3.1 nss
+# required by app-office/libreoffice-7.5.6.2::gentoo
+# required by libreoffice (argument)
+>=media-libs/harfbuzz-8.2.0 icu
+# required by media-gfx/blender-3.3.8::gentoo
+# required by blender (argument)
+>=media-libs/freetype-2.13.2 brotli
+# required by media-gfx/blender-3.3.8::gentoo[ffmpeg]
+# required by blender (argument)
+>=media-video/ffmpeg-6.0-r9 mp3 vorbis xvid x264 theora
+# required by media-sound/ardour-8.1::gentoo
+# required by ardour (argument)
+>=media-libs/suil-0.10.18-r1 gtk2 X
+# required by dev-cpp/cairomm-1.14.4::gentoo
+# required by dev-cpp/pangomm-2.46.3::gentoo
+# required by dev-cpp/gtkmm-2.24.5-r1::gentoo
+# required by media-sound/ardour-8.1::gentoo
+# required by ardour (argument)
+>=x11-libs/cairo-1.18.0 -X
+# required by media-gfx/gimp-2.10.36::gentoo
+# required by gimp (argument)
+>=app-text/poppler-23.09.0 cairo
+# required by media-gfx/gimp-2.10.36::gentoo
+# required by gimp (argument)
+>=media-libs/gegl-0.4.46 cairo
+# required by media-gfx/krita-5.1.5::gentoo[python_single_target_python3_11]
+# required by krita (argument)
+>=dev-python/PyQt5-5.15.10-r1 declarative widgets gui
+# required by gui-libs/gtk-4.10.5::gentoo
+# required by gui-libs/gtk (argument)
+>=x11-libs/cairo-1.18.0 X
+# required by gnome-base/gnome-keyring-42.1-r2::gentoo
+# required by virtual/secret-service-0::gentoo
+# required by app-crypt/libsecret-0.20.5-r3::gentoo
+# required by app-editors/vscodium-1.84.2.23319::gentoo
+# required by vscodium (argument)
+>=app-crypt/gcr-3.41.1-r2:0 gtk
+# required by dev-cpp/cairomm-1.14.4::gentoo
+# required by dev-cpp/gtkmm-3.24.8::gentoo
+# required by gui-apps/waybar-0.9.22::gentoo
+# required by waybar (argument)
+>=x11-libs/cairo-1.18.0 -X
+# required by kde-plasma/polkit-kde-agent-5.27.9::gentoo
+# required by kde-frameworks/kauth-5.112.0::gentoo[policykit]
+# required by kde-frameworks/kconfigwidgets-5.112.0::gentoo
+# required by kde-frameworks/kiconthemes-5.112.0::gentoo
+# required by kde-frameworks/kxmlgui-5.112.0::gentoo
+# required by media-gfx/krita-5.1.5::gentoo
+# required by krita (argument)
+>=kde-frameworks/kwindowsystem-5.112.0 X
+# required by kde-misc/kdeconnect-23.08.3::gentoo
+# required by kdeconnect (argument)
+>=dev-qt/qtmultimedia-5.15.11:5 qml
+# required by kde-frameworks/qqc2-desktop-style-5.112.0::gentoo
+# required by dev-libs/kirigami-addons-0.11.0::gentoo
+# required by kde-misc/kdeconnect-23.08.3::gentoo
+# required by kdeconnect (argument)
+>=kde-frameworks/sonnet-5.112.0 qml
+# required by kde-plasma/libplasma-5.112.0::gentoo
+# required by dev-libs/kirigami-addons-0.11.0::gentoo
+# required by kde-misc/kdeconnect-23.08.3::gentoo
+# required by kdeconnect (argument)
+>=kde-frameworks/kconfig-5.112.0 qml
+# required by sci-electronics/kicad-7.0.7::gentoo
+# required by kicad (argument)
+>=dev-libs/boost-1.82.0-r1 context python
+# required by dev-python/wxpython-4.2.0::gentoo
+# required by sci-electronics/kicad-7.0.7::gentoo[python_single_target_python3_11]
+# required by kicad (argument)
+>=x11-libs/wxGTK-3.2.2.1-r3 opengl tiff sdl gstreamer libnotify
+# required by x11-misc/urxvtconfig-1.0-r1::gentoo
+# required by x11-misc/urxvtconfig (argument)
+>=dev-qt/qtsingleapplication-2.6.1_p20171024 X
+# required by x11-misc/urxvtconfig-1.0-r1::gentoo
+# required by x11-misc/urxvtconfig (argument)
+>=x11-terms/rxvt-unicode-9.31-r2 xft
+# required by dev-qt/qt-creator-12.0.0::gentoo[help]
+# required by qt-creator (argument)
+>=dev-qt/qttools-6.5.3 designer
+# required by dev-qt/qtwayland-6.5.3::gentoo
+>=dev-qt/qtbase-6.5.3-r1 opengl
+# required by media-sound/linuxsampler-2.2.0::gentoo
+# required by media-sound/qsampler-0.9.10-r2::gentoo
+# required by qsampler (argument)
+>=media-libs/libsndfile-1.2.2 -minimal
+# required by net-p2p/deluge-2.1.1-r4::gentoo
+# required by deluge (argument)
+>=net-libs/libtorrent-rasterbar-2.0.9 python
+# required by app-text/calibre-5.44.0-r3::gentoo[python_single_target_python3_11]
+# required by calibre (argument)
+>=dev-python/pillow-10.1.0 webp truetype
+# required by dev-python/PyQtWebEngine-5.15.6-r1::gentoo
+# required by app-text/calibre-5.44.0-r3::gentoo[python_single_target_python3_11]
+# required by calibre (argument)
+>=dev-python/PyQt5-5.15.10-r1 printsupport svg webchannel
+# required by dev-python/PyQtWebEngine-5.15.6-r1::gentoo
+# required by app-text/calibre-5.44.0-r3::gentoo[python_single_target_python3_11]
+# required by calibre (argument)
+>=dev-qt/qtwebengine-5.15.11_p20231120:5 widgets
+# required by dev-qt/qtwebengine-5.15.11_p20231120::gentoo
+# required by dev-python/PyQtWebEngine-5.15.6-r1::gentoo
+# required by app-text/calibre-5.44.0-r3::gentoo[python_single_target_python3_11]
+# required by calibre (argument)
+>=dev-libs/libxml2-2.11.5 icu
+# required by dev-qt/qtwebengine-5.15.11_p20231120::gentoo
+# required by dev-python/PyQtWebEngine-5.15.6-r1::gentoo
+# required by app-text/calibre-5.44.0-r3::gentoo[python_single_target_python3_11]
+# required by calibre (argument)
+>=dev-qt/qtwebchannel-5.15.11:5 qml
+# required by app-office/lyx-2.3.7::gentoo
+# required by app-office/lyx (argument)
+>=virtual/imagemagick-tools-0-r1 png
+# required by media-sound/elisa-23.08.3::gentoo
+# required by elisa (argument)
+>=kde-frameworks/kfilemetadata-5.112.0 taglib
+# required by media-sound/lilypond-2.24.0::gentoo
+# required by media-sound/denemo-2.6.0-r2::gentoo
+# required by denemo (argument)
+>=media-gfx/fontforge-20230101 png
+# required by media-gfx/krita-5.1.5::gentoo[pdf]
+# required by @selected
+# required by @world (argument)
+>=app-text/poppler-23.09.0 qt5
+# required by dev-python/cairocffi-1.5.1::gentoo[-test]
+# required by x11-wm/qtile-0.22.1-r3::gentoo
+# required by qtile (argument)
+>=x11-libs/gdk-pixbuf-2.42.10-r1 jpeg
+# required by dev-python/matplotlib-3.8.2-r1::gentoo[-test]
+# required by matplotlib (argument)
+>=virtual/imagemagick-tools-0-r1 jpeg tiff
+# required by virtual/imagemagick-tools-0-r1::gentoo
+# required by dev-python/matplotlib-3.8.2-r1::gentoo[-test]
+# required by matplotlib (argument)
+>=media-gfx/imagemagick-7.1.1.11 jpeg tiff
+# required by kde-plasma/kwin-5.27.9-r1::gentoo
+# required by kde-plasma/libkworkspace-5.27.9::gentoo
+# required by kde-plasma/kde-cli-tools-5.27.9::gentoo
+# required by kde-plasma/kscreenlocker-5.27.9::gentoo
+>=dev-qt/qtgui-5.15.11-r2 accessibility
+# required by kde-plasma/kwin-5.27.9-r1::gentoo
+# required by kde-plasma/libkworkspace-5.27.9::gentoo
+# required by kde-plasma/kde-cli-tools-5.27.9::gentoo
+# required by kde-plasma/kscreenlocker-5.27.9::gentoo
+>=kde-frameworks/kglobalaccel-5.112.0 X
+# required by kde-plasma/kwin-5.27.9-r1::gentoo
+# required by kde-plasma/libkworkspace-5.27.9::gentoo
+# required by kde-plasma/kde-cli-tools-5.27.9::gentoo
+# required by kde-plasma/kscreenlocker-5.27.9::gentoo
+>=kde-frameworks/kitemmodels-5.112.0 qml
+# required by net-vpn/riseup-vpn-0.21.11_p20230412::gentoo
+# required by net-vpn/riseup-vpn (argument)
+>=dev-qt/qtquickcontrols2-5.15.11 widgets
+# required by games-fps/alephone-20230119::gentoo
+# required by games-fps/alephone-marathon-20221126::gentoo
+# required by games-fps/alephone-marathon (argument)
+>=media-libs/sdl2-image-2.6.3 png
+# required by games-fps/legends-0.4.1.43-r2::gentoo
+# required by games-fps/legends (argument)
+# >=media-libs/libsdl-1.2.64 abi_x86_32 opengl
+# required by x11-libs/libXext-1.3.5::gentoo
+# required by games-fps/legends-0.4.1.43-r2::gentoo
+# required by games-fps/legends (argument)
+>=x11-libs/libX11-1.8.7 abi_x86_32
+# required by games-fps/legends-0.4.1.43-r2::gentoo
+# required by games-fps/legends (argument)
+>=x11-libs/libXext-1.3.5 abi_x86_32
+# required by media-libs/libvorbis-1.3.7-r1::gentoo
+# required by media-libs/libsfml-2.6.0::gentoo
+# required by games-emulation/dolphin-5.0_p20220520-r2::gentoo
+# required by games-emulation/dolphin (argument)
+>=media-libs/libogg-1.3.5-r1 abi_x86_32
+# required by media-libs/libsndfile-1.2.2::gentoo[-minimal]
+# required by media-libs/libpulse-16.1-r2::gentoo
+# required by media-libs/cubeb-0.2_p20220922::gentoo[pulseaudio]
+# required by games-emulation/dolphin-5.0_p20220520-r2::gentoo
+# required by games-emulation/dolphin (argument)
+>=media-libs/libvorbis-1.3.7-r1 abi_x86_32
+# required by games-fps/legends-0.4.1.43-r2::gentoo
+# required by games-fps/legends (argument)
+>=media-libs/openal-1.23.1-r1 abi_x86_32
+# required by media-sound/jack2-1.9.22::gentoo[alsa]
+# required by virtual/jack-2::gentoo
+# required by media-libs/openal-1.23.1-r1::gentoo[jack]
+# required by games-fps/legends-0.4.1.43-r2::gentoo
+# required by games-fps/legends (argument)
+>=media-libs/alsa-lib-1.2.10-r2 abi_x86_32
+# required by media-libs/openal-1.23.1-r1::gentoo[pulseaudio]
+# required by games-fps/legends-0.4.1.43-r2::gentoo
+# required by games-fps/legends (argument)
+>=media-libs/libpulse-16.1-r2 abi_x86_32
+# required by media-libs/libpulse-16.1-r2::gentoo
+# required by media-libs/cubeb-0.2_p20220922::gentoo[pulseaudio]
+# required by games-emulation/dolphin-5.0_p20220520-r2::gentoo
+# required by games-emulation/dolphin (argument)
+>=media-libs/libsndfile-1.2.2 abi_x86_32
+# required by media-libs/libpulse-16.1-r2::gentoo[asyncns]
+# required by media-libs/cubeb-0.2_p20220922::gentoo[pulseaudio]
+# required by games-emulation/dolphin-5.0_p20220520-r2::gentoo
+# required by games-emulation/dolphin (argument)
+>=net-libs/libasyncns-0.8-r4 abi_x86_32
+# required by media-libs/libpulse-16.1-r2::gentoo[dbus]
+# required by media-libs/cubeb-0.2_p20220922::gentoo[pulseaudio]
+# required by games-emulation/dolphin-5.0_p20220520-r2::gentoo
+# required by games-emulation/dolphin (argument)
+>=sys-apps/dbus-1.15.6 abi_x86_32
+# required by media-libs/libpulse-16.1-r2::gentoo[glib]
+# required by media-libs/cubeb-0.2_p20220922::gentoo[pulseaudio]
+# required by games-emulation/dolphin-5.0_p20220520-r2::gentoo
+# required by games-emulation/dolphin (argument)
+>=dev-libs/glib-2.76.4 abi_x86_32
+# required by x11-libs/libX11-1.8.7::gentoo
+# required by sys-apps/dbus-1.15.6::gentoo[X]
+# required by media-sound/jack2-1.9.22::gentoo[dbus]
+# required by virtual/jack-2::gentoo
+# required by media-libs/openal-1.23.1-r1::gentoo[jack]
+# required by games-fps/legends-0.4.1.43-r2::gentoo
+# required by games-fps/legends (argument)
+>=x11-libs/libxcb-1.16 abi_x86_32
+# required by x11-libs/libxcb-1.16::gentoo
+# required by media-libs/libsfml-2.6.0::gentoo
+# required by games-emulation/dolphin-5.0_p20220520-r2::gentoo
+# required by games-emulation/dolphin (argument)
+>=x11-libs/libXau-1.0.11 abi_x86_32
+# required by x11-libs/libxcb-1.16::gentoo
+# required by media-libs/libsfml-2.6.0::gentoo
+# required by games-emulation/dolphin-5.0_p20220520-r2::gentoo
+# required by games-emulation/dolphin (argument)
+>=x11-libs/libXdmcp-1.1.4-r2 abi_x86_32
+# required by dev-libs/glib-2.76.4::gentoo
+# required by games-emulation/desmume-0.9.13-r1::gentoo
+# required by games-emulation/desmume (argument)
+>=dev-libs/libpcre2-10.42-r1 abi_x86_32
+# required by dev-libs/glib-2.76.4::gentoo
+# required by games-emulation/desmume-0.9.13-r1::gentoo
+# required by games-emulation/desmume (argument)
+>=dev-libs/libffi-3.4.4-r1 abi_x86_32
+# required by dev-libs/glib-2.76.4::gentoo
+# required by games-emulation/desmume-0.9.13-r1::gentoo
+# required by games-emulation/desmume (argument)
+>=sys-libs/zlib-1.3-r1 abi_x86_32
+# required by dev-libs/glib-2.76.4::gentoo
+# required by games-emulation/desmume-0.9.13-r1::gentoo
+# required by games-emulation/desmume (argument)
+>=sys-apps/util-linux-2.38.1-r3 abi_x86_32
+# required by media-libs/libsndfile-1.2.2::gentoo[-minimal]
+# required by media-libs/libpulse-16.1-r2::gentoo
+# required by media-libs/cubeb-0.2_p20220922::gentoo[pulseaudio]
+# required by games-emulation/dolphin-5.0_p20220520-r2::gentoo
+# required by games-emulation/dolphin (argument)
+>=media-libs/flac-1.4.3 abi_x86_32
+# required by media-libs/libsndfile-1.2.2::gentoo[-minimal]
+# required by media-libs/libpulse-16.1-r2::gentoo
+# required by media-libs/cubeb-0.2_p20220922::gentoo[pulseaudio]
+# required by games-emulation/dolphin-5.0_p20220520-r2::gentoo
+# required by games-emulation/dolphin (argument)
+>=media-libs/opus-1.4 abi_x86_32
+# required by media-libs/libsndfile-1.2.2::gentoo[-minimal]
+# required by media-libs/libpulse-16.1-r2::gentoo
+# required by media-libs/cubeb-0.2_p20220922::gentoo[pulseaudio]
+# required by games-emulation/dolphin-5.0_p20220520-r2::gentoo
+# required by games-emulation/dolphin (argument)
+>=media-sound/lame-3.100-r3 abi_x86_32
+# required by media-libs/libsndfile-1.2.2::gentoo[-minimal]
+# required by media-libs/libpulse-16.1-r2::gentoo
+# required by media-libs/cubeb-0.2_p20220922::gentoo[pulseaudio]
+# required by games-emulation/dolphin-5.0_p20220520-r2::gentoo
+# required by games-emulation/dolphin (argument)
+>=media-sound/mpg123-1.32.3 abi_x86_32
+# required by net-wireless/kismet-2022.08.1-r2::gentoo
+# required by net-wireless/kismet (argument)
+>=net-libs/libwebsockets-4.3.2-r1 client
+# required by games-emulation/desmume-0.9.13-r1::gentoo
+# required by games-emulation/desmume (argument)
+# >=media-libs/libsdl2-2.28.3 opengl X
+# required by dev-games/godot-4.2::gentoo[vulkan,gui]
+# required by dev-games/godot (argument)
+>=media-libs/vulkan-loader-1.3.261 X
+# required by dev-libs/glib-2.76.4::gentoo
+# required by games-emulation/desmume-0.9.13-r1::gentoo
+# required by games-emulation/desmume (argument)
+>=virtual/libintl-0-r2 abi_x86_32
+# required by dev-libs/glib-2.76.4::gentoo
+# required by games-emulation/desmume-0.9.13-r1::gentoo
+# required by games-emulation/desmume (argument)
+>=virtual/libiconv-0-r2 abi_x86_32
+# required by media-libs/openal-1.23.1-r1::gentoo[jack]
+# required by games-fps/legends-0.4.1.43-r2::gentoo
+# required by games-fps/legends (argument)
+>=virtual/jack-2 abi_x86_32
+# required by virtual/jack-2::gentoo
+# required by media-libs/openal-1.23.1-r1::gentoo[jack]
+# required by games-fps/legends-0.4.1.43-r2::gentoo
+# required by games-fps/legends (argument)
+>=media-sound/jack2-1.9.22 abi_x86_32
+# required by media-sound/jack2-1.9.22::gentoo[dbus]
+# required by virtual/jack-2::gentoo
+# required by media-libs/openal-1.23.1-r1::gentoo[jack]
+# required by games-fps/legends-0.4.1.43-r2::gentoo
+# required by games-fps/legends (argument)
+>=dev-libs/expat-2.5.0 abi_x86_32
+# required by media-libs/libsdl-1.2.64::gentoo
+# required by games-fps/legends-0.4.1.43-r2::gentoo
+# required by games-fps/legends (argument)
+# =media-libs/libsdl2-2.28.3 abi_x86_32 -X
+# required by media-libs/libsdl2-2.28.3::gentoo[wayland]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=media-libs/mesa-23.1.9 abi_x86_32
+# required by media-libs/libsdl2-2.28.3::gentoo[wayland]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=dev-libs/wayland-1.22.0 abi_x86_32
+# required by media-libs/libsdl2-2.28.3::gentoo[wayland]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=x11-libs/libxkbcommon-1.6.0 abi_x86_32
+# required by x11-libs/libxkbcommon-1.6.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[wayland]
+# required by games-emulation/desmume-0.9.13-r1::gentoo
+# required by games-emulation/desmume (argument)
+>=dev-libs/libxml2-2.11.5 abi_x86_32
+# required by dev-libs/libxml2-2.11.5::gentoo[icu]
+# required by x11-libs/libxkbcommon-1.6.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[wayland]
+# required by games-emulation/desmume-0.9.13-r1::gentoo
+# required by games-emulation/desmume (argument)
+>=dev-libs/icu-73.2 abi_x86_32
+# required by media-libs/mesa-23.1.9::gentoo
+# required by virtual/opengl-7.0-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[opengl]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=media-libs/libglvnd-1.7.0 abi_x86_32
+# required by media-libs/mesa-23.1.9::gentoo
+# required by virtual/opengl-7.0-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[opengl]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=x11-libs/libdrm-2.4.117 abi_x86_32
+# required by media-libs/mesa-23.1.9::gentoo[X]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[opengl]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=x11-libs/libxshmfence-1.3.2 abi_x86_32
+# required by media-libs/mesa-23.1.9::gentoo[X]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[opengl]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=x11-libs/libXxf86vm-1.1.5 abi_x86_32
+# required by media-libs/mesa-23.1.9::gentoo[X]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[opengl]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=x11-libs/libXfixes-6.0.1 abi_x86_32
+# required by sys-apps/systemd-254.5-r1::gentoo[zstd]
+# required by virtual/libudev-251-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[udev]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=app-arch/zstd-1.5.5 abi_x86_32
+# required by media-libs/mesa-23.1.9::gentoo[llvm,-opencl]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[opengl]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=sys-devel/llvm-16.0.6 abi_x86_32
+# required by media-libs/mesa-23.1.9::gentoo[X]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[opengl]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=x11-libs/libXrandr-1.5.4 abi_x86_32
+# required by x11-libs/libXrandr-1.5.4::gentoo
+# required by media-libs/libsfml-2.6.0::gentoo
+# required by games-emulation/dolphin-5.0_p20220520-r2::gentoo
+# required by games-emulation/dolphin (argument)
+>=x11-libs/libXrender-0.9.11 abi_x86_32
+# required by sys-devel/llvm-16.0.6::gentoo[ncurses]
+# required by media-libs/mesa-23.1.9::gentoo[llvm,-opencl]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[opengl]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=sys-libs/ncurses-6.4_p20230401 abi_x86_32
+# required by x11-libs/libdrm-2.4.117::gentoo[video_cards_intel]
+# required by media-libs/mesa-23.1.9::gentoo
+# required by virtual/opengl-7.0-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[opengl]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=x11-libs/libpciaccess-0.17-r1 abi_x86_32
+# required by media-libs/libsdl2-2.28.3::gentoo[opengl]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=virtual/opengl-7.0-r2 abi_x86_32
+# required by media-libs/libsdl2-2.28.3::gentoo[opengl]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=virtual/glu-9.0-r2 abi_x86_32
+# required by media-libs/libsdl2-2.28.3::gentoo[udev]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=virtual/libudev-251-r2 abi_x86_32
+# required by virtual/libudev-251-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[udev]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=sys-apps/systemd-254.5-r1 abi_x86_32
+# required by sys-apps/systemd-254.5-r1::gentoo
+# required by virtual/libudev-251-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[udev]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=sys-libs/libcap-2.69 abi_x86_32
+# required by sys-apps/systemd-254.5-r1::gentoo[gcrypt]
+# required by virtual/libudev-251-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[udev]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=dev-libs/libgcrypt-1.10.2 abi_x86_32
+# required by sys-apps/systemd-254.5-r1::gentoo[lz4]
+# required by virtual/libudev-251-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[udev]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=app-arch/lz4-1.9.4 abi_x86_32
+# required by sys-apps/systemd-254.5-r1::gentoo[pam]
+# required by virtual/libudev-251-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[udev]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=sys-libs/pam-1.5.3 abi_x86_32
+# required by dev-libs/libgcrypt-1.10.2::gentoo
+# required by sys-apps/systemd-254.5-r1::gentoo[gcrypt]
+# required by virtual/libudev-251-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[udev]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=dev-libs/libgpg-error-1.47 abi_x86_32
+# required by virtual/glu-9.0-r2::gentoo
+# required by media-libs/libsdl2-2.28.3::gentoo[opengl]
+# required by games-strategy/endless-sky-0.9.16.1::gentoo[-gles2-only]
+# required by games-strategy/endless-sky (argument)
+>=media-libs/glu-9.0.3 abi_x86_32
+# required by games-roguelike/FTL-1.5.13-r1::gentoo[-bundled-libs]
+# required by FTL (argument)
+>=media-libs/devil-1.7.8-r6 png
+# required by games-roguelike/FTL-1.5.13-r1::gentoo[-bundled-libs]
+# required by FTL (argument)
+# >=media-libs/libsdl-1.2.64 X
+# required by media-libs/libsdl-1.2.64::gentoo
+# required by games-action/psychonauts-hb-20130506::gentoo
+# required by psychonauts-hb (argument)
+# >=media-libs/libsdl2-2.28.5 abi_x86_32
+# required by media-libs/libsdl2-2.28.5::gentoo[X]
+# required by games-rpg/celeste-1.4.0.0::gentoo
+# required by celeste (argument)
+>=x11-libs/libXcursor-1.2.1 abi_x86_32
+# required by media-libs/libsdl2-2.28.5::gentoo[X]
+# required by games-rpg/celeste-1.4.0.0::gentoo
+# required by celeste (argument)
+>=x11-libs/libXi-1.8.1 abi_x86_32
+# required by games-roguelike/dwarf-fortress-0.47.05-r1::gentoo
+# required by dwarf-fortress (argument)
+>=media-libs/sdl-image-1.2.12_p20220527-r1 png
+# required by games-action/solar2-1.10-r1::gentoo
+# required by solar2 (argument)
+>=media-libs/sdl-mixer-1.2.12_p20221010 vorbis mad mp3 abi_x86_32
+# required by games-puzzle/tod-0-r3::gentoo
+# required by tod (argument)
+>=media-libs/allegro-4.4.3.1-r1:0 X
+# required by media-libs/phonon-vlc-0.11.3-r1::gentoo
+# required by media-libs/phonon-4.11.1-r2::gentoo[vlc]
+# required by media-sound/musique-1.5-r1::gentoo
+# required by musique (argument)
+>=media-video/vlc-3.0.18-r3 ogg
+# required by dev-embedded/arduino-1.8.19::gentoo
+# required by arduino (argument)
+>=dev-util/astyle-3.1-r2 java
+# required by games-fps/etqw-bin-1.5-r4::gentoo
+# required by etqw-bin (argument)
+>=virtual/jpeg-compat-62 abi_x86_32
+# required by virtual/jpeg-compat-62::gentoo
+# required by games-fps/etqw-bin-1.5-r4::gentoo
+# required by etqw-bin (argument)
+>=media-libs/libjpeg-turbo-3.0.0 abi_x86_32
+# required by media-libs/sdl-mixer-1.2.12_p20221010::gentoo[mp3,mad]
+# required by games-action/solar2-1.10-r1::gentoo
+# required by solar2 (argument)
+>=media-libs/libmad-0.15.1b-r10 abi_x86_32
+# required by sys-libs/ncurses-6.4_p20230401::gentoo[gpm]
+# required by sys-apps/util-linux-2.38.1-r3::gentoo[ncurses]
+# required by dev-lang/python-3.11.6::gentoo
+# required by dev-libs/icu-73.2::gentoo
+# required by dev-libs/boost-1.82.0-r1::gentoo[icu]
+# required by app-text/poppler-23.09.0::gentoo[boost]
+# required by net-print/cups-filters-1.28.17-r2::gentoo
+# required by net-print/cups-2.4.7-r1::gentoo
+# required by x11-libs/gtk+-3.24.38::gentoo[cups]
+# required by gnome-extra/polkit-gnome-0.105-r2::gentoo
+# required by sys-auth/polkit-123::gentoo[gtk]
+# required by sys-apps/systemd-254.5-r1::gentoo[policykit]
+# required by virtual/libudev-251-r2::gentoo
+# required by dev-libs/libusb-1.0.26::gentoo
+# required by virtual/libusb-1-r2::gentoo
+# required by app-crypt/gnupg-2.2.41::gentoo
+# required by sys-apps/portage-3.0.57::gentoo[rsync-verify,-build]
+# required by virtual/package-manager-1::gentoo
+# required by @system
+# required by @world (argument)
+>=sys-libs/gpm-1.20.7-r5 abi_x86_32
+# required by media-libs/mesa-23.1.9::gentoo[llvm,-video_cards_r600,video_cards_radeon,video_cards_radeonsi]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by media-libs/freeglut-3.4.0::gentoo
+# required by app-text/mupdf-1.22.0::gentoo[opengl]
+# required by net-print/cups-filters-1.28.17-r2::gentoo
+# required by net-print/cups-2.4.7-r1::gentoo
+# required by x11-libs/gtk+-3.24.38::gentoo[cups]
+# required by gnome-extra/polkit-gnome-0.105-r2::gentoo
+# required by sys-auth/polkit-123::gentoo[gtk]
+# required by sys-apps/systemd-254.5-r1::gentoo[policykit]
+# required by virtual/libudev-251-r2::gentoo
+# required by sys-apps/util-linux-2.38.1-r3::gentoo
+# required by dev-lang/python-3.11.6::gentoo
+# required by dev-libs/icu-73.2::gentoo
+# required by dev-libs/boost-1.82.0-r1::gentoo[icu]
+# required by app-text/poppler-23.09.0::gentoo[boost]
+>=virtual/libelf-3-r1 abi_x86_32
+# required by media-libs/mesa-23.1.9::gentoo[llvm,-opencl,vulkan,video_cards_intel]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by media-libs/freeglut-3.4.0::gentoo
+# required by app-text/mupdf-1.22.0::gentoo[opengl]
+# required by net-print/cups-filters-1.28.17-r2::gentoo
+# required by net-print/cups-2.4.7-r1::gentoo
+# required by x11-libs/gtk+-3.24.38::gentoo[cups]
+# required by gnome-extra/polkit-gnome-0.105-r2::gentoo
+# required by sys-auth/polkit-123::gentoo[gtk]
+# required by sys-apps/systemd-254.5-r1::gentoo[policykit]
+# required by virtual/libudev-251-r2::gentoo
+# required by sys-apps/util-linux-2.38.1-r3::gentoo
+# required by dev-lang/python-3.11.6::gentoo
+# required by dev-libs/icu-73.2::gentoo
+# required by dev-libs/boost-1.82.0-r1::gentoo[icu]
+# required by app-text/poppler-23.09.0::gentoo[boost]
+>=sys-devel/clang-16.0.6 abi_x86_32
+# required by virtual/libelf-3-r1::gentoo
+# required by media-libs/mesa-23.1.9::gentoo[llvm,-video_cards_r600,video_cards_radeon,video_cards_radeonsi]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by media-libs/freeglut-3.4.0::gentoo
+# required by app-text/mupdf-1.22.0::gentoo[opengl]
+# required by net-print/cups-filters-1.28.17-r2::gentoo
+# required by net-print/cups-2.4.7-r1::gentoo
+# required by x11-libs/gtk+-3.24.38::gentoo[cups]
+# required by gnome-extra/polkit-gnome-0.105-r2::gentoo
+# required by sys-auth/polkit-123::gentoo[gtk]
+# required by sys-apps/systemd-254.5-r1::gentoo[policykit]
+# required by virtual/libudev-251-r2::gentoo
+# required by sys-apps/util-linux-2.38.1-r3::gentoo
+# required by dev-lang/python-3.11.6::gentoo
+# required by dev-libs/icu-73.2::gentoo
+# required by dev-libs/boost-1.82.0-r1::gentoo[icu]
+# required by app-text/poppler-23.09.0::gentoo[boost]
+>=dev-libs/elfutils-0.190 abi_x86_32
+# required by dev-libs/elfutils-0.190::gentoo[bzip2]
+# required by virtual/libelf-3-r1::gentoo
+# required by media-libs/mesa-23.1.9::gentoo[-video_cards_r600,video_cards_radeonsi,llvm,video_cards_radeon]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by media-libs/freeglut-3.4.0::gentoo
+# required by app-text/mupdf-1.22.0::gentoo[opengl]
+# required by net-print/cups-filters-1.28.17-r2::gentoo[pdf]
+# required by net-print/cups-2.4.7-r1::gentoo
+# required by x11-libs/gtk+-3.24.38::gentoo[cups]
+# required by gnome-extra/polkit-gnome-0.105-r2::gentoo
+# required by sys-auth/polkit-123::gentoo[gtk]
+# required by sys-apps/systemd-254.5-r1::gentoo[policykit]
+# required by virtual/libudev-251-r2::gentoo
+# required by sys-apps/util-linux-2.38.1-r3::gentoo
+# required by dev-lang/python-3.11.6::gentoo
+# required by dev-libs/icu-73.2::gentoo
+# required by dev-libs/boost-1.82.0-r1::gentoo[icu]
+# required by app-text/poppler-23.09.0::gentoo[boost]
+>=app-arch/bzip2-1.0.8-r4 abi_x86_32
+# required by sys-boot/os-prober-1.81::gentoo
+# required by sys-boot/os-prober (argument)
+>=sys-boot/grub-2.06-r9 mount

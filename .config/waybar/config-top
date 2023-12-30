@@ -1,0 +1,181 @@
+{
+    "include": "~/.config/waybar/config-bottom",
+    "id": "top",
+    "layer": "top",
+    "position": "top",
+    "name": "top",
+    "ipc": true,
+    "mode": "dock",
+    "modules-left": [
+        "sway/mode",
+        "sway/workspaces",
+        "custom/weather"
+    ],
+    "modules-center": ["clock"],
+    "modules-right": [
+        "cpu",
+        "memory",
+        "temperature",
+        "backlight",
+        "pulseaudio",
+        "sway/language",
+        "battery"
+    ],
+
+    "sway/workspaces": {
+        "disable-scroll": true
+    },
+
+    "battery": {
+        "bat": "BAT0",
+        "interval": 60,
+        "states": {
+             "warning": 30,
+             "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-icons": ["⚠", "🔋"],
+        "max-length": 25
+    },
+
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "python ~/.config/waybar/waybar-wttr.py",
+        "return-type": "json"
+    },
+
+    "sway/mode": {
+        "format": "<span style='italic'>{}</span>",
+        "tooltip": false
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%H:%M:%S, %A, %d %b, %Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode"          : "month",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "left",
+            "on-scroll"     : 1,
+            "format": {
+                "months":       "<span color='#e2cca9'><b>{}</b></span>",
+                "days":         "<span color='#e2cca9'><b>{}</b></span>",
+                "weeks":        "<span color='#b0b846'><b>W{}</b></span>",
+                "weekdays":     "<span color='#e9b143'><b>{}</b></span>",
+                "today":        "<span color='#f28534'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "alacritty --class=calcurse -e calcurse",
+            "on-click-middle": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        },
+        "interval": 1
+    },
+
+    "pulseaudio": {
+        "scroll-step": 1,
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "<span foreground='#f2594b'>0%  {format_source}</span>",
+        "format-muted": "<span foreground='#f2594b'>0%</span> {format_source}",
+        "format-source": "🎙",
+        "format-source-muted": " <span foreground='#f2594b'>🔇</span>",
+        "format-icons": {
+            "headphone": "🎧",
+            "headset": "🎧",
+            "default": ["“🕨", "🕩", "🕪"]
+        },
+        "tooltip": false,
+        "on-click": "pavucontrol --class=pavu",
+    "on-click-right": "easyeffects",
+    "ignored-sinks": ["Easy Effects Sink", "Monitor of Easy Effects Sink"]
+    },
+
+    "cpu": {
+        "format": "{usage}% ▣ ",
+        "states": {
+            "warning": 60,
+            "critical": 80
+        },
+        "tooltip": false,
+        "on-click": "$term --class=htop -e htop"
+    },
+
+    "memory": {
+        "tooltip": true,
+        "format": "{}% ||",
+        "states": {
+            "warning": 60,
+            "critical": 80
+        },
+        "tooltip-format": "RAM: {used}GB/{total}GB\nSwap: {swapUsed}GB/{swapTotal}GB"
+    },
+
+    "temperature": {
+        "thermal-zone": 4,
+        "tooltip": true,  
+        "critical-threshold": 80,
+        "format": "{temperatureC}°{icon}",
+        "format-icons": ["🌡", "🌡", "🔥"],
+        "interval": 5
+    },
+
+    "backlight": {
+        "tooltip": false,
+        "format": "{percent}% {icon}",
+        "format-icons": ["◐"]
+    },
+
+    "sway/language": {
+        "format": "{shortDescription}",
+        "tooltip": false 
+    },
+
+    "tray": {
+        "format": "{}",
+        "tooltip": false,
+        "spacing": 5
+    }
+},
+
+{
+        "name": "WIP",
+    
+        "custom/arrow-light-on-bg-left": {
+            "tooltip": false,
+            "format": ""
+        },
+
+        "custom/arrow-dark-on-light-left": {
+            "tooltip": false,
+            "format": ""
+        },
+
+        "custom/arrow-light-on-dark-left": {
+            "tooltip": false,
+            "format": ""
+        },
+
+        "custom/arrow-dark-on-bg-right": {
+            "tooltip": false,
+            "format": ""
+        },
+
+        "custom/arrow-dark-on-light-right": {
+            "tooltip": false,
+            "format": ""
+        },
+
+        "custom/arrow-light-on-dark-right": {
+            "tooltip": false,
+            "format": ""
+        }
+
+
+
+}

@@ -1,0 +1,94 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+\begin{theorem}
+Let $f_n(x) = x^n$, and let $f(x) = \begin{cases}0&x\in [0,1) \\ 1& x=1\end{cases}.$ 
+\begin{enumerate}
+    \item $\forall 0 < b<1$, $f_n\to f$ uniformly on $[0,b]$.
+    \item $f_n$ does not converge to $f$ uniformly on $[0,1]$.
+\end{enumerate}
+\end{theorem}
+\textbf{Proof}:
+\begin{enumerate}
+    \item Let $\epsilon>0$. Since $b\in (0,1)$, $b^n \to 0$. Therefore, $\exists M_0\in \NN$ such that for all $n\geq M_0$, $b^n < \epsilon$. Choose $M = M_0$. Then, $\forall n\geq M, \forall x\in [0,b]$,
+    \[
+    |f_n(x) - f(x)| = |f_n(x)| = x^n \leq b^n<\epsilon.
+    \]
+    Thus, $f_n\to f$ uniformly on $[0,b]$.
+\end{enumerate}
+Before proving the other part, we first note the following negation:
+\begin{negation}[Not Uniformly Convergent]
+$f_n:S\to \RR$ does \vocab{not converge to $f:S\to \RR$ uniformly} if $\exists \epsilon_0>0$ such that $\forall M\in\NN$, $\exists n\geq M$ and $\exists x\in S$ with $|f_n(x) - f(x)|\geq \epsilon_0$.
+\end{negation}
+\begin{enumerate}
+    \item[2.] Hence, for our example, choose $\epsilon_0 = \frac{1}{4}$. Let $M\in\NN$ and choose $x = \left(\frac{1}{2}\right)^{\frac{1}{M}}\in (0,1)$. Thus, 
+    \[
+    |f_M(x) - f(x)| = f_M(x) = \frac{1}{2} >\epsilon_0.
+    \]
+\end{enumerate}
+\qed 
+
+\begin{theorem}[Weierstrass M-test]
+let $f_j:S\to \RR$ and suppose $\exists M_j>0$ such that 
+\begin{enumerate}[label = \alph*)]
+    \item $\forall x\in S$, $|f_j(x)|\leq M_j$.
+    \item $\sum_{j=1}^\infty M_j$ converges.
+\end{enumerate}
+Then,
+\begin{enumerate}
+    \item $\forall x\in S$, $\sum_{j=1}^\infty f_j(x)$ converges absolutely.
+    \item Let $f(x) = \sum_{j=1}^\infty f_j(x)$ for $x\in S.$ Then,
+    \[
+    \sum_{j=1}^n f_j\to f \text{~~uniformly on~~} S.
+    \]
+\end{enumerate}
+\end{theorem}
+\textbf{Proof}: 
+\begin{enumerate}
+    \item The first part follows from a), b), and the Comparison Test.
+    \item Let $\epsilon>0$. Since $\sum M_j$ converges, $\exists N_0\in\NN$ such that $\forall n\geq N_0$,
+    \[
+    \sum_{j=n+1}^\infty M_j = \left|\sum_{j=1}^\infty M_j - \sum_{j=1}^{n}M_j\right|<\epsilon.
+    \]
+    Choose $N= N_0$. Then, for all $n\geq N$ and $\forall x\in S$,
+    \begin{align*}
+        \left|f(x) - \sum_{j=1}^n f_j(x)\right| &= \left| \sum_{j=n+1}^\infty f_j(x)\right| \\
+        &\leq \sum_{j=n+1}^\infty |f_j(x)| \\
+        &\leq \sum_{j=n+1}^\infty M_j < \epsilon.
+    \end{align*}
+    Thus, $\sum_{j=1}^n f_j \to f$ uniformly on $S$.
+\end{enumerate}\qed 
+
+\noindent\underline{\textbf{Interchange of Limits}}
+
+\begin{remark}
+In general, limits \underline{cannot} be interchanged.
+\end{remark}
+
+\begin{example}
+For instance, consider the following example:
+\begin{align*}
+    \lim_{n\to \infty} \lim_{k\to \infty} \frac{n/k}{n/k + 1} &= \lim_{n\to \infty} \frac{0}{0+1} = 0 \\
+    \lim_{k\to \infty} \lim_{n\to \infty} \frac{n/k}{n/k + 1} &= \lim_{k\to \infty} 1 = 1.
+\end{align*}
+\end{example}
+
+\begin{question}
+Hence, we ask three questions about interchanging limits:
+\begin{enumerate}
+\item If $f_n:S\to \RR$, $f_n$ continuous and $f_n\to f$ pointwise or uniform, then is $f$ continuous?
+\item If $f_n:[a,b]\to \RR$, $f_n$ differentiable, and $f_n\to f$ with $f_n'\to g$, then is $f$ differentiable and does $g=f'$?
+\item If $f_n:[a,b]\to \RR$, with $f_n$ and $f$ continuous such that $f_n\to f$, then does 
+\[
+\int_a^b f_n = \int_a^b f?
+\]
+\end{enumerate}
+\end{question}
+The answer to the above questions are all \textbf{yes}, if the convergence is uniform.
+
+\begin{question}
+What if the convergence is only pointwise?
+\end{question}
+If convergence is only pointwise, the answer to the above questions are all \textbf{no}, which we will show next time.

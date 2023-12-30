@@ -1,0 +1,70 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+%\subsection*{Lecture 2:}
+%\textbf{\underline{Cantor's Theory of Cardinality (Size)}}
+
+\noindent \underline{\textbf{Functions}} \\
+If $A$ and $B$ are sets, a \vocab{function} $f:A\to B$ is a mapping that assigns each $x\in A$ to a \underline{unique} element in $B$ denoted $f(x)$. Let $f:A\to B$. Then
+\begin{enumerate}
+    \item If $C\subset A$, we define $f(C) := \{y\in B \mid y\in f(x)\text{~for some~} x\in C\}$.
+    \item If $D\subset B$, we define $f^{-1}(D) := \{x\in A\mid f(x) \in D\}$.
+\end{enumerate}
+
+As an example, consider the following mapping $f:\{1,2,3,4\}\to \{a,b\}$:
+\begin{figure}[h]
+    \centering
+    \includegraphics{pics/fig04.PNG}
+\end{figure}
+
+\noindent We can categorize functions in 3 important ways. Let $f:A\to B$.
+\begin{enumerate}
+    \item $f$ is \underline{injective} or \underline{one-to-one} (1-1) if $f(x_1) = f(x_2) \implies x_1 = x_2$.
+    \item $f$ is \underline{surjective} or \underline{onto} if $f(A) = B$. 
+    \item $f$ is \underline{bijective} if it is 1-1 and onto.
+\end{enumerate}
+If a function $f:A\to B$ is bijective, then $f^{-1}:B\to A$ is the function which assigns each $y\in B$ to the unique $x\in A$ such that $f(x) = y$. Note that $f(f^{-1}(x)) = x$.
+
+\noindent \underline{\textbf{Cardinality}}
+
+\begin{question}
+When do two sets have the same \textbf{size}?
+\end{question}
+Cantor answered this question in the 1800s, stating that two sets have the same size when you can pair each element in one set with a unique element in the other. 
+
+\begin{definition}[Cardinality]
+We state that two sets $A$ and $B$ have the same \vocab{cardinality} if there exists a bijection $f:A\to B$.
+\end{definition}
+With this new concept comes some new notation:
+\begin{enumerate}
+    \item $|A| = |B|$ if $A$ and $B$ have the same cardinality. 
+    \item $|A| = n$ if $|A| = |\{1,\dots, n\}|$. If this is the case we say $A$ is \vocab{finite}. 
+    \item $|A| \leq |B|$ if there exists an injection $f:A\to B$. 
+    \item $|A| < |B|$ if $|A|\leq |B|$ but $|A|\neq |B|$.
+\end{enumerate}
+
+\begin{theorem}[Cantor-Schr\"oder-Bernstein]
+If $|A| \leq |B|$ and $|B| \leq |A|$ then $|A| = |B|$.
+\end{theorem}
+
+If $|A| = |\NN|,$ then $A$ is \underline{countably infinite}. If $A$ is finite or countably infinite, we say $A$ is \vocab{countable}. Otherwise, we say $A$ is \vocab{uncountable.}
+
+
+\begin{example}
+There are a few key theorems that we can prove with this new concept:
+\begin{enumerate}
+    \item $|\{2n \mid n\in \NN\}| = |\NN|$.
+    \item $|\{2n-1 \mid n\in \NN\}| = |\NN|$.
+    \item $|\{x\in \QQ \mid x>0\}| = |\NN|$.
+\end{enumerate}
+\end{example}
+The first two statements can be summarized by Feynman: "There are twice as many numbers as numbers."\\
+\begin{proof}~
+\begin{enumerate}
+    \item Define the function $f: \NN \to \{2n \mid n\in \NN\}$ as $f(n) = 2n$. Then, $f$ is 1-1-- if $f(n) = f(m)$ then $2n=2m \implies n=m$. Furthermore, $f$ is also onto, as if $m\in \{2n \mid n\in \NN\}$ then $\exists n\in \NN$ such that $m=2n=f(n)$. 
+    \item The second statement can be proven similarly.
+    \item This is left as an exercise to the reader in Assignment 1.
+\end{enumerate}
+\end{proof}

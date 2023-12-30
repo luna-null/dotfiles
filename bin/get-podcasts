@@ -1,0 +1,177 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2034
+TIME_STAMP="20230512.100241"
+
+# Copyright (C) 2022 Bob Hepple < bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+PROG=$( basename "$0" )
+
+# configuration:
+
+# configuration end
+
+initialise() {
+    local TEMP
+
+    VERSION="1.0"
+    ARGUMENTS=""
+    SHORT_DESC=""
+    USAGE="downloads mp3 podcasts from the RSS feeds listed in $CONFIG_FILE eg
+
+# FORMAT:   <name> <url> 
+# BBC inside health:
+ins_health http://www.bbc.co.uk/programmes/b019dl1b/episodes/downloads.rss 
+# BBC Inside Science:
+ins_sci http://www.bbc.co.uk/programmes/b036f7w2/episodes/downloads.rss 
+
+Downloads are logged in $LOG_FILE which is used to avoid duplicates.
+
+When adding a feed, it's a good idea to populate the log file with the
+history of the feed with:
+
+$PROG --list --max-downloads 0 --name=new-feed-name >> $LOG_FILE
+
+... so that the whole history is not downloaded. Then you can delete
+the latest couple of URLs from the log file so that they will be
+downloaded on the next run."
+    
+    NEW_ARGS=( )
+
+    ARGS="
+ARGP_DELETE=quiet
+ARGP_VERSION=$VERSION
+ARGP_PROG=$PROG
+##############################################################   
+#OPTIONS:
+#name=default sname arg       type range   description
+##############################################################   
+LIST=''       l     ''        b    ''      list the items currently available in the feeds
+LONG=''       L     ''        b    ''      long listing
+NAME=''       n     name      s    ''      only get items for the feed called <name>
+MAX_ITEMS=10  m     max       i    0-      maximum items listed or downloaded per feed (0=infinite).
+DRY_RUN=''    ''    ''        b    ''      don't download, just list what would be downloaded
+##############################################################   
+ARGP_ARGS=[--] $ARGUMENTS
+ARGP_SHORT=$SHORT_DESC
+ARGP_USAGE=$USAGE"
+
+    exec 4>&1
+    eval "$(echo "$ARGS" | argp.sh "$@" 3>&1 1>&4 || echo exit $? )"
+    exec 4>&-
+    
+    NEW_ARGS=( "$@" )
+    return 0
+}
+
+CONFIG_FILE=~/.config/"$PROG"/config
+LOG_FILE=~/.config/"$PROG"/log
+
+initialise "$@" && set -- "${NEW_ARGS[@]:-}"
+
+[[ -r "$CONFIG_FILE" ]] || {
+    echo "$PROG: no config file found ($CONFIG_FILE) - see --help" >&2
+    exit 2
+}
+
+[[ "$VERBOSE" ]] && echo "$PROG: starting at $(date)"
+
+exec < "$CONFIG_FILE"
+while read -r name feed show; do
+    case "$name" in
+        "#"*|""|" "*|"	"*)
+            continue
+        ;;
+    esac
+
+    [[ "$NAME" ]] && {
+        [[ "$name" == "$NAME" ]] || continue
+    }
+
+    [[ "$VERBOSE$DRY_RUN" ]] && echo "Processing feed: $name $feed"
+    count=0
+    
+    while IFS="|" read -r url date title; do
+        [[ "$url" =~ .*\.mp3 ]] || {
+            [[ "$VERBOSE" ]] && echo "$PROG: not an mp3: url='$url' from feed $name $feed"
+            continue
+        }
+        [[ "$date" ]] || date="today"
+        date=$( date -d "$date" +%Y%m%d_%H%M%S || date +%Y%m%d_%H%M%S )
+        download="${date}_${name}.mp3"
+        if [[ "$LIST$LONG" ]]; then
+            if (( MAX_ITEMS > 0 )) && (( count >= MAX_ITEMS )); then
+                [[ "$VERBOSE" ]] &&
+                    echo "max number of items ($MAX_ITEMS) for $feed"
+                break
+            fi
+            [[ "$LONG" ]] && echo -n "$download: "
+            echo "$url"
+            count=$(( count + 1 ))
+        else
+            grep -Fq "$url " "$LOG_FILE" && continue
+            grep -Fq " $download" "$LOG_FILE" && continue
+            [[ -e "$download" ]] && {
+                echo "$PROG: error - $download already exists, skipping $url" >&2
+                continue
+            }
+            if (( MAX_ITEMS > 0 )) && (( count >= MAX_ITEMS )); then
+                [[ "$VERBOSE" ]] &&
+                    echo "max number of downloads ($MAX_ITEMS) for $feed"
+                break
+            fi
+
+            if [[ "$DRY_RUN" ]]; then
+                echo "$download: $url"
+            else
+                [[ "$VERBOSE" ]] && echo "getting $download from $feed at $url"
+                if wget -q -O- "$url" > "$download"; then
+                    download_base=$( basename "$download" .mp3 )
+                    if id3v2 -l "$download" | grep -q ": No ID3 tag"; then
+                        # typically ABC podcasts
+                        id3v2 -t "$title" -A "$show" -a "$download_base" "$download"
+                    else
+                        # add filename to the artist tag
+                        artist=$( id3v2 -l "$download" | awk -F: '/^TPE1 / {print $2}')
+                        id3v2 -a "$download_base$artist" "$download"
+                    fi
+                    echo "$url $download" >> "$LOG_FILE"
+                else
+                    echo "$PROG: failed download for $url - wget returned $?" >&2
+                    rm "$download"
+                fi
+            fi
+            count=$(( count + 1 ))
+        fi
+    done < <(
+        count=0
+        {
+            wget -q -O- "$feed" ||
+                echo "$PROG: download failed for feed $feed - wget returned $?" >&2
+        } | {
+            xmlstarlet sel --text -t --match '/rss/channel/item' --value-of "concat(enclosure/@url,'|',pubDate,'|',title)" --nl ||
+                echo "$PROG: unrecognised XML received from feed $feed" >&2
+        }
+    )
+
+done
+
+[[ "$VERBOSE" ]] && echo "$PROG: finished at $(date)"
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
+

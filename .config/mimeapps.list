@@ -1,0 +1,22 @@
+[Added Associations]
+text/plain=Alacritty.desktop;nvim.desktop;Helix.desktop;
+application/zip=thunar.desktop;userapp-tar -xf-WWG4F2.desktop;userapp-unzip-SK9YF2.desktop;
+application/x-compressed-tar=userapp-tar -xf-WWG4F2.desktop;
+application/x-shellscript=userapp-bash-LXSLF2.desktop;
+application/pdf=krita_krz.desktop;krita_jp2.desktop;
+application/x-tar=userapp-tar -xf-WWG4F2.desktop;
+application/x-partial-download=userapp-tar xf-VOGFG2.desktop;
+application/x-zstd-compressed-tar=userapp-tar xf-VOGFG2.desktop;
+image/png=org.nomacs.ImageLounge.desktop;
+image/jpeg=org.nomacs.ImageLounge.desktop;
+
+[Default Applications]
+text/plain=nvim.desktop
+application/zip=userapp-unzip-SK9YF2.desktop
+application/x-compressed-tar=userapp-tar -xf-WWG4F2.desktop
+application/x-shellscript=userapp-bash-LXSLF2.desktop
+application/pdf=zathura.desktop
+application/x-tar=userapp-tar -xf-WWG4F2.desktop
+application/x-partial-download=userapp-tar xf-VOGFG2.desktop
+application/x-zstd-compressed-tar=userapp-tar xf-VOGFG2.desktop
+image/jpeg=org.nomacs.ImageLounge.desktop

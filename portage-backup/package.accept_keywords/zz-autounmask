@@ -1,0 +1,80 @@
+# package.accept_keywords# required by sex (argument)
+=games-misc/sex-1.0-r3 ~amd64
+# required by godot (argument)
+=dev-games/godot-4.2.1 ~amd64
+# required by typespeed (argument)
+=games-misc/typespeed-0.6.5-r2 ~amd64
+# required by dev-games/godot-4.2.1::gentoo
+# required by godot (argument)
+=dev-games/recastnavigation-1.6.0 ~amd64
+# required by riseup-vpn (argument)
+=net-vpn/riseup-vpn-0.21.11_p20230412 ~amd64
+# required by julia (argument)
+=dev-lang/julia-1.8.5-r1 ~amd64
+# required by zhu3d (argument)
+=sci-visualization/zhu3d-4.2.6-r1 ~amd64
+# required by wtf (argument)
+=games-misc/wtf-20221208 ~amd64
+# required by legends (argument)
+=games-fps/legends-0.4.1.43-r2 ~amd64
+# required by games-rpg/pokete-0.7.3::gentoo[python_single_target_python3_11]
+# required by pokete (argument)
+=games-engines/scrap-engine-1.2.0 ~amd64
+# required by dev-lang/julia-1.8.5-r1::gentoo
+# required by julia (argument)
+=sci-mathematics/dsfmt-2.2.4 ~amd64
+# required by dev-lang/julia-1.8.5-r1::gentoo
+# required by julia (argument)
+=sci-libs/openlibm-0.8.0 ~amd64
+# required by dev-games/godot-4.2.1::gentoo
+# required by godot (argument)
+=net-libs/wslay-1.1.1_p20210115 ~amd64
+# required by rpg-cli (argument)
+=games-rpg/rpg-cli-1.0.1 ~amd64
+# required by pysolfc (argument)
+=games-board/pysolfc-2.21.0 ~amd64
+# required by sky-rogue (argument)
+=games-simulation/sky-rogue-1.3.3 ~amd64
+# required by pokete (argument)
+=games-rpg/pokete-0.7.3 ~amd64
+# required by aerc (argument)
+=mail-client/aerc-0.16.0 ~amd64
+# required by app-misc/khal-0.11.2::gentoo
+# required by khal (argument)
+=dev-python/click-log-0.4.0 ~amd64
+# required by khal (argument)
+=app-misc/khal-0.11.2 ~amd64
+# required by dev-cpp/cppgir-0_p20230926::gentoo
+# required by net-im/telegram-desktop-4.12.2::gentoo
+# required by telegram-desktop (argument)
+=dev-cpp/expected-lite-0.6.3 ~amd64
+# required by net-im/telegram-desktop-4.12.2::gentoo
+# required by telegram-desktop (argument)
+=dev-cpp/glibmm-2.78.0 ~amd64
+# required by net-im/telegram-desktop-4.12.2::gentoo
+# required by telegram-desktop (argument)
+=media-libs/tg_owt-0_pre20230921 ~amd64
+# required by net-im/telegram-desktop-4.12.2::gentoo
+# required by telegram-desktop (argument)
+=media-libs/libtgvoip-2.4.4_p20221208-r1 ~amd64
+# required by telegram-desktop (argument)
+=net-im/telegram-desktop-4.12.2 ~amd64
+# required by dev-libs/appstream-glib-0.8.2::gentoo
+# required by media-gfx/gimp-2.10.36::gentoo
+# required by gimp (argument)
+=dev-libs/glib-2.78.3 ~amd64
+# required by net-im/telegram-desktop-4.12.2::gentoo
+# required by telegram-desktop (argument)
+=dev-cpp/cppgir-0_p20230926 ~amd64
+# required by jack (argument)
+=media-sound/jack-4.0.0_pre20201220-r1 ~amd64
+# required by x11-libs/cairo-1.18.0::gentoo[glib]
+# required by @selected
+# required by @world (argument)
+=dev-libs/glib-2.78.1 ~amd64
+# required by dev-libs/libayatana-indicator-0.9.3::gentoo
+# required by dev-libs/libayatana-appindicator-0.5.92::gentoo
+# required by media-sound/spotify-1.2.26::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-libs/glib-2.78.0 ~amd64

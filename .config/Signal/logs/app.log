@@ -1,0 +1,1019 @@
+{"level":30,"time":"2023-12-27T22:10:29.493Z","msg":"Profile Service initialized"}
+{"level":30,"time":"2023-12-27T22:10:29.682Z","msg":"preload complete"}
+{"level":30,"time":"2023-12-27T22:10:29.683Z","msg":"@signalapp/libsignal-client Initializing libsignal version:0.32.1 signal_node::logging rust/bridge/node/src/logging.rs:133"}
+{"level":30,"time":"2023-12-27T22:10:29.751Z","msg":"NotificationService initialized"}
+{"level":30,"time":"2023-12-27T22:10:29.760Z","msg":"initializeMessageCounter: picking max of db/stored counters"}
+{"level":30,"time":"2023-12-27T22:10:29.760Z","msg":"Our profile key service: initializing"}
+{"level":30,"time":"2023-12-27T22:10:29.760Z","msg":"background page reloaded"}
+{"level":30,"time":"2023-12-27T22:10:29.760Z","msg":"environment: production"}
+{"level":30,"time":"2023-12-27T22:10:29.762Z","msg":"Storage fetch"}
+{"level":30,"time":"2023-12-27T22:10:29.765Z","msg":"SocketManager: connecting authenticated socket (hasStoriesDisabled=false)"}
+{"level":30,"time":"2023-12-27T22:10:29.778Z","msg":"Initializing MessageReceiver"}
+{"level":30,"time":"2023-12-27T22:10:29.779Z","msg":"Sender certificate service initialized"}
+{"level":30,"time":"2023-12-27T22:10:29.810Z","msg":"Starting background data migration. Target version: 10"}
+{"level":30,"time":"2023-12-27T22:10:29.811Z","msg":"GET (WS) https://chat.signal.org/v1/config"}
+{"level":30,"time":"2023-12-27T22:10:29.811Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:10:29.813Z","msg":"RetryPlaceholders.constructor: Started with 0 items, lifespan of 3600000"}
+{"level":30,"time":"2023-12-27T22:10:29.814Z","msg":"ConversationController: starting initial fetch"}
+{"level":30,"time":"2023-12-27T22:10:29.886Z","msg":"ConversationController: done with initial fetch"}
+{"level":30,"time":"2023-12-27T22:10:29.900Z","msg":"SignalProtocolStore: Finished caching identityKeys data"}
+{"level":30,"time":"2023-12-27T22:10:29.900Z","msg":"SignalProtocolStore: Finished caching kyberPreKeys data"}
+{"level":30,"time":"2023-12-27T22:10:29.900Z","msg":"SignalProtocolStore: Finished caching sessions data"}
+{"level":30,"time":"2023-12-27T22:10:29.900Z","msg":"SignalProtocolStore: Finished caching preKeys data"}
+{"level":30,"time":"2023-12-27T22:10:29.900Z","msg":"SignalProtocolStore: Finished caching senderKeys data"}
+{"level":30,"time":"2023-12-27T22:10:29.900Z","msg":"SignalProtocolStore: Finished caching signedPreKeys data"}
+{"level":30,"time":"2023-12-27T22:10:29.901Z","msg":"checkForConflicts: starting..."}
+{"level":30,"time":"2023-12-27T22:10:29.901Z","msg":"checkForConflicts: complete!"}
+{"level":30,"time":"2023-12-27T22:10:29.903Z","msg":"Storage/getItemsState: now preparing copy of items..."}
+{"level":30,"time":"2023-12-27T22:10:29.956Z","msg":"conversation job queue: starting to stream jobs"}
+{"level":30,"time":"2023-12-27T22:10:29.956Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"conversation\""}
+{"level":30,"time":"2023-12-27T22:10:29.957Z","msg":"single proto job queue: starting to stream jobs"}
+{"level":30,"time":"2023-12-27T22:10:29.957Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"single proto\""}
+{"level":30,"time":"2023-12-27T22:10:29.957Z","msg":"read sync job queue: starting to stream jobs"}
+{"level":30,"time":"2023-12-27T22:10:29.957Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"read sync\""}
+{"level":30,"time":"2023-12-27T22:10:29.957Z","msg":"view sync job queue: starting to stream jobs"}
+{"level":30,"time":"2023-12-27T22:10:29.957Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"view sync\""}
+{"level":30,"time":"2023-12-27T22:10:29.957Z","msg":"view once open sync job queue: starting to stream jobs"}
+{"level":30,"time":"2023-12-27T22:10:29.957Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"view once open sync\""}
+{"level":30,"time":"2023-12-27T22:10:29.957Z","msg":"remove storage key job queue: starting to stream jobs"}
+{"level":30,"time":"2023-12-27T22:10:29.957Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"remove storage key\""}
+{"level":30,"time":"2023-12-27T22:10:29.957Z","msg":"report spam job queue: starting to stream jobs"}
+{"level":30,"time":"2023-12-27T22:10:29.957Z","msg":"JobQueueDatabaseStore fetching existing jobs for queue \"report spam\""}
+{"level":30,"time":"2023-12-27T22:10:29.957Z","msg":"challenge: loading 0 challenges"}
+{"level":30,"time":"2023-12-27T22:10:29.957Z","msg":"Initializing network observer"}
+{"level":30,"time":"2023-12-27T22:10:29.981Z","msg":"BadgeDownloader#checkForFilesToDownload: downloading 0 badge(s)"}
+{"level":30,"time":"2023-12-27T22:10:29.981Z","msg":"Expiration start timestamp cleanup: starting..."}
+{"level":30,"time":"2023-12-27T22:10:29.992Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"conversation\""}
+{"level":30,"time":"2023-12-27T22:10:29.993Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"single proto\""}
+{"level":30,"time":"2023-12-27T22:10:29.993Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"read sync\""}
+{"level":30,"time":"2023-12-27T22:10:29.993Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"view sync\""}
+{"level":30,"time":"2023-12-27T22:10:29.993Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"view once open sync\""}
+{"level":30,"time":"2023-12-27T22:10:29.993Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"remove storage key\""}
+{"level":30,"time":"2023-12-27T22:10:29.993Z","msg":"JobQueueDatabaseStore finished fetching existing 0 jobs for queue \"report spam\""}
+{"level":30,"time":"2023-12-27T22:10:29.994Z","msg":"src/rust/src/core/call_manager.rs:456 RingRTC v2.34.4"}
+{"level":30,"time":"2023-12-27T22:10:29.994Z","msg":"src/rust/src/core/call_manager.rs:497 set_self_uuid():"}
+{"level":30,"time":"2023-12-27T22:10:29.994Z","msg":"Expiration start timestamp cleanup: Found 1 messages for cleanup"}
+{"level":30,"time":"2023-12-27T22:10:29.994Z","msg":"Expiration start timestamp cleanup: starting timer for outgoing message sent at 1703550136003. Starting timer at 1703550136003"}
+{"level":30,"time":"2023-12-27T22:10:30.006Z","msg":"Expiration start timestamp cleanup: complete"}
+{"level":30,"time":"2023-12-27T22:10:30.006Z","msg":"listening for registration events"}
+{"level":30,"time":"2023-12-27T22:10:30.038Z","msg":"setIsInitialSync(false)"}
+{"level":30,"time":"2023-12-27T22:10:30.038Z","msg":"connect {\"connectCount\":0}"}
+{"level":30,"time":"2023-12-27T22:10:30.038Z","msg":"Our profile key service: kicking off a new fetch"}
+{"level":30,"time":"2023-12-27T22:10:30.038Z","msg":"Our profile key service: waiting for 1 promises before fetching"}
+{"level":30,"time":"2023-12-27T22:10:30.038Z","msg":"open inbox"}
+{"level":30,"time":"2023-12-27T22:10:30.043Z","msg":"Our profile key service: fetching profile key from storage"}
+{"level":30,"time":"2023-12-27T22:10:30.043Z","msg":"GET (WS) https://chat.signal.org/v1/config"}
+{"level":30,"time":"2023-12-27T22:10:30.242Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 260ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:10:30.252Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 260ms (attempts v4=0 v6=1)"}
+{"level":40,"time":"2023-12-27T22:10:30.344Z","msg":"SocketManager: authenticated socket connection failed with error: HTTPError: connectResource: invalid websocket response; code: 403\n    at WebSocketClient.<anonymous> ([REDACTED]/resources/app.asar/preload.bundle.js:86:491667)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\nOriginal stack:\nError\n    at connect ([REDACTED]/resources/app.asar/preload.bundle.js:86:491407)\n    at rk.connectResource ([REDACTED]/resources/app.asar/preload.bundle.js:86:499045)\n    at rk.authenticate ([REDACTED]/resources/app.asar/preload.bundle.js:86:493576)\n    at Object.f [as connect] ([REDACTED]/resources/app.asar/preload.bundle.js:88:2707)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:159:1555\n    at [REDACTED]/resources/app.asar/preload.bundle.js:101:67382\n    at Array.forEach (<anonymous>)\n    at q5.callListeners ([REDACTED]/resources/app.asar/preload.bundle.js:101:67371)\n    at q5.fetch ([REDACTED]/resources/app.asar/preload.bundle.js:101:66984)\nCaused by: undefined"}
+{"level":40,"time":"2023-12-27T22:10:30.351Z","msg":"unlinkAndDisconnect: Client is no longer authorized; deleting local configuration"}
+{"level":30,"time":"2023-12-27T22:10:30.352Z","msg":"unlinkAndDisconnect: logging out"}
+{"level":30,"time":"2023-12-27T22:10:30.352Z","msg":"MessageReceiver.stopProcessing"}
+{"level":30,"time":"2023-12-27T22:10:30.352Z","msg":"batcher#waitForAllBatchers"}
+{"level":30,"time":"2023-12-27T22:10:30.352Z","msg":"Flushing sql.Client.updateConversationBatcher batcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.353Z","msg":"Flushing complete sql.Client.updateConversationBatcher for batcher"}
+{"level":30,"time":"2023-12-27T22:10:30.353Z","msg":"Flushing messageBatcher.updateMessageBatcher batcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.353Z","msg":"Flushing complete messageBatcher.updateMessageBatcher for batcher"}
+{"level":30,"time":"2023-12-27T22:10:30.353Z","msg":"Flushing Whisper.deliveryReceiptBatcher batcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.353Z","msg":"Flushing complete Whisper.deliveryReceiptBatcher for batcher"}
+{"level":30,"time":"2023-12-27T22:10:30.353Z","msg":"Flushing respondWithProfileKeyBatcher batcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.353Z","msg":"Flushing complete respondWithProfileKeyBatcher for batcher"}
+{"level":30,"time":"2023-12-27T22:10:30.353Z","msg":"Flushing MessageReceiver.decryptAndCacheBatcher batcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.353Z","msg":"Flushing complete MessageReceiver.decryptAndCacheBatcher for batcher"}
+{"level":30,"time":"2023-12-27T22:10:30.353Z","msg":"Flushing MessageReceiver.cacheRemoveBatcher batcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.353Z","msg":"Flushing complete MessageReceiver.cacheRemoveBatcher for batcher"}
+{"level":30,"time":"2023-12-27T22:10:30.353Z","msg":"Flushing changedConvoBatcher batcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.353Z","msg":"Flushing complete changedConvoBatcher for batcher"}
+{"level":30,"time":"2023-12-27T22:10:30.354Z","msg":"batcher#waitForAllBatchers"}
+{"level":30,"time":"2023-12-27T22:10:30.354Z","msg":"Flushing sql.Client.updateConversationBatcher batcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.354Z","msg":"Flushing complete sql.Client.updateConversationBatcher for batcher"}
+{"level":30,"time":"2023-12-27T22:10:30.354Z","msg":"Flushing messageBatcher.updateMessageBatcher batcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.354Z","msg":"Flushing complete messageBatcher.updateMessageBatcher for batcher"}
+{"level":30,"time":"2023-12-27T22:10:30.354Z","msg":"Flushing Whisper.deliveryReceiptBatcher batcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.354Z","msg":"Flushing complete Whisper.deliveryReceiptBatcher for batcher"}
+{"level":30,"time":"2023-12-27T22:10:30.354Z","msg":"Flushing respondWithProfileKeyBatcher batcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.354Z","msg":"Flushing complete respondWithProfileKeyBatcher for batcher"}
+{"level":30,"time":"2023-12-27T22:10:30.355Z","msg":"Flushing MessageReceiver.decryptAndCacheBatcher batcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.355Z","msg":"Flushing complete MessageReceiver.decryptAndCacheBatcher for batcher"}
+{"level":30,"time":"2023-12-27T22:10:30.355Z","msg":"Flushing MessageReceiver.cacheRemoveBatcher batcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.355Z","msg":"Flushing complete MessageReceiver.cacheRemoveBatcher for batcher"}
+{"level":30,"time":"2023-12-27T22:10:30.355Z","msg":"Flushing changedConvoBatcher batcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.355Z","msg":"Flushing complete changedConvoBatcher for batcher"}
+{"level":30,"time":"2023-12-27T22:10:30.355Z","msg":"waitBatcher#flushAllWaitBatchers"}
+{"level":30,"time":"2023-12-27T22:10:30.355Z","msg":"Flushing start messageBatcher.saveNewMessageBatcher for waitBatcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.356Z","msg":"Flushing complete messageBatcher.saveNewMessageBatcher for waitBatcher"}
+{"level":30,"time":"2023-12-27T22:10:30.356Z","msg":"Flushing start deleteSentProtoBatcher for waitBatcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.356Z","msg":"Flushing complete deleteSentProtoBatcher for waitBatcher"}
+{"level":30,"time":"2023-12-27T22:10:30.356Z","msg":"unlinkAndDisconnect: removing configuration"}
+{"level":30,"time":"2023-12-27T22:10:30.365Z","msg":"Flushing sql.Client.updateConversationBatcher batcher items.length=0"}
+{"level":30,"time":"2023-12-27T22:10:30.365Z","msg":"Flushing complete sql.Client.updateConversationBatcher for batcher"}
+{"level":30,"time":"2023-12-27T22:10:30.365Z","msg":"onEmpty: All outstanding database requests complete"}
+{"level":30,"time":"2023-12-27T22:10:30.368Z","msg":"UpdateKeysListener: Next update scheduled for 2023-12-27T22:10:30.368Z"}
+{"level":30,"time":"2023-12-27T22:10:30.368Z","msg":"NotificationService: enabling"}
+{"level":30,"time":"2023-12-27T22:10:30.372Z","msg":"App loaded - messages: 0"}
+{"level":30,"time":"2023-12-27T22:10:30.372Z","msg":"StartupQueue: Processing 0 actions"}
+{"level":30,"time":"2023-12-27T22:10:30.372Z","msg":"Downloading recent attachments of total attachments 0 0"}
+{"level":30,"time":"2023-12-27T22:10:30.396Z","msg":"Build expires (local): 2024-03-06T01:43:43.000Z"}
+{"level":30,"time":"2023-12-27T22:10:30.635Z","msg":"UpdateKeysListener: Updating keys..."}
+{"level":50,"time":"2023-12-27T22:10:30.636Z","msg":"UpdateKeysListener.run failure - trying again in five minutes Error: getIdentityKeyOrThrow: Missing identity key\n    at F2.getIdentityKeyOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:75:56179)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:75:57554\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:71:367317)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:71:367364\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:43:30604)\n    at $ee._tryToStartAnother ([REDACTED]/resources/app.asar/preload.bundle.js:43:29666)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:43:30841\n    at new Promise (<anonymous>)\n    at $ee.add ([REDACTED]/resources/app.asar/preload.bundle.js:43:30470)\n    at F2.queueTask ([REDACTED]/resources/app.asar/preload.bundle.js:75:52595)"}
+{"level":30,"time":"2023-12-27T22:10:30.638Z","msg":"SocketManager: connected unauthenticated socket (localPort: 49732)"}
+{"level":30,"time":"2023-12-27T22:10:30.639Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:10:30.667Z","msg":"Creating new RoutineProfileRefresher instance with id 2"}
+{"level":30,"time":"2023-12-27T22:10:30.667Z","msg":"RoutineProfileRefresher.start/2: waiting for 0ms"}
+{"level":30,"time":"2023-12-27T22:10:30.668Z","msg":"usernameIntegrity: running the check immediately"}
+{"level":30,"time":"2023-12-27T22:10:30.668Z","msg":"usernameIntegrity: no username"}
+{"level":30,"time":"2023-12-27T22:10:30.693Z","msg":"SignalProtocolStore: Finished caching identityKeys data"}
+{"level":30,"time":"2023-12-27T22:10:30.693Z","msg":"SignalProtocolStore: Finished caching kyberPreKeys data"}
+{"level":30,"time":"2023-12-27T22:10:30.693Z","msg":"SignalProtocolStore: Finished caching sessions data"}
+{"level":30,"time":"2023-12-27T22:10:30.693Z","msg":"SignalProtocolStore: Finished caching preKeys data"}
+{"level":30,"time":"2023-12-27T22:10:30.693Z","msg":"SignalProtocolStore: Finished caching senderKeys data"}
+{"level":30,"time":"2023-12-27T22:10:30.693Z","msg":"SignalProtocolStore: Finished caching signedPreKeys data"}
+{"level":40,"time":"2023-12-27T22:10:30.694Z","msg":"Called storage.get before storage is ready. key: number_id"}
+{"level":40,"time":"2023-12-27T22:10:30.694Z","msg":"Called storage.get before storage is ready. key: uuid_id"}
+{"level":40,"time":"2023-12-27T22:10:30.694Z","msg":"Called storage.get before storage is ready. key: pni"}
+{"level":40,"time":"2023-12-27T22:10:30.694Z","msg":"RoutineProfileRefresher.start/2: missing our conversation id"}
+{"level":40,"time":"2023-12-27T22:10:30.698Z","msg":"Called storage.get before storage is ready. key: chromiumRegistrationDone"}
+{"level":40,"time":"2023-12-27T22:10:30.698Z","msg":"Called storage.get before storage is ready. key: chromiumRegistrationDone"}
+{"level":40,"time":"2023-12-27T22:10:30.704Z","msg":"Called storage.get before storage is ready. key: usernameLastIntegrityCheck"}
+{"level":30,"time":"2023-12-27T22:10:30.704Z","msg":"usernameIntegrity: running the check immediately"}
+{"level":40,"time":"2023-12-27T22:10:30.704Z","msg":"Called storage.get before storage is ready. key: number_id"}
+{"level":40,"time":"2023-12-27T22:10:30.704Z","msg":"Called storage.get before storage is ready. key: uuid_id"}
+{"level":40,"time":"2023-12-27T22:10:30.704Z","msg":"Called storage.get before storage is ready. key: pni"}
+{"level":50,"time":"2023-12-27T22:10:30.705Z","msg":"usernameIntegrity: check failed with error: Error: getOurConversationOrThrow: Failed to fetch our own conversation\n    at ife.getOurConversationOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:101:72530)\n    at Pbe.check ([REDACTED]/resources/app.asar/preload.bundle.js:121:228880)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:121:228544\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:71:367317)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:71:367364\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:43:30604)\n    at $ee._tryToStartAnother ([REDACTED]/resources/app.asar/preload.bundle.js:43:29666)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:43:30841\n    at new Promise (<anonymous>)\n    at $ee.add ([REDACTED]/resources/app.asar/preload.bundle.js:43:30470) retrying in 1000ms"}
+{"level":50,"time":"2023-12-27T22:10:30.725Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":50,"time":"2023-12-27T22:10:30.725Z","msg":"GET (WS) https://chat.signal.org/v1/config 401 Error"}
+{"level":50,"time":"2023-12-27T22:10:30.725Z","msg":"connect: Error refreshing remote config: code: 401"}
+{"level":30,"time":"2023-12-27T22:10:30.725Z","msg":"NotificationService: disabling"}
+{"level":30,"time":"2023-12-27T22:10:30.726Z","msg":"initializeGroupCredentialFetcher: starting..."}
+{"level":30,"time":"2023-12-27T22:10:30.726Z","msg":"maybeFetchNewCredentials: fetching credentials for 1703635200000 through 1704153600000"}
+{"level":30,"time":"2023-12-27T22:10:30.727Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true"}
+{"level":30,"time":"2023-12-27T22:10:30.728Z","msg":"MessageReceiver.queueAllCached: not running due to stopped processing"}
+{"level":30,"time":"2023-12-27T22:10:30.728Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:10:30.728Z","msg":"attachment_downloads/start: enabling"}
+{"level":30,"time":"2023-12-27T22:10:30.728Z","msg":"PUT (WS) https://chat.signal.org/v1/devices/unauthenticated_delivery"}
+{"level":50,"time":"2023-12-27T22:10:30.729Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":50,"time":"2023-12-27T22:10:30.729Z","msg":"GET (WS) https://chat.signal.org/v1/config 401 Error"}
+{"level":50,"time":"2023-12-27T22:10:30.730Z","msg":"Top-level unhandled promise rejection: HTTPError: promiseAjax: error response; code: 401\n    at makeHTTPError ([REDACTED]/resources/app.asar/preload.bundle.js:88:951)\n    at _promiseAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:111)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async _retryAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:696)\n    at async G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5973)\n    at async Object.ee [as getConfig] ([REDACTED]/resources/app.asar/preload.bundle.js:88:7012)\n    at async refreshRemoteConfig ([REDACTED]/resources/app.asar/preload.bundle.js:86:7168)\n    at async Object.initRemoteConfig ([REDACTED]/resources/app.asar/preload.bundle.js:86:6061)\nOriginal stack:\nError\n    at _outerAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:867)\n    at G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5979)\n    at Object.ee [as getConfig] ([REDACTED]/resources/app.asar/preload.bundle.js:88:7018)\n    at refreshRemoteConfig ([REDACTED]/resources/app.asar/preload.bundle.js:86:7176)\n    at invokeFunc ([REDACTED]/resources/app.asar/preload.bundle.js:3:14228)\n    at leadingEdge ([REDACTED]/resources/app.asar/preload.bundle.js:3:14307)\n    at debounced ([REDACTED]/resources/app.asar/preload.bundle.js:3:14888)\n    at Object.initRemoteConfig ([REDACTED]/resources/app.asar/preload.bundle.js:86:6067)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:159:13604\nCaused by: undefined"}
+{"level":30,"time":"2023-12-27T22:10:30.736Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:10:30.753Z","msg":"unlinkAndDisconnect: Successfully cleared local configuration"}
+{"level":50,"time":"2023-12-27T22:10:30.801Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":30,"time":"2023-12-27T22:10:30.802Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:10:30.803Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:10:30.803Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:10:30.803Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:10:30.803Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:10:30.805Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:10:30.805Z","msg":"SocketManager.reconnect: complete."}
+{"level":50,"time":"2023-12-27T22:10:30.805Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true 401 Error"}
+{"level":30,"time":"2023-12-27T22:10:30.806Z","msg":"runWithRetry: maybeFetchNewCredentials failed. Waiting 1000ms for retry. Error: HTTPError: promiseAjax: error response; code: 401\n    at makeHTTPError ([REDACTED]/resources/app.asar/preload.bundle.js:88:951)\n    at _promiseAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:111)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async _retryAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:696)\n    at async G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5973)\n    at async Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4065)\n    at async maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27966)\n    at async runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26905)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)\nOriginal stack:\nError\n    at _outerAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:867)\n    at G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5979)\n    at Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4071)\n    at maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27974)\n    at runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26911)\n    at Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26815)\n    at connect ([REDACTED]/resources/app.asar/preload.bundle.js:159:23383)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":40,"time":"2023-12-27T22:10:30.825Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":50,"time":"2023-12-27T22:10:30.827Z","msg":"PUT (WS) https://chat.signal.org/v1/devices/unauthenticated_delivery -1 Error"}
+{"level":30,"time":"2023-12-27T22:10:31.370Z","msg":"NotificationService not updating notifications. Notifications are disabled; app is not focused; there is no notification data"}
+{"level":30,"time":"2023-12-27T22:10:31.646Z","msg":"checkExpiringMessages: checking for expiring messages"}
+{"level":30,"time":"2023-12-27T22:10:31.648Z","msg":"checkExpiringMessages: next message expires 2024-01-21T22:26:06.146Z; waiting 2147483647 ms before clearing"}
+{"level":30,"time":"2023-12-27T22:10:31.706Z","msg":"usernameIntegrity: no username"}
+{"level":30,"time":"2023-12-27T22:10:31.767Z","msg":"usernameIntegrity: running the check in 86399939ms"}
+{"level":30,"time":"2023-12-27T22:10:31.806Z","msg":"maybeFetchNewCredentials: fetching credentials for 1703635200000 through 1704153600000"}
+{"level":30,"time":"2023-12-27T22:10:31.807Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true"}
+{"level":30,"time":"2023-12-27T22:10:31.807Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:10:31.828Z","msg":"PUT (WS) https://chat.signal.org/v1/devices/unauthenticated_delivery"}
+{"level":30,"time":"2023-12-27T22:10:32.082Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 271ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:10:32.159Z","msg":"SocketManager: connected unauthenticated socket (localPort: 49746)"}
+{"level":30,"time":"2023-12-27T22:10:32.159Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":50,"time":"2023-12-27T22:10:32.233Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":30,"time":"2023-12-27T22:10:32.234Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:10:32.234Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:10:32.234Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:10:32.234Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:10:32.234Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:10:32.234Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:10:32.234Z","msg":"SocketManager.reconnect: complete."}
+{"level":50,"time":"2023-12-27T22:10:32.234Z","msg":"PUT (WS) https://chat.signal.org/v1/devices/unauthenticated_delivery 401 Error"}
+{"level":50,"time":"2023-12-27T22:10:32.234Z","msg":"Error: Unable to register for unauthenticated delivery support. HTTPError: promiseAjax: error response; code: 401\n    at makeHTTPError ([REDACTED]/resources/app.asar/preload.bundle.js:88:951)\n    at _promiseAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:111)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async _retryAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:696)\n    at async G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5973)\n    at async Object.Ze [as registerSupportForUnauthenticatedDelivery] ([REDACTED]/resources/app.asar/preload.bundle.js:88:8401)\n    at async connect ([REDACTED]/resources/app.asar/preload.bundle.js:159:24064)\nOriginal stack:\nError\n    at _outerAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:867)\n    at G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5979)\n    at Object.Ze [as registerSupportForUnauthenticatedDelivery] ([REDACTED]/resources/app.asar/preload.bundle.js:88:8407)\n    at connect ([REDACTED]/resources/app.asar/preload.bundle.js:159:24072)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\nCaused by: undefined"}
+{"level":30,"time":"2023-12-27T22:10:32.234Z","msg":"PUT (WS) https://chat.signal.org/v1/devices/capabilities"}
+{"level":30,"time":"2023-12-27T22:10:32.234Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":40,"time":"2023-12-27T22:10:32.251Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":50,"time":"2023-12-27T22:10:32.251Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true -1 Error"}
+{"level":30,"time":"2023-12-27T22:10:32.490Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 255ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:10:32.584Z","msg":"SocketManager: connected unauthenticated socket (localPort: 49752)"}
+{"level":30,"time":"2023-12-27T22:10:32.584Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":50,"time":"2023-12-27T22:10:32.661Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":50,"time":"2023-12-27T22:10:32.662Z","msg":"PUT (WS) https://chat.signal.org/v1/devices/capabilities 401 Error"}
+{"level":50,"time":"2023-12-27T22:10:32.662Z","msg":"Error: Unable to register our capabilities. HTTPError: promiseAjax: error response; code: 401\n    at makeHTTPError ([REDACTED]/resources/app.asar/preload.bundle.js:88:951)\n    at _promiseAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:111)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async _retryAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:696)\n    at async G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5973)\n    at async Object.fe [as registerCapabilities] ([REDACTED]/resources/app.asar/preload.bundle.js:88:8507)\n    at async connect ([REDACTED]/resources/app.asar/preload.bundle.js:159:24411)\nOriginal stack:\nError\n    at _outerAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:867)\n    at G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5979)\n    at Object.fe [as registerCapabilities] ([REDACTED]/resources/app.asar/preload.bundle.js:88:8513)\n    at connect ([REDACTED]/resources/app.asar/preload.bundle.js:159:24419)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\nCaused by: undefined"}
+{"level":30,"time":"2023-12-27T22:10:32.662Z","msg":"Start idle detector"}
+{"level":30,"time":"2023-12-27T22:10:32.662Z","msg":"challenge: online, starting 0 queues"}
+{"level":30,"time":"2023-12-27T22:10:32.662Z","msg":"challenge: startAllQueues force=false"}
+{"level":30,"time":"2023-12-27T22:10:33.234Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:10:33.234Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:10:33.234Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:10:33.234Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:10:33.234Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:10:33.235Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:10:33.235Z","msg":"SocketManager.reconnect: complete."}
+{"level":30,"time":"2023-12-27T22:10:33.251Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true"}
+{"level":30,"time":"2023-12-27T22:10:33.251Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":40,"time":"2023-12-27T22:10:33.266Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":30,"time":"2023-12-27T22:10:33.516Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 263ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:10:33.592Z","msg":"SocketManager: connected unauthenticated socket (localPort: 49768)"}
+{"level":30,"time":"2023-12-27T22:10:33.593Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":50,"time":"2023-12-27T22:10:33.669Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":30,"time":"2023-12-27T22:10:33.669Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:10:33.669Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:10:33.669Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:10:33.669Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:10:33.669Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:10:33.669Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:10:33.669Z","msg":"SocketManager.reconnect: complete."}
+{"level":50,"time":"2023-12-27T22:10:33.669Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true 401 Error"}
+{"level":30,"time":"2023-12-27T22:10:33.670Z","msg":"runWithRetry: maybeFetchNewCredentials failed. Waiting 5000ms for retry. Error: HTTPError: promiseAjax: error response; code: 401\n    at makeHTTPError ([REDACTED]/resources/app.asar/preload.bundle.js:88:951)\n    at _promiseAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:111)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async _retryAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:696)\n    at async G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5973)\n    at async Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4065)\n    at async maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27966)\n    at async runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26905)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)\nOriginal stack:\nError\n    at _outerAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:867)\n    at G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5979)\n    at Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4071)\n    at maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27974)\n    at runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26911)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)"}
+{"level":40,"time":"2023-12-27T22:10:33.685Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":30,"time":"2023-12-27T22:10:38.670Z","msg":"maybeFetchNewCredentials: fetching credentials for 1703635200000 through 1704153600000"}
+{"level":30,"time":"2023-12-27T22:10:38.670Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true"}
+{"level":30,"time":"2023-12-27T22:10:38.670Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:10:39.152Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 481ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:10:39.232Z","msg":"SocketManager: connected unauthenticated socket (localPort: 49784)"}
+{"level":30,"time":"2023-12-27T22:10:39.232Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":50,"time":"2023-12-27T22:10:39.312Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":30,"time":"2023-12-27T22:10:39.312Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:10:39.312Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:10:39.312Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:10:39.312Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:10:39.312Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:10:39.313Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:10:39.313Z","msg":"SocketManager.reconnect: complete."}
+{"level":50,"time":"2023-12-27T22:10:39.313Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true 401 Error"}
+{"level":30,"time":"2023-12-27T22:10:39.313Z","msg":"runWithRetry: maybeFetchNewCredentials failed. Waiting 30000ms for retry. Error: HTTPError: promiseAjax: error response; code: 401\n    at makeHTTPError ([REDACTED]/resources/app.asar/preload.bundle.js:88:951)\n    at _promiseAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:111)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async _retryAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:696)\n    at async G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5973)\n    at async Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4065)\n    at async maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27966)\n    at async runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26905)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)\nOriginal stack:\nError\n    at _outerAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:867)\n    at G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5979)\n    at Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4071)\n    at maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27974)\n    at runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26911)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)"}
+{"level":40,"time":"2023-12-27T22:10:39.327Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":30,"time":"2023-12-27T22:10:43.110Z","msg":"NotificationService: clearing notification and requesting an update"}
+{"level":40,"time":"2023-12-27T22:10:43.110Z","msg":"registerForActive: Failed to to refresh remote config. Code: 401"}
+{"level":30,"time":"2023-12-27T22:10:44.110Z","msg":"NotificationService not updating notifications. Notifications are disabled; app is not focused; there is no notification data"}
+{"level":30,"time":"2023-12-27T22:11:00.843Z","msg":"WebSocketResources.KeepAlive(unauthenticated).send: Sending a keepalive message"}
+{"level":30,"time":"2023-12-27T22:11:02.252Z","msg":"WebSocketResources.KeepAlive(unauthenticated).send: Sending a keepalive message"}
+{"level":30,"time":"2023-12-27T22:11:09.313Z","msg":"maybeFetchNewCredentials: fetching credentials for 1703635200000 through 1704153600000"}
+{"level":30,"time":"2023-12-27T22:11:09.314Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true"}
+{"level":30,"time":"2023-12-27T22:11:09.315Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:11:09.749Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 431ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:11:09.833Z","msg":"SocketManager: connected unauthenticated socket (localPort: 58806)"}
+{"level":30,"time":"2023-12-27T22:11:09.833Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":50,"time":"2023-12-27T22:11:09.914Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":30,"time":"2023-12-27T22:11:09.914Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:11:09.914Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:11:09.915Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:11:09.915Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:11:09.915Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:11:09.915Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:11:09.915Z","msg":"SocketManager.reconnect: complete."}
+{"level":50,"time":"2023-12-27T22:11:09.915Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true 401 Error"}
+{"level":30,"time":"2023-12-27T22:11:09.915Z","msg":"runWithRetry: maybeFetchNewCredentials failed. Waiting 120000ms for retry. Error: HTTPError: promiseAjax: error response; code: 401\n    at makeHTTPError ([REDACTED]/resources/app.asar/preload.bundle.js:88:951)\n    at _promiseAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:111)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async _retryAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:696)\n    at async G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5973)\n    at async Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4065)\n    at async maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27966)\n    at async runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26905)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)\nOriginal stack:\nError\n    at _outerAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:867)\n    at G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5979)\n    at Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4071)\n    at maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27974)\n    at runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26911)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)"}
+{"level":40,"time":"2023-12-27T22:11:09.931Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":30,"time":"2023-12-27T22:11:30.694Z","msg":"RoutineProfileRefresher.start/2: waiting for 0ms"}
+{"level":30,"time":"2023-12-27T22:11:30.696Z","msg":"routineProfileRefresh/2: starting"}
+{"level":30,"time":"2023-12-27T22:11:30.696Z","msg":"routineProfileRefresh/2: updating last refresh time"}
+{"level":30,"time":"2023-12-27T22:11:30.717Z","msg":"routineProfileRefresh/2: starting to refresh conversations"}
+{"level":30,"time":"2023-12-27T22:11:30.720Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]111 ([REDACTED]bd7)"}
+{"level":30,"time":"2023-12-27T22:11:30.721Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]b13 ([REDACTED]76a)"}
+{"level":30,"time":"2023-12-27T22:11:30.723Z","msg":"getProfile: getting unversioned profile for conversation [REDACTED]b13 ([REDACTED]76a)"}
+{"level":30,"time":"2023-12-27T22:11:30.724Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]b13"}
+{"level":30,"time":"2023-12-27T22:11:30.724Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:11:30.725Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]204 ([REDACTED]984)"}
+{"level":30,"time":"2023-12-27T22:11:30.726Z","msg":"getProfile: getting unversioned profile for conversation [REDACTED]204 ([REDACTED]984)"}
+{"level":30,"time":"2023-12-27T22:11:30.726Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]204"}
+{"level":30,"time":"2023-12-27T22:11:30.727Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]fde ([REDACTED]976)"}
+{"level":30,"time":"2023-12-27T22:11:30.727Z","msg":"getProfile: getting unversioned profile for conversation [REDACTED]fde ([REDACTED]976)"}
+{"level":30,"time":"2023-12-27T22:11:30.727Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]fde"}
+{"level":30,"time":"2023-12-27T22:11:30.727Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]f85 ([REDACTED]d8a)"}
+{"level":30,"time":"2023-12-27T22:11:30.728Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]111 ([REDACTED]bd7)"}
+{"level":30,"time":"2023-12-27T22:11:30.728Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]ef4 ([REDACTED]659)"}
+{"level":30,"time":"2023-12-27T22:11:30.731Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:11:30.844Z","msg":"WebSocketResource(unauthenticated).close: Already closed! 3001/No response to keepalive request"}
+{"level":30,"time":"2023-12-27T22:11:30.985Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 256ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:11:31.083Z","msg":"SocketManager: connected unauthenticated socket (localPort: 40756)"}
+{"level":30,"time":"2023-12-27T22:11:31.083Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":50,"time":"2023-12-27T22:11:31.196Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":30,"time":"2023-12-27T22:11:31.196Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:11:31.196Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:11:31.196Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:11:31.196Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:11:31.196Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:11:31.196Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:11:31.196Z","msg":"SocketManager.reconnect: complete."}
+{"level":50,"time":"2023-12-27T22:11:31.196Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]204 401 Error"}
+{"level":40,"time":"2023-12-27T22:11:31.196Z","msg":"getProfile: Got 401/403 when using accessKey for [REDACTED]204 ([REDACTED]984), setting sealedSender = DISABLED"}
+{"level":30,"time":"2023-12-27T22:11:31.197Z","msg":"getProfile: getting unversioned profile for conversation [REDACTED]f85 ([REDACTED]d8a)"}
+{"level":30,"time":"2023-12-27T22:11:31.198Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]f85"}
+{"level":30,"time":"2023-12-27T22:11:31.198Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:11:31.199Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]204 ([REDACTED]984)"}
+{"level":30,"time":"2023-12-27T22:11:31.199Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]c6d ([REDACTED]d89)"}
+{"level":30,"time":"2023-12-27T22:11:31.200Z","msg":"changedConvoBatcher: deduped 1 into 1"}
+{"level":40,"time":"2023-12-27T22:11:31.215Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":50,"time":"2023-12-27T22:11:31.215Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]fde -1 Error"}
+{"level":50,"time":"2023-12-27T22:11:31.215Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]b13 -1 Error"}
+{"level":30,"time":"2023-12-27T22:11:31.448Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 238ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:11:31.526Z","msg":"SocketManager: connected unauthenticated socket (localPort: 40758)"}
+{"level":30,"time":"2023-12-27T22:11:31.526Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":50,"time":"2023-12-27T22:11:31.602Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":50,"time":"2023-12-27T22:11:31.602Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]f85 401 Error"}
+{"level":40,"time":"2023-12-27T22:11:31.602Z","msg":"getProfile: Got 401/403 when using accessKey for [REDACTED]f85 ([REDACTED]d8a), setting sealedSender = DISABLED"}
+{"level":30,"time":"2023-12-27T22:11:31.603Z","msg":"getProfile: getting unversioned profile for conversation [REDACTED]ef4 ([REDACTED]659)"}
+{"level":30,"time":"2023-12-27T22:11:31.603Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]ef4"}
+{"level":30,"time":"2023-12-27T22:11:31.603Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]f85 ([REDACTED]d8a)"}
+{"level":30,"time":"2023-12-27T22:11:31.603Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]b31 ([REDACTED]69a)"}
+{"level":30,"time":"2023-12-27T22:11:31.603Z","msg":"changedConvoBatcher: deduped 1 into 1"}
+{"level":50,"time":"2023-12-27T22:11:31.700Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":50,"time":"2023-12-27T22:11:31.700Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]ef4 401 Error"}
+{"level":40,"time":"2023-12-27T22:11:31.700Z","msg":"getProfile: Got 401/403 when using accessKey for [REDACTED]ef4 ([REDACTED]659), setting sealedSender = DISABLED"}
+{"level":30,"time":"2023-12-27T22:11:31.701Z","msg":"getProfile: getting unversioned profile for conversation [REDACTED]c6d ([REDACTED]d89)"}
+{"level":30,"time":"2023-12-27T22:11:31.701Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]c6d"}
+{"level":30,"time":"2023-12-27T22:11:31.701Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]ef4 ([REDACTED]659)"}
+{"level":30,"time":"2023-12-27T22:11:31.701Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]bec ([REDACTED]90f)"}
+{"level":30,"time":"2023-12-27T22:11:31.702Z","msg":"changedConvoBatcher: deduped 1 into 1"}
+{"level":50,"time":"2023-12-27T22:11:31.780Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":50,"time":"2023-12-27T22:11:31.780Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]c6d 401 Error"}
+{"level":40,"time":"2023-12-27T22:11:31.780Z","msg":"getProfile: Got 401/403 when using accessKey for [REDACTED]c6d ([REDACTED]d89), setting sealedSender = DISABLED"}
+{"level":30,"time":"2023-12-27T22:11:31.781Z","msg":"getProfile: getting unversioned profile for conversation [REDACTED]b31 ([REDACTED]69a)"}
+{"level":30,"time":"2023-12-27T22:11:31.781Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]b31"}
+{"level":30,"time":"2023-12-27T22:11:31.781Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]c6d ([REDACTED]d89)"}
+{"level":30,"time":"2023-12-27T22:11:31.781Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]812 ([REDACTED]79b)"}
+{"level":30,"time":"2023-12-27T22:11:31.782Z","msg":"changedConvoBatcher: deduped 1 into 1"}
+{"level":50,"time":"2023-12-27T22:11:31.855Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":50,"time":"2023-12-27T22:11:31.856Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]b31 401 Error"}
+{"level":40,"time":"2023-12-27T22:11:31.856Z","msg":"getProfile: Got 401/403 when using accessKey for [REDACTED]b31 ([REDACTED]69a), setting sealedSender = DISABLED"}
+{"level":30,"time":"2023-12-27T22:11:31.857Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]bec ([REDACTED]90f)"}
+{"level":30,"time":"2023-12-27T22:11:31.857Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]bec/[REDACTED]0c6 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:31.858Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]b31 ([REDACTED]69a)"}
+{"level":30,"time":"2023-12-27T22:11:31.858Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]eac ([REDACTED]8c4)"}
+{"level":30,"time":"2023-12-27T22:11:31.859Z","msg":"changedConvoBatcher: deduped 1 into 1"}
+{"level":30,"time":"2023-12-27T22:11:31.933Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]bec/[REDACTED]0c6 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:31.935Z","msg":"saveIdentity([REDACTED]bec): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:31.970Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]bec ([REDACTED]90f)"}
+{"level":30,"time":"2023-12-27T22:11:31.975Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]Q=="}
+{"level":30,"time":"2023-12-27T22:11:32.196Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:11:32.196Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:11:32.196Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:11:32.196Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:11:32.196Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:11:32.197Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:11:32.197Z","msg":"SocketManager.reconnect: complete."}
+{"level":30,"time":"2023-12-27T22:11:32.209Z","msg":"createHTTPSAgent.createConnection(cdn.signal.org): connected to IPv6 addr after 34ms (attempts v4=0 v6=1)"}
+{"level":40,"time":"2023-12-27T22:11:32.210Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":30,"time":"2023-12-27T22:11:32.216Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]fde"}
+{"level":30,"time":"2023-12-27T22:11:32.216Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:11:32.217Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]b13"}
+{"level":30,"time":"2023-12-27T22:11:32.251Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]Q== 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:32.254Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]812 ([REDACTED]79b)"}
+{"level":30,"time":"2023-12-27T22:11:32.254Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]812/[REDACTED]072 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:32.254Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]bec ([REDACTED]90f)"}
+{"level":30,"time":"2023-12-27T22:11:32.254Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]3ae ([REDACTED]8a8)"}
+{"level":30,"time":"2023-12-27T22:11:32.255Z","msg":"WebSocketResource(unauthenticated).close: Already closed! 3001/No response to keepalive request"}
+{"level":30,"time":"2023-12-27T22:11:32.520Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 302ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:11:32.623Z","msg":"SocketManager: connected unauthenticated socket (localPort: 40760)"}
+{"level":30,"time":"2023-12-27T22:11:32.624Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":50,"time":"2023-12-27T22:11:32.725Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":50,"time":"2023-12-27T22:11:32.725Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]b13 401 Error"}
+{"level":40,"time":"2023-12-27T22:11:32.726Z","msg":"getProfile: Got 401/403 when using accessKey for [REDACTED]b13 ([REDACTED]76a), setting sealedSender = DISABLED"}
+{"level":30,"time":"2023-12-27T22:11:32.726Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]eac ([REDACTED]8c4)"}
+{"level":30,"time":"2023-12-27T22:11:32.726Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]eac/[REDACTED]9fd (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:32.726Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]b13 ([REDACTED]76a)"}
+{"level":30,"time":"2023-12-27T22:11:32.726Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]b79 ([REDACTED]83b)"}
+{"level":30,"time":"2023-12-27T22:11:32.727Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]812/[REDACTED]072 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:32.727Z","msg":"saveIdentity([REDACTED]812): Saving new identity..."}
+{"level":50,"time":"2023-12-27T22:11:32.728Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":50,"time":"2023-12-27T22:11:32.728Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]fde 401 Error"}
+{"level":40,"time":"2023-12-27T22:11:32.728Z","msg":"getProfile: Got 401/403 when using accessKey for [REDACTED]fde ([REDACTED]976), setting sealedSender = DISABLED"}
+{"level":30,"time":"2023-12-27T22:11:32.729Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]3ae ([REDACTED]8a8)"}
+{"level":30,"time":"2023-12-27T22:11:32.729Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]3ae/[REDACTED]be6 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:32.729Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]fde ([REDACTED]976)"}
+{"level":30,"time":"2023-12-27T22:11:32.729Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]36c ([REDACTED]69b)"}
+{"level":30,"time":"2023-12-27T22:11:32.730Z","msg":"changedConvoBatcher: deduped 2 into 2"}
+{"level":30,"time":"2023-12-27T22:11:32.760Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]812 ([REDACTED]79b)"}
+{"level":30,"time":"2023-12-27T22:11:32.761Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]b79 ([REDACTED]83b)"}
+{"level":30,"time":"2023-12-27T22:11:32.761Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]b79/[REDACTED]40c (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:32.761Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]812 ([REDACTED]79b)"}
+{"level":30,"time":"2023-12-27T22:11:32.761Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]12a ([REDACTED]811)"}
+{"level":30,"time":"2023-12-27T22:11:32.827Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]eac/[REDACTED]9fd (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:32.827Z","msg":"saveIdentity([REDACTED]eac): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:32.828Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]3ae/[REDACTED]be6 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:32.828Z","msg":"saveIdentity([REDACTED]3ae): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:32.834Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]b79/[REDACTED]40c (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:32.835Z","msg":"saveIdentity([REDACTED]b79): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:32.836Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]eac ([REDACTED]8c4)"}
+{"level":30,"time":"2023-12-27T22:11:32.837Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]36c ([REDACTED]69b)"}
+{"level":30,"time":"2023-12-27T22:11:32.838Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]36c/[REDACTED]5bd (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:32.838Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]eac ([REDACTED]8c4)"}
+{"level":30,"time":"2023-12-27T22:11:32.838Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]6dd ([REDACTED]2a3)"}
+{"level":30,"time":"2023-12-27T22:11:32.840Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]3ae ([REDACTED]8a8)"}
+{"level":30,"time":"2023-12-27T22:11:32.841Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]w=="}
+{"level":30,"time":"2023-12-27T22:11:32.845Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]b79 ([REDACTED]83b)"}
+{"level":30,"time":"2023-12-27T22:11:32.846Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]12a ([REDACTED]811)"}
+{"level":30,"time":"2023-12-27T22:11:32.846Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]12a/[REDACTED]fd8 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:32.847Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]b79 ([REDACTED]83b)"}
+{"level":30,"time":"2023-12-27T22:11:32.847Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]0ef ([REDACTED]eed)"}
+{"level":30,"time":"2023-12-27T22:11:32.933Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]36c/[REDACTED]5bd (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:32.934Z","msg":"saveIdentity([REDACTED]36c): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:32.934Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]12a/[REDACTED]fd8 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:32.934Z","msg":"saveIdentity([REDACTED]12a): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:32.949Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]w== 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:32.950Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]6dd ([REDACTED]2a3)"}
+{"level":30,"time":"2023-12-27T22:11:32.950Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]6dd/[REDACTED]67f (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:32.950Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]3ae ([REDACTED]8a8)"}
+{"level":30,"time":"2023-12-27T22:11:32.951Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]23b ([REDACTED]d4f)"}
+{"level":30,"time":"2023-12-27T22:11:32.966Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]36c ([REDACTED]69b)"}
+{"level":30,"time":"2023-12-27T22:11:32.966Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]0ef ([REDACTED]eed)"}
+{"level":30,"time":"2023-12-27T22:11:32.967Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]0ef/[REDACTED]822 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:32.967Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]36c ([REDACTED]69b)"}
+{"level":30,"time":"2023-12-27T22:11:32.967Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]068 ([REDACTED]07f)"}
+{"level":30,"time":"2023-12-27T22:11:32.971Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]12a ([REDACTED]811)"}
+{"level":30,"time":"2023-12-27T22:11:32.972Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]23b ([REDACTED]d4f)"}
+{"level":30,"time":"2023-12-27T22:11:32.972Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]23b/[REDACTED]9bb (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:32.972Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]12a ([REDACTED]811)"}
+{"level":30,"time":"2023-12-27T22:11:32.972Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]393 ([REDACTED]371)"}
+{"level":30,"time":"2023-12-27T22:11:33.030Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]6dd/[REDACTED]67f (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:33.030Z","msg":"saveIdentity([REDACTED]6dd): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:33.037Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]6dd ([REDACTED]2a3)"}
+{"level":30,"time":"2023-12-27T22:11:33.037Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]4Og"}
+{"level":30,"time":"2023-12-27T22:11:33.042Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]0ef/[REDACTED]822 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:33.042Z","msg":"saveIdentity([REDACTED]0ef): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:33.048Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]0ef ([REDACTED]eed)"}
+{"level":30,"time":"2023-12-27T22:11:33.049Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]068 ([REDACTED]07f)"}
+{"level":30,"time":"2023-12-27T22:11:33.049Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]068/[REDACTED]25f (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:33.049Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]0ef ([REDACTED]eed)"}
+{"level":30,"time":"2023-12-27T22:11:33.049Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]1f0 ([REDACTED]03b)"}
+{"level":30,"time":"2023-12-27T22:11:33.051Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]23b/[REDACTED]9bb (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:33.051Z","msg":"saveIdentity([REDACTED]23b): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:33.057Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]23b ([REDACTED]d4f)"}
+{"level":30,"time":"2023-12-27T22:11:33.057Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]g=="}
+{"level":30,"time":"2023-12-27T22:11:33.074Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]4Og 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:33.075Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]393 ([REDACTED]371)"}
+{"level":30,"time":"2023-12-27T22:11:33.075Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]393/[REDACTED]775 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:33.075Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]6dd ([REDACTED]2a3)"}
+{"level":30,"time":"2023-12-27T22:11:33.075Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]605 ([REDACTED]95e)"}
+{"level":30,"time":"2023-12-27T22:11:33.138Z","msg":"createHTTPSAgent.createConnection(cdn.signal.org): connected to IPv6 addr after 79ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:11:33.140Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]068/[REDACTED]25f (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:33.141Z","msg":"saveIdentity([REDACTED]068): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:33.175Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]068 ([REDACTED]07f)"}
+{"level":30,"time":"2023-12-27T22:11:33.176Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]w=="}
+{"level":30,"time":"2023-12-27T22:11:33.239Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]393/[REDACTED]775 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:33.239Z","msg":"saveIdentity([REDACTED]393): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:33.248Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]393 ([REDACTED]371)"}
+{"level":30,"time":"2023-12-27T22:11:33.251Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]1f0 ([REDACTED]03b)"}
+{"level":30,"time":"2023-12-27T22:11:33.252Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]1f0/[REDACTED]733 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:33.252Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]393 ([REDACTED]371)"}
+{"level":30,"time":"2023-12-27T22:11:33.252Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]892 ([REDACTED]ee5)"}
+{"level":30,"time":"2023-12-27T22:11:33.260Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]g== 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:33.266Z","msg":"getProfile: getting unversioned profile for conversation [REDACTED]605 ([REDACTED]95e)"}
+{"level":30,"time":"2023-12-27T22:11:33.267Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]605"}
+{"level":30,"time":"2023-12-27T22:11:33.267Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]23b ([REDACTED]d4f)"}
+{"level":30,"time":"2023-12-27T22:11:33.267Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]6f9 ([REDACTED]c2f)"}
+{"level":30,"time":"2023-12-27T22:11:33.343Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]w== 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:33.346Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]1f0/[REDACTED]733 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:33.346Z","msg":"saveIdentity([REDACTED]1f0): Saving new identity..."}
+{"level":50,"time":"2023-12-27T22:11:33.347Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":30,"time":"2023-12-27T22:11:33.347Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:11:33.347Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:11:33.347Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:11:33.347Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:11:33.347Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:11:33.348Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:11:33.348Z","msg":"SocketManager.reconnect: complete."}
+{"level":50,"time":"2023-12-27T22:11:33.348Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]605 401 Error"}
+{"level":30,"time":"2023-12-27T22:11:33.348Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]892 ([REDACTED]ee5)"}
+{"level":30,"time":"2023-12-27T22:11:33.348Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]892/[REDACTED]ed2 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:33.348Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:11:33.349Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]605 ([REDACTED]95e)"}
+{"level":30,"time":"2023-12-27T22:11:33.349Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]b32 ([REDACTED]a08)"}
+{"level":30,"time":"2023-12-27T22:11:33.350Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]6f9 ([REDACTED]c2f)"}
+{"level":30,"time":"2023-12-27T22:11:33.350Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]6f9/[REDACTED]8de (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:33.350Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]068 ([REDACTED]07f)"}
+{"level":30,"time":"2023-12-27T22:11:33.351Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]d1e ([REDACTED]cba)"}
+{"level":30,"time":"2023-12-27T22:11:33.353Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]1f0 ([REDACTED]03b)"}
+{"level":30,"time":"2023-12-27T22:11:33.354Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]Q=="}
+{"level":40,"time":"2023-12-27T22:11:33.363Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":30,"time":"2023-12-27T22:11:33.389Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]Q== 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:33.390Z","msg":"getProfile: getting unversioned profile for conversation [REDACTED]b32 ([REDACTED]a08)"}
+{"level":30,"time":"2023-12-27T22:11:33.391Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]b32"}
+{"level":30,"time":"2023-12-27T22:11:33.391Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]1f0 ([REDACTED]03b)"}
+{"level":30,"time":"2023-12-27T22:11:33.391Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]515 ([REDACTED]315)"}
+{"level":30,"time":"2023-12-27T22:11:33.802Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 451ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:11:33.881Z","msg":"SocketManager: connected unauthenticated socket (localPort: 40774)"}
+{"level":30,"time":"2023-12-27T22:11:33.881Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:11:33.965Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]6f9/[REDACTED]8de (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:33.966Z","msg":"saveIdentity([REDACTED]6f9): Saving new identity..."}
+{"level":50,"time":"2023-12-27T22:11:33.968Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":50,"time":"2023-12-27T22:11:33.968Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]b32 401 Error"}
+{"level":30,"time":"2023-12-27T22:11:33.969Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]d1e ([REDACTED]cba)"}
+{"level":30,"time":"2023-12-27T22:11:33.969Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]d1e/[REDACTED]39d (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:33.969Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]b32 ([REDACTED]a08)"}
+{"level":30,"time":"2023-12-27T22:11:33.969Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]880 ([REDACTED]876)"}
+{"level":30,"time":"2023-12-27T22:11:33.971Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]892/[REDACTED]ed2 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:33.972Z","msg":"saveIdentity([REDACTED]892): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:33.974Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]6f9 ([REDACTED]c2f)"}
+{"level":30,"time":"2023-12-27T22:11:33.976Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]515 ([REDACTED]315)"}
+{"level":30,"time":"2023-12-27T22:11:33.976Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]515/[REDACTED]91f (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:33.977Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]6f9 ([REDACTED]c2f)"}
+{"level":30,"time":"2023-12-27T22:11:33.977Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]028 ([REDACTED]944)"}
+{"level":30,"time":"2023-12-27T22:11:33.980Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]892 ([REDACTED]ee5)"}
+{"level":30,"time":"2023-12-27T22:11:33.983Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]g=="}
+{"level":30,"time":"2023-12-27T22:11:33.986Z","msg":"changedConvoBatcher: deduped 1 into 1"}
+{"level":30,"time":"2023-12-27T22:11:34.013Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]g== 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:34.015Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]880 ([REDACTED]876)"}
+{"level":30,"time":"2023-12-27T22:11:34.015Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]880/[REDACTED]4d7 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:34.015Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]892 ([REDACTED]ee5)"}
+{"level":30,"time":"2023-12-27T22:11:34.015Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]e09 ([REDACTED]17a)"}
+{"level":30,"time":"2023-12-27T22:11:34.043Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]d1e/[REDACTED]39d (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:34.043Z","msg":"saveIdentity([REDACTED]d1e): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:34.050Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]d1e ([REDACTED]cba)"}
+{"level":30,"time":"2023-12-27T22:11:34.051Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]028 ([REDACTED]944)"}
+{"level":30,"time":"2023-12-27T22:11:34.051Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]028/[REDACTED]300 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:34.051Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]d1e ([REDACTED]cba)"}
+{"level":30,"time":"2023-12-27T22:11:34.051Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]1cf ([REDACTED]4f2)"}
+{"level":30,"time":"2023-12-27T22:11:34.207Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]515/[REDACTED]91f (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:34.208Z","msg":"saveIdentity([REDACTED]515): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:34.210Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]880/[REDACTED]4d7 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:34.210Z","msg":"saveIdentity([REDACTED]880): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:34.243Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]515 ([REDACTED]315)"}
+{"level":30,"time":"2023-12-27T22:11:34.244Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]e09 ([REDACTED]17a)"}
+{"level":30,"time":"2023-12-27T22:11:34.244Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]e09/[REDACTED]158 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:34.245Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]515 ([REDACTED]315)"}
+{"level":30,"time":"2023-12-27T22:11:34.245Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]272 ([REDACTED]3fc)"}
+{"level":30,"time":"2023-12-27T22:11:34.249Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]880 ([REDACTED]876)"}
+{"level":30,"time":"2023-12-27T22:11:34.250Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]w=="}
+{"level":30,"time":"2023-12-27T22:11:34.252Z","msg":"changedConvoBatcher: deduped 1 into 1"}
+{"level":30,"time":"2023-12-27T22:11:34.348Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:11:34.348Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:11:34.348Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:11:34.348Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:11:34.348Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:11:34.349Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:11:34.349Z","msg":"SocketManager.reconnect: complete."}
+{"level":30,"time":"2023-12-27T22:11:34.447Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]w== 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:34.451Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]1cf ([REDACTED]4f2)"}
+{"level":30,"time":"2023-12-27T22:11:34.452Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]1cf/[REDACTED]ddb (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:34.452Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:11:34.453Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]880 ([REDACTED]876)"}
+{"level":30,"time":"2023-12-27T22:11:34.453Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]43b ([REDACTED]f3b)"}
+{"level":40,"time":"2023-12-27T22:11:34.454Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":50,"time":"2023-12-27T22:11:34.455Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]028/[REDACTED]300 (unauth) -1 Error"}
+{"level":50,"time":"2023-12-27T22:11:34.455Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]e09/[REDACTED]158 (unauth) -1 Error"}
+{"level":40,"time":"2023-12-27T22:11:35.033Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 577ms (attempts v4=1 v6=1)"}
+{"level":30,"time":"2023-12-27T22:11:35.235Z","msg":"SocketManager: connected unauthenticated socket (localPort: 40782)"}
+{"level":30,"time":"2023-12-27T22:11:35.235Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:11:35.440Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]1cf/[REDACTED]ddb (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:35.440Z","msg":"saveIdentity([REDACTED]1cf): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:35.456Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]028/[REDACTED]300 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:35.457Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]e09/[REDACTED]158 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:35.475Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]1cf ([REDACTED]4f2)"}
+{"level":30,"time":"2023-12-27T22:11:35.477Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]272 ([REDACTED]3fc)"}
+{"level":30,"time":"2023-12-27T22:11:35.478Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]272/[REDACTED]f0b (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:35.478Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]1cf ([REDACTED]4f2)"}
+{"level":30,"time":"2023-12-27T22:11:35.478Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]29e ([REDACTED]9e8)"}
+{"level":30,"time":"2023-12-27T22:11:35.646Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]028/[REDACTED]300 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:35.647Z","msg":"saveIdentity([REDACTED]028): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:35.648Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]e09/[REDACTED]158 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:35.649Z","msg":"saveIdentity([REDACTED]e09): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:35.653Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]272/[REDACTED]f0b (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:35.654Z","msg":"saveIdentity([REDACTED]272): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:35.682Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]028 ([REDACTED]944)"}
+{"level":30,"time":"2023-12-27T22:11:35.687Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]e09 ([REDACTED]17a)"}
+{"level":30,"time":"2023-12-27T22:11:35.689Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]g=="}
+{"level":30,"time":"2023-12-27T22:11:35.693Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]272 ([REDACTED]3fc)"}
+{"level":30,"time":"2023-12-27T22:11:35.695Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]43b ([REDACTED]f3b)"}
+{"level":30,"time":"2023-12-27T22:11:35.695Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]43b/[REDACTED]d1a (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:35.696Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]272 ([REDACTED]3fc)"}
+{"level":30,"time":"2023-12-27T22:11:35.696Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]1d3 ([REDACTED]56a)"}
+{"level":30,"time":"2023-12-27T22:11:35.723Z","msg":"BadgeDownloader#checkForFilesToDownload: downloading 0 badge(s)"}
+{"level":30,"time":"2023-12-27T22:11:35.724Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]g=="}
+{"level":30,"time":"2023-12-27T22:11:35.900Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]g== 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:35.904Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]g== 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:35.907Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]29e ([REDACTED]9e8)"}
+{"level":30,"time":"2023-12-27T22:11:35.908Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]29e/[REDACTED]471 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:35.908Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]e09 ([REDACTED]17a)"}
+{"level":30,"time":"2023-12-27T22:11:35.908Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]5f5 ([REDACTED]fd3)"}
+{"level":30,"time":"2023-12-27T22:11:35.911Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]1d3 ([REDACTED]56a)"}
+{"level":30,"time":"2023-12-27T22:11:35.911Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]1d3/[REDACTED]c7f (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:35.912Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]028 ([REDACTED]944)"}
+{"level":30,"time":"2023-12-27T22:11:35.912Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]4f1 ([REDACTED]709)"}
+{"level":30,"time":"2023-12-27T22:11:36.073Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]43b/[REDACTED]d1a (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:36.074Z","msg":"saveIdentity([REDACTED]43b): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:36.075Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]29e/[REDACTED]471 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:36.076Z","msg":"saveIdentity([REDACTED]29e): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:36.083Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]43b ([REDACTED]f3b)"}
+{"level":30,"time":"2023-12-27T22:11:36.084Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]A=="}
+{"level":30,"time":"2023-12-27T22:11:36.088Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]29e ([REDACTED]9e8)"}
+{"level":30,"time":"2023-12-27T22:11:36.089Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]g=="}
+{"level":30,"time":"2023-12-27T22:11:36.276Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]1d3/[REDACTED]c7f (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:36.277Z","msg":"saveIdentity([REDACTED]1d3): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:36.312Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]1d3 ([REDACTED]56a)"}
+{"level":30,"time":"2023-12-27T22:11:36.313Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]A=="}
+{"level":30,"time":"2023-12-27T22:11:36.518Z","msg":"createHTTPSAgent.createConnection(cdn.signal.org): connected to IPv6 addr after 202ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:11:36.696Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]g== 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:36.709Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]5f5 ([REDACTED]fd3)"}
+{"level":30,"time":"2023-12-27T22:11:36.710Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]5f5/[REDACTED]4de (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:36.710Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]29e ([REDACTED]9e8)"}
+{"level":30,"time":"2023-12-27T22:11:36.711Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]77a ([REDACTED]9c5)"}
+{"level":30,"time":"2023-12-27T22:11:36.713Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]A== 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:36.716Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]4f1 ([REDACTED]709)"}
+{"level":30,"time":"2023-12-27T22:11:36.716Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]4f1/[REDACTED]cba (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:36.716Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]43b ([REDACTED]f3b)"}
+{"level":30,"time":"2023-12-27T22:11:36.716Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]e54 ([REDACTED]288)"}
+{"level":30,"time":"2023-12-27T22:11:36.717Z","msg":"changedConvoBatcher: deduped 1 into 1"}
+{"level":30,"time":"2023-12-27T22:11:36.893Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]5f5/[REDACTED]4de (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:36.894Z","msg":"saveIdentity([REDACTED]5f5): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:36.895Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]4f1/[REDACTED]cba (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:36.895Z","msg":"saveIdentity([REDACTED]4f1): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:36.928Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]5f5 ([REDACTED]fd3)"}
+{"level":30,"time":"2023-12-27T22:11:36.930Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]77a ([REDACTED]9c5)"}
+{"level":30,"time":"2023-12-27T22:11:36.931Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]77a/[REDACTED]c35 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:36.931Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]5f5 ([REDACTED]fd3)"}
+{"level":30,"time":"2023-12-27T22:11:36.931Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]223 ([REDACTED]f29)"}
+{"level":30,"time":"2023-12-27T22:11:36.934Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]4f1 ([REDACTED]709)"}
+{"level":30,"time":"2023-12-27T22:11:36.936Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]0Iw"}
+{"level":30,"time":"2023-12-27T22:11:37.102Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]77a/[REDACTED]c35 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:37.102Z","msg":"saveIdentity([REDACTED]77a): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:37.111Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]0Iw 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:37.114Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]e54 ([REDACTED]288)"}
+{"level":30,"time":"2023-12-27T22:11:37.114Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]e54/[REDACTED]d67 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:37.114Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]4f1 ([REDACTED]709)"}
+{"level":30,"time":"2023-12-27T22:11:37.114Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]06d ([REDACTED]8cd)"}
+{"level":30,"time":"2023-12-27T22:11:37.136Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]77a ([REDACTED]9c5)"}
+{"level":30,"time":"2023-12-27T22:11:37.138Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]223 ([REDACTED]f29)"}
+{"level":30,"time":"2023-12-27T22:11:37.138Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]223/[REDACTED]5e8 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:37.139Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]77a ([REDACTED]9c5)"}
+{"level":30,"time":"2023-12-27T22:11:37.139Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]30a ([REDACTED]783)"}
+{"level":30,"time":"2023-12-27T22:11:37.305Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]e54/[REDACTED]d67 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:37.306Z","msg":"saveIdentity([REDACTED]e54): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:37.338Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]e54 ([REDACTED]288)"}
+{"level":30,"time":"2023-12-27T22:11:37.339Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]06d ([REDACTED]8cd)"}
+{"level":30,"time":"2023-12-27T22:11:37.339Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]06d/[REDACTED]5e7 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:37.339Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]e54 ([REDACTED]288)"}
+{"level":30,"time":"2023-12-27T22:11:37.339Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]7fc ([REDACTED]66e)"}
+{"level":30,"time":"2023-12-27T22:11:37.718Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]223/[REDACTED]5e8 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:37.718Z","msg":"saveIdentity([REDACTED]223): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:37.720Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]06d/[REDACTED]5e7 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:37.720Z","msg":"saveIdentity([REDACTED]06d): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:37.751Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]A== 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:37.754Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]223 ([REDACTED]f29)"}
+{"level":30,"time":"2023-12-27T22:11:37.755Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]g=="}
+{"level":30,"time":"2023-12-27T22:11:37.756Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]30a ([REDACTED]783)"}
+{"level":30,"time":"2023-12-27T22:11:37.757Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]30a/[REDACTED]ec6 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:37.757Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]1d3 ([REDACTED]56a)"}
+{"level":30,"time":"2023-12-27T22:11:37.757Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]244 ([REDACTED]398)"}
+{"level":30,"time":"2023-12-27T22:11:37.758Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]06d ([REDACTED]8cd)"}
+{"level":30,"time":"2023-12-27T22:11:37.759Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]7fc ([REDACTED]66e)"}
+{"level":30,"time":"2023-12-27T22:11:37.759Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]7fc/[REDACTED]97b (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:37.759Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]06d ([REDACTED]8cd)"}
+{"level":30,"time":"2023-12-27T22:11:37.759Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]4ee ([REDACTED]497)"}
+{"level":30,"time":"2023-12-27T22:11:37.924Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]30a/[REDACTED]ec6 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:37.924Z","msg":"saveIdentity([REDACTED]30a): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:37.932Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]30a ([REDACTED]783)"}
+{"level":30,"time":"2023-12-27T22:11:37.934Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]244 ([REDACTED]398)"}
+{"level":30,"time":"2023-12-27T22:11:37.934Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]244/[REDACTED]2f1 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:37.935Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]30a ([REDACTED]783)"}
+{"level":30,"time":"2023-12-27T22:11:37.935Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]970 ([REDACTED]75c)"}
+{"level":30,"time":"2023-12-27T22:11:38.130Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]g== 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:38.133Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]7fc/[REDACTED]97b (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:38.134Z","msg":"saveIdentity([REDACTED]7fc): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:38.135Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]244/[REDACTED]2f1 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:38.136Z","msg":"saveIdentity([REDACTED]244): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:38.139Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]4ee ([REDACTED]497)"}
+{"level":30,"time":"2023-12-27T22:11:38.139Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]4ee/[REDACTED]af3 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:38.139Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]223 ([REDACTED]f29)"}
+{"level":30,"time":"2023-12-27T22:11:38.139Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]54b ([REDACTED]446)"}
+{"level":30,"time":"2023-12-27T22:11:38.172Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]7fc ([REDACTED]66e)"}
+{"level":30,"time":"2023-12-27T22:11:38.172Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]g=="}
+{"level":30,"time":"2023-12-27T22:11:38.175Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]244 ([REDACTED]398)"}
+{"level":30,"time":"2023-12-27T22:11:38.179Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]970 ([REDACTED]75c)"}
+{"level":30,"time":"2023-12-27T22:11:38.179Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]970/[REDACTED]65a (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:38.179Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]244 ([REDACTED]398)"}
+{"level":30,"time":"2023-12-27T22:11:38.179Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]063 ([REDACTED]b01)"}
+{"level":30,"time":"2023-12-27T22:11:38.542Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]4ee/[REDACTED]af3 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:38.543Z","msg":"saveIdentity([REDACTED]4ee): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:38.544Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]970/[REDACTED]65a (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:38.544Z","msg":"saveIdentity([REDACTED]970): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:38.550Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]4ee ([REDACTED]497)"}
+{"level":30,"time":"2023-12-27T22:11:38.551Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]54b ([REDACTED]446)"}
+{"level":30,"time":"2023-12-27T22:11:38.551Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]54b/[REDACTED]473 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:38.551Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]4ee ([REDACTED]497)"}
+{"level":30,"time":"2023-12-27T22:11:38.551Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]9e5 ([REDACTED]c92)"}
+{"level":30,"time":"2023-12-27T22:11:38.556Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]970 ([REDACTED]75c)"}
+{"level":30,"time":"2023-12-27T22:11:38.556Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]g=="}
+{"level":30,"time":"2023-12-27T22:11:38.753Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]g== 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:38.757Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]54b/[REDACTED]473 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:38.758Z","msg":"saveIdentity([REDACTED]54b): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:38.759Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]063 ([REDACTED]b01)"}
+{"level":30,"time":"2023-12-27T22:11:38.759Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]063/[REDACTED]518 (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:38.759Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]7fc ([REDACTED]66e)"}
+{"level":30,"time":"2023-12-27T22:11:38.759Z","msg":"routineProfileRefresh/2: refreshing profile for [REDACTED]f15 ([REDACTED]af4)"}
+{"level":30,"time":"2023-12-27T22:11:38.790Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]54b ([REDACTED]446)"}
+{"level":30,"time":"2023-12-27T22:11:38.791Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]9e5 ([REDACTED]c92)"}
+{"level":30,"time":"2023-12-27T22:11:38.792Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]9e5/[REDACTED]61a (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:38.792Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]54b ([REDACTED]446)"}
+{"level":30,"time":"2023-12-27T22:11:38.824Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]g== 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:38.827Z","msg":"getProfile: getting versioned profile for conversation [REDACTED]f15 ([REDACTED]af4)"}
+{"level":30,"time":"2023-12-27T22:11:38.827Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]f15/[REDACTED]66f (unauth)"}
+{"level":30,"time":"2023-12-27T22:11:38.828Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]970 ([REDACTED]75c)"}
+{"level":30,"time":"2023-12-27T22:11:38.852Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]063/[REDACTED]518 (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:38.853Z","msg":"saveIdentity([REDACTED]063): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:38.859Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]063 ([REDACTED]b01)"}
+{"level":30,"time":"2023-12-27T22:11:38.860Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]Q=="}
+{"level":30,"time":"2023-12-27T22:11:38.894Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]9e5/[REDACTED]61a (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:38.895Z","msg":"saveIdentity([REDACTED]9e5): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:38.899Z","msg":"GET (WS) https://chat.signal.org/v1/profile/[REDACTED]f15/[REDACTED]66f (unauth) 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:38.899Z","msg":"saveIdentity([REDACTED]f15): Saving new identity..."}
+{"level":30,"time":"2023-12-27T22:11:38.901Z","msg":"getProfile: setting sealedSender to ENABLED for conversation [REDACTED]9e5 ([REDACTED]c92)"}
+{"level":30,"time":"2023-12-27T22:11:38.902Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]9e5 ([REDACTED]c92)"}
+{"level":30,"time":"2023-12-27T22:11:38.906Z","msg":"getProfile: setting sealedSender to UNRESTRICTED for conversation [REDACTED]f15 ([REDACTED]af4)"}
+{"level":30,"time":"2023-12-27T22:11:38.907Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]f15 ([REDACTED]af4)"}
+{"level":30,"time":"2023-12-27T22:11:38.984Z","msg":"GET (REST) https://cdn.signal.org/[REDACTED]Q== 200 Success"}
+{"level":30,"time":"2023-12-27T22:11:38.985Z","msg":"routineProfileRefresh/2: refreshed profile for [REDACTED]063 ([REDACTED]b01)"}
+{"level":30,"time":"2023-12-27T22:11:38.985Z","msg":"routineProfileRefresh/2: successfully refreshed 50 out of 50 conversation(s)"}
+{"level":30,"time":"2023-12-27T22:12:01.235Z","msg":"WebSocketResources.KeepAlive(unauthenticated).send: Sending a keepalive message"}
+{"level":30,"time":"2023-12-27T22:12:04.456Z","msg":"WebSocketResources.KeepAlive(unauthenticated).send: Sending a keepalive message"}
+{"level":30,"time":"2023-12-27T22:12:08.902Z","msg":"WebSocketResources.KeepAlive(unauthenticated).send: Sending a keepalive message"}
+{"level":30,"time":"2023-12-27T22:12:30.734Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:12:31.237Z","msg":"WebSocketResource(unauthenticated).close: Already closed! 3001/No response to keepalive request"}
+{"level":30,"time":"2023-12-27T22:12:34.457Z","msg":"WebSocketResource(unauthenticated).close: Already closed! 3001/No response to keepalive request"}
+{"level":30,"time":"2023-12-27T22:12:38.986Z","msg":"RoutineProfileRefresher.start/2: waiting for 3531710ms"}
+{"level":30,"time":"2023-12-27T22:12:39.006Z","msg":"WebSocketResources.KeepAlive(unauthenticated).send: Sending a keepalive message"}
+{"level":30,"time":"2023-12-27T22:13:09.109Z","msg":"WebSocketResources.KeepAlive(unauthenticated).send: Sending a keepalive message"}
+{"level":30,"time":"2023-12-27T22:13:09.916Z","msg":"maybeFetchNewCredentials: fetching credentials for 1703635200000 through 1704153600000"}
+{"level":30,"time":"2023-12-27T22:13:09.916Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true"}
+{"level":50,"time":"2023-12-27T22:13:09.991Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":30,"time":"2023-12-27T22:13:09.991Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:13:09.991Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:13:09.991Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:13:09.991Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:13:09.991Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:13:09.992Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:13:09.992Z","msg":"SocketManager.reconnect: complete."}
+{"level":50,"time":"2023-12-27T22:13:09.992Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true 401 Error"}
+{"level":30,"time":"2023-12-27T22:13:09.992Z","msg":"runWithRetry: maybeFetchNewCredentials failed. Waiting 300000ms for retry. Error: HTTPError: promiseAjax: error response; code: 401\n    at makeHTTPError ([REDACTED]/resources/app.asar/preload.bundle.js:88:951)\n    at _promiseAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:111)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async _retryAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:696)\n    at async G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5973)\n    at async Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4065)\n    at async maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27966)\n    at async runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26905)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)\nOriginal stack:\nError\n    at _outerAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:867)\n    at G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5979)\n    at Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4071)\n    at maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27974)\n    at runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26911)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)"}
+{"level":40,"time":"2023-12-27T22:13:10.002Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":30,"time":"2023-12-27T22:13:30.734Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:14:30.735Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":40,"time":"2023-12-27T22:15:29.815Z","msg":"background/setInterval: Failed to parse integer from desktop.retryRespondMaxAge feature flag Error: retryRespondMaxAge\n    at parseIntOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:20:30367)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:159:13770"}
+{"level":30,"time":"2023-12-27T22:15:29.818Z","msg":"RetryPlaceholders.getExpiredAndRemove: Found 0 expired items"}
+{"level":30,"time":"2023-12-27T22:15:29.885Z","msg":"retryPlaceholders/interval: Found 0 expired items"}
+{"level":30,"time":"2023-12-27T22:15:30.636Z","msg":"UpdateKeysListener: Next update scheduled for 2023-12-27T22:15:30.636Z"}
+{"level":30,"time":"2023-12-27T22:15:30.636Z","msg":"UpdateKeysListener: Updating keys..."}
+{"level":50,"time":"2023-12-27T22:15:30.637Z","msg":"UpdateKeysListener.run failure - trying again in five minutes Error: getIdentityKeyOrThrow: Missing identity key\n    at F2.getIdentityKeyOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:75:56179)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:75:57554\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:71:367317)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:71:367364\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:43:30604)\n    at $ee._tryToStartAnother ([REDACTED]/resources/app.asar/preload.bundle.js:43:29666)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:43:30841\n    at new Promise (<anonymous>)\n    at $ee.add ([REDACTED]/resources/app.asar/preload.bundle.js:43:30470)\n    at F2.queueTask ([REDACTED]/resources/app.asar/preload.bundle.js:75:52595)"}
+{"level":30,"time":"2023-12-27T22:15:30.735Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:16:30.736Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:17:30.737Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:18:09.993Z","msg":"maybeFetchNewCredentials: fetching credentials for 1703635200000 through 1704153600000"}
+{"level":30,"time":"2023-12-27T22:18:09.993Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true"}
+{"level":30,"time":"2023-12-27T22:18:09.994Z","msg":"Cycling agent for type undefined-auth"}
+{"level":30,"time":"2023-12-27T22:18:09.994Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:18:10.339Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 262ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:18:10.420Z","msg":"SocketManager: connected unauthenticated socket (localPort: 34390)"}
+{"level":30,"time":"2023-12-27T22:18:10.420Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":50,"time":"2023-12-27T22:18:10.499Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":30,"time":"2023-12-27T22:18:10.499Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:18:10.499Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:18:10.499Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:18:10.499Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:18:10.499Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:18:10.499Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:18:10.499Z","msg":"SocketManager.reconnect: complete."}
+{"level":50,"time":"2023-12-27T22:18:10.499Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true 401 Error"}
+{"level":30,"time":"2023-12-27T22:18:10.500Z","msg":"runWithRetry: maybeFetchNewCredentials failed. Waiting 300000ms for retry. Error: HTTPError: promiseAjax: error response; code: 401\n    at makeHTTPError ([REDACTED]/resources/app.asar/preload.bundle.js:88:951)\n    at _promiseAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:111)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async _retryAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:696)\n    at async G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5973)\n    at async Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4065)\n    at async maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27966)\n    at async runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26905)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)\nOriginal stack:\nError\n    at _outerAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:867)\n    at G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5979)\n    at Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4071)\n    at maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27974)\n    at runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26911)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)"}
+{"level":40,"time":"2023-12-27T22:18:10.512Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":30,"time":"2023-12-27T22:18:30.738Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:19:30.739Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":40,"time":"2023-12-27T22:20:29.814Z","msg":"background/setInterval: Failed to parse integer from desktop.retryRespondMaxAge feature flag Error: retryRespondMaxAge\n    at parseIntOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:20:30367)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:159:13770"}
+{"level":30,"time":"2023-12-27T22:20:29.817Z","msg":"RetryPlaceholders.getExpiredAndRemove: Found 0 expired items"}
+{"level":30,"time":"2023-12-27T22:20:29.851Z","msg":"retryPlaceholders/interval: Found 0 expired items"}
+{"level":30,"time":"2023-12-27T22:20:30.638Z","msg":"UpdateKeysListener: Next update scheduled for 2023-12-27T22:20:30.638Z"}
+{"level":30,"time":"2023-12-27T22:20:30.643Z","msg":"UpdateKeysListener: Updating keys..."}
+{"level":50,"time":"2023-12-27T22:20:30.644Z","msg":"UpdateKeysListener.run failure - trying again in five minutes Error: getIdentityKeyOrThrow: Missing identity key\n    at F2.getIdentityKeyOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:75:56179)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:75:57554\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:71:367317)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:71:367364\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:43:30604)\n    at $ee._tryToStartAnother ([REDACTED]/resources/app.asar/preload.bundle.js:43:29666)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:43:30841\n    at new Promise (<anonymous>)\n    at $ee.add ([REDACTED]/resources/app.asar/preload.bundle.js:43:30470)\n    at F2.queueTask ([REDACTED]/resources/app.asar/preload.bundle.js:75:52595)"}
+{"level":30,"time":"2023-12-27T22:20:30.739Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:21:30.740Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:22:30.741Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:23:10.500Z","msg":"maybeFetchNewCredentials: fetching credentials for 1703635200000 through 1704153600000"}
+{"level":30,"time":"2023-12-27T22:23:10.501Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true"}
+{"level":30,"time":"2023-12-27T22:23:10.501Z","msg":"Cycling agent for type undefined-auth"}
+{"level":30,"time":"2023-12-27T22:23:10.501Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:23:10.872Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 317ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:23:10.980Z","msg":"SocketManager: connected unauthenticated socket (localPort: 42576)"}
+{"level":30,"time":"2023-12-27T22:23:10.980Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":50,"time":"2023-12-27T22:23:11.052Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":30,"time":"2023-12-27T22:23:11.052Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:23:11.052Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:23:11.052Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:23:11.052Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:23:11.052Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:23:11.053Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:23:11.053Z","msg":"SocketManager.reconnect: complete."}
+{"level":50,"time":"2023-12-27T22:23:11.053Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true 401 Error"}
+{"level":30,"time":"2023-12-27T22:23:11.054Z","msg":"runWithRetry: maybeFetchNewCredentials failed. Waiting 300000ms for retry. Error: HTTPError: promiseAjax: error response; code: 401\n    at makeHTTPError ([REDACTED]/resources/app.asar/preload.bundle.js:88:951)\n    at _promiseAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:111)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async _retryAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:696)\n    at async G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5973)\n    at async Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4065)\n    at async maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27966)\n    at async runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26905)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)\nOriginal stack:\nError\n    at _outerAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:867)\n    at G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5979)\n    at Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4071)\n    at maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27974)\n    at runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26911)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)"}
+{"level":40,"time":"2023-12-27T22:23:11.069Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":30,"time":"2023-12-27T22:23:30.740Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:24:30.742Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":40,"time":"2023-12-27T22:25:29.814Z","msg":"background/setInterval: Failed to parse integer from desktop.retryRespondMaxAge feature flag Error: retryRespondMaxAge\n    at parseIntOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:20:30367)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:159:13770"}
+{"level":30,"time":"2023-12-27T22:25:29.817Z","msg":"RetryPlaceholders.getExpiredAndRemove: Found 0 expired items"}
+{"level":30,"time":"2023-12-27T22:25:29.854Z","msg":"retryPlaceholders/interval: Found 0 expired items"}
+{"level":30,"time":"2023-12-27T22:25:30.644Z","msg":"UpdateKeysListener: Next update scheduled for 2023-12-27T22:25:30.644Z"}
+{"level":30,"time":"2023-12-27T22:25:30.650Z","msg":"UpdateKeysListener: Updating keys..."}
+{"level":50,"time":"2023-12-27T22:25:30.650Z","msg":"UpdateKeysListener.run failure - trying again in five minutes Error: getIdentityKeyOrThrow: Missing identity key\n    at F2.getIdentityKeyOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:75:56179)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:75:57554\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:71:367317)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:71:367364\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:43:30604)\n    at $ee._tryToStartAnother ([REDACTED]/resources/app.asar/preload.bundle.js:43:29666)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:43:30841\n    at new Promise (<anonymous>)\n    at $ee.add ([REDACTED]/resources/app.asar/preload.bundle.js:43:30470)\n    at F2.queueTask ([REDACTED]/resources/app.asar/preload.bundle.js:75:52595)"}
+{"level":30,"time":"2023-12-27T22:25:30.741Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:26:30.743Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:27:30.744Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:28:11.054Z","msg":"maybeFetchNewCredentials: fetching credentials for 1703635200000 through 1704153600000"}
+{"level":30,"time":"2023-12-27T22:28:11.055Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true"}
+{"level":30,"time":"2023-12-27T22:28:11.061Z","msg":"Cycling agent for type undefined-auth"}
+{"level":30,"time":"2023-12-27T22:28:11.061Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:28:11.542Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 314ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:28:11.621Z","msg":"SocketManager: connected unauthenticated socket (localPort: 41404)"}
+{"level":30,"time":"2023-12-27T22:28:11.621Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":50,"time":"2023-12-27T22:28:11.702Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":30,"time":"2023-12-27T22:28:11.703Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:28:11.703Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:28:11.703Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:28:11.703Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:28:11.703Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:28:11.704Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:28:11.704Z","msg":"SocketManager.reconnect: complete."}
+{"level":50,"time":"2023-12-27T22:28:11.704Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true 401 Error"}
+{"level":30,"time":"2023-12-27T22:28:11.704Z","msg":"runWithRetry: maybeFetchNewCredentials failed. Waiting 300000ms for retry. Error: HTTPError: promiseAjax: error response; code: 401\n    at makeHTTPError ([REDACTED]/resources/app.asar/preload.bundle.js:88:951)\n    at _promiseAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:111)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async _retryAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:696)\n    at async G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5973)\n    at async Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4065)\n    at async maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27966)\n    at async runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26905)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)\nOriginal stack:\nError\n    at _outerAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:867)\n    at G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5979)\n    at Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4071)\n    at maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27974)\n    at runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26911)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)"}
+{"level":40,"time":"2023-12-27T22:28:11.721Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":30,"time":"2023-12-27T22:28:30.744Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:29:30.743Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":40,"time":"2023-12-27T22:30:29.814Z","msg":"background/setInterval: Failed to parse integer from desktop.retryRespondMaxAge feature flag Error: retryRespondMaxAge\n    at parseIntOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:20:30367)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:159:13770"}
+{"level":30,"time":"2023-12-27T22:30:29.817Z","msg":"RetryPlaceholders.getExpiredAndRemove: Found 0 expired items"}
+{"level":30,"time":"2023-12-27T22:30:29.850Z","msg":"retryPlaceholders/interval: Found 0 expired items"}
+{"level":30,"time":"2023-12-27T22:30:30.651Z","msg":"UpdateKeysListener: Next update scheduled for 2023-12-27T22:30:30.651Z"}
+{"level":30,"time":"2023-12-27T22:30:30.656Z","msg":"UpdateKeysListener: Updating keys..."}
+{"level":50,"time":"2023-12-27T22:30:30.656Z","msg":"UpdateKeysListener.run failure - trying again in five minutes Error: getIdentityKeyOrThrow: Missing identity key\n    at F2.getIdentityKeyOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:75:56179)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:75:57554\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:71:367317)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:71:367364\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:43:30604)\n    at $ee._tryToStartAnother ([REDACTED]/resources/app.asar/preload.bundle.js:43:29666)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:43:30841\n    at new Promise (<anonymous>)\n    at $ee.add ([REDACTED]/resources/app.asar/preload.bundle.js:43:30470)\n    at F2.queueTask ([REDACTED]/resources/app.asar/preload.bundle.js:75:52595)"}
+{"level":30,"time":"2023-12-27T22:30:30.745Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:31:30.744Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:32:30.746Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:33:11.705Z","msg":"maybeFetchNewCredentials: fetching credentials for 1703635200000 through 1704153600000"}
+{"level":30,"time":"2023-12-27T22:33:11.706Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true"}
+{"level":30,"time":"2023-12-27T22:33:11.707Z","msg":"Cycling agent for type undefined-auth"}
+{"level":30,"time":"2023-12-27T22:33:11.707Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:33:12.088Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 328ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:33:12.170Z","msg":"SocketManager: connected unauthenticated socket (localPort: 40840)"}
+{"level":30,"time":"2023-12-27T22:33:12.170Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":50,"time":"2023-12-27T22:33:12.250Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":30,"time":"2023-12-27T22:33:12.251Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:33:12.251Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:33:12.251Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:33:12.251Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:33:12.251Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:33:12.252Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:33:12.252Z","msg":"SocketManager.reconnect: complete."}
+{"level":50,"time":"2023-12-27T22:33:12.252Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true 401 Error"}
+{"level":30,"time":"2023-12-27T22:33:12.253Z","msg":"runWithRetry: maybeFetchNewCredentials failed. Waiting 300000ms for retry. Error: HTTPError: promiseAjax: error response; code: 401\n    at makeHTTPError ([REDACTED]/resources/app.asar/preload.bundle.js:88:951)\n    at _promiseAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:111)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async _retryAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:696)\n    at async G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5973)\n    at async Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4065)\n    at async maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27966)\n    at async runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26905)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)\nOriginal stack:\nError\n    at _outerAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:867)\n    at G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5979)\n    at Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4071)\n    at maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27974)\n    at runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26911)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)"}
+{"level":40,"time":"2023-12-27T22:33:12.292Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":30,"time":"2023-12-27T22:33:30.747Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:34:30.746Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":40,"time":"2023-12-27T22:35:29.814Z","msg":"background/setInterval: Failed to parse integer from desktop.retryRespondMaxAge feature flag Error: retryRespondMaxAge\n    at parseIntOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:20:30367)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:159:13770"}
+{"level":30,"time":"2023-12-27T22:35:29.817Z","msg":"RetryPlaceholders.getExpiredAndRemove: Found 0 expired items"}
+{"level":30,"time":"2023-12-27T22:35:29.851Z","msg":"retryPlaceholders/interval: Found 0 expired items"}
+{"level":30,"time":"2023-12-27T22:35:30.657Z","msg":"UpdateKeysListener: Next update scheduled for 2023-12-27T22:35:30.657Z"}
+{"level":30,"time":"2023-12-27T22:35:30.661Z","msg":"UpdateKeysListener: Updating keys..."}
+{"level":50,"time":"2023-12-27T22:35:30.662Z","msg":"UpdateKeysListener.run failure - trying again in five minutes Error: getIdentityKeyOrThrow: Missing identity key\n    at F2.getIdentityKeyOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:75:56179)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:75:57554\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:71:367317)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:71:367364\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:43:30604)\n    at $ee._tryToStartAnother ([REDACTED]/resources/app.asar/preload.bundle.js:43:29666)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:43:30841\n    at new Promise (<anonymous>)\n    at $ee.add ([REDACTED]/resources/app.asar/preload.bundle.js:43:30470)\n    at F2.queueTask ([REDACTED]/resources/app.asar/preload.bundle.js:75:52595)"}
+{"level":30,"time":"2023-12-27T22:35:30.748Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:36:30.747Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:37:30.747Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:38:12.254Z","msg":"maybeFetchNewCredentials: fetching credentials for 1703635200000 through 1704153600000"}
+{"level":30,"time":"2023-12-27T22:38:12.254Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true"}
+{"level":30,"time":"2023-12-27T22:38:12.255Z","msg":"Cycling agent for type undefined-auth"}
+{"level":30,"time":"2023-12-27T22:38:12.255Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:38:12.659Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 350ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:38:12.732Z","msg":"SocketManager: connected unauthenticated socket (localPort: 39040)"}
+{"level":30,"time":"2023-12-27T22:38:12.732Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":50,"time":"2023-12-27T22:38:12.809Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":30,"time":"2023-12-27T22:38:12.810Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:38:12.810Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:38:12.810Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:38:12.810Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:38:12.810Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:38:12.810Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:38:12.811Z","msg":"SocketManager.reconnect: complete."}
+{"level":50,"time":"2023-12-27T22:38:12.811Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true 401 Error"}
+{"level":30,"time":"2023-12-27T22:38:12.811Z","msg":"runWithRetry: maybeFetchNewCredentials failed. Waiting 300000ms for retry. Error: HTTPError: promiseAjax: error response; code: 401\n    at makeHTTPError ([REDACTED]/resources/app.asar/preload.bundle.js:88:951)\n    at _promiseAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:111)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async _retryAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:696)\n    at async G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5973)\n    at async Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4065)\n    at async maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27966)\n    at async runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26905)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)\nOriginal stack:\nError\n    at _outerAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:867)\n    at G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5979)\n    at Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4071)\n    at maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27974)\n    at runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26911)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)"}
+{"level":40,"time":"2023-12-27T22:38:12.826Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":30,"time":"2023-12-27T22:38:30.749Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:39:30.750Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":40,"time":"2023-12-27T22:40:29.814Z","msg":"background/setInterval: Failed to parse integer from desktop.retryRespondMaxAge feature flag Error: retryRespondMaxAge\n    at parseIntOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:20:30367)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:159:13770"}
+{"level":30,"time":"2023-12-27T22:40:29.816Z","msg":"RetryPlaceholders.getExpiredAndRemove: Found 0 expired items"}
+{"level":30,"time":"2023-12-27T22:40:29.851Z","msg":"retryPlaceholders/interval: Found 0 expired items"}
+{"level":30,"time":"2023-12-27T22:40:30.662Z","msg":"UpdateKeysListener: Next update scheduled for 2023-12-27T22:40:30.662Z"}
+{"level":30,"time":"2023-12-27T22:40:30.667Z","msg":"UpdateKeysListener: Updating keys..."}
+{"level":50,"time":"2023-12-27T22:40:30.668Z","msg":"UpdateKeysListener.run failure - trying again in five minutes Error: getIdentityKeyOrThrow: Missing identity key\n    at F2.getIdentityKeyOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:75:56179)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:75:57554\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:71:367317)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:71:367364\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:43:30604)\n    at $ee._tryToStartAnother ([REDACTED]/resources/app.asar/preload.bundle.js:43:29666)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:43:30841\n    at new Promise (<anonymous>)\n    at $ee.add ([REDACTED]/resources/app.asar/preload.bundle.js:43:30470)\n    at F2.queueTask ([REDACTED]/resources/app.asar/preload.bundle.js:75:52595)"}
+{"level":30,"time":"2023-12-27T22:40:30.750Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:41:30.751Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:42:30.752Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:43:12.812Z","msg":"maybeFetchNewCredentials: fetching credentials for 1703635200000 through 1704153600000"}
+{"level":30,"time":"2023-12-27T22:43:12.813Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true"}
+{"level":30,"time":"2023-12-27T22:43:12.813Z","msg":"Cycling agent for type undefined-auth"}
+{"level":30,"time":"2023-12-27T22:43:12.813Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":30,"time":"2023-12-27T22:43:13.286Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 354ms (attempts v4=0 v6=1)"}
+{"level":30,"time":"2023-12-27T22:43:13.364Z","msg":"SocketManager: connected unauthenticated socket (localPort: 41800)"}
+{"level":30,"time":"2023-12-27T22:43:13.364Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":50,"time":"2023-12-27T22:43:13.476Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":30,"time":"2023-12-27T22:43:13.477Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-27T22:43:13.477Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-27T22:43:13.477Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-27T22:43:13.477Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-27T22:43:13.477Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-27T22:43:13.478Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-27T22:43:13.478Z","msg":"SocketManager.reconnect: complete."}
+{"level":50,"time":"2023-12-27T22:43:13.478Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703635200&redemptionEndSeconds=1704153600&pniAsServiceId=true 401 Error"}
+{"level":30,"time":"2023-12-27T22:43:13.479Z","msg":"runWithRetry: maybeFetchNewCredentials failed. Waiting 300000ms for retry. Error: HTTPError: promiseAjax: error response; code: 401\n    at makeHTTPError ([REDACTED]/resources/app.asar/preload.bundle.js:88:951)\n    at _promiseAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:111)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async _retryAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:696)\n    at async G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5973)\n    at async Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4065)\n    at async maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27966)\n    at async runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26905)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)\nOriginal stack:\nError\n    at _outerAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:867)\n    at G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5979)\n    at Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4071)\n    at maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27974)\n    at runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26911)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)"}
+{"level":40,"time":"2023-12-27T22:43:13.499Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":30,"time":"2023-12-27T22:43:30.753Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:44:30.754Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-27T22:44:44.653Z","msg":"powerMonitor: suspend"}
+{"level":40,"time":"2023-12-27T22:44:44.654Z","msg":"cancelInflightRequests/powerMonitorSuspend: Cancelling 0 requests"}
+{"level":40,"time":"2023-12-27T22:44:44.654Z","msg":"cancelInflightRequests/powerMonitorSuspend: Done"}
+{"level":30,"time":"2023-12-27T22:44:44.654Z","msg":"TaskWithTimeout: suspending 0 tasks"}
+{"level":30,"time":"2023-12-27T22:44:44.655Z","msg":"powerMonitor: suspend"}
+{"level":40,"time":"2023-12-27T22:44:44.655Z","msg":"cancelInflightRequests/powerMonitorSuspend: Cancelling 0 requests"}
+{"level":40,"time":"2023-12-27T22:44:44.655Z","msg":"cancelInflightRequests/powerMonitorSuspend: Done"}
+{"level":30,"time":"2023-12-27T22:44:44.656Z","msg":"TaskWithTimeout: suspending 0 tasks"}
+{"level":30,"time":"2023-12-27T22:44:44.707Z","msg":"offline"}
+{"level":30,"time":"2023-12-27T22:44:44.707Z","msg":"challenge: offline"}
+{"level":30,"time":"2023-12-27T22:44:45.708Z","msg":"disconnect"}
+{"level":30,"time":"2023-12-27T22:44:45.708Z","msg":"attachment_downloads/stop: disabling"}
+{"level":30,"time":"2023-12-27T22:44:45.708Z","msg":"SocketManager.onOffline"}
+{"level":30,"time":"2023-12-27T22:44:45.708Z","msg":"drained"}
+{"level":30,"time":"2023-12-28T00:45:04.127Z","msg":"powerMonitor: resume"}
+{"level":40,"time":"2023-12-28T00:45:04.127Z","msg":"cancelInflightRequests/powerMonitorResume: Cancelling 0 requests"}
+{"level":40,"time":"2023-12-28T00:45:04.127Z","msg":"cancelInflightRequests/powerMonitorResume: Done"}
+{"level":30,"time":"2023-12-28T00:45:04.128Z","msg":"TaskWithTimeout: resuming 0 tasks"}
+{"level":30,"time":"2023-12-28T00:45:04.129Z","msg":"powerMonitor: resume"}
+{"level":40,"time":"2023-12-28T00:45:04.129Z","msg":"cancelInflightRequests/powerMonitorResume: Cancelling 0 requests"}
+{"level":40,"time":"2023-12-28T00:45:04.129Z","msg":"cancelInflightRequests/powerMonitorResume: Done"}
+{"level":30,"time":"2023-12-28T00:45:04.129Z","msg":"TaskWithTimeout: resuming 0 tasks"}
+{"level":30,"time":"2023-12-28T00:45:05.064Z","msg":"checkExpiringMessages: checking for expiring messages"}
+{"level":30,"time":"2023-12-28T00:45:05.071Z","msg":"checkExpiringMessages: next message expires 2024-01-21T22:26:06.146Z; waiting 2147483647 ms before clearing"}
+{"level":30,"time":"2023-12-28T00:45:25.575Z","msg":"online"}
+{"level":30,"time":"2023-12-28T00:45:25.575Z","msg":"setIsInitialSync(false)"}
+{"level":30,"time":"2023-12-28T00:45:25.575Z","msg":"connect {\"connectCount\":1}"}
+{"level":30,"time":"2023-12-28T00:45:25.575Z","msg":"Our profile key service: kicking off a new fetch"}
+{"level":30,"time":"2023-12-28T00:45:25.575Z","msg":"Our profile key service: waiting for 0 promises before fetching"}
+{"level":30,"time":"2023-12-28T00:45:25.575Z","msg":"Our profile key service: fetching profile key from storage"}
+{"level":30,"time":"2023-12-28T00:45:25.575Z","msg":"NotificationService: disabling"}
+{"level":30,"time":"2023-12-28T00:45:25.575Z","msg":"getAllFromCache"}
+{"level":30,"time":"2023-12-28T00:45:25.576Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-28T00:45:25.576Z","msg":"attachment_downloads/start: enabling"}
+{"level":30,"time":"2023-12-28T00:45:25.576Z","msg":"PUT (WS) https://chat.signal.org/v1/devices/unauthenticated_delivery"}
+{"level":30,"time":"2023-12-28T00:45:25.576Z","msg":"Cycling agent for type undefined-auth"}
+{"level":30,"time":"2023-12-28T00:45:25.576Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":30,"time":"2023-12-28T00:45:25.578Z","msg":"getAllFromCache - 0 unprocessed"}
+{"level":30,"time":"2023-12-28T00:45:25.578Z","msg":"getAllFromCache - done retrieving 0 unprocessed"}
+{"level":30,"time":"2023-12-28T00:45:25.578Z","msg":"MessageReceiver.queueAllCached - finished"}
+{"level":30,"time":"2023-12-28T00:45:25.579Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-28T00:45:26.432Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv4 addr after 238ms (attempts v4=1 v6=0)"}
+{"level":30,"time":"2023-12-28T00:45:26.507Z","msg":"SocketManager: connected unauthenticated socket (localPort: 50960)"}
+{"level":30,"time":"2023-12-28T00:45:26.508Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":50,"time":"2023-12-28T00:45:26.578Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":30,"time":"2023-12-28T00:45:26.578Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-28T00:45:26.578Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-28T00:45:26.578Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-28T00:45:26.578Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-28T00:45:26.578Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-28T00:45:26.579Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-28T00:45:26.579Z","msg":"SocketManager.reconnect: complete."}
+{"level":50,"time":"2023-12-28T00:45:26.579Z","msg":"PUT (WS) https://chat.signal.org/v1/devices/unauthenticated_delivery 401 Error"}
+{"level":50,"time":"2023-12-28T00:45:26.579Z","msg":"Error: Unable to register for unauthenticated delivery support. HTTPError: promiseAjax: error response; code: 401\n    at makeHTTPError ([REDACTED]/resources/app.asar/preload.bundle.js:88:951)\n    at _promiseAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:111)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async _retryAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:696)\n    at async G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5973)\n    at async Object.Ze [as registerSupportForUnauthenticatedDelivery] ([REDACTED]/resources/app.asar/preload.bundle.js:88:8401)\n    at async connect ([REDACTED]/resources/app.asar/preload.bundle.js:159:24064)\nOriginal stack:\nError\n    at _outerAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:867)\n    at G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5979)\n    at Object.Ze [as registerSupportForUnauthenticatedDelivery] ([REDACTED]/resources/app.asar/preload.bundle.js:88:8407)\n    at connect ([REDACTED]/resources/app.asar/preload.bundle.js:159:24072)\nCaused by: undefined"}
+{"level":30,"time":"2023-12-28T00:45:26.579Z","msg":"Start idle detector"}
+{"level":30,"time":"2023-12-28T00:45:26.579Z","msg":"challenge: online, starting 0 queues"}
+{"level":30,"time":"2023-12-28T00:45:26.579Z","msg":"challenge: startAllQueues force=false"}
+{"level":40,"time":"2023-12-28T00:45:26.595Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":40,"time":"2023-12-28T00:45:47.266Z","msg":"background/setInterval: Failed to parse integer from desktop.retryRespondMaxAge feature flag Error: retryRespondMaxAge\n    at parseIntOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:20:30367)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:159:13770"}
+{"level":30,"time":"2023-12-28T00:45:47.269Z","msg":"RetryPlaceholders.getExpiredAndRemove: Found 0 expired items"}
+{"level":30,"time":"2023-12-28T00:45:47.278Z","msg":"retryPlaceholders/interval: Found 0 expired items"}
+{"level":30,"time":"2023-12-28T00:45:48.121Z","msg":"UpdateKeysListener: Next update scheduled for 2023-12-28T00:45:48.121Z"}
+{"level":30,"time":"2023-12-28T00:45:48.126Z","msg":"UpdateKeysListener: Updating keys..."}
+{"level":50,"time":"2023-12-28T00:45:48.126Z","msg":"UpdateKeysListener.run failure - trying again in five minutes Error: getIdentityKeyOrThrow: Missing identity key\n    at F2.getIdentityKeyOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:75:56179)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:75:57554\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:71:367317)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:71:367364\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:43:30604)\n    at $ee._tryToStartAnother ([REDACTED]/resources/app.asar/preload.bundle.js:43:29666)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:43:30841\n    at new Promise (<anonymous>)\n    at $ee.add ([REDACTED]/resources/app.asar/preload.bundle.js:43:30470)\n    at F2.queueTask ([REDACTED]/resources/app.asar/preload.bundle.js:75:52595)"}
+{"level":30,"time":"2023-12-28T00:46:25.990Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-28T00:47:25.991Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-28T00:48:25.992Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-28T00:48:30.932Z","msg":"maybeFetchNewCredentials: fetching credentials for 1703721600000 through 1704240000000"}
+{"level":30,"time":"2023-12-28T00:48:30.933Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703721600&redemptionEndSeconds=1704240000&pniAsServiceId=true"}
+{"level":30,"time":"2023-12-28T00:48:30.933Z","msg":"SocketManager: connecting unauthenticated socket"}
+{"level":40,"time":"2023-12-28T00:48:32.056Z","msg":"createHTTPSAgent.createConnection(chat.signal.org): connected to IPv6 addr after 576ms (attempts v4=1 v6=1)"}
+{"level":30,"time":"2023-12-28T00:48:32.260Z","msg":"SocketManager: connected unauthenticated socket (localPort: 37024)"}
+{"level":30,"time":"2023-12-28T00:48:32.260Z","msg":"SocketManager: starting expiration timer for unauthenticated socket"}
+{"level":50,"time":"2023-12-28T00:48:32.465Z","msg":"Got 401 from Signal Server. We might be unlinked."}
+{"level":30,"time":"2023-12-28T00:48:32.466Z","msg":"reconnectToWebSocket starting..."}
+{"level":30,"time":"2023-12-28T00:48:32.466Z","msg":"SocketManager.reconnect: starting..."}
+{"level":30,"time":"2023-12-28T00:48:32.466Z","msg":"SocketManager.onOffline"}
+{"level":40,"time":"2023-12-28T00:48:32.466Z","msg":"WebSocket: closing socket unauthenticated"}
+{"level":30,"time":"2023-12-28T00:48:32.466Z","msg":"WebSocketResource(unauthenticated).close(3000)"}
+{"level":30,"time":"2023-12-28T00:48:32.467Z","msg":"SocketManager.onOnline"}
+{"level":30,"time":"2023-12-28T00:48:32.467Z","msg":"SocketManager.reconnect: complete."}
+{"level":50,"time":"2023-12-28T00:48:32.467Z","msg":"GET (WS) https://chat.signal.org/v1/certificate/auth/group?redemptionStartSeconds=1703721600&redemptionEndSeconds=1704240000&pniAsServiceId=true 401 Error"}
+{"level":30,"time":"2023-12-28T00:48:32.468Z","msg":"runWithRetry: maybeFetchNewCredentials failed. Waiting 300000ms for retry. Error: HTTPError: promiseAjax: error response; code: 401\n    at makeHTTPError ([REDACTED]/resources/app.asar/preload.bundle.js:88:951)\n    at _promiseAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:111)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async _retryAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:696)\n    at async G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5973)\n    at async Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4065)\n    at async maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27966)\n    at async runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26905)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)\nOriginal stack:\nError\n    at _outerAjax ([REDACTED]/resources/app.asar/preload.bundle.js:88:867)\n    at G ([REDACTED]/resources/app.asar/preload.bundle.js:88:5979)\n    at Object.Nd [as getGroupCredentials] ([REDACTED]/resources/app.asar/preload.bundle.js:89:4071)\n    at maybeFetchNewCredentials ([REDACTED]/resources/app.asar/preload.bundle.js:81:27974)\n    at runWithRetry ([REDACTED]/resources/app.asar/preload.bundle.js:81:26911)\n    at async Object.initializeGroupCredentialFetcher ([REDACTED]/resources/app.asar/preload.bundle.js:81:26809)"}
+{"level":40,"time":"2023-12-28T00:48:32.483Z","msg":"WebSocketResource(unauthenticated): Socket closed"}
+{"level":30,"time":"2023-12-28T00:49:25.992Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":30,"time":"2023-12-28T00:50:25.993Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}
+{"level":40,"time":"2023-12-28T00:50:47.267Z","msg":"background/setInterval: Failed to parse integer from desktop.retryRespondMaxAge feature flag Error: retryRespondMaxAge\n    at parseIntOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:20:30367)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:159:13770"}
+{"level":30,"time":"2023-12-28T00:50:47.269Z","msg":"RetryPlaceholders.getExpiredAndRemove: Found 0 expired items"}
+{"level":30,"time":"2023-12-28T00:50:47.305Z","msg":"retryPlaceholders/interval: Found 0 expired items"}
+{"level":30,"time":"2023-12-28T00:50:48.127Z","msg":"UpdateKeysListener: Next update scheduled for 2023-12-28T00:50:48.127Z"}
+{"level":30,"time":"2023-12-28T00:50:48.132Z","msg":"UpdateKeysListener: Updating keys..."}
+{"level":50,"time":"2023-12-28T00:50:48.133Z","msg":"UpdateKeysListener.run failure - trying again in five minutes Error: getIdentityKeyOrThrow: Missing identity key\n    at F2.getIdentityKeyOrThrow ([REDACTED]/resources/app.asar/preload.bundle.js:75:56179)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:75:57554\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:71:367317)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:71:367364\n    at run ([REDACTED]/resources/app.asar/preload.bundle.js:43:30604)\n    at $ee._tryToStartAnother ([REDACTED]/resources/app.asar/preload.bundle.js:43:29666)\n    at [REDACTED]/resources/app.asar/preload.bundle.js:43:30841\n    at new Promise (<anonymous>)\n    at $ee.add ([REDACTED]/resources/app.asar/preload.bundle.js:43:30470)\n    at F2.queueTask ([REDACTED]/resources/app.asar/preload.bundle.js:75:52595)"}
+{"level":30,"time":"2023-12-28T00:51:26.015Z","msg":"attachment_downloads/_maybeStartJob: no attachment jobs to run"}

@@ -1,0 +1,137 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+\noindent\underline{\textbf{Taylor's Theorem}}
+\begin{remark}
+Taylor's theorem is essentially the Mean Value Theorem for higher order derivatives.
+\end{remark}
+
+\begin{definition}[$n$-times Differentiable]
+We say $f: I\to \RR$ is \vocab{$n$-times differentiable} on $J\subset I$ if $f', f'', \dots, f^{(n)}$ exist at every point in $J.$
+\end{definition}
+
+\begin{notation}
+We denote the $n$-th derivative of $f$ as $f^{(n)}$ (as used above).
+\end{notation}
+
+\begin{theorem}[Taylor]
+Suppose $f:[a,b]\to \RR$ is continuous and has $n$ continuous derivatives on $[a,b]$ such that $f^{(n+1)}$ exists on $(a,b).$ Given $x_0,x\in [a,b]$, there exists a $c\in (x_0,x)$ such that 
+\[
+f(x) = \sum_{k=0}^n \frac{1}{k!}f^{(k)}(x_0)(x-x_0)^k + \frac{f^{(n+1)}(c)}{(n+1)!}(x-x_0)^{n+1}.
+\]
+Denote the large sum as $P_n(x)$ and the last term with $R_n(x)$.
+\end{theorem}
+
+\begin{definition}
+$P_n(x)$ is the $n$-th order Taylor polynomial for $f$ at $x_0$. $R_n(x)$ is the $n$-th order remainder term.
+\end{definition}
+
+We will essentially apply the Mean Value Theorem $n+1$ times to prove Taylor's theorem.
+
+\textbf{Proof}: Let $x,x_0\in [a,b]$. If $x=x_0$ then any $c$ will satisfy the theorem. So, suppose $x\neq x_0$. Let $M_{x,x_0} = \frac{f(x) -P_n(x)}{(x-x_0)^{n+1}}$. Hence,
+\[
+f(x) = P_n(x) + M_{x,x_0}(x-x_0)^{n+1}.
+\]
+Now, for $0\leq k \leq n$,
+\[
+f^k(x_0) = P_n^{(k)}(x_0).
+\]
+Let $g(s) = f(s) - P_n(s)-M_{x,x_0}(s-x_0)^{n+1}$ (notably, $n+1$-times differentiable. Then,
+\begin{align*}
+    g(x_0) &= f(x_0) -P_n(x_0) - M_{x,x_0}(x_0-x_0)^{n+1} = 0 \\
+    g'(x_0) &= f'(x_0) - P_n'(x_0) - M_{x,x_0} (n+1)(x_0-x_0)^n = 0 \\
+    ~&\vdots \\
+    g^{(n)}(x_0) &= f^{(n)}(x_0) - P_n^{(n)}(x_0) - M_{x,x_0}(n+1)!(x_0-x_0) = 0.
+\end{align*}
+Now, notice that $g(x) = 0$ and $g(x_0) = 0$. By the MVT, there exists an $x_1\in (x_0,x)$ such that $g'(x_1) = 0$. Thus, $g'(x_0) = 0$ and $g'(x_1) = 0$. Therefore, $\exists x_2\in (x_0,x_1)$ such that $g''(x_2) = 0$. Continuing, we analogously find $x_n$ between $x_0$ and $x_{n-1}$ such that $g^{(n)}(x_n) = 0$. Then, finally, $g^{(n)}(x_0) = 0$ and $g^{(n)}(x_n) = 0$ implies $\exists c\in (x_0,x_n)$ (and thus between $x_0$ and $x$) such that 
+\[
+g^{(n+1)}(c) = 0.
+\]
+We may compute 
+\[
+\frac{\mathrm d^{n+1}}{\mathrm ds^{(n+1)}}M_{x,x_0} (s-x_0)^{n+1} = M_{x,x_0}(n+1)!.
+\]
+Furthermore, $P_n^{(n+1)} (c) = 0$ since $P_n$ is a polynomial of degree $n$. Thereforee, 
+\[
+0 = g^{(n+1)} (c) = f^{(n+1)}(c) - M_{x,x_0}(n+1)!,
+\]
+which implies $M_{x,x_0} = \frac{f^{(n+1)!}(c)}{(n+1)!}$ and thus 
+\[
+f(x) = P_n(x) + \frac{f^{(n+1)}(c)}{(n+1)!} (x-x_0)^{n+1}.
+\]\qed 
+
+\begin{theorem}[Second Derivative Test]
+Suppose $f:(a,b) \to \RR$ has two continuous derivatives. If $x_0\in (a,b)$ such that $f'(x_0) = 0$ and $f''(x_0) >0$, then $f$ has a strict relative minimum at $x_0.$
+\end{theorem}
+\textbf{Proof}: Since $f''$ is continuous at $x_0$ and 
+\[
+\lim_{c\to x_0} f''(c) = f''(x_0)>0,
+\]
+we have that $\exists \delta>0$ such that for all $c\in (x_0-\delta, x_0+\delta)$, $f''(c) >0$. Let $x\in (x_0-\delta, x_0+\delta)$ (as you will show in your homework). Then, by Taylor's theorem, $\exists c$ between $x$ and $x_0$ (hence $c\in (x_0-\delta, x_0+\delta)$) such that 
+\[
+f(x) = f(x_0) + \frac{f''(c)}{2} (x-x_0)^2 \geq f(x_0),
+\]
+with $f(x) > f(x_0)$ if $x\neq x_0$. \qed 
+
+\subsection*{The Riemann Integral}
+
+\begin{remark}
+Riemann integration is the first rigorous \underline{theory} of `area' that agrees with \underline{experience} (areas of rectangles, triangles, circles), and it is the inverse of differentiation. However, it is not a \underline{complete} theory of area (see Lebesgue integration).
+\end{remark}
+
+\noindent\underline{\textbf{The Riemann Integral}}
+
+\begin{definition}
+We define the set
+\[
+C([a,b]) := \{f:[a,b]\to \RR \mid f \text{~~is continuous}\}.
+\]
+\end{definition}
+
+\begin{definition}[Partition]
+A \vocab{partition} $\underline{x}$ of $[a,b]$ is a finite set 
+\[
+\underline{x} = \{a= x_0 < x_1<\dots <x_n = b\}.
+\]
+The \vocab{norm} of $\underline{x}$, denoted $\lVert \underline{x}\rVert$, is the number 
+\[
+\lVert \underline{x}\rVert := \max\{x_1-x_0, x_2-x_1,\dots, x_n-x_{n-1}\}.
+\]
+\end{definition}
+
+\begin{definition}[Tag]
+If $\underline{x}$ is a partition, a \vocab{tag} of $\underline{x}$ is a finite set $\underline{\xi} = \{\xi_1,\dots, \xi_n\}$ such that 
+\[
+a = x_0 \leq \xi_1\leq x_1\leq \xi_2\leq x_2\leq \dots \leq x_{n-1}\leq \xi_n \leq x_n = b.
+\]
+The pair $(\underline{x},\underline{\xi})$ is referred to as a \vocab{tagged partition}.
+\end{definition}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{pics/fig11.PNG}
+\end{figure}
+
+\begin{example}
+Consider the tagged partition $(\underline{x},\underline{\xi}) = (\{1, 3/2, 2, 3\}, \{5/4, 7/4, 5/2\}$. Then, 
+\[
+\lVert \underline{x}\rVert = \max\{3/2-1, 2-3/2, 3-2\} = 1.
+\]
+\end{example}
+
+\begin{definition}[Riemann sum]
+The \vocab{Riemann sum} of $f$ corresponding to $(\underline{x},\underline{\xi})$ is the number 
+\[
+S_f(\underline{x}, \underline{\xi}):= \sum_{k=1}^n f(\xi_k) (x_k-x_{k-1}).
+\]
+\end{definition}
+
+Let's try to understand how to interpret this using a picture. For $f\in C([a,b])$ positive, $S_f(\underline{x},\underline{\xi})$ is an approximate area under the graph of $f$. As $\lVert \underline{x}\rVert\to 0$, we \textit{should} expect these approximate areas to converge to a number $A$, which we \textbf{interpret} as the area under the curve $f$ on the interval $[a,b]$.
+
+\begin{question}
+Do these approximate sums \textit{actually converge?}
+\end{question}
+
+We will answer this question and more during the next few lectures.

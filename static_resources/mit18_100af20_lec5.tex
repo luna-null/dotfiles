@@ -1,0 +1,154 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+%\subsection*{Lecture 5:}
+%\textbf{\underline{The Archimedian Property, Density of the Rationals, and Absolute Value}}
+
+\noindent For all $x,y\in \RR$ and $x<y$, there exists an $r\in \RR$ such that $x<r<y$ (take $r = \frac{x+y}{2}$). 
+\begin{question}
+Can we find $r\in \QQ$ such that $x<r<y$?
+\end{question}
+
+\begin{theorem}
+The answer is yes!
+\begin{enumerate}[label = \roman*)]
+    \item (Archimedian Property) If $x,y\in \RR$ and $x>0$, then $\exists n\in \NN$ such that $nx>y$.
+    \item (Density of $\QQ$) If $x,y\in \RR$ and $x<y$ then $\exists r\in \QQ$ such that $x<r<y$.
+\end{enumerate}
+\end{theorem}
+\textbf{Proof}: 
+\begin{enumerate}[label = \roman*)]
+    \item Suppose that $x,y\in \RR$ and $x>0$. Then we wish to show that $\exists n\in \NN$ such that $n>\frac{y}{x}$. Suppose this is not the case. Then, $\forall n\in \NN$, $n\leq \frac{y}{x}$. In other words, $\NN$ is bounded above by $\frac{y}{x}$. Hence, $\exists a = \sup \NN\in \RR$. Since $a$ is the least upper bound for $\NN$, $a-1$ cannot be an upper bound for $\NN$. Hence, $\exists m\in \NN$ such that 
+    \[
+        a-1<m \implies a<m+1\in \NN.
+    \]
+    However, this is a contradiction, because then $a$ is not an upper bound for $\NN$. Therefore, $\exists n \in \NN$ such that $n\geq \frac{y}{x}$.
+    \item Suppose $x,y\in \RR$ and $x<y$. Then, there are three cases:
+    \begin{itemize}
+        \item $0\leq x<y$,
+        \item $x<0<y$, and 
+        \item $x<y\leq 0$.
+    \end{itemize}
+    For the second case, take $r=0\in \QQ$. So, assume that $0\leq x<y$. Then, by the Archimedian Property, $\exists n\in \NN$ such that $n(y-x)>1.$ Again by the Archimedean property, $\exists l\in \NN$ such that $l>nx$. Thus, consider the set
+    \[
+    S = \{k\in \NN \mid k>nx\}.
+    \]
+    By the well-ordering property of $\NN$, $S$ has a least element, $m\in S\implies nx<m \implies x<\frac{m}{n}\in \QQ$.
+    
+    Since $m-1\notin S$, $m-1\leq nx\implies m\leq nx+1<ny$. Hence, $\frac{m}{n}<y$. Therefore,
+    \[
+    x<\frac{m}{n}<y.
+    \]
+    If instead we have $x<y\leq 0$, then $0\leq -y <-x \implies \exists \Tilde{r}\in \QQ$ such that 
+    \[
+    -y<\Tilde{r}< x \implies x<-\Tilde{r}< y
+    \]
+    by the previous case. 
+\end{enumerate}
+\qed 
+
+\begin{theorem}
+$1 = \sup\left\{1- \frac{1}{n}\mid n\in \NN\right\}$.
+\end{theorem}
+\textbf{Proof}: If $n\in \NN,$ then $1-\frac{1}{n}<1\implies$ 1 is an upper bound of this set. Suppose that $x$ is an upper bound for the set $\{1-1/n \mid n\in \NN\}$. We now prove that $x\geq 1$. For the sake of contradiction, assume that $x<1$. By the Archimedean property, there exists an $n\in \NN$ such that $1<n(1-x)$. Therefore, $\exists n\in \NN$ such that $x<1-1/n$. Hence, $x$ is not an upper bound for the set $\{1-1/n\mid n\in \NN\}$ if $x<1$. Thus, if $x$ is an upper bound, $x\geq 1$. Therefore, 
+\[
+\sup \left\{1-\frac{1}{n}\mid n\in \NN\right\} = 1.
+\]
+\qed 
+
+We now begin proving some theorems about supremums and infinimums which will make them easier to use.
+\begin{theorem}
+Suppose that $S\subset \RR$ is nonempty and bounded above. Then, $x= \sup S$ if and only if 
+\begin{enumerate}
+    \item $x$ is an upper bound for $S$.
+    \item for all $\epsilon>0$, $\exists y\in S$ such that $x-\epsilon<y\leq x$.
+\end{enumerate}
+\end{theorem}
+\textbf{Proof}: This is left as an exercise in Assignment 3. \qed
+
+\begin{notation}
+For $x\in \RR$ and $A\subset \RR$, define
+\begin{align*}
+    x+A &:= \{x+a\mid a\in A\} \\
+    xA &:= \{xa\mid a\in A\}.
+\end{align*}
+\end{notation}
+
+\begin{theorem}
+Using this new notation, we have the following theorems:
+\begin{enumerate}
+    \item If $x\in\RR$ and $A$ is bounded above, then $x+A$ is bounded above and 
+    \[
+    \sup(x+A) = x+\sup A.
+    \]
+    \item If $x>0$ and $A$ is bounded above then $xA$ is bounded above and 
+    \[
+    \sup(xA) = x\sup A.
+    \]
+\end{enumerate}
+\end{theorem}
+\textbf{Proof}: 
+\begin{enumerate}
+    \item Suppose that $x\in \RR$ and $A$ is bounded above. Therefore, $\sup A \in \RR$ by the least upper bound property of $\RR$. Then, $\forall a\in A$, $a\leq \sup A.$ Hence,
+    \[
+    \forall a\in A, ~~ x+a\leq x+\sup A. 
+    \]
+    Hence, $x+\sup A$ is an upper bound for $x+A$. Let $\epsilon>0$. Then, $\exists y\in A$ such that 
+    \[
+    \sup A - \epsilon < y \leq \sup A\implies (x+\sup A) -\epsilon < y+x \leq x+\sup A.
+    \]
+    Therefore, by our previous theorem, $x+\sup A = \sup(x+A)$.
+    
+    \item Suppose that $x>0$ and $A$ is bounded above. Thus, $\sup A\in \RR$. Then, $\forall a\in A$, $a\leq \sup A$ and thus $xa\leq x\sup A$. Hence, $x\sup A$ is an upper bound of $xA$. Let $\epsilon>0$. Then $\exists y\in A$ such that 
+    \[
+    \sup A -\frac{\epsilon}{x}< y\leq \sup A \implies x\sup A - \epsilon < xy \leq x\sup A.
+    \]
+    Therefore, by the previous theorem, $\sup(xA) = x\sup A$.
+\end{enumerate}
+\qed 
+
+\begin{theorem}
+Let $A,B\subset \RR$ such that $\forall x\in A,\forall y\in B$, $x\leq y$. Then, $\sup A \leq \inf B$. 
+\end{theorem}
+\textbf{Proof}: The proof of this is left to the reader. \qed
+
+\noindent \underline{\textbf{Absolute Value}}
+
+\begin{definition}
+If $x\in \RR$ we define
+\[
+|x| := \begin{cases}
+x, &x\geq 0 \\
+-x, &x\leq 0
+\end{cases}.
+\]
+\end{definition}
+\begin{theorem}
+We can prove a bunch of theorems about the absolute value function that we usually take for granted:
+\begin{enumerate}[label = \arabic*)]
+    \item $|x|\geq 0$ and $|x| = 0 \iff x = 0$.
+    \item $\forall x\in \RR$, $|-x| = |x|$.
+    \item $\forall x,y\in \RR$, $|xy| = |x||y|$.
+    \item $|x^2| = x^2 = |x|^2$.
+    \item If $x,y\in \RR$, then $|x|\leq y \iff -y\leq x \leq y$.
+    \item $\forall x\in \RR$, $x\leq |x|$.
+\end{enumerate}
+\end{theorem}
+\textbf{Proof}: 
+\begin{enumerate}[label = \arabic*)]
+    \item If $x\geq 0$ then $|x| = x \geq 0$. If $x\leq 0,$ then $-x\geq 0 \implies |x| = -x\geq 0$. Thus, $|x|\geq 0$. Now suppose $x = 0$. Then, $|x| = x = 0$. For the other direction, suppose $|x| = 0$. Then, if $x\geq 0\implies x = |x| = 0$. If $x\leq 0$, then $-x = |x| = 0$. Therefore, $x=0\iff |x| = 0$.
+    
+    \item If $x\geq 0$ then $-x \leq 0$. Thus, $|x| = x = -(-x) = |-x|$. If $x\leq 0$ then $-x\geq 0$ and thus $|-x| = |-(-x)| = |x|$.
+    \item If $x\geq 0$ and $y\geq 0$, then $xy \geq 0$ and $|xy| = xy = |x||y|$. If $x\leq 0$ and $y\leq 0$, then \[xy\leq 0 \implies |xy| = -xy = (-x)y = |x||y|.\]
+    
+    \item Take $x=y$ in 3). Then, $|x^2| = |x|^2$. Since $x^2 \geq 0$, it follows that $|x^2| = x^2$.
+    
+    \item Suppose $|x|\leq y$. If $x\geq 0$, then $-y\leq 0\leq x = |x| \leq y$. Therefore, $-y\leq x \leq y$. If $x\leq 0$, then $-x\geq 0$ and $|-x|\leq y$. Hence, $-y \leq -x\leq y \implies -y\leq x \leq y$.
+    
+    \item Take $y = |x|$ in 5).
+\end{enumerate}
+\qed 
+
+On its own, these properties of the absolute values may not seem all that useful, but in the next lecture we will prove the \textit{extremely} important Triangle Inequality.

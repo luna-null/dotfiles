@@ -1,0 +1,20 @@
+{
+  "course_title":"Real Analysis",
+  "course_description":"This course covers the fundamentals of mathematical analysis: convergence of sequences and series, continuity, differentiability, Riemann integral, sequences and series of functions, uniformity, and the interchange of limit operations. It shows the utility of abstract concepts through a study of real numbers, and teaches an understanding and construction of proofs.",
+  "site_uid":"b9de9b15-2e9c-4deb-8fa9-5dd1963ebfaf",
+  "legacy_uid":"","instructors": [{
+    "first_name":"Casey",
+    "last_name":"Rodriguez",
+    "middle_initial":"",
+    "salutation":"Dr.",
+    "title":"Dr. Casey Rodriguez"}],"department_numbers":["18"],
+  "learning_resource_types":["Lecture Notes","Lecture Videos","Exams","Problem Sets"],
+  "topics":[["Mathematics","Calculus"],["Mathematics","Mathematical Analysis"]],
+  "primary_course_number":"18.100A",
+  "extra_course_numbers":"18.1001",
+  "term":"Fall",
+  "year":"2020",
+  "level":["Undergraduate","Graduate"],
+  "image_src":"./static_resources/18-100af20.jpg",
+  "course_image_metadata":{"body":"","content_type":"resource","description":"","draft":false,"file":"/courses/18-100a-real-analysis-fall-2020/18-100af20.jpg","file_type":"image/jpeg","image_metadata":{"caption":"Dr. Casey Rodriguez teaching Lecture 1 of Real Analysis. (Image by MIT OpenCourseWare.)","credit":"","image-alt":"A man standing in front of a blackboard and pointing to some text on the blackboard."},"iscjklanguage":false,"learning_resource_types":[],"license":"https://creativecommons.org/licenses/by-nc-sa/4.0/","resourcetype":"Image","title":"18-100af20.jpg","uid":"1dfc01c9-ec55-4054-a3ae-a5d068f69412","video_files":{"video_captions_file":"","video_thumbnail_file":"","video_transcript_file":""},"video_metadata":{"video_speakers":"","video_tags":"","youtube_description":"","youtube_id":""}}}
+

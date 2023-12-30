@@ -1,0 +1,116 @@
+# Read `man 5 sway` for a complete reference.
+
+### Idle configuration
+#
+# Example configuration:
+
+set $lock swaylock -f -i /home/le/Pictures/background-images/lockscreen.jpg 
+exec swayidle -w \
+        timeout 300 $lock \
+        timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+        before-sleep $lock
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:DejaVuSansM Nerd Font Mono 11
+#font pango:DejaVuSansMono Nerd Font 11
+font pango:FiraCode Nerd Font, FontAwesome, 11
+
+
+
+### Variables - this file is mostly these
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+set $alt Mod1
+
+# Directory to custom Scripts
+set $BIN_DIR ~/.local/bin/sway
+
+# Your preferred application launcher
+# Note: it's recommended that you pass the final command to sway
+#set $menu rofi -combi-modi window#drun -show combi -modi combi -show-icons
+#set $menu rofi -m $(swaymsg -t get_outputs | jq 'map(select(.active) | .focused) | index(true)') -show combi -modi combi -combi-modi window#drun -show-icons -run-command 'swaymsg exec -- {cmd}'
+
+# set $menu dmenu_path | wofi -c ~/.config/sway/wofi.conf --show drun | xargs swaymsg exec --
+
+# Prefered lock command
+# set $lock $BIN_DIR/lock.sh
+
+# Inhibit Idle if a window is fullscreen
+for_window [class="^.*"] inhibit_idle fullscreen
+for_window [app_id="^.*"] inhibit_idle fullscreen
+
+# Focus window when mouse hovers it
+focus_follows_mouse yes
+
+# Moves mouse to the newly created window
+mouse_warping none
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+# Directory to custom Scripts
+set $BIN_DIR ~/.local/bin/sway
+
+# bemenu
+set $menu XDG_DATA_DIRS=/usr/share/:/usr/local/share/:/var/lib/flatpak/exports/share/:$HOME/.local/share/flatpak/exports/share/ j4-dmenu-desktop --dmenu="bemenu-run.sh -l 30" --term="alacritty" --no-generic --display-binary
+# Config for sway
+# Read `man 5 sway` for a complete reference.
+#
+# All sway.d/99_*.conf files are in .gitignore
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term alacritty
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu wofi -c ~/.config/sway/wofi.conf --show drun | xargs swaymsg exec --
+
+set $bindsym bindsym --to-code --no-repeat 
+    
+
+# Define names for workspaces
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
+set $ws11 11: ℚ
+set $ws12 12: ✉
+set $ws13 13: 🗨
+set $ws14 14: ❐
+set $ws15 15: ❬/❭
+set $ws16 16
+set $ws17 17
+set $ws18 18
+set $ws19 19: ◘
+set $ws20 20
+set $ws20 21
+set $ws20 22
+
+include $HOME/.config/sway/config.d/*
+# include $HOME/.config/sway/$(hostname)/*
+

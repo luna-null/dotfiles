@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/sway-start
+# shellcheck disable=SC2034
+TIME_STAMP="20230808.185020"
+
+# Copyright (C) 2020-2021 Bob Hepple <bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+# startup script for sway from console
+
+[[ "$1" ]] && {
+    echo "Usage: $( basename "$0" ): start a sway session from a console tty"
+    exit 0
+}
+
+LOGFILE=.wsession-errors
+exec 1> ~/$LOGFILE 2>&1
+echo "sway Starting: $( date )"
+set -x
+
+# see: https://wiki.archlinux.org/title/Qt#Configuration_of_Qt_5_applications_under_environments_other_than_KDE_Plasma
+# https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications
+# to be the same as GTK:
+export QT_STYLE_OVERRIDE=adwaita
+export QT_QPA_PLATFORM=wayland
+export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+
+# GTK+ apps take 20s to start waiting for a portal:
+# https://github.com/swaywm/sway/issues/5732
+export GTK_USE_PORTAL=0
+
+# maybe:
+#export QT_QPA_PLATFORMTHEME=qt5ct
+
+export MOZ_ENABLE_WAYLAND=1
+
+# I doubt these are needed:
+#export XDG_SESSION_TYPE=wayland
+#export XDG_CURRENT_DESKTOP=sway
+
+export XDG_PICTURES_DIR=$HOME/media/backgrounds
+
+# https://github.com/swaywm/sway/wiki/Running-programs-natively-under-wayland says to _not_ do this:
+#export GDK_BACKEND=wayland
+
+#XDG_DATA_DIRS=$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+
+export XDG_SESSION_DESKTOP=sway
+export XDG_CURRENT_DESKTOP=sway
+
+# to stop warnings like "dbind-WARNING **: ... Couldn't register with accessibility bus: Did not receive a reply."
+export NO_AT_BRIDGE=1
+
+# see https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
+[[ $( hostname ) == nina ]] && export WLR_NO_HARDWARE_CURSORS=1
+
+[[ "$SSH_ASKPASS" ]] || export SSH_ASKPASS="gnome-ssh-askpass"
+
+# cleanup older sessions:
+rm "$HOME"/.cache/*.wob
+
+if test -z "${XDG_RUNTIME_DIR}"; then
+  export XDG_RUNTIME_DIR=/tmp/${UID}-runtime-dir
+  if ! test -d "${XDG_RUNTIME_DIR}"; then
+    mkdir "${XDG_RUNTIME_DIR}"
+    chmod 0700 "${XDG_RUNTIME_DIR}"
+  fi
+fi
+
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh"
+export SSH_ASKPASS=gnome-ssh-askpass
+
+exec dbus-launch --sh-syntax --exit-with-session sway
+#dbus-run-session sway
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
+

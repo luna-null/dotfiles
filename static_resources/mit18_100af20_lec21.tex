@@ -1,0 +1,147 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+\begin{theorem}[Riemann Integral]
+Let $f\in C([a,b])$. Then, there exists a unique number denoted $\int_a^b f(x)\,\mathrm dx\in \RR$ with the following property: for all sequences of tagged partitions $\{(\underline{x}^r, \underline{\xi}^r)\}$ such that $\lVert \underline{x}^r\rVert \to 0$, we have 
+\[
+\lim_{r \to \infty} S_f(\underline{x}^r, \underline{\xi}^r) = \int_a^b f(x) \,\mathrm dx.
+\]
+\end{theorem}
+\begin{remark}
+Uniqueness follows immediately from uniqueness of limits of sequences of real numbers. All we need to prove is existence of $\int_a^b f(x) \,\mathrm dx$.
+\end{remark}
+
+Before giving the proof of the theorem, we first prove some useful facts. Note that we number the next few theorems to use them in our proof of the above theorem.
+
+\begin{definition}[Modulus of Continuity]
+For $f\in C([a,b])$, $\eta >0$, we define the \vocab{modulus of continuous}
+\[
+w_f(\eta) = \sup \{|f(x) - f(y)| \mid |x-y| \leq \eta\}.
+\]
+\end{definition}
+
+\begin{remark}
+Note that we number the following theorems to reference later.
+\end{remark}
+
+\begin{theorem}[Theorem I]
+For all $f\in C([a,b])$, $\lim_{\eta\to 0} w_f(\eta) = 0$. In other words, for all $\epsilon>0$, there exists a $\delta>0$ such that $\forall \eta < \delta$, $w_f(\eta) < \epsilon$.
+\end{theorem}
+\textbf{Proof}: Let $\epsilon>0$. Since $f\in C([a,b])$, $f$ is uniformly continuous on $[a,b]$ (as continuity on a bounded interval is equivalent to uniform continuity on the same interval). Thus, $\exists \delta_0 >0$ such that if $|x-y| < \delta_9$, then $|f(x)-f(y)|<\epsilon/2$. Choose $\delta = \delta_0$ and let $\eta < \delta$. Then, if $|x-y|\leq \eta < \delta = \delta_0$, then 
+\[
+|f(x) - f(y)|< \frac{\epsilon}{2}.
+\]
+Therefore, $\epsilon/2$ is an upper bound for $\{|f(x) - f(y)| \mid |x-y|\leq \eta\}$. Hence, 
+\[
+w_f (\eta) \leq \epsilon/2 < \epsilon.
+\] \qed 
+
+\begin{theorem}[Theorem II]
+If $(\underline{x}, \underline{\xi})$ and $(\underline{x}', \underline{\xi}')$ are tagged partitions of $[a,b]$ such that $\underline{x}\subset \underline{x}'$, then if $f\in C([a,b])$ then 
+\[
+|S_f(\underline{x},\underline{\xi}) - S_f(\underline{x}',\underline{\xi}')| \leq w_f(\lVert \underline{x}\rVert) (b-a).
+\]
+\end{theorem}
+
+\begin{definition}[Refinement]
+If $(\underline{x}, \underline{\xi})$ and $(\underline{x}', \underline{\xi}')$ are tagged partitions of $[a,b]$ such that $\underline{x}\subset \underline{x}'$, we say $\underline{x}'$ is a \vocab{refinement of $\underline{x}$}.
+\end{definition}
+
+\begin{remark}
+Refinements of $\underline{x}$ are obtained by adding more partition points.
+\end{remark}
+
+\textbf{Proof}: For $k=1,\dots, n$, let 
+\begin{align*}
+    \underline{y}(k) &= \{x_{k-1} = x'_\ell, x_{\ell+1}', \dots, x_m' = x_k\} \\
+    \underline{\eta}(k) &= \{\xi_{\ell+1}', \xi_{\ell+2}', \dots, \xi_m'\}.
+\end{align*}
+Then, 
+\begin{align*}
+    |f(\xi_k)(x_k-x_{k-1}) - S_f(\underline{y}(k), \underline{\eta}(k))| &= \left|f(\xi_k) - \sum_{j= \ell+1}^m f(\xi_j') (x_j'-x_{j-1}')\right| \\
+    &= \left|\sum_{j=\ell+1}^m(f(\xi_k) - f(\xi_j'))(x_j'-x_{j-1}')\right|
+\intertext{since $\sum_{j=1}^m x_j' - x_{j-1}' = x_m - x_\ell' = x_k-x_{k-1}$. Hence,}
+    |f(\xi_k)(x_k-x_{k-1}) - S_f(\underline{y}(k), \underline{\eta}(k))| &\leq \sum_{j=\ell+1}^m |f(\xi_k) - f(\xi_j') |(x_j'-x_{j-1}') \\
+    &\leq \sum_{j=\ell + 1}^m w_f(|x_k-x_{k-1}|)(x_j'-x_{j-1}') \\
+    &\leq w_f(\lVert \underline{x}\rVert (x_k-x_{k-1}).
+\end{align*}
+Thus, 
+\begin{align*}
+    |S_f(\underline{x}, \underline{\xi}) - S_f(\underline{x}', \underline{\xi}')| &= \left|\sum_{k=1}^m(f(\xi_k)(x_k-x_{k-1}) - S_f(\underline{y}(k), \underline{\eta}(k)))\right| \\
+    &\leq \sum_{k=1}^m |f(\xi_k) (x_k - x_{k-1}) - S_f(\underline{y}(k) ,\underline{\eta}(k))| \\
+    &\leq w_f(\lVert \underline{x}\rVert) \sum_{k=1}^n x_k-x_1 = w_f(\lVert \underline{x}\rVert) (b-a).
+\end{align*}
+\qed 
+
+\begin{theorem}[Theorem III]
+If $(\underline{x}, \underline{\xi})$ and $(\underline{x}', \underline{\xi}')$ are any two tagged partitions of $[a,b]$ and $f\in C([a,b])$, then 
+\[
+|S_f(\underline{x}, \underline{\xi}) - S_f(\underline{x}', \underline{\xi}')| \leq (w_f(\lVert \underline{x}) + w_f(\lVert \underline{x}'\rVert))(b-a).
+\]
+\end{theorem}
+\textbf{Proof}: Let $\underline{x}'' = \underline{x} \cup \underline{x'}$ (i.e. a common refinement), and $\underline{\xi}''$ be a tag of $\underline{x}''$. Then, by Theorem II, 
+\begin{align*}
+    |S_f(\underline{x},\underline{\xi}) - S_f(\underline{x}', \underline{\xi}')| &\leq |S_f(\underline{x}, \underline{\xi}) - S_f(\underline{x}'', \underline{\xi}'')| - |S_f(\underline{x}', \underline{\xi}') - S_f(\underline{x}'', \underline{\xi}'')| \\
+    &\leq w_f(\lVert \underline{x}\rVert)(b-a) + w_f(\lVert \underline{x}'\rVert)(b-a).
+\end{align*}
+\qed 
+
+We now have the theorems necessary to prove the big theorem at the beginning of this section.
+
+\textbf{Proof}: Let $\{\underline{y}(r), \underline{\zeta}(r)\}_r$ be a sequence of tagged partitions with $\lVert \underline{y}(r) \rVert \to 0$ as $r\to \infty$. 
+
+Claim 1: $\{S_f(\underline{y}(r), \underline{\zeta}(r)\}_r$ is a Cauchy sequence. Proof: Let $\epsilon>0$. By Theorem I, $\exists \delta>0$ such that $\forall \eta < \delta$,
+\[
+w_f(\eta) < \frac{\epsilon}{2(b-a)}.
+\]
+Since $\lVert \underline{y}(r)\rVert \to 0$, $\exists M_0 \in \NN$ such that $\forall r\geq M_0$,
+\[
+\lVert \underline{y}(r)\rVert < \delta.
+\]
+Choose $M = M_0$. Then, if $r,s\geq M= M_0$, 
+\begin{align*}
+    |S_f(\underline{y}(r), \underline{\zeta}(r)) - S_f(\underline{y}(s), \underline{\zeta}(r))| &\leq (w(\lVert \underline{y}(r)\rVert + w(\lVert \underline{y}(s)\rVert))(b-a)
+\intertext{by Theorem III. Hence, by the above inequalities, it follows that }
+    |S_f(\underline{y}(r), \underline{\zeta}(r)) - S_f(\underline{y}(s), \underline{\zeta}(r))| &< \left(\frac{\epsilon}{2(b-a)} + \frac{\epsilon}{2(b-a)}\right)(b-a) = \epsilon.
+\end{align*}
+This proves Claim 1. Let $L = \lim_{r\to \infty} S_f(\underline{y}(r), \underline{\zeta}(r))$, which exists as Cauchy sequences of real numbers are convergent sequences.
+
+Claim 2: Let $\{(\underline{x}(r), \underline{\xi}(r))\}_r$ be \textbf{any} sequence of partitions with $\lVert \underline{x}(r) \rVert \to 0$. Then, 
+\[
+\lim_{r\to \infty} S_f(\underline{x}(r), \underline{\xi}(r)) = L.
+\]
+With $(\underline{y}(r), \underline{\zeta}(r))$ as before, we have by the Triangle Inequality and Theorem III that 
+\begin{align*}
+    |S_f(\underline{x}(r), \underline{\xi}(r)) - L| &\leq |S_f(\underline{x}(r), \underline{\xi}(r)) - S_f(\underline{y}(r), \underline{\zeta}(r))| + |S_f(\underline{y}(r) , \underline{\zeta}(r)) - L| \\
+    &\leq (w_f(\lVert \underline{x}(r)\rVert) + w_f(\lVert \underline{y}(r)\rVert))(b-a) + |S_f(\underline{y}(r), \underline{\zeta}(r)) - L|\to 0
+\end{align*}
+as $r\to \infty$ by Theorem I and by the definition of $L$. Thus, by the Squeeze Theorem, 
+\[
+|S_f(\underline{x}(r),\underline{\xi}(r)) - L| \to 0 \text{~~as~~} r\to 0.
+\]\qed 
+
+\noindent\underline{\textbf{Properties of the Riemann Integral}}
+
+\begin{notation}
+We will often abbreviate $\int_a^b f(x) \,\mathrm dx$ to $\int_a^b f$.
+\end{notation}
+
+\begin{theorem}[Linearity]
+If $f,g\in C([a,b])$ and $\alpha \in \RR$, then 
+\[
+\int_a^b (\alpha f + g) = \alpha \int_a^b f + \int_a^b g.
+\]
+\end{theorem}
+\textbf{Proof}: Let $\{(\underline{x}(r),\underline{\xi}(r))\}_r$ be a sequence of tagged partitions such that $\lVert \underline{x}(r)\rVert \to 0$. Then, 
+\[
+S_{\alpha f+g}(\underline{x}(r), \underline{\xi}(r)) = \alpha S_f(\underline{x}(r), \underline{\xi}(r)) + S_g(\underline{x}(r),\underline{\xi}(r)).
+\]
+Therefore, 
+\begin{align*}
+    \int_a^b (\alpha f + g) &= \lim_{r\to \infty} S_{\alpha f + g} (\underline{x}(r),\underline{\xi}(r)) \\
+    &= \lim_{r\to \infty} (\alpha S_f(\underline{x}(r), \underline{\xi}(r)) + S_g(\underline{x}(r),\underline{\xi}(r)) \\
+    &= \alpha \int_a^b f + \int_a^b g.
+\end{align*}
+\qed 

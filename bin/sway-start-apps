@@ -1,0 +1,149 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/sway-start-apps
+# shellcheck disable=SC2034
+TIME_STAMP="20230902.181639"
+
+# Copyright (C) 2020-2023 Bob Hepple <bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+PROG=$( basename "$0" )
+
+[[ "$1" ]] && {
+    echo "Usage: $PROG: system-specific auto-startup apps for sway"
+    exit 0
+}
+
+# shellcheck disable=SC1091
+source /etc/os-release
+
+# FIXME: the following lines may need adjusting to your environment!
+
+OUTPUT=$( swaymsg -t get_outputs| jq -r '.. | select(.type?) | select(.focused==true) | .name' )
+echo "$PROG: OUTPUT=$OUTPUT"
+
+# no point doing eval at this point - hopefully it's already set up in sway-start.
+# gkd has all components by default, so no need to --start anything!
+# gnome-keyring-daemon --start --components=secrets,ssh,pkcs11
+
+# these startups are pretty universal:
+
+logit sway-prep-xwayland
+logit /usr/libexec/gsd-xsettings
+logit mako
+
+sudo systemctl restart ydotool
+logit wl-paste -t text --watch myclipman
+
+logit rfkill block bluetooth
+logit bluetoothctl power off
+
+# needed for blueman-manager
+logit blueman-applet &
+logit nm-applet --indicator &
+
+if [[ "$ID" = "void" ]]; then 
+    pipewire &
+    wireplumber &
+    pipewire-pulse &
+    syncthing serve --no-browser --logfile=default &
+    firefox_app_id="Firefox"
+else
+    # /usr/libexec/polkit-gnome-authentication-agent-1 fails eg with firewall-config:
+    logit lxpolkit &
+    firefox_app_id="firefox"
+fi
+
+logit sway-track-prev-focus &
+dark-mode res
+bluetooth-timeout &
+
+noapps="$HOME/noapps"
+[[ -f "$noapps" ]] && {
+    rm "$noapps"
+    exit 0
+}
+
+echo "Building workspaces, please wait ..." | wofi --dmenu & wofi_pid=$!
+
+case $USER in
+    bhepple)
+        swaymsg -q 'workspace 1'
+        if [[ "$OUTPUT" =~ HEADLESS-.* ]]; then
+            sway-toolwait --nocheck -v 'myterm'
+        else
+            sway-toolwait -v --waitfor emacs logit emacs
+            swaymsg -q 'splith'
+            sway-toolwait --nocheck -v 'myterm'
+            swaymsg -q 'splitv'
+            sway-toolwait --nocheck -v 'myterm'
+            
+            swaymsg -q 'workspace 2'
+            sway-toolwait -v --waitfor $firefox_app_id logit firefox-wayland
+            swaymsg -q 'border none'
+            sway-track-firefox &
+
+            swaymsg -q 'workspace 4'
+            sway-toolwait -v --waitfor pavucontrol logit pavucontrol
+            swaymsg -q 'splitv'
+
+            # do last as it's a beast:
+            ping -c 1 -w 2 nina && [[ $ID != "void" ]] && {
+                swaymsg -q 'workspace 3'
+                sway-toolwait -v --waitfor mythfrontend -- logit mythfrontend --logpath /var/log/mythtv
+            }
+            
+            case $( hostname ) in
+                achar*) # laptop
+                    logit start-powerd
+                    logit mylock --quiet safe-mode
+                    logit wlr-sunclock -a tblr -l bottom
+                    ;;
+                nina)
+                    :
+                    ;;
+            esac
+        fi
+        ;;
+    
+    nina) # on the media server:
+        swaymsg -q 'workspace 2'
+        sway-toolwait -v --wait-for $firefox_app_id -- firefox -P default
+        swaymsg -q 'workspace 3'
+        sway-toolwait --nocheck -v myterm
+        swaymsg -q 'split v'
+        sway-toolwait --nocheck -v myterm
+        swaymsg -q 'split h'
+        swaymsg -q 'focus up'
+        swaymsg -q 'split h'
+        swaymsg -q 'workspace 4'
+        sway-toolwait -v pavucontrol
+        #swaymsg -q 'workspace 5'
+        #sway-toolwait -v transmission-gtk
+
+        # do last as it's a beast:
+        swaymsg -q 'workspace 1'
+        sway-toolwait -v 'mythfrontend'
+        wayvnc 0.0.0.0 5905 &
+        ;;
+esac
+
+kill $wofi_pid
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
+

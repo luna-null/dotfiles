@@ -1,0 +1,212 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+\begin{theorem}[Additivity]
+If $f\in C([a,b])$ and $a<c<b$, then 
+\[
+\int_a^b f = \int_a^c f + \int_c^b f.
+\]
+\end{theorem}
+\textbf{Proof}: Let $\{(\underline{y}(r), \underline{\zeta}(r))\}_r$ and $\{(\underline{z}(r), \underline{\eta}(r))\}_r$ be tagged partitions of $[a,c]$ and $[c,b]$ respectively such that $\lVert \underline{y}(r)\rVert \to 0$ and $\lVert \underline{z}(r)\rVert \to 0$. Define 
+\begin{align*}
+    \underline{x}(r) &= \underline{y}(r) \cup \underline{z}(r) \\
+    \underline{\xi}(r) &= \underline{\zeta}(r) \cup \underline{\eta}(r),
+\end{align*}
+a sequence of tagged partitions of $[a,b]$. Then,
+\[
+\lVert \underline{x}(r)\rVert \leq \lVert \underline{y}(r)\rVert + \lVert \underline{z}(r)\rVert \to 0.
+\]
+Thus, 
+\begin{align*}
+    \int_a^b f &= \lim_{t\to \infty} S_f(\underline{x}(r), \underline{\xi}(r)) \\
+    &= \lim_{r\to \infty} (S_f(\underline{y}(r), \underline{\zeta}(r)) + S_f(\underline{z}(r), \underline{\eta}(r))) \\
+    &= \int_a^c f + \int_c^b f.
+\end{align*}\qed 
+
+\begin{theorem}
+Let $f\in C([a,b])$, and
+\begin{align*}
+    m_f &= \inf\{f(x) \mid x\in [a,b]\} \in \RR\\
+    M_f &= \sup \{f(x) \mid x\in [a,b]\}\in \RR.
+\end{align*}
+Then, 
+\[
+m_f(b-a) \leq \int_a^b f \leq M_f(b-a).
+\]
+\end{theorem}
+\textbf{Proof}: Let $\{(\underline{x}(r), \underline{\xi}(r))\}_r$ be a sequence of tagged partitions with $\lVert \underline{x}(r)\rVert \to 0$. Then, 
+\[
+S_f(\underline{x}(r), \underline{\xi}(r)) = \sum_{k=1}^n f(\xi_k(r))(x_k(r)-x_{k-1}(r))\geq m_f \sum_{k=1}^n (x_k(r)- x_{k-1}(r)) = m_f(b-a).
+\]
+Similarly, 
+\[
+S_f(\underline{x}(r), \underline{\xi}(r)) = \sum_{k=1}^n f(\xi_k(r))(x_k(r)-x_{k-1}(r))\leq M_f \sum_{k=1}^n (x_k(r)- x_{k-1}(r)) = M_f(b-a).
+\]
+Therefore, for all $r$,
+\[
+m_f(b-a) \leq S_f(\underline{x}(r), \underline{\xi}(r)) \leq M_f(b-a) \implies m_f(b-a) \leq \int_a^b f \leq M_f(b-a).
+\]\qed 
+
+\begin{theorem}
+Suppose $f\in C([a,b])$ and $g\in C([a,b])$. 
+\begin{enumerate}
+    \item If $\forall x\in [a,b]$ $f(x) \leq g(x)$, then
+    \[
+    \int_a^b f \leq \int_a^b g.
+    \]
+    \item (Triangle Inequality for integrals): $|\int_a^b f| \leq \int_a^b |f|$.
+\end{enumerate}
+\end{theorem}
+\textbf{Proof}:
+\begin{enumerate}
+    \item Let $\{(\underline{x}(r), \underline{\xi}(r)\}_r$ be a sequence of tagged partitions such that $\lVert \underline{x}(r)\rVert\to 0$. Then, for all $r\in \NN$,
+    \begin{align*}
+    S_f(\underline{x}(r), \underline{\xi}(r)) &= \sum_{j=1}^n f(\xi_j(r))(x_j(r)-x_{j-1}(r)) \\
+    &\leq \sum_{j=1}^n g(\xi_j(r))(x_j(r)-x_{j-1}(r)) \\
+    &= S_g(\underline{x}(r), \underline{\xi}(r)).
+    \end{align*}
+    Then, letting $r\to \infty$, we get that 
+    \[
+    \int_a^b f \leq \int_a^b g.
+    \]
+    \item Notice that $\pm f(x) \leq |f(x)|$ for all $x$, and thus 
+    \[
+    \pm\int_a^b f \leq \int_a^b |f| \implies -\int_a^b f \leq \int_a^b f \leq \int_a^b |f|.
+    \]
+    Therefore, $|\int_a^b f|\leq \int_a^b |f|$.
+\end{enumerate}
+\qed 
+
+\begin{remark}
+There are some conventions that are worth noting:
+\begin{enumerate}
+    \item $\int_a^a f := 0$. This is consistent with our definitions and theorems thus far as $\lim_{b\to a}|\int_a^b f| = 0$. \item $\int_a^b f = -\int_b^a f.$
+\end{enumerate}
+\end{remark}
+
+\noindent\underline{\textbf{Fundamental Theorem of Calculus}}
+
+\begin{theorem}[Fundamental Theorem of Calculus]
+Suppose $f\in C([a,b])$.
+\begin{enumerate}
+    \item If $F:[a,b] \to \RR$ is differentiable and $F' = f$, then 
+\[
+\int_a^b f = F(b) - F(a).
+\]
+    \item The function $G(x):= \int_a^x f$ is differentiable on $[a,b]$ and 
+    \[
+    \begin{cases}
+    G' = f \\
+    G(a) = 0
+    \end{cases}.
+    \]
+\end{enumerate}
+\end{theorem}
+\begin{remark}
+We sometimes abbreviate the Fundamental Theorem of Calculus to FTC.
+\end{remark}
+
+\noindent \textbf{Proof}:
+\begin{enumerate}
+    \item Let $\{(\underline{x}(r))\}_r$ be a sequence of partitions with $\lVert \underline{x}\rVert \to 0$. Then, by the Mean Value Theorem, $\forall r\forall j$, there exists a $\xi_j(r)\in [x_{j-1}(r), x_j(r)]$ such that 
+    \[
+    F(x_j(r)) - F(x_{j-1}(r)) = F'(\xi_j(r))(x_j(r)-x_{j-1}(r)) = f(\xi_j(r)) (x_j(r)-x_{j-1}(r)).
+    \]
+    Thus, 
+    \begin{align*}
+        \int_a^b f &= \lim_{r\to \infty} \sum_{j=1}^{n(r)} f(\xi_j(r))(x_j(r)-x_{j-1}(r)) \\
+        &= \lim_{r\to \infty} \sum_{j=1}^{n(r)} F(x_j(r)) - F(x_{j-1}(r)) \\
+        &= \lim_{r\to \infty} (F(b)-F(a)) = F(b) - F(a).
+    \end{align*}
+    \item Let $c \in [a,b]$. We wish to show that 
+    \[
+    \lim_{x\to c} \frac{\int_a^x f- \int_a^c f}{x-c} = f(c).
+    \]
+    Let $\epsilon>0$. Then, since $f$ is continuous at $c$, $\exists \delta_0>0$ such that 
+    \[
+    |t-c|< \delta_0 \implies |f(t)-f(c)|<\epsilon/2.
+    \]
+    Choose $\delta = \delta_0$. Suppose $0< x-c<\delta$. If $t\in [c,x]$, then 
+    \[
+    |t-c|\leq |x-c| <\delta = \delta_0.
+    \]
+    Thus, 
+    \begin{align*}
+        \left|\frac{1}{x-c} \int_c^x f(t) \,\mathrm dt - f(c)\right| &= \left|\frac{1}{x-c}\int_c^t f(t) \,\mathrm dt - \frac{1}{x-c}\int_x^c f(c)\,\mathrm dt\right| \\
+        &= \frac{1}{x-c} \left|\int_c^x (f(t)-f(c))\,\mathrm dt\right| \\
+        &\leq \frac{1}{x-c}\int_c^x |f(t)-f(c)|\,\mathrm dt \\
+        &\leq \frac{1}{x-c}\int_c^x \epsilon/2 \,\mathrm dt \\
+        &= \frac{1}{x-c}\cdot \frac{\epsilon}{2} (x-c) = \frac{\epsilon}{2}.
+    \end{align*}
+    A similar argument holds for $0< c-x<\delta$. Thus, 
+    \[
+    0 < |x-c|< \delta \implies \left|\frac{\int_a^x f-\int_a^c f}{x-c} - f(c)\right| \leq \frac{\epsilon}{2} < \epsilon.
+    \]
+\end{enumerate} \qed 
+
+\begin{theorem}[Integration by Parts]
+Suppose $f,g\in C([a,b])$ and $f',g'\in C([a,b])$. Then, 
+\[
+\int_a^b f'g = (f(b)g(b)-f(a)g(a)) -int_a^b fg'.
+\]
+\end{theorem}
+\textbf{Proof}: We have \[
+(fg)' = f'g +fg'.
+\]
+Therefore, by the Fundamental Theorem of Calculus, 
+\[
+f(b)g(b)-f(a)g(a) = \int_a^b f'g + \int_a^b fg'.
+\]\qed 
+
+\begin{remark}
+We sometimes abbreviate Integration By Parts as $IBP.$
+\end{remark}
+
+\begin{lemma}[Riemann-Lebesgue]
+Suppose $f\in C([-\pi, \pi])$ and $f'\in C([-\pi,\pi])$ with $f$ $2\pi$-periodic with $f(-\pi) = f(\pi)$. For $n\in \NN\cup \{0\}$, let 
+\begin{align*}
+    a_n &= \frac{1}{\pi}\int_{-\pi}^\pi f(x) \sin(nx)\,\mathrm dx \\
+    b_n &= \frac{1}{\pi}\int_{-\pi}^\pi f(x) \cos(nx) \,\mathrm dx.
+\end{align*}
+Then, 
+\[
+\lim_{n\to \infty} a_n = \lim_{n\to \infty} b_n = 0.
+\]
+\end{lemma}
+\begin{definition}[Fourier Coefficients]
+The $a_n,b_n$ defined in the above lemma are referred to as the \vocab{Fourier coefficients of $f$}.
+\end{definition}
+\textbf{Proof}: Using IBP, we have 
+\begin{align*}
+    |b_n| &= \frac{1}{\pi}\left|\int_{-\pi}^\pi f(x) \cos(nx) \,\mathrm dx\right| \\
+    &= \frac{1}{\pi}\left|\int_{-\pi}^\pi (\frac{1}{n}\sin(nx))'f(x)\,\mathrm dx\right| \\
+    &= \left|\frac{1}{n}(f(\pi)\sin(n\pi)-f(-pi)\sin(n(-\pi))) - \frac{1}{n}\int_{-\pi}^\pi \sin(nx) f'(x)\,\mathrm dx\right|.
+\intertext{Notice that $\sin(n\pi) = \sin(n(-\pi)) = 0$ for all $n\in \NN$. Hence, }
+    |b_n| &\leq \frac{1}{n} \int_{-\pi}^\pi |\sin(nx)||f'(x)|\,\mathrm dx \\
+    &\leq \frac{1}{n}\int_{-\pi}^\pi|f'|\to 0.
+\end{align*}
+By the Squeeze Theorem, $|b_n|\to 0$. A similar arguments works for $a_n$. \qed 
+
+\begin{theorem}[Change of Variables]
+Let $\varphi:[a,b]\to [c,d]$ be continuously differentiable with $\varphi'>0$ on $[a,b]$, $\varphi(a) = c$, and $\varphi(b) = d$. Then,
+\[
+\int_c^d f(u)\,\mathrm du = \int_a^b f(\varphi(x))\varphi'(x)\,\mathrm dx.
+\]
+\end{theorem}
+\textbf{Proof}: Let $F:[a,b] \to \RR$ such that $F' = f$. Then, 
+\[
+F(\varphi(x))' = f(\varphi(x)).
+\]
+Hence, by the FTC,
+\begin{align*}
+    \int_a^b f(\varphi(x))\varphi'(x)\,\mathrm dx &= \int_a^b F(\varphi(x))' \,\mathrm dx \\
+    &= F(\varphi(b))- F(\varphi(a)) \\
+    &= F(d)-F(c).
+\end{align*}
+Furthermore, by the FTC, 
+\[
+\int_c^d f(u) \,\mathrm du = \int_c^d F(u)'\,\mathrm du = F(d)-F(c).
+\] \qed 
+%ended 1130, 10 hrs total 3/24

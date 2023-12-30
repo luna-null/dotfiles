@@ -1,0 +1,5 @@
+[user]
+	email = elliqua@gmail.com
+	name = luna-null
+[core]
+	excludesFile = /home/le/.gitignore

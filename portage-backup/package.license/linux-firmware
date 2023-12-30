@@ -1,0 +1,9 @@
+sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE
+# required by spotify (argument)
+>=media-sound/spotify-1.2.26 Spotify
+# required by legends (argument)
+>=games-fps/legends-0.4.1.43-r2 Legends
+# required by sky-rogue (argument)
+>=games-simulation/sky-rogue-1.3.3 all-rights-reserved
+# required by discord (argument)
+>=net-im/discord-0.0.38 all-rights-reserved

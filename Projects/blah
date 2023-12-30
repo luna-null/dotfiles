@@ -1,0 +1,11 @@
+from sympy import *
+init_printing()
+M=Matrix([[.3, .2, .25], [.3, .7, .2], [.4, .1, .55] ] )
+Eigen = M.eigenvects(multiple=True)
+E = []
+for i in range(0,len(Eigen)):
+  E0 = []
+  E0[0] = Eigen[i][0]
+  E0[1] = Eigen[i][2]
+  E.append(E0)
+E

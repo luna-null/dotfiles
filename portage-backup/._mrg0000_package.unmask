@@ -1,0 +1,16 @@
+# required by x11-libs/gtk+-3.24.38::gentoo
+# required by x11-misc/notification-daemon-3.20.0-r1::gentoo
+# required by virtual/notification-daemon-0::gentoo[-kde,-gnome]
+# required by x11-libs/libnotify-0.8.2::gentoo
+# required by media-sound/spotify-1.2.26::gentoo[libnotify]
+# required by spotify (argument)
+# /etc/portage/package.mask/gdbus-codegen:
+=dev-util/gdbus-codegen-2.76.4
+# required by gui-libs/wpebackend-fdo-1.14.2::gentoo
+# required by net-libs/webkit-gtk-2.42.3-r410::gentoo[wayland]
+# required by gnome-extra/yelp-42.2-r1::gentoo
+# required by media-sound/easyeffects-7.0.7::gentoo[doc]
+# required by @selected
+# required by @world (argument)
+# /etc/portage/package.mask/glib:
+=dev-libs/glib-2.78.3

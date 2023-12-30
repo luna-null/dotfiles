@@ -1,0 +1,189 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/myterm
+# shellcheck disable=SC2034
+TIME_STAMP="20220627.144948"
+
+# Copyright (C) 2020-2021 Bob Hepple
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+check_and_process_opts() {
+    ARGS="
+ARGP_DELETE=quiet
+ARGP_VERSION=$VERSION
+ARGP_PROG=$PROG
+##############################################################
+#OPTIONS:
+#name=default   sname arg       type range           description
+##############################################################
+REVERSE=''      r     ''        b    ''              reverse video
+FONTSIZE=$DEFAULT_FONTSIZE f    fontsize i    3:300  not all terms can set this from the command line eg gnome-terminal, konsole
+CLASS=''        c     class     s    ''              class to assign (or title if terminal does not support -class)
+WIDTH=''        w     width     i    ''              assign width (in chars)
+HEIGHT=''       H     height    i    ''              assign height (in chars)
+DROPDOWN=''     p     ''        b    ''              dropdown the terminal instead of regular window
+##############################################################
+ARGP_ARGS=[--] $ARGUMENTS
+ARGP_SHORT=$SHORT_DESC
+ARGP_USAGE=$USAGE"
+
+    exec 4>&1
+    eval "$(echo "$ARGS" | argp.sh "$@" 3>&1 1>&4 || echo exit $? )"
+    exec 4>&-
+
+    export PREFER_X=$USE_X
+
+    NEW_ARGS=( "$@" )
+    return 0
+}
+
+##########################
+#         M A I N        #
+##########################
+
+PROG=$(basename "$0")
+DIR=$(dirname "$0")
+VERSION="$TIME_STAMP"
+TERMS="termit lilyterm roxterm lxterminal mrxvt konsole xterm rxvt urxvt urxvtc aterm wterm gnome-terminal Eterm"
+[[ "$SWAYSOCK" ]] && TERMS="foot kitty alacritty $TERMS"
+
+ARGUMENTS="[terminal options and args]"
+USAGE="Run a terminal - looks at \$TERMINAL otherwise the first executable in \"$TERMS\""
+SHORT_DESC=""
+ARGUMENTS=""
+VERBOSE=""
+REVERSE=""
+DEFAULT_FONTSIZE=9 # ok at 96 dpi, if a little big
+case $(hostname) in
+    raita) DEFAULT_FONTSIZE=8 ;;
+    dal)   DEFAULT_FONTSIZE=7 ;;
+esac
+FONTSIZE="8"
+export POSIXLY_CORRECT="yes"
+
+NEW_ARGS=( )
+check_and_process_opts "$@" && set -- "${NEW_ARGS[@]}"
+unset POSIXLY_CORRECT
+
+[[ "$DROPDOWN" ]] && {
+    WIDTH=${WIDTH:-90}
+    HEIGHT=${HEIGHT:-10}
+}
+
+[[ "$TERMINAL" == "$PROG" ]] && unset TERMINAL
+
+for XTERM in $TERMINAL $TERMS; do
+    # no provision is made for the case where none of the above are found!!!
+    type "$XTERM" >/dev/null 2>&1 && break
+done
+
+[ "$VERBOSE" ] && set -x
+# shellcheck disable=SC1090
+[ "$BH_BASH_RC" ] || . ~/.bashrc
+[ "$REVERSE" ] && {
+    if [ "$TERM_BACKGROUND" = dark ]; then
+        TERM_BACKGROUND=light
+    else
+        TERM_BACKGROUND=dark
+    fi
+}
+
+CLASS_OPT=""
+
+# NB can't fix font sizes in .Xresources as mrxvt ignores it when
+# .mrxvtrc is there
+
+# NB mrxvt font sizes are in _pixels_! Need to convert FONTSIZE=10 to
+# pixels: pixels = dpi * pointsize / 72 ie at 96 dpi we have pixels =
+# 9.6 - ie 9 or 10 choose one. At 144 dpi we have pixels = 14.4.
+# Trouble is, DPI is rarely set correctly even in xdyinfo nowadays -
+# it's hardcoded to '96' - this forced me to be more hard-coded too!
+
+case "$XTERM" in
+    mrxvt*)
+        #eg mrxvt -xft -xftaa -xftah -xftfn Monospace -xftsz 10 -ht
+        # +sb -tn xterm -stt -sl 1000 but see .mrxvtc NB xftpsz is tab
+        # font size - it's missing from the man page!
+
+        # DPI=$(set -- $(xdpyinfo |grep "  resolution:"); A=$2; IFS=x; set -- $2; echo $2)
+        # [ "$FONTSIZE" ] || FONTSIZE=$DEFAULT_FONTSIZE
+        # FONTSIZE=$(( $DPI * $FONTSIZE / 72 ))
+
+        #case $(hostname) in
+        #    achar*) FONTSIZE=13 ;;
+        #            # truly a 144 dpi screen - unless we're coming in
+        #            # through VNC or some such!!! My god, how they've
+        #            # broken things!!!
+        #
+        #    *) FONTSIZE=11 ;; # 96 dpi screens
+        #esac
+
+        XTERM+=" -xft -xftsz $FONTSIZE -xftpsz $FONTSIZE"
+        XTERM+=" -aht"
+        [ "$TERM_BACKGROUND" = "dark" ] && XTERM+=" -rv"
+        case $OSTYPE in
+          darwin*) # Mac: Monaco font may be better
+                XTERM+=" -xftfn Menlo"
+                ;;
+        esac
+        [[ "$CLASS" ]] && XTERM+=" -title $CLASS"
+        ;;
+    gnome-terminal) # nothing much we can do with this
+        ;;
+    konsole)
+        ;;
+    xterm*)
+        [ "$FONTSIZE" ] && XTERM+=" -fs $FONTSIZE"
+        XTERM+=" -fa Monospace +sb"
+        [ "$TERM_BACKGROUND" = "dark" ] && XTERM+=" -fg white -bg black"
+        [[ "$CLASS" ]] && XTERM+=" -class $CLASS"
+        ;;
+    *rxvt*) # rxvt, urxvt ... ???
+        [ "$TERM_BACKGROUND" = "dark" ] && XTERM+=" -fg white -bg black"
+        [[ "$CLASS" ]] && XTERM+=" -title $CLASS"
+        ;;
+    lilyterm|roxterm)
+        [[ "$CLASS" ]] && XTERM+=" -title $CLASS"
+        ;;
+    lxterminal)
+        [[ "$CLASS" ]] && XTERM+=" --title $CLASS"
+        ;;
+    termit)
+        # --class and --name just plain don't work!
+        [[ "$CLASS" ]] && XTERM+=" --name $CLASS"
+        ;;
+    kitty)
+        [[ "$DROPDOWN" ]] && XTERM+=" --class=dropdown-term"
+        [[ "$WIDTH" ]] && XTERM+=" -o initial_window_width=${WIDTH}c"
+        [[ "$HEIGHT" ]] && XTERM+=" -o initial_window_height=${HEIGHT}c"
+        [[ "$HEIGHT$WIDTH" ]] && XTERM+=" -o remember_window_size=no"
+        ;;
+    foot)
+        [[ "$DROPDOWN" ]] && XTERM+=" --app-id=dropdown-term"
+        [[ "$WIDTH" ]] && XTERM+=" --window-size-chars ${WIDTH}x${HEIGHT}"
+        ;;
+        
+esac
+
+export TERM_BACKGROUND
+unset STOP_ON_FIRST_NON_OPT VERBOSE
+$XTERM "$@" &
+exit 0
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
+

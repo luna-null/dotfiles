@@ -1,0 +1,168 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+%started 2:43pm$
+
+\begin{theorem}[Some Special Sequences]
+What follows are some special sequences to have in our toolbox. 
+\begin{enumerate}
+    \item If $p>0$, then $\lim_{n\to \infty} n^{-p} = 0$.
+    \item If $p>0$ then $p^{\frac{1}{n}} = 1$. 
+    \item $\lim_{n\to \infty} n^{\frac{1}{n}} = 1$.
+\end{enumerate}
+\end{theorem}
+\textbf{Proof}:
+\begin{enumerate}
+    \item Let $\epsilon>0$. Then, choose $M > (1/\epsilon)^{1/p}$. Hence, if $n\geq M$,
+    \[
+    \left|\frac{1}{n^p} - 0\right| = \frac{1}{|n^p|} \leq \frac{1}{M^p} < \epsilon. 
+    \]
+    \item Suppose $p>1$. Then, $p^{1/n} -1 >0$ which may be proven by induction. Furthermore, we have 
+    \begin{align*}
+        p = (1+(p^{1/n} -1))^n \\
+        &\geq 1 + n(p^{1/n}-1).
+    \end{align*}
+    Therefore, $0 < p^{1/n}-1 \leq \frac{p-1}{n}$. Hence, we may apply the Squeeze Theorem, obtaining $\lim_{n\to \infty} |p^{1/n}-1| = 0$. If $p< 1$, then
+    \[
+    \lim_{n\to \infty} p^{1/n} = \lim_{n\to \infty} \frac{1}{(1/p)^{1/n}} = \frac{1}{1} =1.
+    \]
+    Furthermore, if $p =1$ then it is clear that $\lim_{n\to \infty} p^{1/n} = 1$. Hence, in all cases, the limit is 1.
+    \item Let $x_n = n^{1/n}-1 \geq 0$. We want to show that $\lim_{n\to \infty} x_n = 0$, as this will imply the end result. Notice that 
+    \[
+        n = (1+x_n)^n = \sum_{j=0}^n {n\choose j} x_n^j \geq {n\choose 2} x_n^2 = \frac{n!}{2(n-2)!} \cdot x_n^2 = \frac{n(n-1)}{2} \cdot x_n^2.
+    \]
+    Thus, for $n>1$,
+    \[
+    0 \leq x_n \leq \sqrt{\frac{2}{n-1}} \implies x_n \to 0.
+    \]
+\end{enumerate} \qed 
+
+\noindent\underline{\textbf{Limsup/Liminf}}
+\begin{question}
+Does a bounded sequence have a convergent subsequence?
+\end{question}
+
+\begin{definition}[Limsup/Liminf]
+Let $\{x_n\}$ be a bounded sequence. We define, if the limits exist, 
+\begin{align*}
+\limsup_{n\to \infty} x_n &:= \lim_{n\to \infty}(\sup\{x_k \mid k \geq n\}) \\
+\liminf_{n\to \infty} x_n &:= \lim_{n\to \infty}(\inf\{x_k \mid k \geq n\}).
+\end{align*}
+These are called the \vocab{limit superior} and \vocab{limit inferior} respectively.
+\end{definition}
+
+We will now show that these limits always exist.
+\begin{theorem}
+Let $\{x_n\}$ be a bounded sequence, and let 
+\begin{align*}
+    a_n &= \sup\{x_k \mid k\geq n\} \\
+    b_n &= \inf\{x_k \mid k\geq n\}.
+\end{align*}
+Then, 
+\begin{enumerate}
+    \item $\{a_n\}$ is monotone decreasing and bounded, and $\{b_n\}$ is monotone increasing and bounded.
+    \item $\liminf_{n\to \infty} x_n \leq \limsup_{n\to \infty} x_n$.
+\end{enumerate} 
+\end{theorem}
+\textbf{Proof}
+\begin{enumerate}
+    \item Since, $\forall \in \NN$, 
+    \[
+    \{x_k \mid k\geq n+1\} \subseteq \{x_k \mid k \geq n\},
+    \]
+    we have that $a_{n+1}= \sup\{x_k\mid k\geq n+1\} \leq \sup\{x_k \mid k\geq n\} = a_n$.
+    
+    Similarly, $\forall n \in \NN$, $b_{n+1} \geq b_n$. Given $\{x_n\}$ is a bounded sequence, $\exists B \geq 0$ such that $\forall n\in \NN$,
+    \[
+    -B \leq x_n \leq B.
+    \]
+    Therefore, $\forall n\in \NN$, 
+    \[
+    -B \leq b_n \leq a_n \leq B
+    \]
+    which implies both sequences are bounded. 
+    \item By the above equation, $\forall n\in \NN$, $b_n \leq a_n \implies \liminf_{n\to \infty} x_n = \lim_{n\to \infty} b_n \leq \lim_{n\to \infty} a_n = \limsup_{n\to \infty} x_n.$
+\end{enumerate}
+\qed 
+
+\noindent Let's consider a few examples.
+\begin{example}
+Let $x_n = (-1)^n$. Calculate the $\liminf$ and $\limsup$ of this sequence.
+\end{example}
+\begin{proof}
+Notice that $\{(-1)^k \mid l\geq n\} = \{-1,1\}$. Thus, the supremum of these sets is always 1 and the infimum is always $-1$. Therefore, 
+\[
+\limsup_{n\to \infty} x_n = 1 \hspace{.25cm} \text{and} \hspace{.25cm} \liminf_{n\to \infty} x_n = -1.
+\]
+\end{proof}
+
+\begin{example}
+Let $x_n = \frac{1}{n}$. Calculate the $\liminf$ and $\limsup$ of this sequence.
+\end{example}
+\begin{proof}
+We may do this directly:
+\begin{align*}
+    \sup\{1/k \mid k\geq n\} = \frac{1}{n}\to 0 &\implies \limsup_{n\to \infty} x_n = 0. \\
+    \inf\{1/k\mid k \geq n\} = 0 \to 0 &\implies \liminf_{n\to \infty} x_n = 0.
+\end{align*}
+\end{proof}
+
+The limit inferior and the limit superior allow us to answer the question posed at the beginning of this section.
+\begin{theorem}
+Let $\{x_n\}$ be a bounded sequence. Then, there exists subsequences $\{x_{n_k}\}$ and $\{x_{m_k}\}$ such that 
+\begin{align*}
+    \lim_{k\to \infty} x_{n_k} &= \limsup_{n\to \infty} x_n \\
+    \lim_{k\to \infty} x_{m_k} &= \limsup_{n\to \infty} x_n.
+\end{align*}
+\end{theorem}
+\textbf{Proof}: Let $a_n = \sup\{x_k \mid k\geq n\}.$ Then, $\exists n_1 \in \NN$ such that $a_1 -1 < x_{n_1} \leq a_1$. Now, $\exists n_2>n_1$ such that
+\[
+a_{n_1+1}-\frac{1}{2} < x_{n_2} \leq a_{n_1+1}
+\]
+since 
+\[
+a_{n+1} = \sup \{x_k \mid k\geq n_1 +1\}.
+\]
+Similarly, $\exists n_3>n_2$ such that
+\[
+a_{n_2+1}-\frac{1}{3} < x_{n_3} \leq a_{n_2+1}.
+\]
+Continuing in this way, we obtain a sequence of integers $n_1< n_2 < n_3< \dots$ such that 
+\[
+a_{n_k+1} - \frac{1}{k+1} < x_{n_k} \leq a_{n_k+1}.
+\]
+Given $\lim_{k\to \infty} a_{n_k +1} = \limsup_{n\to \infty} x_n$, by the Squeeze Theorem, 
+\[
+\lim_{k\to \infty} x_{n_k} = \limsup_{n\to \infty} x_n.
+\]
+The direction for the $\liminf$ works out the same way so that portion of the proof is left to the reader. \qed 
+
+\begin{theorem}[Bolzano-Weierstrass]
+Every bounded sequence has a convergent subsequence.
+\end{theorem}
+\begin{remark}
+We may abbreviate the Bolzano-Weierstrass theorem to B-W.
+\end{remark}
+
+\noindent\textbf{Proof}: This follows immediately from the previous theorem, but is so important that it itself is a theorem. \qed 
+
+\begin{notation}
+When it is clear, we may have the following notational shorthand: $\liminf_{n\to \infty} x_n := \liminf x_n$, and \\$\limsup_{n\to \infty} x_n := \limsup x_n$.
+\end{notation}
+
+\begin{theorem}
+Let $\{x_n\}$ be a bounded sequence. Then, $\{x_n\}$ converges if and only if $\liminf x_n = \limsup x_n.$
+\end{theorem}
+\textbf{Proof} ($\impliedby$) Suppose $\liminf x_n = \limsup x_n$. Then, $\forall n\in \NN$,
+\[
+\inf\{x_k \mid k \geq n\} \leq x_n \leq \sup \{x_k\mid k\geq n\}.
+\]
+By the Squeeze Theorem, since $\lim_{k\to \infty} \inf \{x_k \mid k\geq n\} = \lim_{k\to \infty} \sup \{x_k \mid k\geq n\}$ by assumption, we have 
+\[
+\lim_{n\to \infty} x_n = \liminf x_n = \limsup x_n.
+\]
+Therefore, $x_n$ converges. 
+
+($\implies$) Let $x = \lim_{n\to \infty} x_n$. Therefore, every subsequence of $\{x_n\}$ converges to $x$, so $\liminf x_n = x$ and $\limsup x_n =x$ by a theorem we proved in Lecture 7. Hence, $\liminf x_n = \limsup x_n.$ \qed 

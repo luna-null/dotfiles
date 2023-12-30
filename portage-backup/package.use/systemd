@@ -1,0 +1,64 @@
+sys-apps/systemd boot
+# Needed for <systemd-254
+sys-apps/systemd gnuefi grub
+# /etc/portage/package.use/systemd 4,6
+# required by net-misc/networkmanager-1.42.6-r2::gentoo[wifi,-iwd]
+# required by networkmanager (argument)
+>=net-wireless/wpa_supplicant-2.10-r3 dbus
+# required by media-libs/mesa-23.1.9::gentoo
+# required by gui-libs/wlroots-0.16.2-r2::gentoo
+# required by gui-wm/sway-1.8.1::gentoo
+# required by sway (argument)
+>=media-libs/libglvnd-1.7.0 X
+
+# required by net-im/telegram-desktop-4.8.1-r3::gentoo
+# required by telegram-desktop (argument)
+>=media-video/ffmpeg-6.0-r9 opus vpx
+# required by net-im/telegram-desktop-4.8.1-r3::gentoo
+# required by telegram-desktop (argument)
+>=sys-libs/zlib-1.3-r1 minizip
+# required by net-im/telegram-desktop-4.8.1-r3::gentoo[-qt6]
+# required by telegram-desktop (argument)
+>=dev-qt/qtgui-5.15.11-r2 jpeg dbus
+# required by kde-frameworks/kcoreaddons-5.112.0::gentoo
+# required by net-im/telegram-desktop-4.8.1-r3::gentoo[-qt6]
+# required by telegram-desktop (argument)
+>=dev-qt/qtcore-5.15.11-r1 icu
+# required by x11-misc/xdg-utils-1.1.3_p20210805-r1::gentoo
+# required by kde-frameworks/kf-env-5::gentoo
+# required by kde-frameworks/kcoreaddons-5.112.0::gentoo
+# required by net-im/telegram-desktop-4.8.1-r3::gentoo[-qt6]
+# required by telegram-desktop (argument)
+>=app-text/xmlto-0.0.28-r11 text
+# required by dev-qt/qtgui-5.15.11-r2::gentoo[X]
+# required by dev-qt/qtimageformats-5.15.11::gentoo
+# required by net-im/telegram-desktop-4.8.1-r3::gentoo[-qt6]
+# required by telegram-desktop (argument)
+>=x11-libs/libxkbcommon-1.6.0 X
+# required by dev-lang/julia-1.8.5-r1::gentoo
+# required by julia (argument)
+>=net-misc/curl-8.4.0 ssh
+# required by dev-lang/julia-1.8.5-r1::gentoo
+# required by julia (argument)
+>=sci-libs/fftw-3.3.10 threads
+# required by www-client/firefox-115.5.0::gentoo[system-libvpx]
+# required by firefox (argument)
+>=media-libs/libvpx-1.13.1 postproc
+# required by x11-libs/gtk+-3.24.38::gentoo
+# required by x11-themes/adwaita-icon-theme-44.0::gentoo
+# required by virtual/freedesktop-icon-theme-0-r4::gentoo
+# required by www-client/firefox-115.5.0::gentoo
+# required by firefox (argument)
+>=x11-libs/cairo-1.18.0 X
+# required by games-board/pysolfc-2.21.0::gentoo[-minimal,python_single_target_python3_11]
+# required by games-board/pysolfc (argument)
+>=dev-python/pillow-10.1.0 tk
+# required by dev-python/pillow-10.1.0::gentoo[python_targets_python3_11]
+# required by games-board/pysolfc-2.21.0::gentoo[-minimal,python_single_target_python3_11]
+# required by games-board/pysolfc (argument)
+>=dev-lang/python-3.11.6:3.11 tk
+# required by media-libs/sdl2-ttf-2.20.2::gentoo
+# required by dev-python/pygame-2.5.2::gentoo
+# required by games-board/pysolfc-2.21.0::gentoo[sound,python_single_target_python3_11]
+# required by games-board/pysolfc (argument)
+>=media-libs/freetype-2.13.2 harfbuzz

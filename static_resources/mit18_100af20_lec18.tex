@@ -1,0 +1,147 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+%stopped 4:30 RESUMED 430, FOUR HOURS SO FAR
+\begin{theorem}
+If $f:I \to \RR$ is differentiable at $c\in I$, then $f$ is continuous at $c$.
+\end{theorem}
+\textbf{Proof}: Since every point of $I$ is a cluster point of $I$, $f$ is continuous at $c\in I \iff \lim_{x\to c} f(x) =f(c)$. Now, 
+\begin{align*}
+    \lim_{x\to c} f(x) &= \lim_{x\to c} (f(x) -f(c)+f(c)) \\
+    &= \lim_{x\to c} \left((x-c) \frac{f(x)-f(c)}{x-c} + f(c)\right) \\
+    &= 0\cdot f'(c) + f(c) = f(c).
+\end{align*}
+\qed 
+
+\begin{question}
+Is the converse true? Does $f$ being continuous imply that $f$ is differentiable?
+\end{question}
+The answer, is \textbf{no}.
+\begin{example}
+Let $f(x) = |x|$. Then, $f$ is not differentiable at 0.
+\end{example}
+\begin{proof}
+We find a sequence $x_n\to 0$ such that 
+\[
+\lim_{n\to \infty} \frac{f(x_n) - f(0)}{x_n-0} \text{~~does not exist.} 
+\]
+Let $x_n = \frac{(-1)^n}{n}$. Then, $\lim_{n\to \infty} x_n = 0$. However,
+\[
+\frac{f(x_n) - f(0)}{x_n-0} = \frac{|(-1)^n/n|}{(-1)^n/n} = (-1)^n,
+\]
+and $\lim_{n\to \infty}(-1)^n$ does not exist.
+\end{proof}
+
+\begin{question}
+If $f:\RR\to \RR$ is continuous, then does there exist a $c\in \RR$ such that $f$ is differentiable at $c$? 
+\end{question}
+The answer is again \textbf{no}! This was shown by Weierstrass, aka the Godfather.
+
+The basic idea is to build a continuous function that is a sum of highly oscillating functions.
+
+\begin{remark}
+Note that we number the upcoming theorems so we may reference them a bit later in this lecture.
+\end{remark}
+\begin{theorem}[Theorem I]
+We will show the following
+\begin{enumerate}
+    \item $\forall x,y\in \RR$, $|\cos x - \cos y| \leq |x-y|$.
+    \item Let $c\in \RR$. Then, for all $K\in \NN$, $\exists y\in (c+\pi /K, c+3\pi/K)$ such that 
+    \[
+    |\cos(Kc) - \cos(Ky)| \geq 1.
+    \]
+\end{enumerate}
+\end{theorem}
+\textbf{Proof}: 
+\begin{enumerate}
+    \item In the proof of continuity of $\sin x$, we showed that $\forall x,y\in \RR$, $|\sin x - \sin y| \leq |x-y|$. Thus, 
+    \[
+    |\cos x - \cos y| = |\sin(x+\pi/2) -\sin(y+\pi/2)| \leq |x-y|.
+    \]
+    \item The function $f(x) = \cos(Kx)$ is a $\frac{2\pi}{K}$-periodic function. In particular, $([-1,1] \setminus \cos(Kc)) \subset f(c+\pi/K, c+3\pi/K)$.
+    
+    If $\cos Kc\geq 0$, then we choose $y$ such that $\cos(Ky) = -1$. If $\cos (Kc)< 0$, then we choose $y$ such that $\cos(Ky) = 1$. This completes the proof
+\end{enumerate} \qed 
+
+\begin{theorem}[Theorem II]
+For all $a,b,c\in \RR$,
+\[
+|a+b+c|\geq |a|-|b|-|c|.
+\]
+\end{theorem}
+\textbf{Proof}: We apply the Triangle Inequality twice:
+\[
+|a| = |a+b+b+(-b)+(-c)| \leq |a+b+b| + |b+c| \leq |a+b+c| + |b|+|c|.
+\] \qed 
+
+\begin{theorem}[Theorem III]
+We will show the following: 
+\begin{enumerate}
+\item $\forall x\in \RR$, $\sum_{k=0}^\infty \frac{\cos(160^k x)}{4^k}$ is absolutely convergent.
+\item The function $f:\RR \to \RR$, $f(x) = \sum_{k=0}^\infty \frac{\cos(160^k x)}{4^k}$ is bounded and continuous.
+\end{enumerate}
+\end{theorem}
+\textbf{Proof}:
+\begin{enumerate}
+    \item $\forall k$, $\left| \frac{\cos(160^k x)}{4^k}\right|\leq 4^{-k}$. Hence, by the Comparison Test, 
+    \[\sum_{k=0}^\infty \left|\frac{\cos(160^k x)}{4^k}\right| \text{~~converges.}\]
+    \item For all $x\in \RR$, $|f(x)| \leq \sum_{k=0}^\infty \frac{|\cos(160^k x)|}{4^k} \leq \sum 4^{-k} = \frac{4}{3}$. Therefore, $f$ is bounded. 
+    
+    We now show that $f$ is continuous over $\RR$. Suppose $c\in \RR$ and $x_n\to c$. Note that $\{|f(x_n) - f(c)|\}_n$ is bounded, and thus 
+    \[
+    \lim_{n\to \infty} |f(x_n) - f(c)| = 0 \iff \limsup_{n\to \infty} |f(x_n)-f(c)| = 0.
+    \]
+    We claim that for all $\epsilon>0$, $\limsup_{n\to \infty} |f(x_n)-f(c)|\leq \epsilon$. Let $\epsilon>0$. Choose $M_0$ such that $\sum_{k=M_0 + 1}^\infty 4^{-k} < \frac{\epsilon}{2}$. Then,
+    \begin{align*}
+        \limsup_{n\to \infty} |f(x_n) -f(c)| &= \limsup_n \left|\sum_{k=0}^{M_0} \frac{\cos(160^k x_n)}{4^k} - \frac{\cos(160^k c)}{4^k} + \sum_{k=M_0+1}^{\infty} \frac{\cos(160^k x_n)}{4^k} - \frac{\cos(160^k c)}{4^k}\right| \\
+        &\leq \limsup_n \sum_{k=0}^{M_0} 4^{-k} |\cos(160^k x_n)-\cos(160^k c)| + \sum_{k=M_0+1}^\infty 4^{-k} (|\cos(160^k x_n)| + |\cos(160^k c)|) \\
+        &\leq \limsup_{n} \left(\sum_{k=0}^{M_0} 40^k\right)|x_n-c| + \epsilon = \epsilon.
+    \end{align*}
+\end{enumerate} \qed 
+
+\begin{theorem}[Weierstrass]
+The function $f(x) = \sum_{k=0}^\infty \frac{\cos(160^k x)}{4^k}$
+is nowhere differentiable.
+\end{theorem}
+\textbf{Proof}: Let $c\in \RR$. We will construct a sequence $x_n\to c$ such that $\left\{\frac{f(x_n) - f(c)}{x_n - c}\right\}_n$ is unbounded. By Theorem I 2), $\forall n\in \NN$ there exists an $x_n$ such that \textbf{a)} $\frac{\pi}{160^n} < x_n - c < \frac{3\pi}{160^n}$ and \textbf{b)} $|\cos(160^n c) - \cos(160^n x_n)| \geq 1$.
+
+By \textbf{a)}, $x_n\neq 0 \forall n$ and $|x_n-c| \leq \frac{3\pi}{160^n}\to 0$. Let $f_k(x) = \frac{\cos(160^k x)}{4^k}$ so $f(x) = \sum f_k(x)$. Let $n\in \NN.$ Thus, denote
+\begin{align*}
+    f(c) - f(x_n) &= f_n(c) - f_n(x_n) + \sum_{k=0}^{n-1} (f_k(c) - f_k(x_n)) + \sum_{k=n}^{\infty} (f_k(c) - f_k(x_n)) \\
+    &:= a_n + b_n + c_n.
+\end{align*}
+Therefore, by Theorem II,
+\[
+|f(c) - f(x_n)| \geq |a_n| - |b_n| -|c_n|.
+\]
+By \textbf{b)}, $|a_n| = 4^{-n}|\cos(160^kx_n) - \cos(160^k c)| \geq 4^{-n}$.
+Furthermore, we have 
+\begin{align*}
+    |b_n| \leq \sum_{k=0}^{n-1} 4^{-k} |\cos (160^k c) -\cos (160^k x_n)|
+    \leq \sum_{k=0}^{n-1} 4^{-k} \cdot 160^k |x_n-c| 
+    \leq \frac{3\pi}{160^n} \sum_{k=0}^{n-1} 40^k 
+    = \frac{3\pi}{160^n}\cdot  \frac{40^n - 1}{39} 
+    \leq \frac{4^{-n+1}}{13}.
+\end{align*}
+Finally, we have 
+\begin{align*}
+    |c_n| \leq \sum_{k=n+1}^\infty 4^{-k}(|\cos(160^k c)| + |\cos(160^k x_n)|)
+    \leq 2\sum_{k=n+1}^\infty 4^{-k}
+    = 2\cdot 4^{-n-1}\cdot \frac{4}{3} = 4^{-n} \frac{2}{3}.
+\end{align*}
+
+Therefore, by the above inequalities, we have 
+\[
+|f(c) - f(x_n)| \geq 4^{-n}\left(1-\frac{4}{13} - \frac{2}{3}\right) = 4^{-n}\cdot \frac{1}{39}.
+\]
+Therefore, 
+\[
+\frac{|f(c)-f(x_n)|}{|c-x_n|} \geq \frac{160^n}{3\pi}\cdot 4^{-n}\cdot \frac{1}{39} = \frac{40^n}{117\pi}.
+\]
+Thus, $\left\{\frac{f(x_n)-f(c)}{x_n-c}\right\}_n$ is unbounded. \qed 
+
+\begin{remark}
+In other words, this proof by Weierstrass shows that there exists a continuous function that is nowhere differentiable!
+\end{remark}

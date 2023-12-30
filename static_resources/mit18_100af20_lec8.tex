@@ -1,0 +1,213 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+%\subsection*{Lecture 8:}
+%\textbf{\underline{The Squeeze Theorem and Operations Involving Convergent Sequences}}
+
+\noindent\underline{\textbf{Facts About Limits}}
+
+\begin{theorem}[Squeeze Theorem]
+Let $\{a_n\}$, $\{b_n\}$, and $\{x_n\}$ be sequences such that $\forall n\in \NN$,
+\[
+a_n \leq x_n \leq b_k.
+\]
+Suppose that $\{a_n\}$ and $\{b_n\}$ converge and 
+\[
+\lim_{n\to \infty}a_n = x = \lim_{n\to \infty}b_n.
+\]
+Therefore, $\{x\}$ converges and $\lim_{n\to \infty}x_n = x$.
+\end{theorem}
+\begin{remark}
+We sometimes abbreviate the Squeeze Theorem to ST.
+\end{remark}
+
+\textbf{Proof}: Let $\epsilon>0$. Since $\lim_{n\to \infty} a_n = x$, there exists an $M_0\in \NN$ such that for all $n\geq M_0$, 
+\[
+|a_n-x| <\epsilon \implies x-\epsilon <a_n.
+\]
+Since $\lim_{n\to \infty}b_n = x$, $\exists M_1 \in \NN$ such that $\forall n\geq M_1$, 
+\[
+|b_n - x| < \epsilon \implies b_n < x+\epsilon.
+\]
+Choose $M = \max\{M_0, M_1\}$. Then, if $n\geq M$, then
+\[
+x-\epsilon < a_n \leq x_n \leq b_n < x-\epsilon \implies |x_n-x|<\epsilon.
+\]
+Therefore, $\{x_n\}$ is convergent and $\lim_{n\to \infty}x_n = x.$
+\qed
+
+\begin{theorem}
+Another way to check that a sequence $x_n\to x$, is stated below:
+\[
+\lim_{n\to \infty}x_n = x \iff \lim_{n\to \infty}|x_n-x| = 0.
+\]
+\end{theorem}
+
+Hence, we can consider a sequence like the following:
+\begin{example}
+Show that 
+\[
+\lim_{n\to \infty} \frac{n^2}{n^2+n+1} = 1.
+\]
+\end{example}
+\begin{proof}
+We have 
+\[
+\left|\frac{n^2}{n^2 + n + 1} - 1\right| = \left|\frac{-n-1}{n^2+n+1}\right| = \frac{n+1}{n^2+n+1} \leq \frac{n+1}{n^2+n} = \frac{1}{n}.
+\] 
+Thus,
+\[
+0 \leq \left|\frac{n^2}{n^2 + n + 1} - 1\right| \leq \frac{1}{n}\to 0\implies \lim_{n\to \infty} \left|\frac{n^2}{n^2 + n + 1} - 1\right| = 0
+\]
+by the Squeeze Theorem.
+\end{proof}
+
+\begin{question}
+How do limits interact with ordering? 
+\end{question}
+
+\begin{theorem}
+Let $\{x_n\}$ and $\{y_n\}$ be sequences of real numbers. Then,
+\begin{enumerate}
+    \item if $\{x_n\}$ and $\{y_n\}$ are convergent sequences and $\forall n\in \NN$ $x_n\leq y_n$, then \\ $\lim_{n\to \infty} x_n \leq \lim_{n\to \infty}y_n.$
+    \item if $\{x_n\}$ is a convergent sequence and $\forall n\in\NN$ $x\leq x_n \leq b_n$ then $a\leq \lim_{n\to \infty} x_n \leq b$.
+\end{enumerate}
+\end{theorem}
+\textbf{Proof}: 
+\begin{enumerate}
+    \item Let $x = \lim_{n\to \infty} x_n$ and $y = \lim_{n\to\infty} y_n$. Suppose for the sake of contradiction that $y< x$. Then, $\exists M_0\in\NN$ such that $\forall n\geq M_0$
+    \[
+    |y_n - y|< \frac{x-y}{2}
+    \]
+    And $\exists M_1 \in\NN$ such that for all $n\geq M_1$,
+    \[
+    |x_n -x| < \frac{x-y}{2}.
+    \]
+    Then, if $M = M_0+M_1 \geq \max\{M_0,M_1\}$,
+    \[
+    y_M < \frac{x-y}{2} +y = \frac{x+y}{2} = x-\frac{x-y}{2}+x < x_M.
+    \]
+    However, this would imply that $y_M < x_M$ which contradicts $\forall n\in\NN x_n \leq y_n$.
+    \item Apply part 1 to proof part 2, by considering $y_n = a \leq x_n \leq b = z_n$ for all $n\in\NN$.
+\end{enumerate} \qed 
+
+\begin{question}
+How do limits interact with algebraic operations?
+\end{question}
+\begin{theorem}
+Suppose $\lim_{n\to \infty}x_n = x$ and $\lim_{n\to \infty} y_n = y.$ Then,
+\begin{enumerate}
+    \item $\{x_y + y_n\}_n$ is convergent and $\lim_{n\to \infty} (x_n+y_n) = x+y.$
+    \item $\forall c\in\RR$, $\{cx_n\}_n$ is convergent and $\lim_{n\to \infty} cx_n = cx$.
+    \item $\{x_n \cdot y_n\}$ is convergent and $\lim_{n\to \infty} x_ny_n = xy$.
+    \item If $\forall n\in\NN$, $y_n \neq 0$ and $y\neq 0$, then $\{x_n/y_n\}_n$ is convergent and \[
+    \lim_{n\to \infty} \frac{x_n}{y_n}=\frac{x}{y}.
+    \]
+\end{enumerate}
+\end{theorem}
+\textbf{Proof}:
+\begin{enumerate}
+    \item Let $\epsilon >0$. Then, since $x_n \to x$, $\exists M_0\in\NN$ such that $\forall n \geq M_0$, $|x_n-x|<\frac{\epsilon}{2}$. Since $y_n \to y$, $\exists M_1\in\NN$ such that $\forall n \geq M_1$, $|y_n - y|< \frac{\epsilon}{2}$. Hence, letting $M = \max\{M_0, M_1\}$, we get for all $n\geq M$, 
+    \[
+    |x_n+y_n - (x+y)| \leq |x_n -x| + |y_n -y| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.
+    \]
+    \item Let $\epsilon>0$. Since $x_n \to x$, $\exists M_0\in\NN$ such that $\forall n \geq M_0$, $|x_n-x| < \frac{\epsilon}{|c|+1}$. Let $M=M_0$. Then, $\forall n\geq M$,
+    \[
+    |cx_n - cx| = |c| |x_n-x| \leq \frac{|c|}{|c|+1}\cdot \epsilon < \epsilon
+    \]
+    since $\frac{|c|}{|c|+1}<1$.
+    \item Since $y_n\to y$, $\{y_n\}$ is bounded. In other words, $\exists B\geq  0$ such that $\forall n\in\NN$, $|y_n|\leq B$. Then,
+    \begin{align*}
+        |x_ny_n-xy| &= |(x_n-x)y_n + (y_n-y)x| \\
+        &\leq |x_n-x| |y_n + |x||y_n-y| \\
+        &\leq B|x_n-x| + |x||y_n-y|.
+    \end{align*}
+    Therefore, $0 \leq |x_ny_n - xy| \leq B|x_n-x| + |x||y_n-y|$. Since $B|x_n-x| + |x||y_n-y| \to 0$, by the Squeeze Theorem $\lim_{n\to \infty} |x_ny_n-xy| = 0$. 
+    \item We prove $\frac{1}{y_n}\to \frac{1}{y}$. We first prove $\exists b>0$ such that $\forall n\in\NN$, $|y_n|\geq b$. Since $y_n\to y$ and $y\neq 0$, $\exists M_0\in\NN$ such that $\forall n\geq M_0$, 
+    \[
+    |y_n-y| < \frac{|y|}{2}.
+    \]
+    By the Triangle Inequality, $\forall n\geq M_0$,
+    \[
+    |y| \leq |y_n -y| + |y_n| \leq \frac{|y|}{2} + |y_n| \implies |y_n| \geq \frac{|y|}{2}.
+    \]
+    Let $b = \min\left\{|y_1|, \dots, |y_{M_0-1}|, \frac{|y|}{2}\right\}$. Then, $\forall n\in\NN$, $|y_n| \geq b.$ Therefore,
+    \[
+    0\leq \left|\frac{1}{y_n} - \frac{1}{y}\right| = \frac{|y_n -y|}{|y_n||y|} \leq \frac{1}{b|y|} |y_n-y|.
+    \]
+    By the Squeeze Theorem, $\lim_{n\to \infty} \left|\frac{1}{y_n} - \frac{1}{y}\right| = 0$. Therefore, $\lim_{n\to \infty}\frac{1}{y_n} = \frac{1}{y}$. Furthermore, by the proof before this (3.), it follows that $\lim_{n\to \infty} \left(x_n \cdot \frac{1}{y_n}\right) = \frac{x}{y}$.
+\end{enumerate}
+\qed 
+
+\begin{remark}
+By induction, one can prove that 
+\[
+\lim_{n\to \infty}(x_n)^k = x^k.
+\]
+\end{remark}
+
+\begin{theorem}
+If $\{x_n\}$ is a convergent sequence such that $\forall n\in\NN$, $x_n\geq 0$, then $\{\sqrt{x_n}\}$ is convergent and \[
+\lim_{n\to \infty} \sqrt{x_n} = \sqrt{\lim_{n\to \infty}x_n}.
+\]
+\end{theorem}
+\textbf{Proof}: Let $x = \lim_{n\to \infty} x_n$. 
+
+\underline{Case 1}: $x=0$. Let $\epsilon>0$. Then, since $x_n\to 0$, there exists an $M_0 \in\NN$ such that $\forall n\geq M_0$, $x_n = |x_n-0| <\epsilon^2$. Choose $M = M_0$. Then, $\forall n\geq M$, 
+\[
+|\sqrt{x_n} - \sqrt{0}| = \sqrt{x_n} < \sqrt{\epsilon^2} = \epsilon.
+\]
+
+\underline{Case 2}: $x>0$. We have $\forall n\in\NN$,
+\begin{align*}
+    |\sqrt{x_n} - \sqrt{x}| &= \left|\frac{\sqrt{x_n} - \sqrt x} {\sqrt{x_n} + \sqrt x}\cdot (\sqrt{x_n} + \sqrt{x})\right| \\
+    &= \frac{1}{\sqrt{x_n}+\sqrt{x}} |x_n -x| \\ 
+    &\leq \frac{1}{\sqrt x} |x_n -x|.
+\end{align*}
+Hence,
+\[
+0 \leq  |\sqrt{x_n} - \sqrt{x}|\leq \frac{1}{\sqrt x} |x_n -x|
+\]
+$\forall n\in\NN$. Hence, by the Squeeze Theorem,
+\[
+\lim_{n\to \infty} |\sqrt{x_n}
+ - \sqrt x| = 0.\] 
+ \qed 
+ 
+ \begin{remark}
+ Why must we do casework in the above proof?
+ \end{remark}
+ 
+ \begin{theorem}
+ If $\{x_n\}$ is convergent and $\lim_{n\to \infty} x_n = x$, then $\{|x_n|\}$ is convergent and $\lim_{n\to \infty} |x_n| = |x|$.
+ \end{theorem}
+ \textbf{Proof}:
+ Firstly, note that $\forall x\in\RR$, $\sqrt{x^2} = |x|$. Then,
+ \[
+ \lim_{n\to \infty}|x_n| =  \lim_{n\to \infty}\sqrt{x_n^2}= \sqrt{x^2} = |x|
+ \]
+ by the previous theorem. \qed 
+ 
+ \begin{theorem}
+ If $c\in (0,1)$, then $\lim_{n\to \infty} c^n = 0$. If $c>1$, then $\{c^n\}$ is unbounded.
+ \end{theorem}
+ \textbf{Proof}: If $0<c<1$, we claim that $\forall n\in\NN$, $0 < c^{n+1} <c^n < 1$. We can prove this through induction. Firstly, notice that $0 < c^2 <c <1$ since $c>0$ and $c<1$. Now assume that $0<c^{m+1} <c^{m}$. Then, multiply by $c>0$ to obtain 
+ \[
+ 0 < c^{m+1}\cdot c = c^{(m+1)+1}<c^{m}\cdot c = c^{(m+1)}.
+ \]
+ By induction, our claim holds. Thus, $\{c^n\}$ is a monotone decreasing sequence and is bounded below. Thus, $\{c^n\}$ is convergent. Let $L = \lim_{n\to\infty} c^n$. We will prove that $L= 0$. Let $\epsilon>0$. Then, $\exists M \in\NN$ such that $\forall n\geq M$, $|c^n - L| < (1-c)\frac{\epsilon}{2}$. Therefore,
+ \begin{align*}
+     (1-c) |L| &= |L-cL| = |L -c^{M+1} + c^{M+1} -cL| \\
+     &\leq |L-c^{M+1}| + c|c^{M} - L| \\
+     &< (1-c) \frac{\epsilon}{2} + c(1-c) \frac{\epsilon}{2} <(1-c) \epsilon.
+ \end{align*}
+ Therefore, $\forall \epsilon>0$, $|L| < \epsilon\implies L =0.$ 
+ 
+Now let $c>1$. We have to show that $\forall B\geq 0$, $\exists n\in\NN$ such that $c^n > B$.
+Let $B\geq 0$. Choose $n\in\NN$ such that $n>\frac{B}{c-1}$. Then, 
+\[
+c^n = (1+(1-c))^n \geq 1+n(c-1) \geq n(c-1) > B.
+\]
+To see why this center inequality is true, see the last theorem shown in Lecture 1. \qed 

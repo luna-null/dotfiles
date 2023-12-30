@@ -1,0 +1,136 @@
+[Cover]
+depth=0
+exclude=*back*
+include=*.jpg, *.png, *.webp
+use_files=true
+
+[Equalizer]
+two_passes=true
+
+[Equalizer_10]
+band_0=0
+band_1=0
+band_2=0
+band_3=0
+band_4=0
+band_5=-0.39215686274509665
+band_6=0
+band_7=0
+band_8=0
+band_9=0
+enabled=false
+preamp=0
+
+[%General]
+default_pl_name=Playlist
+exclude_filters=@Invalid()
+last_dir=/home/le
+restrict_filters=@Invalid()
+resume_on_startup=false
+resume_playback=false
+resume_playback_time=0
+use_default_pl=false
+
+[Misc]
+determine_file_by_content=false
+
+[Output]
+average_bitrate=false
+buffer_size=500
+dithering=true
+format=2
+software_volume=false
+volume_step=5
+
+[PlayList]
+autosave=true
+clear_previous=false
+convert_twenty=true
+convert_underscore=true
+group_format="%p%if(%p&%a, - %if(%y,[%y] ,),)%a"
+groups=false
+load_metadata=true
+no_advance=false
+read_metadata_for_playlist=true
+repeate_list=false
+repeate_track=false
+shuffle=false
+skip_existing_tracks=false
+transit_between_playlists=false
+
+[PluginCache]
+usr\lib64\qmmp-1.6\General\libconverter.so=converter, 0, 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\General\libcopypaste.so=copypaste, 0, 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\General\libfileops.so=fileops, 0, 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\General\libhistory.so=history, 0, 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\General\libhotkey.so=hotkey, 0, 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\General\libkdenotify.so=kdenotify_icon, 0, 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\General\liblibrary.so=library, 0, 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\General\liblistenbrainz.so=listenbrainz, 0, 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\General\libmpris.so=mpris, 0, 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\General\librgscan.so=rgscan, 0, 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\General\libsleepinhibitor.so=sleepinhibitor, 0, 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\General\libstreambrowser.so=streambrowser, 0, 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\General\libtrackchange.so=trackchange, 0, 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\Input\libmpeg.so=mpeg, 0, , "*.mp1;*.mp2;*.mp3;*.wav", "audio/mp3;audio/mpeg", 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\Input\libvorbis.so=vorbis, 0, , *.ogg, "application/ogg;audio/x-vorbis+ogg", 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\Output\libalsa.so=alsa, 0, , , , 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\Output\libjack.so=jack, 0, , , , 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\Output\libnull.so=null, 0, , , , 2023-12-15T02:40:59
+usr\lib64\qmmp-1.6\Ui\libskinned.so=skinned, 0, 2023-12-15T02:40:59
+
+[Proxy]
+authentication=false
+proxy_type=0
+url=@Variant(\0\0\0\x11\xff\xff\xff\xff)
+use_proxy=false
+
+[ReplayGain]
+default_gain=0
+mode=2
+preamp=0
+prevent_clipping=true
+
+[Skinned]
+always_on_top=false
+antialiasing=false
+autoscroll=true
+disp_elapsed=true
+disp_shaded=false
+double_size=false
+eq_auto=false
+eq_pos=@Point(0 0)
+eq_shaded=false
+eq_visible=false
+mw_pos=@Point(0 0)
+pl_autoresize_column=-1
+pl_column_alignment=@Variant(\0\0\0\t\0\0\0\x1\0\0\0\x2\0\0\0\0)
+pl_column_names=Artist - Title
+pl_column_patterns="%if(%p,%p - %t,%t)"
+pl_column_sizes=@Variant(\0\0\0\t\0\0\0\x1\0\0\0\x2\0\0\0\x96)
+pl_pos=@Point(0 0)
+pl_shaded=false
+pl_show_header=false
+pl_show_tabbar=false
+pl_size=@Size(789 852)
+pl_track_state_column=-1
+pl_visible=true
+scroller_transparency=true
+show_on_all_desktops=false
+skin_name=glare
+skin_path=:/glare
+vis_analyzer_falloff=2.2
+vis_analyzer_mode=0
+vis_analyzer_type=1
+vis_peaks_falloff=0.2
+vis_rate=25
+vis_show_peaks=true
+vis_transparent_bg=false
+vis_type=Analyzer
+
+[URLDialog]
+use_clipboard=false
+
+[Volume]
+left=100
+right=100

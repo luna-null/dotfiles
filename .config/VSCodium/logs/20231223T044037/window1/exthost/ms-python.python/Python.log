@@ -1,0 +1,5 @@
+2023-12-23 04:40:40.175 [info] Telemetry level is off
+2023-12-23 04:40:40.175 [info] Experiments are disabled, only manually opted experiments are active.
+2023-12-23 04:40:40.175 [info] Default formatter is set to null for workspace /
+2023-12-23 04:40:40.178 [info] Test server listening.
+2023-12-23 04:40:40.180 [info] Python interpreter path: ./bin/python3.12

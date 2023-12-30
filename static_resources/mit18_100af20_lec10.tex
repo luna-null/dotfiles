@@ -1,0 +1,189 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+\noindent\underline{\textbf{Cauchy Sequences}}
+
+\begin{definition}{Cauchy}
+A sequence $\{x_n\}$ is \vocab{Cauchy} if $\forall \epsilon>0$ $\exists M \in \NN$ such that for all $n,k \geq M$,
+\[
+|x_n - x_k| <\epsilon.
+\]
+\end{definition}
+
+\begin{example}
+Show the sequence $x_n = \frac{1}{n}$ is Cauchy. 
+\end{example}
+\begin{proof}
+Let $\epsilon>0$ and choose $M \in \NN$ such that $\frac{1}{M} < \frac{\epsilon}{2}$. Then, if $n,k\geq M$, then 
+\[
+\left|\frac{1}{n} - \frac{1}{k}\right| \leq \frac{1}{n} + \frac{1}{k} \leq \frac{2}{M} < \epsilon.
+\]
+\end{proof}
+
+\begin{negation}[Not Cauchy]
+By the negation of the definition, a sequence $\{x_n\}$ is \vocab{not Cauchy} if $\exists \epsilon_0 >0$ such that for all $M\in \NN$, $\exists n,k\geq M$ such that $|x_n - x_k| \geq \epsilon_0$.
+\end{negation}
+
+\begin{example}
+Show the sequence $x_n = (-1)^n$ is not Cauchy.
+\end{example}
+\begin{proof}
+Choose $\epsilon = 1$ and let $M\in \NN$. Choose $n = M$ and $k = M+1$. Then, 
+\[
+|(-1)^n - (-1)^k| = 2 \geq 1.
+\]
+\end{proof}
+
+\begin{theorem}
+If $\{x_n\}$ is Cauchy, then $\{x_n\}$ is bounded.
+\end{theorem}
+\textbf{Proof}: If $\{x_n\}$ is Cauchy then $\exists M\in \NN$ such that for all $n,k\geq M$, 
+\[
+|x_n - x_k|< 1.
+\]
+Then, for all $n\geq M$, $|x_n - x_M| <1.$ Hence, 
+\[
+|x_n| \leq |x_n-x_M| + |x_M| < |x_M| + 1.
+\]
+Let $B = |x_1|+\dots+|x_M|+1$. Then, for all $n\in \NN$, $|x_n| \leq B.$ \qed 
+
+\begin{theorem}
+If $\{x_n\}$ is Cauchy and a subsequence $\{x_{n_k}\}$ converges, then $\{x_n\}$ converges.
+\end{theorem}
+\textbf{Proof}: Suppose that $\{x_{n_k}\}$ is a subsequence of $\{x_n\}$ such that $\lim_{k\to \infty} x_{n_k} =x$. We claim that $x_n \to x$. Let $\epsilon>0$. Since $x_{n_k}\to x$, there exists $M_0 \in \NN$ such that $\forall k \geq M_0$, 
+\[
+|x_{n_k} - x| < \frac{\epsilon}{2}.
+\]
+Since $\{x_n\}$ is Cauchy, there exists an $M_1 \in \NN$ such that for all $n \geq M_1$ and $m\geq M_1$, 
+\[
+|x_n-x_m|<\frac{\epsilon}{2}.
+\]
+Choose $M = M_0 + M_1$. If $n\geq M$, then $n_M \geq M \geq M_0$ and $n_ \geq M_1$. Therefore, 
+\[
+|x_n-x| \leq |x_n -x_{n_M}| + |x_{n_M} - x| < \frac{\epsilon}{2}+ \frac{\epsilon}{2} = \epsilon.
+\] 
+\qed 
+
+\begin{theorem}
+A sequence of real numbers $\{x_n\}$ is Cauchy if and only if $\{x_n\}$ is convergent.
+\end{theorem}
+\textbf{Proof}: ($\implies$) If $\{x_n\}$ is Cauchy, then $\{x_n\}$ is bounded. Therefore, $\{x_n\}$ has a convergent subsequence by Bolzano-Weierstrass. By the previous theorem, we thus have that $\{x_n\}$ is convergent.
+
+($\impliedby$) Suppose that $\{x_n\}$ is convergent and $x = \lim_{n\to \infty} x_n$. Let $\epsilon>0$. Since $x_n \to x$, $\exists M_0 \in \NN$ such that $\forall n\geq M_0$,
+\[
+|x_n-x| < \frac{\epsilon}{2}.
+\]
+Choose $M = M_0$. Then, if $n,k\geq M$,
+\[
+|x_n -x_k| \leq |x_n-x| + |x_k-x| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.
+\]
+Therefore, $\{x_n\}$ is Cauchy. \qed 
+
+\noindent\underline{\textbf{Series}}
+\begin{remark}
+Series were the original motivation for analysis.
+\end{remark}
+\begin{definition}
+Given $\{x_n\}$, the symbol $\sum_{n=1}^\infty x_n$ or $\sum x_n$ is the \vocab{series} associated to $\{x_n\}$. We say $\sum x_n$ converges if the sequence 
+\[
+\left\{
+s_m = \sum_{n=1}^m x_n
+\right\}_{m=1}^\infty
+\]
+converges. We call the terms of $\{s_m\}$ the \vocab{partial sums}. If $\lim_{m\to \infty} s_m = s$, we write $s = \sum x_n$ and treat $\sum x_n$ as a number.
+\end{definition}
+
+\begin{remark} A series need not start at $n=1$.
+\end{remark}
+
+\begin{example}
+$\sum_{n=1}^\infty \frac{1}{n(n+1)}$ converges.
+\end{example}
+\begin{proof}
+We may do show this directly by consider the partial sums:
+\begin{align*}
+    s_m = \sum_{n=1}^m \frac{1}{n(n+1)} &= \sum_{n=1}^m \frac{1}{n} - \frac{1}{n+1} \\
+    &= \left(1+\frac{1}{2} + \dots + \frac{1}{m}\right) -\left(\frac{1}{2} + \dots \frac{1}{m} +\frac{1}{m+1} \right) \\
+    &= 1- \frac{1}{m+1}.
+\end{align*}
+Thus, $s_m = 1-\frac{1}{m+1} \to 1$. Hence, the partial sums converge and thus the series converges.
+\end{proof}
+
+\begin{theorem}
+If $|r| < 1$ then $\sum_{n=0}^\infty r^n$ converges and 
+\[
+\sum_{n=0}^\infty r^n = \frac{1}{1-r}.
+\]
+\end{theorem}
+\textbf{Proof}: We have $\forall m\in \NN$, 
+\[
+s_m = \sum_{n=0}^m r^n = \frac{1-r^{m+1}}{1-r}
+\]
+by induction. Since $|r|<1$, $\lim_{m\to \infty} |r|^{m+1} = 0$. Therefore, 
+\[
+\lim_{m\to \infty} s_m = \frac{1-0}{1-r} = \frac{1}{1-r}.
+\]\qed 
+
+\begin{remark}
+Series of the form $\sum_{n=0}^\infty \alpha (r)^{n}$ for $\alpha \in \RR$ and $r\in \RR$ are called \vocab{geometric series.}
+\end{remark}
+
+\begin{theorem}
+Let $\{x_n\}$ be a sequence and let $M \in \NN$. Then, $\sum_{n=1}^\infty x_n$ converges if and only if $\sum_{n=M}^\infty x_n$ converges. 
+\end{theorem}
+\textbf{Proof}: The partial sums satisfy, for all $m\in \NN$, 
+\[
+\sum_{n=1}^m x_n = \sum_{n=M}^m x_n + \sum_{n=1}^M x_n.
+\]
+\qed 
+
+\begin{definition}
+$\sum x_n$ is Cauchy if the sequence of partial sums is Cauchy.
+\end{definition}
+
+\begin{theorem}
+$\sum x_n$ is Cauchy $\iff$ $\sum x_n$ is convergent.
+\end{theorem}
+\textbf{Proof}: This follows by the analogous theorem for regular sequences of real numbers proven earlier. \qed
+
+\begin{theorem}
+$\sum x_n$ is Cauchy if and only if $\forall \epsilon>0$, $\exists M\in \NN$ such that for all $m \geq M$ and $\ell >m$,
+\[
+\left|\sum_{n=m+1}^\ell x_n\right| < \epsilon.
+\]
+\end{theorem}
+\textbf{Proof}: $(\implies)$ Suppose $\sum x_n$ is Cauchy. Let $\epsilon>0$. Then, $\exists M_0\in \NN$ such that $\forall m,\ell \geq M_0$,
+\[
+|s_m - s_{\ell}| < \epsilon.
+\]
+Choose $M = M_0$. Then, if $m\geq M$ and $\ell >m$, then
+\[
+\left|\sum_{n=m+1}^\ell x_n\right| = |s_\ell -s_m| < \epsilon.
+\]
+The other direction is left as an exercise. \qed
+
+\begin{theorem}
+If $\sum x_n$ converges then $\lim_{n\to \infty} x_n = 0$.
+\end{theorem}
+\textbf{Proof}: Suppose $\sum x_n$ converges. Then, $\sum x_n$ is Cauchy. Let $\epsilon>0$. Since $\sum x_n$ is Cauchy, $\exists M_0 \in \NN$ such taht for all $\ell>m\geq M_0$, 
+\[
+\left|\sum_{n=m+1}^\ell x_n\right| < \epsilon.
+\]
+Choose $M = M_0 + 1$. Then, if $m \geq M \implies m-1\geq M_0$. Therefore, 
+\[
+|x_m| = \left|\sum_{n=m}^m x_n\right| < \epsilon
+\]
+by taking $\ell = m$. \qed 
+
+\begin{theorem}
+If $|r| \geq 1$, then $\sum_{n=0}^\infty r^n$ diverges.
+\end{theorem}
+\textbf{Proof}: If $|r|\geq 1$, then $\lim_{m\to \infty}r^m \neq 0$. Therefore, 
+$\sum_{n=0}^\infty r^n$ diverges, as if this wasn't the case then \\
+$\lim_{m\to \infty} r^m =0$ by the previous theorem which is a contradiction. \qed 
+
+\begin{corollary}
+The series $\sum_{n=0}^\infty \alpha(r)^n$ converges if and only if $|r|< 1$.
+\end{corollary}

@@ -1,0 +1,128 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+As we will see in today's lecture, continuous functions are well behaved on closed intervals of the form $[a,b]$, with $f([a,b]) = [e,f]$ for some $e,f\in \RR$.
+
+\begin{definition}[Bounded Functions]
+A function $f:S\to \RR$ is \vocab{bounded} if $\exists B\geq 0$ such that for all $x\in S$, 
+\[
+|f(x)| \leq B.
+\]
+\end{definition}
+
+\begin{theorem}
+If $f:[a,b]\to \RR$ is continuous then $f$ is bounded.
+\end{theorem}
+\textbf{Proof}: Suppose for the sake of contradiction that $f:[a,b]\to \RR$ is continuous and $f$ is unbounded. Then, $\forall n \in \NN$, $\exists x_n\in [a,b]$ such that $|f(x_n)| \geq n$. By the Bolzano-Weierstrass theorem, $\exists$ a subsequence $\{x_{n_k}\}_k$ of $\{x_n\}_n$ and an $x\in \RR$ such that $x_{n_k} \to x$. Since $a\leq x_{n_k}\leq b$ for all $k$, $a\leq x \leq b$. Given $f$ is continuous at $x$ by assumption, 
+\[
+f(x) = \lim_{k\to \infty} f(x_{n_k}) \implies |f(x) |= \lim_{k\to \infty} |f(x_{n_k})|.
+\]
+Therefore, $\{|f(x_{n_k})|\}$ is bounded, and thus $\{n_{k}\}$ is bounded since $n_k \leq |f(x_{n_k})|$. But by the definition of a subsequence, we must have $k\leq n_k$ for all $k$, contradicting the boundedness of $\{n_k\}$. \qed 
+
+\begin{definition}[Absolute Minimum/Maximum]
+Let $f: S\to \RR$. Then, $f$ achieves an \vocab{absolute minimum} at $c$ if $\forall x\in S$, $f(x) \geq f(c)$. Similarly, $f$ achieves an \vocab{absolute maximum} at $d$ if $\forall x\in S$, $f(x) \leq f(d)$.
+\end{definition}
+\begin{figure}[h]
+    \centering
+    \includegraphics{pics/fig06.PNG}
+\end{figure}
+
+\begin{theorem}[Min-Max Theorem]
+Let $f:[a,b]\to \RR$. If $f$ is continuous, then $f$ achieves an absolute maximum and absolute minimum.
+\end{theorem}
+\begin{remark}
+Note that this is also called the Extreme Value Theorem or EVT for short, though to stay consistent with the Lebl's book I will be calling it the Min-Max theorem.
+\end{remark}
+
+\textbf{Proof}: We will prove this for the absolute maximum. If $f$ is continuous, then $f$ is bounded by the previous theorem. Thus, the set
+\[
+E = \{f(x) \mid x\in [a,b]\}
+\]
+is bounded above. Let $L = \sup E$. Then, 
+\begin{enumerate}
+    \item $L$ is an upper bound for $E$, i.e.
+    \[\forall x\in [a,b],~ f(x)\leq L.\]
+    \item There exists a sequence $\{f(x_n)\}_n$ with $x_n\in [a,b]$ such that $f(x_n) \to L$.
+\end{enumerate}
+By the Bolzano-Weierstrass theorem, there exists a subsequence $\{x_{n_k}\}_k$ of $\{x_n\}$ and $d\in [a,b]$ such that $x_{n_k}\to d$ as $k\to \infty$. Hence,
+\[
+f(d) = \lim_{k\to \infty} f(x_{n_k}) = \lim_{n\to \infty} f(x_n) = L
+\]
+by the continuity of $f$. Thus, $f$ achieves an absolute maximum at $d$.
+
+We leave the absolute minimum proof to the reader. \qed 
+
+\begin{remark}
+As students of mathematics, we also care about the necessity of the hypotheses!
+\end{remark}
+For example, what if $f:[a,b]\to \RR$ is not continuous? Does the Min-Max theorem apply? The answer is \textbf{no}. Consider 
+\[
+f(x) = \begin{cases}
+\frac{1}{2} & x=0,1 \\
+x &x\in(0,1)
+\end{cases}.
+\]
+Here, $f$ neither achieves an absolute maximum nor an absolute minimum on $[0,1]$.
+
+What if $f:S\to \RR$ and $S$ is not closed and bounded? Does the Min-Max theorem apply? Again, the answer is \textbf{no}. Consider $f(x) = \frac{1}{x} - \frac{1}{1-x}$ on $S= (0,1)$. Even though $f$ is continuous on $S$, $f$ neither achieves an absolute minimum nor an absolute maximum.
+
+So far we have shown that if $f:[a,b]\to \RR$ is continuous, then $f([a,b]) \subset [f(c),f(d)]$ where $f$ achieves an absolute minimum at $c$ and an absolute maximum at $d$.
+
+\begin{question}
+Does $f$ achieve all values in $f(c)$ and $f(d)$?
+\end{question}
+The answer is \textbf{yes}, by Bolzano's Intermediate Value Theorem as we will show.
+
+\begin{theorem}
+Let $f:[a,b]\to \RR$. If $f(a) < 0$ and $f(b)>0$, then $\exists c\in (a,b)$ such that $f(c) = 0$.
+\end{theorem}
+\textbf{Proof}: We prove this using a bisection method. Let $a_1 = a$ and $b_1 = b$, and define $a_2,b_2$ as follows: If $f((a_1+b_1)/2)\geq 0$, define $a_2 = a_1$, $b_2 = \frac{a_1+b_1}{2}$. If $f((a_1+b_1)/2) < 0$, define $a_2 = \frac{a_1+b_1}{2}$ and $b_2 =b_1$. In general, if we know $a_n,b_n$, we choose $a_{n+1}$ and $b_{n+1}$ as follows: If $f((a_n+b_n)/2)\geq 0$, define $a_{n+1} = a_n$, $b_2{n+1} = \frac{a_n+b_n}{2}$. If $f((a_n+b_n)/2) < 0$, define $a_{n+1} = \frac{a_n+b_n}{2}$ and $b_{n+1} =b_n$. Thus, we have:
+\begin{enumerate}
+    \item $\forall n\in \NN$, $a\leq a_n \leq a_{n+1}\leq b_{n+1}\leq b_n \leq b$.
+    \item $\forall n\in \NN$, $b_{n+1}-a_{n+1} = \frac{b_{n}-a_n}{2}$.
+    \item $\forall n\in \NN$, $f(a_n) < 0$ and $f(b_n) \geq 0$.
+\end{enumerate}
+By 1., $\{a_n\}$ and $\{b_n\}$ are monotone increasing and monotone decreasing respectively, both of which are bounded. Thus, $\exists c,d\in [a,b]$ such that $a_n\to c$ and $b_n\to d$. By 2., 
+\[
+b_n-a_n = \frac{b_{n-1}-a_{n-1}}{2} = \frac{1}{4}(b_{n-2}-a_{n-2}) = \dots = \frac{1}{2^{n-1}}(b-a).
+\]
+Thus, \[d-c = \lim_{n\to \infty} (b_n-a_n) = \lim_{n\to \infty} \frac{1}{2^{n-1}} (b-a)=0\implies d=c.\]
+
+Therefore, $\lim_{n\to \infty} a_n = \lim_{n\to \infty} b_n = c$. By 3., $f(c) = \lim_{n\to \infty} f(a_n) \leq 0$ and $f(c) = \lim_{n\to \infty} f(b_n) \geq 0$. Therefore, $f(c) = 0.$ \qed 
+
+\begin{theorem}[Bolzano IVT]
+Let $f:[a,b] \to \RR$ be continuous. If $f(a) < f(b)$, and $y\in (f(a),f(b))$, $\exists c\in (a,b)$ such that $f(c) = y.$ If $f(b) < f(a)$ and $y\in (f(b),f(a))$, $\exists c\in (a,b)$ such that $f(c) = y.$
+\end{theorem}
+\begin{remark}
+This is known as the Intermediate Value Theorem or IVT for short.
+\end{remark}
+
+\textbf{Proof}: Suppose $f(a) < f(b)$. Let $y\in (f(a),f(b))$. Define $g(x) = f(x)-y$. Then, $g:[a,b]\to \RR$ is continuous, $g(a) = f(a)-y<0$ and $g(b) = f(b)-y>0$. Therefore, by the previous theorem, $\exists c\in (a,b)$ such that $g(c) = 0$. Therefore, $\exists c\in (a,b)$ such that $g(c) = f(c) -y = 0 \implies f(c) = y$.
+
+The other direction is analogous. \qed 
+
+\begin{theorem}
+Let $f:[a,b]\to \RR$ be continuous. let $c\in [a,b]$ be where $f$ achieves an absolute minimum and $d\in [a,b]$ be where $f$ achieves an absolute maximum. Then, 
+\[
+f([a,b]) = [f(c),f(d)].
+\]
+In other words, every value between the absolute minimum value and the absolute maximum value is achieved.
+\end{theorem}
+\textbf{Proof}: We know that $f([a,b]) \subseteq [f(c),f(d)]$. Hence, we prove the other direction. By the IVT applied to $f:[c,d]\to \RR$, 
+\[
+[f(c),f(d)] \subseteq f([c,d]) \subseteq f([a,b]).
+\]
+Therefore, $f([a,b]) = [f(c),f(d)]$. \qed 
+
+Of course, Bolzano IVT is false if we assume $f$ is not continuous (as can be seen by the following diagram):
+\begin{figure}[h]
+    \centering
+    \includegraphics{pics/fig07.PNG}
+\end{figure}
+
+\begin{theorem}
+The polynomial $f(x) = x^{2021} + x^{2020} + 9.03x + 1$ has at least one real root.
+\end{theorem}
+\textbf{Proof}: Notice that $f(0) = 1>0$ and $f(-1) = -1+1-9.03+1 = -8.03<0$. Thus, by IVT, $\exists c\in (-1,0)$ such that $f(c) = 0.$ \qed 

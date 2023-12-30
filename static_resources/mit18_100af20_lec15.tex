@@ -1,0 +1,115 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+\begin{theorem}
+Let $S\subset \RR$, $c\in S$, and $f:S\to \RR$. Then, 
+\begin{enumerate}
+    \item if $c$ is not a cluster point of $f$, then $f$ is continuous at $c$.
+    \item if $c$ is a cluster point of $S$, then $f$ is continuous at $c$ if and only if $\lim_{x\to c} f(x) = f(c)$.
+    \item $f$ is continuous at $c$ if and only if for every sequence $\{x_n\}$ of elements of $S$ such that $x_n \to c$, we have $f(x_n) \to f(c)$.
+\end{enumerate}
+\end{theorem}
+\textbf{Proof}:
+\begin{enumerate}
+    \item Let $\epsilon>0$. Since $c$ is not a cluster point of $S$, $\exists \delta_0>0$ such that $(c-\delta_0, c+\delta_0) \cap S = \{c\}$. Choose $\delta = \delta_0$. If $x\in S$ and $|x-c| < \delta \implies x = c\implies |f(x) -f(c)| = 0< \epsilon$. Therefore, $f$ is continuous at $c$.
+    \item This part of the theorem is left as an exercise (or read the short proof in the book).
+    \item ($\implies$) Suppose $f$ is continuous at $c$. Let $\{x_n\}$ be a sequence such that $x_n\to c$. Let $\epsilon>0$. Since $f$ is continuous at $c$, $\exists \delta >0$ such that if $x\in S$ and $|x-c| < \delta$ then $|f(x) - f(c)| < \epsilon$. Since $x_n\to c$, $\exists M_0 \in \NN$ such that $\forall n\geq M_0$, $|x_n-c|<\delta$. Choose $M = M_0$. Then, $\forall n \geq M$, 
+    \[
+    |x_n-c|<\delta \implies |f(x_n) - f(c)|<\epsilon.
+    \]
+    Thus, $f(x_n) \to f(c)$.
+    
+    ($\impliedby$) Suppose that for every sequence $\{x_n\}$ of elements of $S$ such that $x_n\to c$, we have that $f(x_n) \to f(c)$. We will work towards a contradiction. Suppose $f(x)$ is not continuous at $c$. Then, $\exists \epsilon_0$ such that $\forall \delta>0$ $\exists x\in S$ such that $|x-c| <\delta$ and $|f(x) - f(c)| \geq \epsilon_0.$
+    
+    Thus, $\forall n\in \NN$, $\exists x_n\in S$ such that $|x_n-c|< \frac{1}{n}$ and 
+    \[
+    |f(x_n) - f(c)|\geq \epsilon_0.
+    \]
+    Thus, by the Squeeze Theorem, $|x_n-c|\to 0\implies x_n\to c$. Therefore, 
+    \[
+    0 = \lim_{n\to \infty} |f(x_n) - f(c)| \geq \epsilon_0
+    \]
+    which is a contradiction.
+\end{enumerate} \qed 
+
+\begin{theorem}
+The functions $f(x) = \sin x$ and $g(x) = \cos x$ are continuous functions on $\RR$.
+\end{theorem}
+\textbf{Proof}: From their definitions in terms of the unit circle, we have that $\sin^2(x) + \cos^2(x) = 1$. Also note the following:
+\begin{enumerate}
+    \item $\forall x\in \RR$, $|\sin x| \leq 1$ and $|\cos x|\leq 1$
+    \item $\forall x\in \RR$, $|\sin x| \leq |x|$
+    \item The angle formulae: \[\sin(a+b) = \cos(a) \sin(b) + \sin(a) \cos(b)
+    \hspace{.25cm} \text{and} \hspace{.25cm} \sin(a) - \sin(b) = 2\sin\left(\frac{a-b}{2}\right)\cos\left(\frac{a+b}{2}\right).
+    \]
+\end{enumerate}
+We now show that $\sin x$ is continuous on $\RR$. Let $\epsilon>0$. Choose $\delta = \epsilon$. Then, if $|x-c|< \delta$, then 
+\[|\sin x - \sin c| = 2\left|\sin \frac{x-c}{2} \cos \frac{x+c}{2}\right| \leq 2\left|\sin \frac{x-c}{2}\right| \leq 2\frac{|x-c|}{2} = |x-c| < \delta = \epsilon.\]
+Therefore, $\sin x$ is continuous on $\RR$. We now show that $\cos x$ is continuous. Recall that $\forall x\in \RR$, $\cos x = \sin(x+ \pi/2)$. Let $c\in \RR$ and let $\{x_n\}$ be a sequence such that $x_n \to c$. Then, $x_n+\pi/2\to c+\pi/2$. Since $\sin x$ is continuous on $\RR$,
+\[
+\lim_{n\to \infty}\cos x_n = \lim_{n\to \infty}\sin\left(x_n + \frac{\pi}{2}\right) = \sin\left(c + \frac{\pi}{2}\right) = \cos c.
+\]
+Therefore, $\cos x$ is continuous on $\RR$. \qed 
+
+\begin{theorem}
+Let $f$ be a polynomial, in other words let $f$ be of the form 
+\[
+f(x) = a_d x^d + \dots + a_1 x + a_0.
+\]
+Then, $f$ is continuous on all of $\RR$.
+\end{theorem}
+\textbf{Proof}: Let $c\in \RR$ and let $\{x_n\}$ be a  sequence such that $x_n\to c$. Then, by the limit theorem for sequences, 
+\begin{align*}
+    \lim_{n\to \infty} f(x_n) &= \lim_{n\to \infty} (a_d x^d + \dots + a_1 x + a_0) \\
+    &= a_d(\lim_{n\to \infty} x_n)^d + \dots + a_1 (\lim_{n\to \infty} x_n) + a_0 \\
+    &= a_d c^d + \dots + a_1c + a_0 \\
+    &= f(c).
+\end{align*}
+Thus, $f$ is continuous at $c$ for all $c\in \RR$. \qed 
+\begin{theorem}
+If $f: S\to \RR$, $g:S\to \RR$ are continuous at $c\in S$, then 
+\begin{enumerate}
+    \item $f+g$ is continuous at $c$,
+    \item $f\cdot g$ is continuous at $c$,
+    \item and if $\forall x\in S$ $g(x) \neq 0$, then $\frac{f}{g}$ is continuous at $c$.
+\end{enumerate}
+\end{theorem}
+
+\textbf{Proof}: These proofs are left to the reader. \qed 
+
+\begin{theorem}
+Let $A,B\subset \RR$, $f:B\to \RR$, $g:A\to B$. Then, if $g$ is continuous at $c$ and $f$ is continuous at $g(c)$, then $f\circ g$ is continuous at $c$. 
+\end{theorem}
+\textbf{Proof}: Suppose $x_n\to c$. Then, $g(x_n) \to g(c)$, and thus 
+\[
+f(g(x_n)) \to f(g(c)).
+\]
+\qed 
+
+\begin{example}
+These theorems allow us to say that some functions are continuous without a huge $\epsilon-\delta$ proof:
+\begin{enumerate}[label = \roman*)]
+    \item $\frac{1}{x^2}$ is continuous on $(0,\infty$). This follows as $g(x) = x^2$ is continuous on $(0,\infty)$ and thus $\frac{1}{g(x)} = 1/x^2$ is continuous on $(0,\infty)$. 
+    \item $(\cos \frac{1}{x^2})^2$ is continuous on $(0,\infty)$. This follows as $\cos x$ is continuous on $\RR$, and thus $g(x) = \cos(1/x^2)$ is continuous on $(0,\infty)$. Furthermore, since $f(x) = x^2$ is continuous on $\RR$, $(f\circ g)(x) = (\cos 1/x^2)^2$ is continuous on $(0,\infty)$.
+\end{enumerate}
+\end{example}
+
+\begin{question}
+Let $f:\RR\to \RR$ be a function. Does there exists a point $c\in \RR$ such that $f$ is continuous at $c$?
+\end{question}
+
+\begin{theorem}
+The function 
+\[
+f(x) = \begin{cases}1 & x\in \QQ \\ 0 &x\notin \QQ\end{cases}
+\]
+is not continuous on all of $\RR$. This function is called the \textbf{Dirichlet function}.
+\end{theorem}
+\textbf{Proof}: We have two cases: $c\in \QQ$ or $c\notin \QQ$.
+\begin{enumerate}
+    \item $c\in \QQ$. For each $n\in \NN$, $\exists x_n\notin \QQ$ such that $c< x_n < c+1/n$, and thus $x_n\to c$ but $f(x_n) =1$ for all $n$ so \[1 = \lim_{n\to \infty}f(x_n)\neq f(c) = 0.\]
+    \item $c\notin \QQ$. Similarly, for each $n\in \NN$, $\exists x_n\in \QQ$ such that $c< x_n < c+1/n$, and thus $x_n\to c$ but $f(x_n) =0$ for all $n$ so \[0 = \lim_{n\to \infty}f(x_n)\neq f(c) = 1.\]
+\end{enumerate}
+\qed 

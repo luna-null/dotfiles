@@ -1,0 +1,79 @@
+{
+    "id": "bottom",
+    "height": 9,
+    "mode": "dock",
+    "start-hidden": true,
+    "exclusive": false,
+    "name": "bottom",
+    "id": "bottom",
+    "layer": "top",
+    "ipc": true,
+    "position": "bottom",
+    "modules-left": [
+            "custom/process1",
+            "custom/process2",
+            "custom/process3"
+    ],
+    "modules-center": [
+            "tray"
+    ],
+    "modules-right": [
+            "network",
+            "custom/padding",
+            "idle_inhibitor"
+    ],
+
+    "custom/process1": {
+            "format": " <span color='#AE0'>{}</span>  ",
+            "exec": "ps aux --sort pcpu | perl -lane 'print \"@F[1]\"' | tail -n 1",
+            "interval": 5,
+            "on-click": "alacritty -e sh -c 'htop -s PERCENT_CPU'",
+            "tooltip": false
+    },
+
+    "custom/process2": {
+            "format": "  <span color='#FA0'>{}%</span>  ",
+            "exec": "ps aux --sort pcpu | perl -lane 'print \"@F[2]\"' | tail -n 1",
+            "interval": 5,
+            "on-click": "alacritty -e sh -c 'htop -s PERCENT_CPU'",
+            "tooltip": false
+    },
+
+    "custom/process3": {
+            "format": "  <span color='white'>{}</span>",
+            "exec": "ps aux --sort pcpu | perl -lane 'print \"@F[10..$#F]\"' | tail -n 1",
+            "interval": 5,
+            "max-length": 80,
+            "on-click": "alacritty -e sh -c 'htop -s PERCENT_CPU'"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "Φ",
+            "deactivated": "o"
+        },
+        "tooltip": false,
+    },
+
+    "custom/padding": {
+        "format": "     "
+    },
+
+    "tray": {
+        "show-passive-items": true,
+        "icon-size": 9,
+        "tooltip": false,
+        "spacing": 5
+    },
+    "network": {
+        "format-wifi": "{ipaddr} / {cidr}",
+        "format-ethernet": "{ipaddr}",
+        "format-linked": "{ipaddr}",
+        "format-disconnected": "⚠",
+        "tooltip-format": 
+                "{essid}, {signalStrength}%\n{gwaddr} \n{bandwidthTotalBits}\n {bandwidthUpBits}\n {bandwidthDownBits}\nTotal: {bandwidthTotalBits}",
+        "tooltip": true,
+        "on-click": "$term --class=nmtui -e nmtui"
+    },
+}

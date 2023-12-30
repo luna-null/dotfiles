@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Problem Sets on MIT OpenCourseWare</title>
+    <link>/resources/problem-sets/</link>
+    <description>Recent content in Problem Sets on MIT OpenCourseWare</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/resources/problem-sets/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Assignment 1 (PDF)</title>
+      <link>/resources/mit18_100af20_hw1/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/mit18_100af20_hw1/data.json</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Assignment 10 (PDF)</title>
+      <link>/resources/mit18_100af20_hw10/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/mit18_100af20_hw10/data.json</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Assignment 11 (PDF)</title>
+      <link>/resources/mit18_100af20_hw11/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/mit18_100af20_hw11/data.json</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Assignment 12 (PDF)</title>
+      <link>/resources/mit18_100af20_hw12/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/mit18_100af20_hw12/data.json</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Assignment 2 (PDF)</title>
+      <link>/resources/mit18_100af20_hw2/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/mit18_100af20_hw2/data.json</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Assignment 3 (PDF)</title>
+      <link>/resources/mit18_100af20_hw3/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/mit18_100af20_hw3/data.json</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Assignment 4 (PDF)</title>
+      <link>/resources/mit18_100af20_hw4/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/mit18_100af20_hw4/data.json</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Assignment 5 (PDF)</title>
+      <link>/resources/mit18_100af20_hw5/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/mit18_100af20_hw5/data.json</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Assignment 6 (PDF)</title>
+      <link>/resources/mit18_100af20_hw6/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/mit18_100af20_hw6/data.json</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Assignment 7 (PDF)</title>
+      <link>/resources/mit18_100af20_hw7/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/mit18_100af20_hw7/data.json</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Assignment 8 (PDF)</title>
+      <link>/resources/mit18_100af20_hw8/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/mit18_100af20_hw8/data.json</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Assignment 9 (PDF)</title>
+      <link>/resources/mit18_100af20_hw9/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/mit18_100af20_hw9/data.json</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Final Assignment (PDF)</title>
+      <link>/resources/mit18_100af20_hw_final/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/mit18_100af20_hw_final/data.json</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

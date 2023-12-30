@@ -1,0 +1,165 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+For this class, we will be using the book \href{https://www.jirka.org/ra/realanal.pdf}{\underline{Introduction to Real Analysis, Volume I}} by Ji\u r\'i Lebl \textbf{[L]}. I will use $\blacksquare$ to end proofs of examples, and $\qedsymbol$ to end proofs of theorems.
+
+\subsection*{Basic Set Theory}
+
+%\subsection*{Lecture 1:}
+%\textbf{\underline{Sets, Set Operations, and Mathematical Induction}}
+
+\begin{remark}
+There are two main goals of this class:
+\begin{enumerate}
+    \item Gain experience with proofs.
+    \item Prove statements about real numbers, functions, and limits.
+\end{enumerate}
+\end{remark}
+
+\noindent \underline{\textbf{Sets}}
+
+A \vocab{set} is a collection of objects called elements or members of that set. 
+The \vocab{empty set} (denoted $\emptyset$) is the set with no elements. There are a few symbols that are super helpful to know as a shorthand, and will be used throughout the course. Let $S$ be a set. Then
+\begin{multicols}{2}
+\begin{itemize}
+    \item $a\in S$ means that "$a$ is an element in $S$."
+    \item $a\notin S$ means that "$a$ is \underline{not} an element in $S$."
+    \item $\forall$ means "for all."
+    \item := means "define."
+    \item $\exists$ means "there exists."
+    \item $\exists!$ means "there exists a unique."
+    \item $\implies$ means "implies."
+    \item $\iff$ means "if and only if."
+\end{itemize}
+\end{multicols}
+
+\begin{definition}[Set Relations]
+We want to relate different sets, and thus we get the following notation/definitions:
+\begin{enumerate}
+    \item A set $A$ is a \underline{subset} of $B$, $A\subset B$, if every element of $A$ is in $B.$ Given $A\subset B$, if $a\in A\implies a\in B$.
+    \item Two sets $A$ and $B$ are \underline{equal}, $A=B$, if $A\subset B$ and $B\subset A$.
+    \item A set $A$ is a \underline{proper subset} of $B$, $A\subsetneq B$ if $A\subset B$ and $A\neq B$. 
+\end{enumerate}
+\end{definition}
+
+One way we can describe a set is using "set building notation". We write
+\[
+\{x\in A\mid P(x)\} \hspace{.25cm} \text{or} \hspace{.25cm} \{x\mid P(x)\}
+\]
+to mean "all $x\in A$ that satisfies property $P(x)$". One example of this would be \{$x\mid x$ is an even number\}. There are a few key sets that we will use throughout this class: 
+\begin{enumerate}
+    \item The set of natural numbers: $\NN = \{1,2,3,4,\dots\}$.
+    \item The set of integers: $\ZZ = \{0, 1, -1, 2, -2, 3, -3, \dots\}$.
+    \item The set of rational numbers: $\QQ = \{\frac{m}{n} \mid m,n\in \ZZ \text{~and~} n\neq 0\}$. 
+    \item The set of real numbers: $\RR$.
+\end{enumerate}
+It follows that 
+\[
+\NN \subset \ZZ\subset \QQ \subset \RR.
+\]
+
+\noindent The fourth item on this list brings us to an important question, and the first goal of our course:
+\begin{problem}
+How do we describe $\RR$?
+\end{problem}
+We will answer this question in Lectures 3 and 4. %can insert hyperlink 
+In the meantime, let's continue our study of sets and proof methods. Given sets $A$ and $B$, we have the following definitions:
+\begin{enumerate}
+    \item The \underline{union} of $A$ and $B$ is the set
+    $A\cup B = \{x\mid x\in A \text{~or~} x\in B\}.$
+    \item The \underline{intersection} of $A$ and $B$ is the set
+    $A\cap B = \{x\mid x\in A \text{~and~} x\in B\}.$
+    \item The \underline{set difference} of $A$ and $B$ is the set
+    $A\setminus B = \{x\in A \mid x\notin B\}.$
+    \item The \underline{complement} of $A$ is the set $A^c = \{x \mid x\notin A\}$. 
+    \item $A$ and $B$ are \underline{disjoint} if $A\cap B = \emptyset$.
+\end{enumerate}
+\begin{figure}[h]
+    \centering
+    \includegraphics{pics/fig03.PNG}
+\end{figure}
+
+\begin{theorem}[De Morgan's Laws]
+If $A,B,C$ are sets then
+\begin{enumerate}
+    \item $(B\cup C)^c = B^c \cap C^c$,
+    \item $(B\cap C)^c = B^c \cup C^c$,
+    \item $A\setminus (B\cup C) = (A\setminus B) \cap (A\setminus C)$,
+    \item and $A\setminus(B\cap C) = (A\setminus B) \cup (A\setminus C)$.
+\end{enumerate}
+\end{theorem}
+We will prove the first statement to give an example of how such a proof would go, but the rest will be left to you.\\ 
+\textbf{Proof}: Let $B,C$ be sets. We must prove that 
+\[
+(B\cup C)^c \subset B^c \cap C^c \hspace{.25cm}\text{and}\hspace{.25cm} B^c \cap C^c \subset (B\cup C)^c.
+\]
+
+If $x\in (B\cup C)^c\implies x\notin B\cup C\implies x\notin B$ and $x\notin C$. Hence, $x\in B^c$ and $x\in C^c \implies x\in B^c \cap C^c$. Thus, $(B\cup C)^c \subset B^c \cap C^c$.
+
+If $x\in B^c \cap C^c$ then $x\in B^c$ and $x\in C^c\implies x\notin B$ and $x\notin C$. Hence, $x\notin B\cup C\implies x\in (B\cup C)^c$. Thus, $B^c \cap C^c \subset (B\cup C)^c.$ \qed
+
+~\newline
+\noindent\underline{\textbf{Mathematical Induction}}
+
+We will now talk about some of the biggest proof methods there are. Firstly, note that $\NN= \{1,2,3,\dots\}$ has an ordering (as $1<2<3<\dots$). 
+\begin{axiom}[Well-ordering property]
+The well-ordering property of $\NN$ states that if $S\subset \NN$ then there exists an $x\in S$ such that $x\leq y$ for all $y\in S$. In other words, there is always a smallest element. 
+\end{axiom}
+Note that this is an axiom, and thus we have to assume this without proof.
+
+\begin{theorem}[Induction]
+This concept was invented by Pascal in 1665. Let $P(n)$ be a statement depending on $n\in \NN$. Assume that 
+\begin{enumerate}
+    \item (Base case) $P(1)$ is true and 
+    \item (Inductive step) if $P(m)$ is true then $P(m+1)$ is true.
+\end{enumerate}
+Then, $P(n)$ is true for all $n\in \NN.$
+\end{theorem}
+
+\textbf{Proof}: Let $S= \{n\in \NN \mid P(n) \text{~is not true}\}$. We wish to show that $S = \emptyset$. We will prove this by contradiction.
+\begin{remark}
+When we prove something by contradiction, we assume the conclusion we want is false, and then show that we will reach a false statement. Rules of logic thus imply that the initial statement must be false. Thus in this case, we will assume $S \neq \emptyset$ and derive a false statement.
+\end{remark}
+Suppose that $S \neq \emptyset$. Then, by the well-ordering property of $\NN$, $S$ has a least element $m\in S$. Since $P(1)$ is true, $m\neq 1$, i.e. $m>1$. Since $m$ is a least element, $m-1 \notin S \implies P(m-1)$ is true. This implies that $P(m)$ is true $\implies m\notin S$ by assumption. But then $m\in S$ and $m\notin S$. This is a contradiction. Thus $S = \emptyset$ and hence $P(n)$ is true for all $n\in \NN.$ \qed
+
+Let's see an example of induction in action.
+\begin{theorem}
+For all $c\neq 1$ in the real numbers, and for all $n\in \NN$, 
+\[
+1+c + c^2 + \dots +c^n = \frac{1-c^{n+1}}{1-c}.
+\]
+\end{theorem}
+
+\textbf{Proof}: We will prove this by induction. First, we prove the base case ($n=1)$. The left hand side of the equation is $1+c$ for $n=1$. The right hand side is $\frac{1-c^2}{1-c} = \frac{(1-c)(1+c)}{1-c} = 1+c$. Hence, the base case has been shown.
+
+Assume that the equation is true for $k\in \NN$, in other words 
+\begin{align*}
+1+c + c^2 + \dots +c^k &= \frac{1-c^{k+1}}{1-c}.
+\intertext{Thus,}
+    \implies 1+c + c^2 + \dots +c^k +c^{k+1} &= (1+c + c^2 + \dots +c^k) +c^{k+1} \\
+    &= \frac{1-c^{k+1}}{1-c} + c^{k+1} \\
+    &= \frac{1-c^{k+1}+c^{k+1}(1-c)}{(1-c)} \\
+    &= \frac{1-c^{(k+1)+1}}{1-c}.
+\end{align*}
+Therefore, our proof is complete. \qed 
+
+Let's do another example:
+\begin{theorem}
+For all $c\geq -1$, $(1+c)^n \geq 1+nc$ for all $n\in \NN.$
+\end{theorem}
+
+\textbf{Proof}: We prove this through induction. In the base case, we have: $(1+c)^1 = 1+1\cdot c$. For the inductive step, suppose that \[
+(1+c)^m \geq 1+mc.
+\]
+Then, 
+\begin{align*}
+    (1+c)^{m+1} &= (1+c)^m\cdot(1+c).
+\intertext{By assumption,}
+    &\geq (1+mc)\cdot (1+c) \\
+    &= 1+(m+1)c +mc^2 \\
+    &\geq 1+(m+1)c.
+\end{align*}
+By induction, our proof is complete.
+\qed 

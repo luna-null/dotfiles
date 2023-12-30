@@ -1,0 +1,7 @@
+# GIMP action-history
+
+(history-item "file-quit" 0)
+(history-item "windows-tab-position" 0)
+(history-item "dialogs-preferences" 1)
+
+# end of action-history

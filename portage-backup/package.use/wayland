@@ -1,0 +1,24 @@
+# required by dev-python/pygame-2.5.2::gentoo[X]
+# required by games-board/pysolfc-2.21.0::gentoo[sound,python_single_target_python3_11]
+# required by pysolfc (argument)
+# >=media-libs/libsdl2-2.28.3 X
+# required by xfce-base/xfce4-panel-4.18.5::gentoo[dbusmenu]
+# required by xfce-base/thunar-4.18.8::gentoo[trash-panel-plugin]
+# required by thunar (argument)
+>=dev-libs/libdbusmenu-16.04.0-r2 gtk3
+# required by media-libs/libsdl-1.2.64::gentoo
+# required by media-libs/gegl-0.4.46::gentoo[sdl]
+# required by media-gfx/gimp-2.10.36::gentoo
+# required by gimp (argument)
+# >=media-libs/libsdl2-2.28.3 X
+# required by media-libs/libopenshot-0.3.2-r1::gentoo[opencv]
+# required by media-video/openshot-3.1.1::gentoo
+# required by openshot (argument)
+>=media-libs/opencv-4.8.0-r1 contribdnn contrib
+# required by dev-texlive/texlive-xetex-2021-r1::gentoo
+# required by dev-texlive/texlive-formatsextra-2021::gentoo
+# required by app-text/texlive-2021-r1::gentoo[xml,-extra]
+# required by app-office/lyx-2.3.7::gentoo[latex]
+# required by lyx (argument)
+# >=app-text/texlive-core-2021-r7 xetex
+

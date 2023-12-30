@@ -1,0 +1,121 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+%started at 11:36
+\subsection*{Continuous Functions}
+
+\begin{remark}
+Continuous functions are those functions where \underline{tolerable} changes to \underline{outputs} accompany sufficiently \underline{small} differences of \underline{inputs}.
+\end{remark}
+
+\noindent\underline{\textbf{Limits of Functions}}
+
+\begin{definition}[Cluster Point]
+Let $S\subset \RR$. $x\in \RR$ is a \vocab{cluster point} of $S$ if $\forall \delta >0$, $(x-\delta, x+\delta) \cap S\setminus \{x\} \neq \emptyset$. 
+\end{definition}
+
+\noindent Let's look at some examples.
+\begin{enumerate}
+    \item $S = \{1/n \mid n\in\NN\}$. Here, $0$ is a clusterpoint of $S$.
+    \item $S = (0,1)$. The set of cluster points of $S$ is $[0,1]$.
+    \item $S = \QQ$. The set of cluster points of $S$ is $\RR$.
+    \item $S = \{0\}$. There are no cluster points of $S$.
+    \item $S = \ZZ$. There are no cluster points of $S$.
+\end{enumerate}
+
+\begin{theorem}
+Let $S\subset \RR$. Then, $x$ is a cluster point of $S$ if and only if there exists a sequence $\{x_n\}$ of elements in $S\setminus \{x\}$ such that $x_n\to x$.
+\end{theorem}
+
+\begin{definition}[Function Convergence]
+Let $S\subset \RR$, let $c$ be a cluster point of $S$, and $f:S\to \RR$. We say that $f(x)$ \vocab{converges} to $L\in \RR$ at $c$ if $\forall \epsilon>0$ $\exists \delta >0$ such that if $x\in S$ and $0<|x-c|<\delta$, then $|f(x)-L| < \epsilon$.
+\end{definition}
+
+\begin{notation}
+Notationally, we may write $f(x) \to L$ as $x\to c$, or $\lim_{x\to c} f(x) = L$.
+\end{notation}
+
+\begin{theorem}
+Let $c$ be a cluster point of $S\subset \RR$, and let $f: S\to \RR$. If $f(x) \to L_1$ and $f(x)\to L_2$ as $x\to c$, then $L_1 = L_2$.
+\end{theorem}
+\textbf{Proof}: We will show $\forall \epsilon>0$, $|L_1-L_2|<\epsilon$. Let $\epsilon>0$. Then, since $f(x) \to L_1$ and $f(x)\to L_2$, $\exists \delta_1$ such that if $x\in S$ and $0<|x-c|<\delta_1$ then
+\[
+|f(x) - L_1| < \epsilon/2
+\]
+and $\exists \delta_2 >0$ such that if $x\in S$ and $0<|x-c| < \delta_2$, then 
+\[
+|f(x) - L_2| < \epsilon/2.
+\]
+Let $\delta = \min\{\delta_1, \delta_2\}>0$. Then, since $c$ is a cluster point of $S$, $\exists x_0 \in S$ such that 
+\[
+0 < |x_0-c| < \delta \implies |L_1-L_2| = |L_1-f(x_0)+f(x_0) + L_2| \leq |L_1 - f(x_0)| + |f(x_0) -L_2| < \epsilon.
+\]
+\qed 
+
+Let's see some examples of limits of functions.
+\begin{example}
+Let $f(x) = ax+b$. Then, for all $c\in \RR$, $\lim_{x\to c} f(x) = ac + b$.
+\end{example}
+\begin{proof}
+Let $\epsilon>0$. Choose $\delta = \frac{\epsilon}{1+|a|}$. Then, if $x\in\RR$ and $0< |x-c|<\delta$, then 
+\begin{align*}
+    |f(x) - (ac+b)| &= |a(x-c)| \\
+    &= |a||x-c| \\
+    &< |a|\delta \\
+    &= \frac{|a|}{1+|a|} \epsilon < \epsilon.
+\end{align*}
+\end{proof}
+
+\begin{example}
+Let $f(x) = \sqrt{x}$. Then, $\forall c>0$, $\lim_{x\to c}f(x) = \sqrt{c}$.
+\end{example}
+\begin{proof}
+Let $\epsilon>0$. Choose $\delta = \epsilon \sqrt{c}$. Then, if $x>0$ and $0<|x-c|<\delta$, then 
+\begin{align*}
+    |f(x) - \sqrt{c}| &= |\sqrt{x}- \sqrt{c}| \\
+    &= \left|\frac{(\sqrt{x}-\sqrt{c})(\sqrt{x}+ \sqrt{c})}{\sqrt{x}+ \sqrt{c}}\right| \\
+    &= \frac{|x-c|}{\sqrt{x}+ \sqrt{c}} \\
+    &\leq \frac{|x-c|}{\sqrt{c}} \\
+    &< \frac{\delta}{\sqrt{c}} = \epsilon.
+\end{align*}
+\end{proof}
+
+\begin{example}
+Let $f(x) = \begin{cases}1 & x\neq 0 \\ 2 & x=0\end{cases}$. Then, $\lim_{x\to 0} f(x) = 1$. Notably, $\lim_{x\to 0} f(x) \neq f(0)$!
+\end{example}
+\begin{proof}
+Let $\epsilon>0$ and choose $\delta = 1$. Then, if $0<|x-0| <1$ then $x\neq 0 \implies$
+\[
+|f(x) - 1| = |1-1| = 0 < \epsilon.
+\]
+\end{proof}
+
+\begin{question}
+How do limits of functions relate to limits of sequences?
+\end{question}
+\begin{theorem}
+Let $S\subset \RR$, $c$ a cluster point of $S$, and let $f:S \to \RR$. Then, the following are equivalent:
+\begin{enumerate}
+    \item $\lim_{x\to c} f(x) = L$ and
+    \item for every sequence $\{x_n\}$ in $S\setminus \{c\}$ such that $x_n\to c$, we have $f(x_n) = L$.
+\end{enumerate}
+\end{theorem}
+\textbf{Proof}: ($1.\implies 2.$): Suppose $\lim_{x\to c}f(x) = L$. Let $\{x_n\}$ be a sequence in $S\setminus \{c\}$ such that $x_n \to c$. We want to show that $f(x_n)\to L$. Let $\epsilon>0$. Given $\lim_{x\to c}f(x_n) = L$, $\exists \delta >0$ such that if $x\in S$ and $0< |x-c| <\delta$ then $|f(x) - L|<\epsilon$. Since $x_n\to c$, $\exists M_0 \in \NN$ such that $\forall n\geq M_0$, $0< |x_n-c|<\delta$.
+
+Choose $M = M_0$. Then, $\forall n\geq M$, if $0<|x_n-c| <\delta$ then $|f(x_n)-L|<\epsilon$. Thus, $f(x_n) \to L$.
+
+($2.\impliedby 1.$): Suppose 2. holds, and assume for the sake of contradiction that 1) is false. Then, $\exists \epsilon_0>0$ such that $\forall \delta>0$, $\exists x\in S$ such that 
+\[
+0 < |x-c|<\delta\hspace{.25cm} \text{and} \hspace{.25cm} |f(x)-L|\geq \epsilon_0.
+\]
+Then, $\forall n\in\NN$, $\exists x_n\in S$ such that $0<|x_n-c|<\frac{1}{n}$ and $|f(x_n)-L|\geq \epsilon_0$. By the Squeeze Theorem applied to 
+\[
+0 < |x_n-c|<\frac{1}{n},
+\]
+$x_n\to c$. Then, by 2., 
+\[
+0 = \lim_{n\to \infty} |f(x_n) - L| \geq \epsilon_0
+\]
+which is a contradiction. \qed 

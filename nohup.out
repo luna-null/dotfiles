@@ -1,0 +1,61 @@
+--- Invalid atom in /etc/portage/package.use/00cpu-flags: /etc/portage/package.use/._cfg0001_00cpu-flags
+--- Invalid atom in /etc/portage/package.use/systemd: /etc/portage/package.use/._cfg0000_systemd
+Calculating dependencies  . ... done!
+Dependency resolution took 10.47 s (backtrack: 0/20).
+
+
+>>> Verifying ebuild manifests
+
+>>> Running pre-merge checks for sys-libs/compiler-rt-16.0.6
+
+>>> Running pre-merge checks for sys-libs/compiler-rt-sanitizers-16.0.6
+
+>>> Running pre-merge checks for sys-libs/libomp-16.0.6
+ [32m*[0m Determining the location of the kernel source code
+ [32m*[0m Found kernel source directory:
+ [32m*[0m     /usr/src/linux
+ [32m*[0m Found sources for kernel version:
+ [32m*[0m     6.1.66-gentoo
+
+>>> Running pre-merge checks for sys-devel/clang-runtime-16.0.6
+
+>>> Running pre-merge checks for net-libs/nodejs-20.6.1
+
+>>> Running pre-merge checks for media-libs/mesa-23.1.9
+
+>>> Running pre-merge checks for www-client/firefox-115.5.0
+ [32m*[0m Checking for at least 6600 MiB disk space at "/var/tmp/portage/www-client/firefox-115.5.0/temp" ...
+[A[72C [34;01m[ [32;01mok[34;01m ][0m
+
+>>> Emerging (1 of 42) sys-devel/clang-16.0.6::gentoo
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/site-packages/portage/locks.py", line 318, in _lockfile_iteration
+
+
+Exiting on signal 2
+    locking_method(myfd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/portage/python3.11/lock-helper.py", line 32, in <module>
+    rval = main(sys.argv[1:])
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/portage/python3.11/lock-helper.py", line 23, in main
+    lock_obj = portage.locks.lockfile(args[0], wantnewlockfile=True)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/portage/locks.py", line 184, in lockfile
+    lock = _lockfile_iteration(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/site-packages/portage/locks.py", line 344, in _lockfile_iteration
+    locking_method(myfd, fcntl.LOCK_EX)
+KeyboardInterrupt
+[ERROR] Task was destroyed but it is pending!
+task: <Task pending name='Task-96' coro=<PipeLogger._io_loop() done, defined at /usr/lib/python3.11/site-packages/portage/util/_async/PipeLogger.py:84> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[PipeLogger._io_loop_done()]>
+[ERROR] Task was destroyed but it is pending!
+task: <Task pending name='Task-97' coro=<BuildLogger._main() done, defined at /usr/lib/python3.11/site-packages/portage/util/_async/BuildLogger.py:98> wait_for=<Future pending cb=[AsynchronousTask.async_wait.<locals>.<lambda>() at /usr/lib/python3.11/site-packages/_emerge/AsynchronousTask.py:49, Task.task_wakeup()]> cb=[BuildLogger._main_exit()]>
+[ERROR] Task was destroyed but it is pending!
+task: <Task pending name='Task-98' coro=<PipeLogger._io_loop() done, defined at /usr/lib/python3.11/site-packages/portage/util/_async/PipeLogger.py:84> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[PipeLogger._io_loop_done()]>
+[ERROR] Task was destroyed but it is pending!
+task: <Task pending name='Task-99' coro=<SpawnProcess._main() done, defined at /usr/lib/python3.11/site-packages/_emerge/SpawnProcess.py:187> wait_for=<Future pending cb=[AsynchronousTask.async_wait.<locals>.<lambda>() at /usr/lib/python3.11/site-packages/_emerge/AsynchronousTask.py:49, Task.task_wakeup()]> cb=[SpawnProcess._main_exit()]>

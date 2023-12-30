@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lecture Videos on MIT OpenCourseWare</title>
+    <link>/resources/lecture-videos/</link>
+    <description>Recent content in Lecture Videos on MIT OpenCourseWare</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/resources/lecture-videos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lecture 1: Sets, Set Operations and Mathematical Induction</title>
+      <link>/resources/18100a-lecture-1-multicammp4/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-1-multicammp4/data.json</guid>
+      <description>Description: An introduction to set theory and useful proof writing techniques required for the course. We start to see the power of mathematical induction.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 10: The Completeness of the Real Numbers and Basic Properties of Infinite Series</title>
+      <link>/resources/18100a-lecture-10-multicam_1/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-10-multicam_1/data.json</guid>
+      <description>Description: We introduce Cauchy sequences and prove the completeness of the real numbers: i.e. every Cauchy sequence is convergent. We also begin studying infinite series, which we will focus on for the next few lectures, starting with geometric series.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 11: Absolute Convergence and the Comparison Test for Series</title>
+      <link>/resources/18100a-lecture-11-multicam/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-11-multicam/data.json</guid>
+      <description>Description: We continue studying the convergence of infinite series, defining absolute convergence and proving the comparison test: the test of all tests. We also prove properties of p-series.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 12: The Ratio, Root, and Alternating Series Tests</title>
+      <link>/resources/18100a-lecture-12-multicam/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-12-multicam/data.json</guid>
+      <description>Description: We show three important tests for convergence of infinite series: the ratio, root, and alternating series tests.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 13: Limits of Functions</title>
+      <link>/resources/18100a-lecture-13-zoom-subtitled-version-4/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-13-zoom-subtitled-version-4/data.json</guid>
+      <description>Description: We begin to discuss limits of functions, introducing cluster points and left and right sided limits. This will help us better understand continuity in the next lecture.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 14: Limits of Functions in Terms of Sequences and Continuity</title>
+      <link>/resources/18100a-lecture-14-multicam/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-14-multicam/data.json</guid>
+      <description>Description: How are limits of functions and limits of sequences connected? Continuity gives us the perfect connection as we start to prove facts about single variable calculus.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 15: The Continuity of Sine and Cosine and the Many Discontinuities of Dirichlet&#39;s Function</title>
+      <link>/resources/18100a-lecture-15-multicam/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-15-multicam/data.json</guid>
+      <description>Description: We wrap up our discussion of cluster points and move towards continuity. We show that sine and cosine are continuous, prove facts about algebraic operations on continuous functions, and define the Dirichlet function.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 16: The Min/Max Theorem and Bolzano&#39;s Intermediate Value Theorem</title>
+      <link>/resources/18100a-lecture-16-multicam2/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-16-multicam2/data.json</guid>
+      <description>Description: We prove some of the most useful tools of calculus: the Min/Max theorem or the Extreme Value Theorem (EVT) and the Intermediate Value Theorem (IVT). Is every hypothesis in these theorems required?
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 17: Uniform Continuity and the Definition of the Derivative</title>
+      <link>/resources/18100a-lecture-17-multicam/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-17-multicam/data.json</guid>
+      <description>Description: We wrap up our current study of continuous functions by considering uniform continuity. We show that uniform continuity is equivalent to continuity on a closed and bounded interval, and begin to consider the derivative of a function.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 18: Weierstrass&#39;s Example of a Continuous and Nowhere Differentiable Function</title>
+      <link>/resources/18100a-lecture-18-multicam/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-18-multicam/data.json</guid>
+      <description>Description: We can show that differentiability implies continuity, but does continuity imply differentiability? We use the continuity and oscillatory nature of sine and cosine to prove the existence of Weierstrass’ continuous but nowhere differentiable function.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 19: Differentiation Rules, Rolle&#39;s Theorem, and the Mean Value Theorem</title>
+      <link>/resources/18100a-lecture-19-multicam2/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-19-multicam2/data.json</guid>
+      <description>Description: We begin proving key properties of derivatives, such as the infamous product rule, quotient rule, and chain rule. We also prove the Mean Value Theorem (MVT), the low-key hero of calculus, and consider some applications.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 2: Cantor&#39;s Theory of Cardinality (Size)</title>
+      <link>/resources/18100a-lecture-2-multicammp4/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-2-multicammp4/data.json</guid>
+      <description>Description: What does it mean for one set to be bigger than another? Defining injections, surjections, bijections, and cardinality, and showing the countability of the rationals.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 20: Taylor&#39;s Theorem and the Definition of Riemann Sums</title>
+      <link>/resources/18100a-lecture-20-multicam_1/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-20-multicam_1/data.json</guid>
+      <description>Description: We study Taylor’s theorem, essentially a direct consequence of applying the Mean Value Theorem repeatedly. We also begin our study of the Riemann integral, defining partitions and Riemann sums.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 21: The Riemann Integral of a Continuous Function</title>
+      <link>/resources/18100a-lecture-21-multicam/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-21-multicam/data.json</guid>
+      <description>Description: We continue studying the Riemann integral, proving the convergence of Riemann sums of a continuous function on a bounded interval. We also begin studying properties of the Riemann integral, which we explore more in the next lecture.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 22: Fundamental Theorem of Calculus, Integration by Parts, and Change of Variable Formula</title>
+      <link>/resources/18100a-lecture-22-multicam/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-22-multicam/data.json</guid>
+      <description>Description: We prove many more properties of the Riemann integral, including the triangle inequality for integrals, integration by parts, and the change of variable formula. We also prove the Fundamental Theorem of Calculus, a consequence of the Mean Value Theorem.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 23: Pointwise and Uniform Convergence of Sequences of Functions</title>
+      <link>/resources/18100a-lecture-23-multicam/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-23-multicam/data.json</guid>
+      <description>Description: Instead of sequences of real numbers, what can we say about sequences of functions? We start a study of Power series, defining pointwise and uniform convergence of sequences of functions.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 24: Uniform Convergence, the Weierstrass M-Test, and Interchanging Limits</title>
+      <link>/resources/18100a-lecture-24-multicam/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-24-multicam/data.json</guid>
+      <description>Description: We prove the powerful Weierstrass M-test, and within our setting of sequences of continuous or differentiable functions, we address a fundamental question of analysis: when can we interchange two limits?
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 25: Power Series and the Weierstrass Approximation Theorem</title>
+      <link>/resources/18100a-lecture-25-multicam/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-25-multicam/data.json</guid>
+      <description>Description: We return to the study of power series as we conclude our semester of 18.100A. We prove the Weierstrass Approximation Theorem, showing that every continuous function on a closed and bounded interval is a uniform limit of a sequence of polynomials.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 3: Cantor&#39;s Remarkable Theorem and the Rationals&#39; Lack of the Least Upper Bound Property</title>
+      <link>/resources/18100a-lecture-3-multicammp4182/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-3-multicammp4182/data.json</guid>
+      <description>Description: Finishing the lecture on Cantor’s notion of cardinality and starting to define the real numbers. Introducing ordered sets, the least upper bound property, and the incompleteness of the rational numbers.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 4: The Characterization of the Real Numbers</title>
+      <link>/resources/18100a-lecture-4-multicam2/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-4-multicam2/data.json</guid>
+      <description>Description: An introduction to properties of fields and ordered fields. We put the ‘real’ in real analysis and fully define the real numbers!
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 5: The Archimedian Property, Density of the Rationals, and Absolute Value</title>
+      <link>/resources/18100a-lecture-5-multicam2/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-5-multicam2/data.json</guid>
+      <description>Description: We show that the real numbers satisfy the Archimedean property, a property we will constantly use, and we prove rationals are dense in the reals. We also rigorously define absolute values and the properties that follow from this definition.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 6: The Uncountabality of the Real Numbers</title>
+      <link>/resources/18100a-lecture-6-multicam2/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-6-multicam2/data.json</guid>
+      <description>Description: We prove the humble, but powerful, triangle inequality, and show that the real numbers are uncountable, and thus the irrational numbers greatly outnumber the rational numbers. We introduce sequences and limits of real numbers.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 7: Convergent Sequences of Real Numbers</title>
+      <link>/resources/18100a-lecture-7-multicam/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-7-multicam/data.json</guid>
+      <description>Description: We begin studying convergent sequences, considering monotone sequences and introducing a inconspicuous but very useful tool: subsequences.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 8: The Squeeze Theorem and Operations Involving Convergent Sequences</title>
+      <link>/resources/18100a-lecture-8-multicam/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-8-multicam/data.json</guid>
+      <description>Description: Important facts about limits, including the squeeze theorem and algebraic operations on limits. Limits with quotients, absolute values, and square roots.
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+    <item>
+      <title>Lecture 9: Limsup, Liminf, and the Bolzano-Weierstrass Theorem</title>
+      <link>/resources/18100a-lecture-9-multicam-version-2/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resources/18100a-lecture-9-multicam-version-2/data.json</guid>
+      <description>Description: Does a bounded sequence have a convergent subsequence? We introduce limit inferiors and limit superiors to prove this is the case (known as the Bolzano-Weierstrass theorem).
+Speaker: Casey Rodriguez</description>
+    </item>
+    
+  </channel>
+</rss>

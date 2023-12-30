@@ -1,0 +1,1 @@
+export BRIGHTNESS_DECREASE=false

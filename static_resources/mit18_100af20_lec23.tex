@@ -1,0 +1,143 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+\subsection*{Sequences of Function}
+
+\noindent\underline{\textbf{Power Series}}
+
+\begin{remark}
+Power series motivate the general discussion of sequences of functions.
+\end{remark}
+
+\begin{definition}[Power series]
+A power series about $x_0$ is a series of the form 
+\[
+\sum_{m=0}^\infty a_m (x-x_0)^m.
+\]
+\end{definition}
+
+\begin{theorem} 
+Suppose
+\[
+R = \lim_{m\to \infty} |a_{m}|^{1/n}
+\]
+exists, and let 
+\[
+p = \begin{cases}
+\frac{1}{R} & R>0 \\
+\infty & R = 0.
+\end{cases}
+\]
+Then, $\sum a_m(x-x_0)^m$ converges absolutely if $|x-x_0|<p$ and diverges if $|x-x_0|>p$.
+\end{theorem}
+
+\begin{definition}[Radius of Convergence]
+In the above theorem, we define $p$ to be the \vocab{radius of convergence}.
+\end{definition}
+\textbf{Proof}: We have 
+\[
+\lim_{n\to \infty}|a_m(x-x_0)^m|^{1/m} = R|x-x_0|,
+\]
+and the theorem follows by the Root test. \qed 
+
+Suppose $\sum a_m(x-x_0)^m$ is a power series with radius of convergence $p$. Furthermore, define \\$f:(x_0-p,x_0+p) \to \RR$ such that 
+\[
+f(x) := \sum_{m=0}^\infty a_m (x-x_0)^m.
+\]
+Then, $f$ is a limit of a sequence of functions 
+\begin{align*}
+    f(x) &= \lim_{n\to \infty} f_n(x),
+\intertext{for $x\in (x_0-p,x_0+p)$ and where}
+    f_n(x) &= \sum_{m=0}^n a_m(x-x_0)^m.
+\end{align*}
+
+\begin{example}
+For example, we have 
+\[
+f(x) = \frac{1}{1-x} = \sum_{m=0}^\infty x^m.
+\]
+\end{example}
+
+\begin{question}
+This concept begs a number of questions:
+\begin{enumerate}
+    \item Is $f$ continuous? 
+    \item Is $f$ differentiable, and does $f' = \lim_{n\to \infty} f_n'$? 
+    \item If 1. is true, does 
+    \[
+    \int_a^b f = \lim_{n\to \infty}\int_a^b f_n?
+    \]
+\end{enumerate}
+\end{question}
+
+\noindent These questions will be the key motivator for the last section of this course.
+
+\noindent\underline{\textbf{Pointwise and Uniform Convergence}}
+
+We now consider a setting far more general than power series.
+
+\begin{definition}[Pointwise Convergence]
+For $n\in \NN$, let $f_n: S\to \RR$. Let $f:S\to \RR$. We say that $\{f_n\}$ converges pointwise to $f$ if for all $x\in S$,
+\[
+\lim_{n\to \infty} f_n(x) = f(x).
+\]
+\end{definition}
+
+\noindent Let's consider some examples.
+\begin{enumerate}
+    \item Let $f_n(x) = x^n$ on [0,1]. Then, 
+    \[
+    \lim_{n\to \infty} f_n(x) = \begin{cases}
+    0 & x\in [0,1) \\
+    1 & x=1
+    \end{cases}.
+    \]
+    Thus, $\{f_n\}$ converges to the above pointwise function. Hence, notice that a sequence of continuous functions may not converge pointwise to a continuous function!
+    \item Let $f_n(x) = \sum_{m=0}^n x^m$ for $x\in(-1,1)$.
+    Then, 
+    \[
+    \lim_{n\to \infty} f_n(x) = \lim_{n\to \infty} \sum_{m=0}^n x^m = \frac{1}{1-x}.
+    \]
+    Hence, pointwise, this sequence converges to its power series (see the above example).
+    \item Let $f_n(x):[0,1] \to \RR$ be defined by 
+    \[
+    f_n(x) =\begin{cases}
+    4n^2x & x\in \left[0,\frac{1}{2n}\right] \\
+    4n-4n^2x & x\in \left[\frac{1}{2n}, \frac{1}{n}\right] \\
+    0 & x\in \left[\frac{1}{n}, 1\right]
+    \end{cases}.
+    \]
+    We can picture this sequence (on the next page)
+    \begin{figure}[h]
+    \centering
+    \includegraphics{pics/fig12.PNG}
+\end{figure}
+
+Then, $\lim_{n\to \infty} f_n(0) = \lim_{n\to \infty} 0 = 0$. Let $x\in (0,1]$. Let $N\in \NN$ such that $\frac{1}{N}< x$. Then, for all $n\geq N$, 
+\[
+f_n(x) = 0.
+\]
+Therefore, 
+\[
+\{f_n(x)\} = f_1(x), \dots, f_{N-1}(x), 0, 0, 0, \dots.
+\]
+Hence, $\lim_{n\to \infty}f_n(x) = 0$ for all $x\in [0,1]$. Thus, $\{f_n\}$ converges pointwise to $f(x) = 0$ on $[0,1].$
+\end{enumerate}
+
+\begin{definition}[Uniform Convergence]
+For $n\in \NN$, let $f_n:S\to \RR$, and let $f:S\to \RR$. Then, we say $f_n$ \vocab{converges to $f$ uniformly} or \textbf{converges uniformly to $f$} if $\forall \epsilon>0$ $\exists M\in \NN$ such that for all $n\geq M$ $\forall x\in S$,
+\[
+|f_n(x) - f(x)|<\epsilon
+\]
+\end{definition}
+
+\begin{theorem}
+If $f_n:S\to \RR$, $f:S\to \RR$, and $f_n\to f$ uniformly, then $f_n\to f$ pointwise.
+\end{theorem}
+\textbf{Proof}: Let $c\in S$ and let $\epsilon>0$. Then, $f_n\to f$ uniformly implies that there exists $M_0\in \NN$ such that for all $n\geq M, \forall x\in S$, $|f_n(x)-f(x)|<\epsilon$. Choose $M=M_0$. Then, $\forall n\geq M$, 
+\[
+|f_n(c) - f(c)|< \epsilon.
+\]
+Thus, $\lim_{n\to \infty}f_n(c) = f(c)$ for all $c\in S$, and therefore $f_n\to f$ pointwise. \qed

@@ -1,0 +1,24 @@
+#!/bin/bash
+<<<<<<< HEAD
+# starts wlogout, triggers decrease_brightness until 60 seconds after, when computer will shut off
+echo export BRIGHTNESS_DECREASE=true > cache
+=======
+
+echo export BRIGHTNESS_DECREASE=true > ~/.scripts/power_menu/exec
+>>>>>>> 67261ada362766d19b2095a9f6a492ddc45110bb
+
+wlogout &
+while pgrep wlogout &> /dev/null; do
+    swayidle \
+<<<<<<< HEAD
+        timeout 1 'echo export BRIGHTNESS_DECREASE=true > ~/.scripts/power_menu/cache; bash ~/.scripts/power_menu/decrease_brightness' \
+        resume 'echo export BRIGHTNESS_DECREASE=false > ~/.scripts/power_menu/cache' \
+=======
+        timeout 1 'echo export BRIGHTNESS_DECREASE=true > ~/.scripts/power_menu/exec; bash ~/.scripts/power_menu/decrease_brightness' \
+        resume 'echo export BRIGHTNESS_DECREASE=false > ~/.scripts/power_menu/exec' \
+>>>>>>> 67261ada362766d19b2095a9f6a492ddc45110bb
+        timeout 60 "poweroff" && \
+        fg
+done
+
+exit

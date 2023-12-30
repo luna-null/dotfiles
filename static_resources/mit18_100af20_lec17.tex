@@ -1,0 +1,127 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+\noindent\underline{\textbf{Uniform Continuity}}
+
+\begin{recall}
+Recall the definition of continuity: $f:S\to \RR$ is continuous on $S$ if $\forall c\in S$ and $\forall\epsilon>0$, $\exists \delta = \delta(\epsilon,c)>0$ such that $\forall x\in S$, $|x-c|<\delta \implies |f(x) - f(c)|<\epsilon$.
+
+Here, $\delta(\epsilon, c)$ denotes the fact that $\delta$ \textbf{can} depend on $\epsilon$ and $c$.
+\end{recall}
+
+\begin{example}
+Consider the function $f(x) = \frac{1}{x}$. $f$ is continuous on $(0,1)$.
+\end{example}
+\begin{proof}
+Let $\epsilon>0$. Choose $\delta = \min\left\{ \frac{c}{2}, \frac{c^2}{2}\epsilon\right\}$. Suppose $|x-c|<\delta$. Then, $|x-c|< \frac{c}{2}\implies |x| >c-|x-c|>\frac{c}{2}$. Thus, $\frac{1}{|x|}< \frac{2}{c}.$ Therefore, 
+\begin{align*}
+    \left|\frac{1}{x}- \frac{1}{c}\right| &= \frac{|x-c|}{|xc|} \\
+    &< \frac{\delta}{|x||c|} \\
+    &< \frac{2}{c^2}\delta \\
+    &\leq \frac{2}{c^2} \frac{c^2 \epsilon}{2} = \epsilon.
+\end{align*}
+\end{proof}
+
+As shown in the previous example. $\delta$ depended on \textbf{both} $\epsilon$ and $c$.
+
+\begin{definition}[Uniformly Continuous]
+Let $f:S\to \RR$. Then, $f$ is \vocab{uniformly continuous} on $S$ if $\forall \epsilon >0$, $\exists \delta = \delta(\epsilon) >0$ such that $\forall x,c\in S$,
+\[
+|x-c|< \delta \implies |f(x) - f(c)|<\epsilon.
+\]
+\end{definition}
+\begin{remark}
+Thus, in the definition of uniform continuity, $\delta$ only depends on $\epsilon$!
+\end{remark}
+
+\begin{example}
+The function $f(x) = x^2$ is uniformly continuous on $[0,1]$.
+\end{example}
+\begin{proof}
+Let $\epsilon>0$. Choose $\delta = \frac{\epsilon}{2}$. Then, if $x,c\in [0,1]$ then $|x-c|< \delta$ implies that 
+\[
+|x^2-c^2| = |x+c||x-c| \leq 2|x-c| < 2\delta = \epsilon.
+\]
+\end{proof}
+
+However, there are of course continuous functions that are not uniformly continuous. For example, we will show that $f(x) = \frac{1}{x}$ is not uniformly continuous on (0,1), but first we consider the negation of the definition.
+\begin{negation}[Not Uniformly Continuous]
+Let $f:S\to \RR$. Then, $f$ is \vocab{not uniformly continuous} on $S$ if $\exists \epsilon_0 >0$, $\forall \delta >0$ such that $\exists x,c\in S$ with
+\[
+|x-c|< \delta \hspace{.25cm} \text{and} \hspace{.25cm} |f(x) - f(c)|\geq \epsilon_0.
+\]
+\end{negation}
+\textbf{Proof}: Choose $\epsilon_0 = 2$ (in fact, any $\epsilon_0 >0$ will show that $\frac{1}{x}$ is not uniformly continuous on $(0,1)$). Then, let $\delta >0$. Choose $c = \min\left\{\delta, \frac{1}{2}\right\}$ and $x = \frac{c}{2}$. Then, $|x-c| = \frac{c}{2}\leq \frac{\delta}{2} <\delta$ and 
+\[
+\left|\frac{1}{x} - \frac{1}{c}\right| = \left|\frac{2}{c} - \frac{1}{c}\right| = \frac{1}{c} \geq \frac{1}{\frac{1}{2}} = 2.
+\] \qed 
+
+\begin{theorem}
+Let $f:[a,b]\to \RR$. Then, $f$ is continuous if and only if $f$ is uniformly continuous.
+\end{theorem}
+\textbf{Proof}: ($\impliedby$) This direction is left as an exercise to the reader.
+
+($\implies$) Suppose $f$ is continuous and assume for the sake of contradiction that $f$ is \textit{not} uniformly continuous. Then, $\exists \epsilon_0>0$ such that for all $n\in \NN$, $\exists x_n,c_n\in [a,b]$ such that 
+\[
+|x_n-c_n| < \frac{1}{n} \hspace{.25cm} \text{and} \hspace{.25cm} |f(x_n) - f(c_n)| >\epsilon_0.
+\]
+By Bolzano-Weierstrass, $\exists$ a subsequence $\{x_{n_k}\}$ of $\{x_n\}$ and $x\in [a,b]$ such that $\lim_{k\to \infty} x_{n_k} = x$. Similarly, by Bolzano-Weierstrass, $\exists$ a subsequence $\{c_{n_k}\}$ of $\{c_n\}$ and $c\in [a,b]$ such that $\lim_{k\to \infty} c_{n_k} = c$. Note that subsequence $\{x_{n_{k_j}}\}$ of $\{x_{n_k}\}$ satisfies $\lim_{j\to \infty} x_{n_{k_j}} = x$.
+
+Then, 
+\[
+|x-c| = \lim_{j\to \infty} |x_{n_{k_j}} - c_{n_{k_j}}| \leq \lim_{j\to \infty} \frac{1}{n_{k_j}} - 0.
+\]
+Thus, $x=c$. But, since $f$ is continuous at $c$,
+\[
+0 = |f(c)-f(c)| = \lim_{j\to \infty} |f(x_{n_{k_j}}) - f(c_{n_{k_j}})| \geq \epsilon_0.
+\]
+This is a contradiction. \qed 
+
+\noindent\underline{\textbf{Derivative}}
+\begin{definition}
+Let $I$ be an interval, let $f:I \to \RR$, and let $c\in I$. We say that $f$ is \vocab{differentiable at $c$} if the limit 
+\[
+\lim_{x\to c} \frac{f(x)-f(c)}{x-c}
+\]
+exists.
+\end{definition}
+\begin{notation}
+If $f$ is differentiable at $c$, we write 
+\[
+f'(c) := \lim_{x\to c} \frac{f(x) - f(c)}{x-c}.
+\]
+Furthermore, if $f$ is differentiable at every $c\in I$, we write $f'$ or $\frac{\mathrm df}{\mathrm dx}$ for the function $f'(x)$.
+\end{notation}
+
+\begin{example}
+Consider the function $f(x) = ax+b$. Then, for all $c\in \RR$, $f'(c) = a$.
+\end{example}
+\begin{proof}
+This follows as
+\[
+\lim_{x\to c} \frac{f(x)-f(c)}{x-c} = \lim_{x\to c} \frac{ax+b-(ac+b)}{x-c} = a \lim_{x\to c} \frac{x-c}{x-c} = \lim_{x\to c}a = a.
+\]
+\end{proof}
+
+\begin{example}[The Power Rule]
+For all $n\in \NN$, if $f(x) = \alpha x^n$, then for all $c\in \RR$, 
+\[
+f'(c) = \alpha n c^{n-1}.
+\]
+\end{example}
+\begin{proof}
+We note that for all $n\in \NN$, 
+\begin{align*}
+    (x-c) \sum_{j=0}^{n-1} x^{n-1-j} c^j &= \sum_{j=0}^{n-1} x^{n-j}c^j - \sum_{j=0}^{n-1} x^{n-1-j} c^{j+1}.
+\intertext{Letting $\ell = j+1$, we obtain}
+    (x-c) \sum_{j=0}^{n-1} x^{n-1-j} c^j &= \sum_{j=0}^{n-1} x^{n-j}c^j - \sum_{\ell = 1}^{n} x^{n-\ell} c^{\ell} \\
+    &= x^{n-0}c^0 -x^{n-n}c^n \\
+    &= x^n - c^n.
+\end{align*}
+Therefore, 
+\[
+\lim_{x\to c} \frac{\alpha x^n - \alpha c^n}{x-c} = \alpha \lim_{x\to c} \sum_{j=0}^{n-1} x^{n-1-j}c^j = \alpha \sum_{j=0}^{n-1} c^{n-1-j} c^j = \alpha nc^{n-1}.
+\] 
+\end{proof}

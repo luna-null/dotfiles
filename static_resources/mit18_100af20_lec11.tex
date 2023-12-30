@@ -1,0 +1,143 @@
+%MIT OpenCourseWare: https://ocw.mit.edu
+%18.100A / 18.1001 Real Analysis, Fall 2020
+%License: Creative Commons BY-NC-SA 
+%For information about citing these materials or our Terms of Use, visit: https://ocw.mit.edu/terms.
+
+\begin{recall}
+Last time we showed that if $\sum x_n$ converges then $\lim_{n\to \infty} x_n = 0$.
+\end{recall}
+
+\begin{question}
+Is the converse true? Does $\lim_{n\to \infty} x_n = 0 \implies \sum x_n$ converges?
+\end{question}
+
+\begin{theorem}
+The series $\sum_{n=1}^\infty \frac{1}{n}$ does not converge.
+\end{theorem}
+\textbf{Proof}: We will show that there exists a subsequence of $s_m = \sum_{n=1}^m \frac{1}{n}$ which is unbounded, which will imply the series diverges. Consider, for $\ell \in \NN$, 
+\[
+s_{2^\ell} = \sum_{n=1}^{2^\ell} \frac{1}{n}.
+\]
+Then,
+\begin{align*}
+    s_{2^\ell} &= 1+\left(\frac{1}{2}\right) + \left(\frac{1}{3} + \frac{1}{4}\right) + \left(\frac{1}{5} + \dots + \frac{1}{8} \right)  + \dots \left(\frac{1}{2^{\ell-1}+1} + \dots + \frac{1}{2^\ell}\right) \\
+    &= 1 + \sum_{\lambda = 1}^\ell \sum_{n=2^{\lambda-1}+1}^{2^\lambda} \frac{1}{n} \\
+    &\geq 1 + \sum_{\lambda = 1}^\ell \sum_{n=2^{\lambda-1}+1}^{2^\lambda} \frac{1}{2^\lambda} \\
+    &= 1 + \sum_{\lambda = 1}^\ell \frac{1}{2^\lambda}(2^\lambda - (2^{\lambda-1}+1)+1) \\
+    &= 1 + \sum_{\lambda = 1}^\ell \frac{2^{\lambda-1}}{2^\lambda} \\
+    &= 1 + \frac{\ell}{2}.
+\end{align*}
+Thus, $\{s_{2^\ell}\}_{\ell=1}^\infty$ is unbounded which implies $\{s_{2^\ell}\}$ does not converge. \qed 
+
+\begin{remark}
+The series $\sum \frac{1}{n}$ is called the \textbf{harmonic series.}
+\end{remark}
+
+\begin{theorem}
+Let $\alpha \in \RR$ and $\sum x_n$ and $\sum y_n$ be convergent series. Then the series $\sum (\alpha x_n + y_n)$ converges and 
+\[
+\sum (\alpha x_n + y_n) = \alpha \sum x_n + \sum y_n.
+\]
+\end{theorem}
+\textbf{Proof}: The partial sums satisfy
+\[
+\sum_{n=1}^m (\alpha x_n + y_n) = \alpha \sum_{n=1}^m x_n + \sum_{n=1}^m y_n.
+\]
+By linear properties of limits, it follows that 
+\[
+\lim_{m\to \infty} \sum_{n=1}^m (\alpha x_n +y_n) = \alpha \sum x_n + \sum y_n.
+\] \qed 
+
+\noindent Series with non-negative terms are easier to work with than general series as then $\{s_n\}$ is a monotone sequence.
+
+\begin{theorem}
+If $\forall n \in \NN$ $x_n \geq 0$, then $\sum x_n$ converges if and only if $\{s_m\}$ is bounded. 
+\end{theorem}
+\textbf{Proof}: If $x_n \geq 0$ for all $n\in \NN$ then 
+\[
+s_{m+1} = \sum_{n=1}^{m+1} x_n = \sum_{n=1}^m x_n + x_{m+1} = s_m  + x_{m+1} \geq s_m
+\]
+Thus, $\{s_m\}$ is a monotone increasing sequence. Therefore, $\{s_m\}$ converges if and only if $\{s_m\}$ is bounded. \qed 
+
+\begin{definition}
+$\sum x_n$ \vocab{converges absolutely} if $\sum |x_n|$ converges.
+\end{definition}
+
+\begin{theorem}
+If $\sum x_n$ converges absolutely then $\sum x_n$ converges.
+\end{theorem}
+\textbf{Proof}: Suppose $\sum |x_n|$ converges. We will then show that $\sum x_n$ is Cauchy.
+
+Claim: $\forall m\geq 2$, $\left|\sum_{n=1}^m x_n \right| \leq \sum_{n=1}^m |x_n|$. We prove this claim by induction. For $m=2$, this states that $|x_1 + x_2| \leq |x_1|+|x_2|$, which follows by the Triangle Inequality. Suppose for all $\left|\sum_{n=1}^\ell x_n\right| \leq \sum_{n=1}^\ell |x_n|.$ Then, 
+\[
+\left|\sum_{n=1}^{\ell+1} x_n\right| \leq \left|\sum_{n=1}^{\ell} x_n \right| + |x_{\ell+1}| \leq \sum_{n=1}^\ell |x_n| + |x_{\ell+1}| = \sum_{n=1}^{\ell+1} |x_n|.
+\]
+We now prove that $\sum x_n$ is Cauchy. Let $\epsilon >0$. Since $\sum |x_n|$ converges, $\sum |x_n|$ is Cauchy. Therefore, there exists an $M_0 \in \NN$ such that for all $\ell > m \geq M_0$, 
+\[
+\sum_{n=m+1}^\ell |x_n| < \epsilon.
+\]
+Choose $M = M_0$. Then, for all $\ell >m\geq M$, 
+\[
+\left|\sum_{n=m+1}^\ell x_n\right| \leq \sum_{n=m+1}^\ell |x_n| < \epsilon.
+\]
+Hence, $\sum x_n$ is Cauchy, and thus converges. \qed 
+
+\begin{remark}
+We will see that $\sum_{n=1}^\infty \frac{(-1)^n}{n}$ is convergent but not absolutely convergent.
+\end{remark}
+
+Notice that it is immediately clear that this series is not absolutely convergent as $\sum \left|\frac{(-1)^n}{n}\right| = \sum \frac{1}{n}$ (the harmonic series), which doesn't converge.
+
+\newpage\noindent\underline{\textbf{Convergence tests}}
+
+\begin{theorem}[Comparison Test]
+Suppose for all $n\in \NN$ $0\leq x_n \leq y_n$. Then,
+\begin{enumerate}
+\item if $\sum y_n$ converges, then $\sum x_n$ converges. 
+\item if $\sum x_n$ diverges, then $\sum y_n$ diverges.
+\end{enumerate}
+\end{theorem}
+\textbf{Proof}:
+\begin{enumerate}
+    \item If $\sum y_n$ converges, then $\left\{\sum_{n=1}^m y_n\right\}_{m=1}^\infty$ is bounded. In other words, there exists a $B\geq 0$ such that for all $m\in \NN$,
+    \[
+    \sum_{n=1}^m y_n \leq B.
+    \]
+    Thus, for all $m\in \NN$, $\sum_{n=1}^m x_n \leq \sum_{n=1}^m y_n \leq B$. Therefore, the partial sums of $\{x_n\}$ are bounded, which implies $\sum x_n$ converges.
+    \item If $\sum x_n$ diverges, then $\left\{\sum_{n=1}^m x_n\right\}_{m=1}^\infty$ is unbounded. We now prove that \[\left\{\sum_{n=1}^m y_n\right\}_{m=1}^\infty\] is also unbounded. Let $B\geq 0$. Then, $\exists m\in \NN$ such that 
+    \[
+    \sum_{n=1}^m x_n \geq B.
+    \]
+    Therefore, $\sum_{n=1}^m y_n \geq \sum_{n=1}^m x_n \geq B$. Thus, $\left\{\sum_{n=1}^m y_n\right\}_{m=1}^\infty$ is unbounded, which implies $\sum y_n$ diverges.
+\end{enumerate}
+\qed 
+
+\begin{remark}
+We will see that geometric series and the Comparison Test imply everything!
+\end{remark}
+
+\begin{theorem}
+For $p\in \RR$, the series $\sum_{n=1}^\infty \frac{1}{n^p}$ converges if and only if $p>1$.
+\end{theorem}
+\textbf{Proof}: ($\implies$) We prove this direction through contradiction. Suppose $\sum_{n=1}^\infty \frac{1}{n^p}$ converges and $p\leq 1$. Then, $\frac{1}{n^p} \geq \frac{1}{n}$, and $\sum \frac{1}{n}$ diverges. Therefore, by the Comparison Test, $\sum \frac{1}{n^p}$ also diverges. Hence, if $\sum \frac{1}{n^p}$ converges, then $p>1$.
+
+($\impliedby$) Suppose $p>1$. We first prove that a subsequence of the partial series is bounded. 
+
+Claim 1: $\forall k\in \NN$, 
+$s_{2^k} \leq 1 + \frac{1}{1-2^{-(p-1)}}$. Proof:
+\begin{align*}
+    s_{2^k} &= 1+ \sum_{\ell=1}^k \sum_{n=2^{\ell-1}+1}^{2^\ell} \frac{1}{n^p} \\
+    &\leq 1+ \sum_{\ell=1}^k \sum_{n=2^{\ell-1}+1}^{2^\ell} \frac{1}{(2^{\ell-1}+1)^p} \\
+    &\leq 1+ \sum_{\ell=1}^k 2^{-p(\ell-1)}(2^\ell-(2^{\ell-1}+1)+1) \\
+    &= 1+ \sum_{\ell=1}^k 2^{-(p-1)(\ell-1)} \\
+    &= 1+ \sum_{\ell=0}^{k-1} 2^{-(p-1)\ell} \\
+    &\leq 1+ \sum_{\ell=0}^\infty 2^{-(p-1)\ell} \\
+    &= 1 + \frac{1}{1-2^{-(p-1)}}
+\end{align*}
+using the fact that $p-1>0$, and using properties of geometric series. Thus, Claim 1 is proven. 
+
+Claim 2: $\{s_m = \sum_{n=1}^m \frac{1}{n^p}\}$ is bounded. Proof: Let $m\in\NN$. Since $2^m >m$, we have that 
+\[
+s_m = \sum_{n=1}^m \frac{1}{n^p} \leq \sum_{n=1}^{2^m}n^{-p} \leq 1 + \frac{1}{1-2^{-(p-1)}}.
+\]
+Hence, the partial sums are bounded, which implies $\{s_m\}$ converges. \qed

@@ -1,0 +1,6 @@
+2023-12-23 04:39:53.302 [info] Telemetry level is off
+2023-12-23 04:39:53.302 [info] Experiments are disabled, only manually opted experiments are active.
+2023-12-23 04:39:53.302 [info] Default formatter is set to null for workspace /
+2023-12-23 04:39:53.302 [info] Test server listening.
+2023-12-23 04:39:53.302 [info] Python interpreter path: ./bin/python3.12
+2023-12-23 04:39:54.813 [info] Starting Jedi language server for .

@@ -1,0 +1,18 @@
+# required by media-libs/libsdl-1.2.64::gentoo
+# required by libsdl (argument)
+# >=media-libs/libsdl2-2.28.3 X
+# required by media-libs/libsdl-1.2.64::gentoo
+# required by games-fps/legends-0.4.1.43-r2::gentoo
+# required by legends (argument)
+# >=media-libs/libsdl2-2.28.3 X
+# required by media-libs/openal-1.23.1-r1::gentoo[sdl]
+# required by net-im/telegram-desktop-4.12.2::gentoo
+# required by telegram-desktop (argument)
+>=media-libs/libsdl2-2.28.3 abi_x86_32
+# required by media-libs/libpulse-16.1-r2::gentoo[glib]
+# required by dev-qt/qtmultimedia-5.15.11::gentoo[pulseaudio]
+# required by dev-python/PyQt5-5.15.10-r1::gentoo[multimedia]
+# required by media-gfx/krita-5.1.5::gentoo[python_single_target_python3_11]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/glib-2.78.3 abi_x86_32
