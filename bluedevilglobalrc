@@ -1,0 +1,8 @@
+[Adapters]
+9C:B6:D0:F6:3E:FC_powered=true
+
+[Devices]
+connectedDevices=
+
+[Global]
+launchState=enable

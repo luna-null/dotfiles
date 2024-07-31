@@ -1,0 +1,11 @@
+[Applications][discord]
+Seen=true
+
+[Applications][firefox]
+Seen=true
+
+[Applications][org.telegram.desktop]
+Seen=true
+
+[DoNotDisturb]
+Until=2024,2,8,12,38,0.593

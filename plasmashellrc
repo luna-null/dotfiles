@@ -1,0 +1,106 @@
+[Applets][90]
+immutability=1
+plugin=org.kde.plasma.weather
+
+[Applets][90][Configuration]
+PreloadWeight=0
+configMigrated=true
+popupHeight=326
+popupWidth=370
+
+[Applets][90][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
+[Applets][90][Configuration][Units]
+pressureUnit=5028
+speedUnit=9002
+temperatureUnit=6002
+visibilityUnit=2024
+
+[Applets][90][Configuration][WeatherStation]
+source=wettercom|weather|Seattle, Washington, US|US0WA0397;Seattle
+
+[PlasmaViews][Panel 2]
+floating=0
+
+[PlasmaViews][Panel 2][Defaults]
+thickness=44
+
+[PlasmaViews][Panel 25]
+alignment=1
+floating=0
+
+[PlasmaViews][Panel 25][Defaults]
+thickness=28
+
+[PlasmaViews][Panel 27]
+floating=1
+panelLengthMode=2
+panelOpacity=0
+panelVisibility=0
+
+[PlasmaViews][Panel 27][Defaults]
+maxLength=1422
+minLength=1422
+thickness=32
+
+[PlasmaViews][Panel 27][Horizontal1422]
+maxLength=1422
+minLength=1422
+
+[PlasmaViews][Panel 49]
+alignment=132
+floating=1
+
+[PlasmaViews][Panel 49][Defaults]
+thickness=64
+
+[PlasmaViews][Panel 51]
+alignment=132
+floating=1
+panelLengthMode=2
+panelOpacity=2
+panelVisibility=1
+
+[PlasmaViews][Panel 51][Defaults]
+minLength=530
+thickness=52
+
+[PlasmaViews][Panel 51][Horizontal1422]
+minLength=530
+
+[PlasmaViews][Panel 78]
+alignment=132
+floating=1
+panelLengthMode=2
+panelVisibility=2
+
+[PlasmaViews][Panel 78][Defaults]
+maxLength=930
+minLength=703
+thickness=46
+
+[PlasmaViews][Panel 78][Horizontal1422]
+maxLength=930
+minLength=703
+
+[PlasmaViews][Panel 80]
+alignment=132
+floating=1
+panelLengthMode=2
+panelVisibility=1
+
+[PlasmaViews][Panel 80][Defaults]
+maxLength=1006
+minLength=192
+offset=0
+thickness=54
+
+[PlasmaViews][Panel 80][Horizontal1422]
+maxLength=1006
+minLength=192
+offset=0
+
+[Updates]
+performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/containmentactions_middlebutton.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_migrate_font_settings.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_rename_timezonedisplay_key.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/folderview_fix_recursive_screenmapping.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/keyboardlayout_migrateiconsetting.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/keyboardlayout_remove_shortcut.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/klipper_clear_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/maintain_existing_desktop_icon_sizes.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/mediaframe_migrate_useBackground_setting.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/no_middle_click_paste_on_panels.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/systemloadviewer_systemmonitor.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/unlock_widgets.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_migrate_showseconds_setting.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/migrate_font_weights.js

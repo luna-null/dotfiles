@@ -1,0 +1,12 @@
+[AC][SuspendAndShutdown]
+AutoSuspendIdleTimeoutSec=3600
+
+[Battery][Display]
+DimDisplayIdleTimeoutSec=600
+TurnOffDisplayIdleTimeoutSec=900
+
+[Battery][SuspendAndShutdown]
+AutoSuspendIdleTimeoutSec=1800
+
+[BatteryManagement]
+BatteryCriticalAction=1

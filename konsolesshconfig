@@ -1,0 +1,32 @@
+[Global plugin config]
+manageProfile=false
+
+[SSH Config][devvoid]
+hostname=devvoid
+identifier=devvoid
+importedFromSshConfig=true
+port=
+profileName=
+sshkey=~/.ssh/id_ed25519
+useSshConfig=true
+username=
+
+[SSH Config][hanging_pc]
+hostname=hanging_pc
+identifier=hanging_pc
+importedFromSshConfig=true
+port=
+profileName=solarized-light
+sshkey=~/.ssh/id_ed25519
+useSshConfig=true
+username=
+
+[SSH Config][lounge_pc]
+hostname=lounge_pc
+identifier=lounge_pc
+importedFromSshConfig=true
+port=
+profileName=solarized-light
+sshkey=~/.ssh/id_ed25519
+useSshConfig=true
+username=

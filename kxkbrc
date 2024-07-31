@@ -1,0 +1,10 @@
+[$Version]
+update_info=kxkb.upd:remove-empty-lists,kxkb.upd:add-back-resetoptions,kxkb_variants.upd:split-variants
+
+[Layout]
+DisplayNames=,
+LayoutList=us,ru
+Options=lv3:ralt_switch,compose:rctrl,lv5:rctrl_switch,grp_led:scroll,grp_led:caps,caps:backspace,grp:win_space_toggle
+ResetOldOptions=true
+Use=true
+VariantList=altgr-intl,

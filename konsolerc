@@ -1,0 +1,19 @@
+[Desktop Entry]
+DefaultProfile=solarized-light.profile
+
+[General]
+ConfigVersion=1
+
+[KFileDialog Settings]
+detailViewIconSize=22
+
+[MainWindow]
+1422x800 screen: Height=516
+1422x800 screen: Width=903
+ToolBarsMovable=Disabled
+
+[Notification Messages]
+CloseAllTabs=true
+
+[UiSettings]
+ColorScheme=

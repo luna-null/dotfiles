@@ -1,0 +1,108 @@
+[
+    {
+        "data": [
+            {
+                "autoRotation": "InTabletMode",
+                "brightness": 1,
+                "colorProfileSource": "sRGB",
+                "connectorName": "eDP-1",
+                "edidHash": "3627c3534e4c82871967b57237bf5b83",
+                "edidIdentifier": "SHP 5194 0 30 2015 0",
+                "highDynamicRange": false,
+                "iccProfilePath": "",
+                "mode": {
+                    "height": 1800,
+                    "refreshRate": 59982,
+                    "width": 3200
+                },
+                "overscan": 0,
+                "rgbRange": "Automatic",
+                "scale": 2.25,
+                "sdrBrightness": 200,
+                "sdrGamutWideness": 0,
+                "transform": "Normal",
+                "vrrPolicy": "Never",
+                "wideColorGamut": false
+            },
+            {
+                "autoRotation": "InTabletMode",
+                "colorProfileSource": "sRGB",
+                "connectorName": "DP-1",
+                "edidHash": "db409582f2201f96d2d2c6737f595986",
+                "edidIdentifier": "GSM 1 16843009 1 2023 0",
+                "highDynamicRange": false,
+                "iccProfilePath": "",
+                "mode": {
+                    "height": 2160,
+                    "refreshRate": 30000,
+                    "width": 4096
+                },
+                "overscan": 0,
+                "rgbRange": "Automatic",
+                "scale": 1,
+                "sdrBrightness": 200,
+                "sdrGamutWideness": 0,
+                "transform": "Normal",
+                "vrrPolicy": "Automatic",
+                "wideColorGamut": false
+            }
+        ],
+        "name": "outputs"
+    },
+    {
+        "data": [
+            {
+                "lidClosed": false,
+                "outputs": [
+                    {
+                        "enabled": true,
+                        "outputIndex": 0,
+                        "position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "priority": 0
+                    }
+                ]
+            },
+            {
+                "lidClosed": true,
+                "outputs": [
+                    {
+                        "enabled": true,
+                        "outputIndex": 0,
+                        "position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "priority": 0
+                    }
+                ]
+            },
+            {
+                "lidClosed": false,
+                "outputs": [
+                    {
+                        "enabled": true,
+                        "outputIndex": 0,
+                        "position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "priority": 0
+                    },
+                    {
+                        "enabled": true,
+                        "outputIndex": 1,
+                        "position": {
+                            "x": 1423,
+                            "y": 0
+                        },
+                        "priority": 1
+                    }
+                ]
+            }
+        ],
+        "name": "setups"
+    }
+]
