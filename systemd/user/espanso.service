@@ -1,0 +1,11 @@
+[Unit]
+Description=espanso
+
+[Service]
+ExecStart=/usr/local/bin/espanso launcher 
+Restart=off
+RestartSec=3
+
+[Install]
+WantedBy=default.target
+
