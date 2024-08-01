@@ -1,0 +1,10 @@
+[GuiConfig]
+captureMode=0
+
+[ImageSave]
+lastImageSaveAsLocation=file:///home/le/Documents/class/phys223/zero_tasks/task12/data_table_2.png
+lastImageSaveLocation=file:///home/le/Documents/class/phys223/zero_tasks/task12/data_table_2.png
+translatedScreenshotsFolder=Screenshots
+
+[VideoSave]
+translatedScreencastsFolder=Screencasts

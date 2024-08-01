@@ -1,0 +1,47 @@
+00:00:00.002710 main     VirtualBox XPCOM Server 7.0.20 r163906 linux.amd64 (Jul 16 2024 13:33:48) release log
+00:00:00.002717 main     Log opened 2024-07-29T05:58:40.574542000Z
+00:00:00.002718 main     Build Type: release
+00:00:00.002724 main     OS Product: Linux
+00:00:00.002728 main     OS Release: 6.10.0-arch1-2
+00:00:00.002732 main     OS Version: #1 SMP PREEMPT_DYNAMIC Mon, 22 Jul 2024 17:28:23 +0000
+00:00:00.002792 main     DMI Product Name: XPS 13 9360
+00:00:00.002824 main     DMI Product Version: 
+00:00:00.002837 main     Firmware type: UEFI
+00:00:00.003342 main     Secure Boot: Disabled
+00:00:00.003474 main     Host RAM: 15589MB (15.2GB) total, 9169MB (8.9GB) available
+00:00:00.003482 main     Executable: /usr/lib/virtualbox/VBoxSVC
+00:00:00.003484 main     Process ID: 377389
+00:00:00.003485 main     Package type: LINUX_64BITS_GENERIC (OSE)
+00:00:00.007944 main     IPC socket path: /tmp/.vbox-le-ipc/ipcd
+00:00:00.126092 nspr-2   VirtualBox: object creation starts
+00:00:00.128880 nspr-2   Home directory: '/home/le/.config/VirtualBox'
+00:00:00.130262 nspr-2   Loading settings file "/home/le/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:00:00.164834 nspr-2   NetIfAdpCtlOut: VBoxNetAdpCtl: Error while retrieving link speed for wlan0: VBoxNetAdpCtl: ioctl failed: Operation not supported
+00:00:00.168935 nspr-2   HostDnsMonitor: initializing
+00:00:00.169723 nspr-2   NAT: resolv.conf: nameserver 75.75.75.75
+00:00:00.169753 nspr-2   NAT: resolv.conf: nameserver 75.75.76.76
+00:00:00.169766 nspr-2   NAT: resolv.conf: nameserver 2001:558:feed::1
+00:00:00.169778 nspr-2   NAT: resolv.conf: too many nameserver lines, ignoring 2001:558:feed::2
+00:00:00.169786 nspr-2   NAT: resolv.conf: too many nameserver lines, ignoring 2601:602:9500:2b30:aa70:5dff:fe69:b70e
+00:00:00.169831 nspr-2   HostDnsMonitor: updating information
+00:00:00.169868 nspr-2   HostDnsMonitor: old information
+00:00:00.169876 nspr-2     no server entries
+00:00:00.169884 nspr-2     no domain set
+00:00:00.169890 nspr-2     no search string entries
+00:00:00.169898 nspr-2   HostDnsMonitor: new information
+00:00:00.169904 nspr-2     server 1: 75.75.75.75
+00:00:00.169913 nspr-2     server 2: 75.75.76.76
+00:00:00.169920 nspr-2     server 3: 2001:558:feed::1
+00:00:00.169927 nspr-2     domain: hsd1.wa.comcast.net
+00:00:00.169934 nspr-2     search string 1: hsd1.wa.comcast.net
+00:00:00.178684 nspr-2   VD: VDInit finished with VINF_SUCCESS
+00:00:00.179421 nspr-2   ERROR [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={aac6c7cb-a371-4c58-ab51-0616896b2f2c} aComponent={SystemPropertiesWrap} aText={Cannot determine default Guest Additions ISO location. Most likely they are not available}, preserve=false aResultDetail=0
+00:00:00.183153 nspr-2   VirtualBox: object created
+00:00:01.168442 nspr-3   WARNING [COM]: aRC=NS_ERROR_FAILURE (0x80004005) aIID={e54f6256-97a7-4947-8a78-10c013ddf4b8} aComponent={HostWrap} aText={VirtualBox is not currently allowed to access USB devices.  You can change this by adding your user to the 'vboxusers' group.  Please see the user manual for a more detailed explanation}, preserve=false aResultDetail=0
+00:00:01.616487 nspr-2   Saving settings file "/home/le/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:00:01.628377 nspr-2   Finished saving settings file "/home/le/.config/VirtualBox/VirtualBox.xml"
+00:00:13.194729 main     VirtualBox: object deletion starts
+00:00:13.195187 main     HostDnsMonitor: shutting down ...
+00:00:13.207152 main     HostDnsMonitor: shut down
+00:00:13.218338 Watcher  ERROR [COM]: aRC=E_ACCESSDENIED (0x80070005) aIID={7682d5eb-f00e-44f1-8ca2-99d08b1cd607} aComponent={VirtualBoxWrap} aText={The object is not ready}, preserve=false aResultDetail=0
+00:00:13.218471 main     VirtualBox: object deleted

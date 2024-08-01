@@ -1,0 +1,4 @@
+[General]
+hiddenPages=new_page.page
+lastVisitedPage=overview.page
+pageOrder=overview.page,applications.page,history.page,processes.page,new_page.page,new_page.page

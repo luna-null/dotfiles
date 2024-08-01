@@ -1,0 +1,18 @@
+[$Version]
+update_info=ksmserver_update_loginMode_value.upd:ksmserver_update_loginMode_value_default_enum
+
+[LegacySession: saved at previous logout]
+count=0
+
+[Session: saved at previous logout]
+clientId1=1066000000171886059700000010400002
+clientId2=1066000000171806312900000010180002
+count=2
+program1=firefox
+program2=thunderbird
+restartCommand1=/usr/lib/firefox/firefox,--sm-client-id,1066000000171886059700000010400002
+restartCommand2=/usr/lib/thunderbird/thunderbird,--sm-client-id,1066000000171806312900000010180002
+restartStyleHint1=0
+restartStyleHint2=0
+userId1=le
+userId2=le

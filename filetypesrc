@@ -1,0 +1,4 @@
+[EmbedSettings]
+embed-application/pdf=false
+embed-application/vnd.oasis.opendocument.text=false
+embed-text/x-tex=false

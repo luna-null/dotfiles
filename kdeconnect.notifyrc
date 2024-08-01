@@ -1,0 +1,6 @@
+[Event/notification]
+Action=Taskbar
+Execute=
+Logfile=
+Sound=
+TTS=
