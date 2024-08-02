@@ -1,0 +1,14 @@
+autologin.username="gamma109"
+autologin.saved_credentials="{\"gamma109\":[\"gamma109\",\"ZvKkebXSjEf9vRrF7VaGylcgc83k82t6NkUqs27zfbtdNrzjYrnm1L5VAc4NGrr5m2b/y1IdJbtO/qptdy4SBRx81WACvU2fIMiMiw4PAdiqY/tuvbHSovhwxg6EizRZtHBMBqaXYz0tLESo8ioGy2risCIYV1bKhfLOSDjhRDlegaZHACHSsRbEl8RV7JcBAsVSzNRdxGs8c/E+KAXWymNENQJI0feIu9Pk3Q43eLM47WpWWX4ifnYvFgqS3iXv2/QOwwBz9/HKGLbfyxHgHVbbFYIas8Mf9/duj/0Vlg4=\"]}"
+autologin.blob="ZvKkebXSjEf9vRrF7VaGylcgc83k82t6NkUqs27zfbtdNrzjYrnm1L5VAc4NGrr5m2b/y1IdJbtO/qptdy4SBRx81WACvU2fIMiMiw4PAdiqY/tuvbHSovhwxg6EizRZtHBMBqaXYz0tLESo8ioGy2risCIYV1bKhfLOSDjhRDlegaZHACHSsRbEl8RV7JcBAsVSzNRdxGs8c/E+KAXWymNENQJI0feIu9Pk3Q43eLM47WpWWX4ifnYvFgqS3iXv2/QOwwBz9/HKGLbfyxHgHVbbFYIas8Mf9/duj/0Vlg4="
+es.send-on-startup=true
+core.clock_delta=0
+autologin.canonical_username="gamma109"
+app.enable-chrome-runtime=true
+app.window.state=2
+app.window.position.saved=true
+app.window.position.height=859
+app.window.position.y=41
+storage.last-location="/home/le/.cache/spotify/Storage"
+app.window.state.saved=true
+app.last-launched-version="1.2.42.290.g242057a2"

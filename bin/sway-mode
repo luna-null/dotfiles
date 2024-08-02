@@ -1,0 +1,126 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/sway-mode
+# shellcheck disable=SC2034
+TIME_STAMP="20230705.161404"
+
+# Copyright (C) 2020-2023 Bob Hepple <bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+PROG=$( basename "$0" )
+config_file="${XDG_CONFIG_DIR:-$HOME/.config}/sway/config"
+css_file="${XDG_CONFIG_DIR:-$HOME/.config}/nwg-wrapper/mode-help.css"
+NWG_OPT=""
+
+while [[ "$1" ]]; do
+    case "$1" in
+        -h|--help)
+            cat << EOF
+Usage: $PROG [-c,--config config-file] [-C,--css css-file] mode
+Puts sway into mode 'mode' and displays some help by extracting a
+section from the config file.
+
+Options:
+
+-c,--config config_file    location of your config file ($config_file)
+-C,--css css_file          location of your css file ($css_file)
+
+Requires nwg-wrapper https://github.com/nwg-piotr/nwg-wrapper
+
+Assumes modes are defined in the config file like this:
+
+mode "foobar" {
+...
+}
+
+To use this, reassign the bindkey command for the mode like this:
+
+    bindsym  \$mod+s  exec sway-mode "swap"
+
+and in the mode definition, change the mode ending keys to
+
+    # back to default mode
+    bindsym q      exec pkill nwg-wrapper; mode "default"
+    bindsym Return exec pkill nwg-wrapper; mode "default"
+    bindsym Escape exec pkill nwg-wrapper; mode "default"
+
+Here's a sample CSS file:
+
+    window {
+        font-family: "Monospace";
+        color: rgba (255, 255, 255, 1.0);
+        background-color: rgba (255, 255, 255, 0.1);
+    }
+
+    #box-inner {
+        background-color: rgba (23, 53, 63, 0.7);
+        border-radius: 5px;
+        border-style: dotted;
+        border-width: 1px;
+        border-color: rgba (156, 142, 122, 0.7);
+        padding: 10px;
+    }
+
+EOF
+            exit 0
+            ;;
+        -c|--config)
+            shift
+            config_file="$1"
+            shift
+            ;;
+        -C|--css)
+            shift
+            css_file="$1"
+            shift
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
+
+[[ "$1" ]] || {
+    echo "$PROG: no mode given" >&2
+    exit 1
+}
+mode="$1"
+
+[[ -r "$config_file" ]] || {
+    echo "$PROG: cannot read config file '$config_file'" >&2
+    exit 1
+}
+
+[[ -r "$css_file" ]] || {
+    echo "$PROG: cannot read css file '$css_file'" >&2
+    exit 1
+}
+
+type nwg-wrapper >/dev/null 2>&1 || {
+    echo "$PROG: nwg-wrapper does not exist." >&2
+    exit 1
+}
+
+[[ -r "$css_file" ]] && NWG_OPT="-c $css_file"
+
+sed -n "/mode \"$mode\"/,/\}/p" < $config_file |
+nwg-wrapper $NWG_OPT --position right --alignment start --layer 3 -t /dev/stdin &
+swaymsg "mode $mode"
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
+

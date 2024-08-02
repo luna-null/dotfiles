@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ugeetablet
+Comment=UGEE driver
+Exec=/usr/lib/ugeeTablet/ugeeTabletDriver.sh
+Icon=/usr/share/icons/hicolor/256x256/apps/ugeetablet.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true                                        
+Categories=Application;Utility;
+StartupNotify=true
+Name[zh_CN]=ugeetablet
