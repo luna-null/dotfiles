@@ -159,3 +159,7 @@ export WINEFSYNC=1
 export WINE_LARGE_ADDRESS_AWARE=1
 # WINEPREFIX=/usr/bin/setup_dxvk.sh install --symlink
 # WINEPREFIX=/usr/bin/setup_vkd3d_proton.sh install --symlink
+
+# Use bash-completion, if available
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+    . /usr/share/bash-completion/bash_completion

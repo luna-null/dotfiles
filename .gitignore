@@ -1,23 +1,19 @@
-# Included Directories
+# Directories
 
-!.config/
-	.config/spotify/
-!.crpcrp/
-
-
-# Unincluded Directories
-
-bin/
+!bin/
 .cache/
 .cargo/
+!.config/
+	.config/spotify/
+!.crpcrp
+.dart-tool/
 dotfiles/
 Downloads/
+.elementary/
 .git/
 .gnupg/
 go/
-gtkrc/
-gtkrc-2.0/
-hid_m708/
+!hid_m708/
 keyboard-layout-converter/
 le-ugee-conf.pcfg/
 .local/
@@ -32,39 +28,37 @@ package-lock.json/
 phone-transfer-pin/
 Pictures/
 .pki/
-print-manager/
+!Projects
+.pub-cache/
 result/
 .rustup/
-.scripts/
+!.scripts/
 .thunderbird/
-ugeeTablet-4.1.3/
+!ugeeTablet-4.1.3/
 .w3m/
 
 
 
-#Included Files
-
-!.bash_profile
-!.bashrc
-!.gitignore
-!.gtkrc-2.0.mine
-!le-ugee-conf.pcfg
-
-# Unincluded files
+# Files
 
 .bash_history
 .bash_logout
+!.bash_profile
+!.bashrc
 .dmrc
+.flutter
 .gitconfig
 .git-credentials
+!.gitignore
 gtkrc
 gtkrc-2.0
-gtkrc-2.0.mine
+!.gtkrc-2.0.mine
+!le-ugee-conf.pcfg
 my-ip-location
 .nix-channels
 odst.gif
 package-lock.json
 print-manager
-.profile
-.sounds
-.xinitrc
+!.profile
+!.sounds
+!.xinitrc

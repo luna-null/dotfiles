@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/myclipman
+# shellcheck disable=SC2034
+TIME_STAMP="20220711.140442"
+
+# Copyright (C) 2019-2021 Bob Hepple < bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+PROG=$( basename "$0" )
+USAGE="keepassxc-safe wrapper for clipman.
+Also filters out \\r chars which confuses clipman.
+FIXME: filter out non-printing chars?
+
+run this in sway as:
+   exec wl-paste -t text --watch myclipman
+and then use these bindings, or similar:
+bindsym \$mod+y        exec myclipman pick  -t wofi
+bindsym \$mod+Shift+y  exec myclipman clear -t wofi
+
+Note that having allow_markup=true in wofi's config make it barf when
+processing (almost any kind of) XML. -T'rofi -dmenu -p pick' works fine.
+"
+case "$1" in
+    -h|--help)
+        echo "Usage: $PROG [pick|clear]"
+        echo "$USAGE"
+        exit 0
+        ;;
+esac
+
+if [[ "$1" ]]; then
+    # we're doing a 'pick' or 'clear'
+    MSG=$( clipman "$@" 2>&1 ) || {
+        notify-send "$PROG: clipman failed: $MSG"
+    }
+    exit
+fi
+
+# no args were given so we're doing the 'copy':
+
+# what program did the 'copy' originate from?
+app_id=$( swaymsg -t get_tree | jq -r '.. | select(.type?) | select(.focused==true)|.app_id'  )
+
+# another way to supress the copy eg from a script:
+supress_dir=~/".cache/supress-clipman"
+
+# if you want something to be not saved then lock it here eg wrap 'pass' in a script
+if [[ -d $supress_dir ]]; then
+    rmdir $supress_dir
+else
+    if [[ $app_id != "org.keepassxc.KeePassXC" ]]; then
+        tr -d '\r' | clipman store --max-items 100 --no-persist
+    fi
+fi
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
+
