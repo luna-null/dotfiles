@@ -3,7 +3,7 @@
     "CREDENTIALS_LOCATION": "",
     "OUTPUT": "{artist} - {song_name}.{ext}",
     "SONG_ARCHIVE": "",
-    "ROOT_PATH": "$(pwd)",
+    "ROOT_PATH": "",
     "ROOT_PODCAST_PATH": "",
     "SPLIT_ALBUM_DISCS": "False",
     "DOWNLOAD_LYRICS": "True",

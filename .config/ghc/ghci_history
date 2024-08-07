@@ -1,3 +1,4 @@
+1/60
 monday Locked
 :}
  in ([a1, a2, a3, a4, a5], s5)
@@ -97,4 +98,3 @@ generations n = foldr (>=>) return (sequence n generation)
 generation "bunny"
 generations n = foldr (>=>) return (sequence generation)
 :t mapM 
-f 2
