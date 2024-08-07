@@ -1,0 +1,100 @@
+monday Locked
+:}
+ in ([a1, a2, a3, a4, a5], s5)
+     (a5, s5) = push s4
+     (a4, s4) = coin s3
+     (a3, s3) = push s2
+     (a2, s2) = push s1
+ let (a1, s1) = coin s0
+monday s0 =
+monday :: TurnstileState -> ([TurnstileOutput], TurnstileState)
+:{
+ let (a2, s2) = push s1
+monday s0 =
+monday :: TurnstileState -> ([TurnstileOutput], TurnstileState)
+:{
+ let (a2, s2) = push s1
+ let (a1, s1) = coin s0
+monday s0 =
+monday :: TurnstileState -> ([TurnstileOutput], TurnstileState)
+:{
+:P
+coin Unlocked
+coin Locked
+coin 1
+:}
+push Unlocked = (Open, Locked)
+push Locked   = (Tut , Locked)
+coin _ = (Thank, Unlocked)
+coin, push :: TurnstileState -> (TurnstileOutput, TurnstileState)
+:{
+push Unlocked
+:}
+push Locked   = Tut
+push Unlocked = Open
+coin _ = Thank
+coin, push :: TurnstileState -> TurnstileOutput
+:{
+:}
+  deriving (Eq, Show)
+data TurnstileOutput = Thank | Open | Tut
+  deriving (Eq, Show)
+data TurnstileState = Locked | Unlocked
+:{
+:t TurnstileState 
+TurnstileState 
+:}
+ deriving (Eq, Show)
+data TurnstileState = Locked | Unlocked
+:{
+mapM_ print [1..5]
+mapM print [1..5]
+:t mapM print [1..5]
+:t fmap print [1..5]
+:t map print [1..5]
+map print [1..5]
+fmap print [1..5]
+:t return
+:t sequence
+fmap (+2) [2,4]
+map (+2) [2,4]
+fmap (+2) [2,4]
+fmap (+2) [2]
+fmap (+2) (Just 2)
+:t fmap (return) [1..4]
+fmap (return) [1..4]
+fmap return [1..4]
+mapM_ return [1..4]
+mapM return [1..4]
+mapM return "bunny"
+map return "bunny"
+return "bunny"
+return >>= "bunny"
+return >=> "bunny"
+foldr (>=>) return replicate 5 generation "bunny"
+foldr (>=>) return (replicate 5 (generation "bunny"))
+foldr (>=>) return (replicate 5 generation "bunny")
+foldr (>=>) return (replicate 5 generation $ "bunny")
+foldr (>=>) return (replicate 5 . generation $ "bunny")
+return (replicate 5 . generation $ "bunny")
+replicate 5 . generation $ "bunny"
+replicate . generation $ "bunny"
+(replicate . generation) "bunny"
+ generation "bunny"
+:t replicate 4 generation "bunny"
+:t replicate 4 generation ["bunny"]
+:t replicate 4 generation "bunny"
+replicate 4 generation "bunny"
+:t generations
+:t generations n 
+:t generations n = foldr (>=>) return (replicate n generation)
+ generations 2 "bunny"
+generations n = foldr (>=>) return (replicate n generation)
+ generations 2 "bunny"
+ generations 2
+["bunny"] >>= generations 2
+generations n = foldr (>=>) return (sequence n generation)
+generation "bunny"
+generations n = foldr (>=>) return (sequence generation)
+:t mapM 
+f 2

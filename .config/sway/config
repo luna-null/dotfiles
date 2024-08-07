@@ -19,13 +19,12 @@ exec notify-send "$(systemctl --failed)"
 
 ### Autostart
 
-exec alacritty -t swayTerm
 exec nm-applet --indicator
 workspace $ws12 
-exec "thunderbird"
+exec "thunderbird; sleep 0.5"
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id indicator-kdeconnect
-exec_always "if ! pgrep swww-daemon &> /dev/null; do swww-daemon; done:"
+exec_always "if ! pgrep swww-daemon &> /dev/null; then swww-daemon; sh ~/.scripts/swww_randomize.sh; fi"
 
 exec_always "pkill gammastep; gammastep -l 47.7:-122.3"
 
@@ -94,6 +93,7 @@ set $menu rofi -show drun
 set $bindsym bindsym --no-repeat --to-code 
 
 # Define names for workspaces
+set $ws0 0
 set $ws1 1
 set $ws2 2
 set $ws3 3
@@ -163,7 +163,7 @@ set $gnome-schema org.gnome.desktop.interface
 # swaymsg output DP-7 pos 3840 0 res 1920x1080
 
 # Disable the laptop screen when the lid is closed.
-bindswitch --reload --locked lid:on exec "swaymsg output eDP-1 disable; swaylock -c 000000"
+bindswitch --reload --locked lid:on exec "swaymsg output eDP-1 disable; $lock"
 bindswitch --reload --locked lid:off output eDP-1 enable
 
 # exec swayidle -w \
@@ -233,12 +233,8 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 
 }
 
-# input "NAME_OF_MOUSE" {
-        # natural_scroll disabled
-# }
-
 input "1133:16399:Logitech_K750" {
-    xkb_layout us(colemak),us,ru
+    xkb_layout us,ru
     repeat_delay 200
     repeat_rate 50
 }
@@ -293,12 +289,108 @@ gaps outer 3
 # GTK settings
 set $gnome-schema org.gnome.desktop.interface
 
+exec_always {
+    gsettings set $gnome-schema cursor-theme 'Skyrim'
+    gsettings set $gonme-schema cursor-size 96
+
+}
+
+
+
 seat seat0 xcursor_theme 'Skyrim' 96
 
 ### Bar
 exec_always 'pkill sfwbar; sfwbar -c ~/.config/sfwbar/csfwbar.css 
 # -f ~/.config/sfwbar/csfw.config
 
+
+#########
+# SwayFx
+#########
+
+### Window blur
+# blur enable
+
+### This will set floating windows to blur based on the background, not the windows below.
+### You probably want to set this to disable :)
+# blur_xray enable 
+
+# <Integer value 0 - 10>
+blur_passes 10
+blur_radius 10
+
+# <Float value 0 - 1>
+# blur_noise 0.8
+
+# <Float value 0 - 2>
+# blur_brightness 1
+# blur_contrast 1
+# blur_saturation 1
+
+###Corner radius
+corner_radius 10
+
+### Window shadows
+
+# shadows enable
+
+# Note: The shadow might not fit some windows for the next option
+# shadows_on_csd enable
+
+# <Integer value 0 - 100>
+# shadow_blur_radius 30
+
+# <Hex color with alpha> ex, #0000007F
+# shadow_color #0000007F
+# shadow_inactive_color #0000007F
+
+# <X offset> <Y offset>
+# shadow_offset 0 0
+
+
+### LayerShell effects (to blur panels / notifications etc):
+
+# <Layer namespace> <Effects>
+# layer_effects <layer namespace> <effects>
+
+# The current layer namespaces can be shown with:
+# swaymsg -r -t get_outputs | jq '.[0].layer_shell_surfaces | .[] | .namespace'
+
+# Example: layer_effects "waybar" blur enable; shadows enable; corner_radius 6
+# Note: If an application uses gtk, its namespace is likely to be "gtk-layer-shell"
+
+
+
+# SwayIPC Example: 
+# swaymsg "layer_effects 'waybar' 'blur enable; shadows enable; corner_radius 6'"
+
+
+# Available Effects:
+
+# <Enable|Disable>
+# blur enable
+# blur_ignore_transparent enable
+# shadows enable
+
+# <Int>
+# corner_radius 10
+
+
+### Dim unfocused windows:
+
+# <Float value 0.0 - 1.0>
+default_dim_inactive 0.3
+
+# for_window [CRITERIA_HERE] dim_inactive <float value 0.0 - 1.0>
+
+
+# <Hex color> ex, #000000FF
+
+# dim_inactive_colors.unfocused #000000FF
+# dim_inactive_colors.urgent #900000FF
+
+# Application saturation:
+# for_window [CRITERIA HERE] saturation <set|plus|minus> <val 0.0 <-> 2.0>
 
 ####################
 ####################
@@ -312,6 +404,7 @@ exec_always 'pkill sfwbar; sfwbar -c ~/.config/sfwbar/csfwbar.css
 default_floating_border normal
 
 for_window [app_id="."] inhibit_idle fullscreen
+for_window [workspace="0"] move scratchpad
 
 for_window [window_role = "pop-up"] floating enable
 for_window [window_role = "bubble"] floating enable
@@ -415,7 +508,6 @@ for_window [app_id="codium-url-handler"] title_format "%title"
 
     # Start your launcher
     bindsym $mod+Space exec $menu
-    # bindsym $mod+d exec bemenu-run
 
     # Reload the configuration file
     $bindsym $mod+Shift+c reload
@@ -504,24 +596,22 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
         # right will grow the containers width
         # up will shrink the containers height
         # down will grow the containers height
-        $bindsym $left resize shrink width 10px
-        $bindsym $down resize grow height 10px
-        $bindsym $up resize shrink height 10px
-        $bindsym $right resize grow width 10px
+        bindsym --to-code $left resize shrink width 10px
+        bindsym --to-code $down resize grow height 10px
+        bindsym --to-code $up resize shrink height 10px
+        bindsym --to-code $right resize grow width 10px
 
         # Ditto, with arrow keys
-        $bindsym Left resize shrink width 10px
-        $bindsym Down resize grow height 10px
-        $bindsym Up resize shrink height 10px
-        $bindsym Right resize grow width 10px
+        bindsym Left resize shrink width 10px
+        bindsym Down resize grow height 10px
+        bindsym Up resize shrink height 10px
+        bindsym Right resize grow width 10px
 
         # Return to default mode
         $bindsym Return mode "default"
         $bindsym Escape mode "default"
     }
     $bindsym $mod+r mode "resize"
-
-
 
 #####
 # Window and Workspace Navigation
@@ -544,7 +634,9 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
 
 
 
-    ## Navigate Workspaces 1-22 ##
+    ## Navigate Workspaces 0-22 ##
+        # 0 is for showing desktop. Keep it clear.
+        $bindsym $mod+Escape workspace $ws0
         $bindsym $mod+1 workspace $ws1
         $bindsym $mod+2 workspace $ws2
         $bindsym $mod+3 workspace $ws3
@@ -570,6 +662,7 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
         $bindsym $mod+F12 workspace $ws22
 
     ## Modify // Move window to workspace 1-22 // <Shift> ##
+        $bindsym $mod+Shift+Escape move container to workspace $ws0
         $bindsym $mod+Shift+1 move container to workspace $ws1
         $bindsym $mod+Shift+2 move container to workspace $ws2
         $bindsym $mod+Shift+3 move container to workspace $ws3
@@ -681,15 +774,15 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
 # Fn keys
 #####
 
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-    $bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-    $bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-    bindsym XF86MonBrightnessDown exec light -U 5
-    bindsym XF86MonBrightnessUp exec light -A 5
-    $bindsym XF86AudioPlay exec playerctl play-pause
-    $bindsym XF86AudioNext exec playerctl next
-    $bindsym XF86AudioPrev exec playerctl previous
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    $bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    $bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    bindsym --locked XF86MonBrightnessDown exec light -U 5
+    bindsym --locked XF86MonBrightnessUp exec light -A 5
+    $bindsym --locked XF86AudioPlay exec playerctl play-pause
+    $bindsym --locked XF86AudioNext exec playerctl next
+    $bindsym --locked XF86AudioPrev exec playerctl previous
     $bindsym XF86Search exec /home/le/bin/filesearch.sh
 
 
