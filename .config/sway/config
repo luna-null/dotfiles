@@ -68,7 +68,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term alacritty --class TERMINAL; for_window [app_id="TERMINAL"] floating enable
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -163,7 +163,7 @@ set $gnome-schema org.gnome.desktop.interface
 # swaymsg output DP-7 pos 3840 0 res 1920x1080
 
 # Disable the laptop screen when the lid is closed.
-bindswitch --reload --locked lid:on exec "swaymsg output eDP-1 disable; $lock"
+bindswitch --reload --locked lid:on exec $lock; swaymsg output eDP-1 disable
 bindswitch --reload --locked lid:off output eDP-1 enable;
 
 # exec swayidle -w \
@@ -273,6 +273,8 @@ client.unfocused         $col_unfocused_border  $col_unfocused         $col_text
 client.urgent            $col_text_dark         $col_urgent            $col_text_dark   $col_urgent            $col_urgent
 
 # Titlebar
+font monospace 0.4
+titlebar_separator enable
 titlebar_padding 1
 title_align center
 titlebar_border_thickness 1
@@ -282,7 +284,7 @@ default_border pixel 1
 smart_borders on
 
 # Gaps
-smart_gaps on
+smart_gaps off
 gaps inner 4
 gaps outer 3
 
@@ -291,17 +293,16 @@ set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
     gsettings set $gnome-schema cursor-theme 'Skyrim'
-    gsettings set $gonme-schema cursor-size 96
+    gsettings set $gonme-schema cursor-size 36
 
 }
 
 
 
-seat seat0 xcursor_theme 'Skyrim' 96
+seat seat0 xcursor_theme 'Skyrim' 36
 
 ### Bar
 exec_always 'pkill waybar; waybar 
-# -f ~/.config/sfwbar/csfw.config
 
 
 #########

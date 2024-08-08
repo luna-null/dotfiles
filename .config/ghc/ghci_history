@@ -1,100 +1,100 @@
-1/60
-monday Locked
+hastyPerson Unlocked
+hastyPerson Locked
+hastyPerson Open
 :}
- in ([a1, a2, a3, a4, a5], s5)
-     (a5, s5) = push s4
-     (a4, s4) = coin s3
-     (a3, s3) = push s2
-     (a2, s2) = push s1
- let (a1, s1) = coin s0
+          in ([a1, a2, a3], s3)
+              (a3, s3) = push s2
+     else let (a2, s2) = coin s1
+     then ([a1], s1)
+  in if a1 == Open
+  let (a1, s1) = push s0
+hastyPerson s0 =
+  in ([a1], s1)
+  let (a1, s1) = coin s0
+distractedPerson s0 = 
+  in ([a1, a2], s2)
+      (a2, s2) = push s1
+  let (a1, s1) = coin s0
+regularPerson s0 =
+regularPerson, distractedPerson, hastyPerson :: TurnstileState -> ([TurnstileOutput],TurnstileState)
+  in ([a1, a2, a3, a4, a5], s5)
+      (a5, s5) = push s4
+      (a4, s4) = coin s3
+      (a3, s3) = push s2
+      (a2, s2) = push s1
+  let (a1, s1) = coin s0
 monday s0 =
 monday :: TurnstileState -> ([TurnstileOutput], TurnstileState)
-:{
- let (a2, s2) = push s1
-monday s0 =
-monday :: TurnstileState -> ([TurnstileOutput], TurnstileState)
-:{
- let (a2, s2) = push s1
- let (a1, s1) = coin s0
-monday s0 =
-monday :: TurnstileState -> ([TurnstileOutput], TurnstileState)
-:{
-:P
-coin Unlocked
-coin Locked
-coin 1
-:}
 push Unlocked = (Open, Locked)
 push Locked   = (Tut , Locked)
 coin _ = (Thank, Unlocked)
 coin, push :: TurnstileState -> (TurnstileOutput, TurnstileState)
-:{
-push Unlocked
-:}
-push Locked   = Tut
-push Unlocked = Open
-coin _ = Thank
-coin, push :: TurnstileState -> TurnstileOutput
-:{
-:}
   deriving (Eq, Show)
 data TurnstileOutput = Thank | Open | Tut
   deriving (Eq, Show)
 data TurnstileState = Locked | Unlocked
 :{
-:t TurnstileState 
-TurnstileState 
 :}
- deriving (Eq, Show)
-data TurnstileState = Locked | Unlocked
+          in ([a1, a2, a3], s3)
+              (a3, s3) = push s2
+     else let (a2, s2) = coin s1
+     then ([a1], s1)
+  in if a1 == Open
+  let (a1, s1) = push s0
+hastyPerson s0 =
+  in ([a1], s1)
+  let (a1, s1) = coin s0
+distractedPerson s0 = 
+  in ([a1, a2], s2)
+      (a2, s2) = push s1
+  let (a1, s1) = coin s0
+regularPerson s0 =
+regularPerson, distractedPerson, hastyPerson :: TurnstileState -> ([TurnstileOutput],TurnstileState)
 :{
-mapM_ print [1..5]
-mapM print [1..5]
-:t mapM print [1..5]
-:t fmap print [1..5]
-:t map print [1..5]
-map print [1..5]
-fmap print [1..5]
-:t return
-:t sequence
-fmap (+2) [2,4]
-map (+2) [2,4]
-fmap (+2) [2,4]
-fmap (+2) [2]
-fmap (+2) (Just 2)
-:t fmap (return) [1..4]
-fmap (return) [1..4]
-fmap return [1..4]
-mapM_ return [1..4]
-mapM return [1..4]
-mapM return "bunny"
-map return "bunny"
-return "bunny"
-return >>= "bunny"
-return >=> "bunny"
-foldr (>=>) return replicate 5 generation "bunny"
-foldr (>=>) return (replicate 5 (generation "bunny"))
-foldr (>=>) return (replicate 5 generation "bunny")
-foldr (>=>) return (replicate 5 generation $ "bunny")
-foldr (>=>) return (replicate 5 . generation $ "bunny")
-return (replicate 5 . generation $ "bunny")
-replicate 5 . generation $ "bunny"
-replicate . generation $ "bunny"
-(replicate . generation) "bunny"
- generation "bunny"
-:t replicate 4 generation "bunny"
-:t replicate 4 generation ["bunny"]
-:t replicate 4 generation "bunny"
-replicate 4 generation "bunny"
-:t generations
-:t generations n 
-:t generations n = foldr (>=>) return (replicate n generation)
- generations 2 "bunny"
-generations n = foldr (>=>) return (replicate n generation)
- generations 2 "bunny"
- generations 2
-["bunny"] >>= generations 2
-generations n = foldr (>=>) return (sequence n generation)
-generation "bunny"
-generations n = foldr (>=>) return (sequence generation)
-:t mapM 
+"}
+          in ([a1, a2, a3], s3)
+              (a3, s3) = push s2
+     else let (a2, s2) = coin s1
+     then ([a1], s1)
+  in if a1 == Open
+  let (a1, s1) = push s0
+hastyPerson s0 =
+  in ([a1], s1)
+  let (a1, s1) = coin s0
+distractedPerson s0 = 
+  in ([a1, a2], s2)
+      (a2, s2) = push s1
+  let (a1, s1) = coin s0
+regularPerson s0 =
+regularPerson, distractedPerson, hastyPerson :: TurnstileState -> ([TurnstileOutput],TurnstileState)
+:{
+:}
+  in ([a1, a2], s2)
+        | otherwise     = (a1, s1)
+        | s1 == Locked  = coin s1
+      (a2, s2) = 
+  let (a1, s1) = push s0
+hastyPerson s0 =
+  in ([a1], s1)
+  let (a1, s1) = coin s0
+distractedPerson s0 = 
+  in ([a1, a2], s2)
+      (a2, s2) = push s1
+  let (a1, s1) = coin s0
+regularPerson s0 =
+regularPerson, distractedPerson, hastyPerson :: TurnstileState -> ([TurnstileOutput],TurnstileState)
+:{
+:{
+f (0)
+f (-1)
+f -1
+f 1
+:}
+  else "x is not positive!"
+  if x > 0 then "x is positive"
+f x =
+:{
+:}
+  else f x = -1
+  then f x = 2
+f x = if x > 0
