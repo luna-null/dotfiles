@@ -24,6 +24,7 @@ workspace $ws12
 exec "thunderbird; sleep 0.5"
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id indicator-kdeconnect
+exec nwg-wrapper -t TODO -c todo.css -a start -p right -mt 50
 exec_always "if ! pgrep swww-daemon &> /dev/null; then swww-daemon; sh ~/.scripts/swww_randomize.sh; fi"
 
 exec_always "pkill gammastep; gammastep -l 47.7:-122.3"
@@ -68,7 +69,8 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty --class TERMINAL; for_window [app_id="TERMINAL"] floating enable
+set $term alacritty
+set $term-float alacritty --class TERMINAL; for_window [app_id="TERMINAL"] floating enable
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -166,9 +168,9 @@ set $gnome-schema org.gnome.desktop.interface
 bindswitch --reload --locked lid:on exec $lock; swaymsg output eDP-1 disable
 bindswitch --reload --locked lid:off output eDP-1 enable;
 
-# exec swayidle -w \
-         # timeout 300 '$lock' \
-         # timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
+exec swayidle -w \
+         timeout 300 '$lock' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
          
 # before-sleep '$lock'
 
@@ -273,7 +275,7 @@ client.unfocused         $col_unfocused_border  $col_unfocused         $col_text
 client.urgent            $col_text_dark         $col_urgent            $col_text_dark   $col_urgent            $col_urgent
 
 # Titlebar
-font monospace 0.4
+font nerdfonts 10
 titlebar_separator enable
 titlebar_padding 1
 title_align center
@@ -479,11 +481,11 @@ for_window [app_id="waybar" floating] {
 for_window [title=".*"] title_format %title
 
 # App Icons
-for_window [app_id="(?i)firefox"] title_format "%title"
-for_window [app_id="Alacritty"] title_format "%title"
-for_window [app_id="thunderbird"] title_format "%title"
-for_window [app_id="code-oss"] title_format "%title"
-for_window [app_id="codium-url-handler"] title_format "%title"
+# for_window [app_id="(?i)firefox"] title_format "%title"
+# for_window [app_id="Alacritty"] title_format "%title"
+# for_window [app_id="thunderbird"] title_format "%title"
+# for_window [app_id="code-oss"] title_format "%title"
+# for_window [app_id="codium-url-handler"] title_format "%title"
 
 # Tag xwayland windows with [X]
 # for_window [shell="xwayland"] title_format "%title"
@@ -518,7 +520,8 @@ for_window [app_id="codium-url-handler"] title_format "%title"
     $bindsym $mod+grave exec $term
 
     # Floating terminal
-    $bindsym $mod+Shift+grave exec swaymsg "[title=$criteria] scratchpad show" || $term
+    $bindsym $mod+Shift+grave exec $term-float
+    $bindsym $mod+Shift+Return exec $term-float
 
     # Exit sway (logs you out of your Wayland session)
     $bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'

@@ -148,7 +148,9 @@
 			]
 		},
 		"memory": {
-			"format": "{}% "
+			"format": "{}% ",
+			"justify": "center",
+			"tooltip-format": "RAM:  {used}/{total} used GiB\nSwap:     {swapUsed}/{swapAvail} used GiB"
 		},
 		"temperature": {
 			// "thermal-zone": 2,

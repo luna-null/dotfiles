@@ -13,6 +13,12 @@
 .config/dolphin/
 .config/sfwbar/
 .config/baloofileinformationrc
+.config/Google/
+.config/autostart/
+.config/bless/history.xml
+.config/bless/last.session
+.config/sfwbar/
+
 
 !.crpcrp/
 .dart-tool

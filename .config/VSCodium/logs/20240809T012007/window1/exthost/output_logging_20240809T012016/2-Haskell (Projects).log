@@ -1,0 +1,4 @@
+2024-08-09 08:21:23.5870000 [client] INFO Finding haskell-language-server
+2024-08-09 08:21:29.1940000 [client] INFO Checking for ghcup installation
+2024-08-09 08:21:29.2270000 [client] INFO probing for GHCup binary
+2024-08-09 08:21:29.2330000 [client] WARN ghcup at /home/le/.ghcup/bin/ghcup does not exist

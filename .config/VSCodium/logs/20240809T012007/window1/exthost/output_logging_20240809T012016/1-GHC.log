@@ -1,0 +1,4375 @@
+Starting for /home/le/Projects/CodeExamples/Haskell/State.hs, key = null
+Starting GHCi with: "ghci"
+(Under default cwd)
+    -> :set prompt ""
+    |> :set prompt-cont ""
+ghci | GHCi, version 9.2.8: https://www.haskell.org/ghc/  :? for help
+ghci | ghci> 
+ghci | ===ghci_barrier_0.04031082374574435===
+    -> System.IO.hSetBuffering System.IO.stderr System.IO.NoBuffering
+    |> System.IO.hSetBuffering System.IO.stdout System.IO.NoBuffering
+    |> :set -fno-diagnostics-show-caret -fdiagnostics-color=never -ferror-spans
+    |> :set -fdefer-type-errors -fdefer-typed-holes -fdefer-out-of-scope-variables
+    |> :seti -fno-defer-type-errors -fno-defer-typed-holes -fno-defer-out-of-scope-variables
+    |> :set -haddock
+    |> :set -fno-hide-source-paths
+    |> :set -Wno-error=missing-home-modules
+    |> :set -Wall
+    |> :seti -Wno-type-defaults
+ghci | 
+ghci | ===ghci_barrier_0.16041576687275683===
+    -> :show paths
+ghci | current working directory: 
+ghci |   /home/le
+ghci | module import search paths:
+ghci |   .
+ghci | 
+ghci | ===ghci_barrier_0.72927458302253===
+Detected base path: /home/le
+    -> :set +c
+    |> :load "*/home/le/Projects/CodeExamples/Haskell/State.hs"
+ghci | [1 of 1] Compiling State            ( /home/le/Projects/CodeExamples/Haskell/State.hs, interpreted )
+ghci | Ok, one module loaded.
+ghci | Collecting type info for 1 module(s) ... 
+ghci | 
+ghci | ===ghci_barrier_0.6291611430647301===
+    -> :show modules
+ghci | State            ( /home/le/Projects/CodeExamples/Haskell/State.hs, interpreted )
+ghci | 
+ghci | ===ghci_barrier_0.40735786590379264===
+    -> :module
+ghci | 
+ghci | ===ghci_barrier_0.3795630524168798===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9546141960481149===
+    -> :all-types
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(15,1)-(15,4): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(13,1)-(13,4): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(19,1)-(19,6): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(29,1)-(29,13): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(34,1)-(34,16): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(38,1)-(38,11): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(47,1)-(47,7): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,13)-(9,14): State.TurnstileOutput -> State.TurnstileOutput -> GHC.Types.Bool
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,17)-(9,20): GHC.Types.Int -> State.TurnstileOutput -> GHC.Show.ShowS
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,13)-(6,14): State.TurnstileState -> State.TurnstileState -> GHC.Types.Bool
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,17)-(6,20): GHC.Types.Int -> State.TurnstileState -> GHC.Show.ShowS
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(15,18)-(15,20): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(15,24)-(15,29): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(15,17)-(15,30): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(16,18)-(16,21): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(16,24)-(16,29): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(16,17)-(16,30): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(13,11)-(13,15): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(13,18)-(13,25): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(13,10)-(13,26): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(20,18)-(20,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(20,23)-(20,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(20,18)-(20,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(21,18)-(21,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(21,23)-(21,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(21,18)-(21,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(22,18)-(22,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(22,23)-(22,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(22,18)-(22,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(23,18)-(23,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(23,23)-(23,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(23,18)-(23,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(24,18)-(24,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(24,23)-(24,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(24,18)-(24,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(25,8)-(25,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(25,12)-(25,13): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(25,16)-(25,17): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(25,20)-(25,21): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(25,24)-(25,25): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(25,7)-(25,26): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(25,29)-(25,30): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(25,6)-(25,31): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(20,3)-(25,31): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(30,18)-(30,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(30,23)-(30,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(30,18)-(30,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(31,18)-(31,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(31,23)-(31,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(31,18)-(31,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(32,8)-(32,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(32,12)-(32,13): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(32,7)-(32,14): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(32,17)-(32,18): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(32,6)-(32,19): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(30,3)-(32,19): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(35,18)-(35,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(35,23)-(35,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(35,18)-(35,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(36,8)-(36,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(36,7)-(36,10): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(36,13)-(36,14): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(36,6)-(36,15): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(35,3)-(36,15): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(39,18)-(39,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(39,23)-(39,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(39,18)-(39,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(40,12)-(40,13): State.TurnstileOutput -> State.TurnstileOutput -> GHC.Types.Bool
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(40,9)-(40,10): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(40,15)-(40,18): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(40,9)-(40,18): GHC.Types.Bool
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(41,13)-(41,14): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(41,12)-(41,15): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(41,18)-(41,19): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(41,11)-(41,20): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(42,26)-(42,29): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(42,31)-(42,32): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(42,26)-(42,32): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(43,26)-(43,29): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(43,31)-(43,32): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(43,26)-(43,32): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(44,16)-(44,17): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(44,20)-(44,21): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(44,24)-(44,25): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(44,15)-(44,26): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(44,29)-(44,30): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(44,14)-(44,31): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(42,11)-(44,31): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(40,6)-(44,31): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(39,3)-(44,31): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(48,18)-(48,30): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(48,35)-(48,36): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(48,18)-(48,36): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(49,18)-(49,28): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(49,35)-(49,36): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(49,18)-(49,36): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(50,18)-(50,33): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(50,35)-(50,36): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(50,18)-(50,36): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(51,18)-(51,28): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(51,35)-(51,36): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(51,18)-(51,36): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,10)-(52,11): [State.TurnstileOutput] -> [State.TurnstileOutput] -> [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,7)-(52,8): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,16)-(52,17): [State.TurnstileOutput] -> [State.TurnstileOutput] -> [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,13)-(52,14): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,22)-(52,23): [State.TurnstileOutput] -> [State.TurnstileOutput] -> [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,19)-(52,20): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,25)-(52,26): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,19)-(52,26): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,13)-(52,26): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,7)-(52,26): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,29)-(52,30): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,6)-(52,31): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(48,3)-(52,31): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,13)-(9,14): GHC.Classes.Eq State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,13)-(9,14): (State.TurnstileOutput -> State.TurnstileOutput -> GHC.Types.Bool) -> GHC.Classes.Eq State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,13)-(9,14): (State.TurnstileOutput -> State.TurnstileOutput -> GHC.Types.Bool) -> (State.TurnstileOutput -> State.TurnstileOutput -> GHC.Types.Bool) -> GHC.Classes.Eq State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,13)-(9,14): State.TurnstileOutput -> State.TurnstileOutput -> GHC.Types.Bool
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,13)-(9,14): State.TurnstileOutput -> State.TurnstileOutput -> GHC.Types.Bool
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,17)-(9,20): GHC.Show.Show State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,17)-(9,20): ([State.TurnstileOutput] -> GHC.Show.ShowS) -> GHC.Show.Show State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,17)-(9,20): (State.TurnstileOutput -> GHC.Base.String) -> ([State.TurnstileOutput] -> GHC.Show.ShowS) -> GHC.Show.Show State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,17)-(9,20): (GHC.Types.Int -> State.TurnstileOutput -> GHC.Show.ShowS) -> (State.TurnstileOutput -> GHC.Base.String) -> ([State.TurnstileOutput] -> GHC.Show.ShowS) -> GHC.Show.Show State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,17)-(9,20): GHC.Types.Int -> State.TurnstileOutput -> GHC.Show.ShowS
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,17)-(9,20): State.TurnstileOutput -> GHC.Base.String
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,17)-(9,20): [State.TurnstileOutput] -> GHC.Show.ShowS
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,13)-(6,14): GHC.Classes.Eq State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,13)-(6,14): (State.TurnstileState -> State.TurnstileState -> GHC.Types.Bool) -> GHC.Classes.Eq State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,13)-(6,14): (State.TurnstileState -> State.TurnstileState -> GHC.Types.Bool) -> (State.TurnstileState -> State.TurnstileState -> GHC.Types.Bool) -> GHC.Classes.Eq State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,13)-(6,14): State.TurnstileState -> State.TurnstileState -> GHC.Types.Bool
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,13)-(6,14): State.TurnstileState -> State.TurnstileState -> GHC.Types.Bool
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,17)-(6,20): GHC.Show.Show State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,17)-(6,20): ([State.TurnstileState] -> GHC.Show.ShowS) -> GHC.Show.Show State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,17)-(6,20): (State.TurnstileState -> GHC.Base.String) -> ([State.TurnstileState] -> GHC.Show.ShowS) -> GHC.Show.Show State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,17)-(6,20): (GHC.Types.Int -> State.TurnstileState -> GHC.Show.ShowS) -> (State.TurnstileState -> GHC.Base.String) -> ([State.TurnstileState] -> GHC.Show.ShowS) -> GHC.Show.Show State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,17)-(6,20): GHC.Types.Int -> State.TurnstileState -> GHC.Show.ShowS
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,17)-(6,20): State.TurnstileState -> GHC.Base.String
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,17)-(6,20): [State.TurnstileState] -> GHC.Show.ShowS
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(15,6)-(15,11): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(16,6)-(16,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(13,6)-(13,6): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(19,8)-(19,9): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(20,8)-(20,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(20,12)-(20,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(20,7)-(20,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(21,8)-(21,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(21,12)-(21,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(21,7)-(21,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(22,8)-(22,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(22,12)-(22,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(22,7)-(22,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(23,8)-(23,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(23,12)-(23,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(23,7)-(23,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(24,8)-(24,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(24,12)-(24,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(24,7)-(24,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(29,15)-(29,16): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(30,8)-(30,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(30,12)-(30,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(30,7)-(30,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(31,8)-(31,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(31,12)-(31,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(31,7)-(31,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(34,18)-(34,19): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(35,8)-(35,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(35,12)-(35,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(35,7)-(35,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(38,13)-(38,14): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(39,8)-(39,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(39,12)-(39,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(39,7)-(39,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(42,16)-(42,17): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(42,20)-(42,21): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(42,15)-(42,22): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(43,16)-(43,17): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(43,20)-(43,21): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(43,15)-(43,22): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(47,9)-(47,10): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(48,8)-(48,9): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(48,12)-(48,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(48,7)-(48,14): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(49,8)-(49,9): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(49,12)-(49,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(49,7)-(49,14): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(50,8)-(50,9): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(50,12)-(50,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(50,7)-(50,14): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(51,8)-(51,9): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(51,12)-(51,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(51,7)-(51,14): ([State.TurnstileOutput], State.TurnstileState)
+ghci | 
+ghci | ===ghci_barrier_0.21381654878646428===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.516270551348676===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.8378463261390241===
+    -> :complete repl 50 "  | isRegularPersona"
+ghci | 0 0 "  | "
+ghci | 
+ghci | ===ghci_barrier_0.09616390372921857===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.29691964522066994===
+    -> :complete repl 50 "  | isRegularPerson "
+ghci | 50 528 "  | isRegularPerson "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci8.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.218318389494492===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.33048226660158075===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6938992528495942===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.3254519358338124===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9603055823342255===
+    -> :complete repl 50 "  | isRegularPerson a"
+ghci | 13 13 "  | isRegularPerson "
+ghci | "abs"
+ghci | "acos"
+ghci | "acosh"
+ghci | "all"
+ghci | "and"
+ghci | "any"
+ghci | "appendFile"
+ghci | "asTypeOf"
+ghci | "asin"
+ghci | "asinh"
+ghci | "atan"
+ghci | "atan2"
+ghci | "atanh"
+ghci | 
+ghci | ===ghci_barrier_0.564317728831528===
+    -> :info abs
+ghci | type Num :: * -> Constraint
+ghci | class Num a where
+ghci |   ...
+ghci |   abs :: a -> a
+ghci |   ...
+ghci |   	-- Defined in ‘GHC.Num’
+ghci | 
+ghci | ===ghci_barrier_0.23292057123246956===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.421571582664503===
+    -> :doc abs
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Num.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.31131292879342154===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.049712438558002336===
+    -> :complete repl 50 "  | isRegularPerson as"
+ghci | 3 3 "  | isRegularPerson "
+ghci | "asTypeOf"
+ghci | "asin"
+ghci | "asinh"
+ghci | 
+ghci | ===ghci_barrier_0.5983432355112963===
+    -> :info asin
+ghci | type Floating :: * -> Constraint
+ghci | class Fractional a => Floating a where
+ghci |   ...
+ghci |   asin :: a -> a
+ghci |   ...
+ghci |   	-- Defined in ‘GHC.Float’
+ghci | 
+ghci | ===ghci_barrier_0.7480880218027532===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7702518568851058===
+    -> :doc asin
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Float.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.04012637627612081===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.5412849513727458===
+    -> :complete repl 50 "  | isRegularPerson ass"
+ghci | 0 0 "  | isRegularPerson "
+ghci | 
+ghci | ===ghci_barrier_0.6692722046303916===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.31520085849816537===
+    -> :complete repl 50 "  | isRegularPerson "
+ghci | 50 528 "  | isRegularPerson "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci25.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.3908584862572042===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.02034940642586469===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6984323058106154===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.7283270422086903===
+    -> :info =<<
+ghci | (=<<) :: Monad m => (a -> m b) -> m a -> m b
+ghci |   	-- Defined in ‘GHC.Base’
+ghci | infixr 1 =<<
+ghci | 
+ghci | ===ghci_barrier_0.165570275328758===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.925073681749585===
+    -> :doc =<<
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Base.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.375740605645849===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.41705034958909026===
+    -> :complete repl 50 "  | isRegularPerson | "
+ghci | 50 528 "  | isRegularPerson | "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci33.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.04902601544696883===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.9083324143566498===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.8108701908818394===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.9022636124425776===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.16755271122957072===
+    -> :complete repl 50 "  | isRegularPerson | "
+ghci | 50 528 "  | isRegularPerson | "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci38.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.9466944030809115===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.525062962822223===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.8516569948808241===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.09606150024755356===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.26772862956739774===
+    -> :complete repl 50 "  | isRegularPerson || "
+ghci | 50 528 "  | isRegularPerson || "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci43.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.2912181720963196===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.3574600617978134===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.3889245328596256===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.21158266729681152===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6803621033156577===
+    -> :complete repl 50 "  | isRegularPerson == "
+ghci | 50 528 "  | isRegularPerson == "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci48.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.569683317940799===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.8383992804951668===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.8075183079603743===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.6985683044431685===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.26786306174159447===
+    -> :complete repl 50 "  | isRegularPerson == T"
+ghci | 6 6 "  | isRegularPerson == "
+ghci | "Thank"
+ghci | "Traversable"
+ghci | "True"
+ghci | "TurnstileOutput"
+ghci | "TurnstileState"
+ghci | "Tut"
+ghci | 
+ghci | ===ghci_barrier_0.16350291651334925===
+    -> :info Thank
+ghci | type TurnstileOutput :: *
+ghci | data TurnstileOutput = Thank | ...
+ghci |   	-- Defined at /home/le/Projects/CodeExamples/Haskell/State.hs:8:24
+ghci | 
+ghci | ===ghci_barrier_0.18055203717336976===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7382073081550948===
+    -> :doc Thank
+ghci | ghc-9.2.8: Can't find any documentation for State.
+ghci | This is probably because the module was loaded without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try running ':set -haddock' and :load the file again.
+ghci | 
+ghci | ===ghci_barrier_0.3239204586420017===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.31182845019224215===
+    -> :complete repl 50 "  | isRegularPerson == Tr"
+ghci | 2 2 "  | isRegularPerson == "
+ghci | "Traversable"
+ghci | "True"
+ghci | 
+ghci | ===ghci_barrier_0.02235844363751771===
+    -> :info Traversable
+ghci | type Traversable :: (* -> *) -> Constraint
+ghci | class (Functor t, Foldable t) => Traversable t where
+ghci |   traverse :: Applicative f => (a -> f b) -> t a -> f (t b)
+ghci |   sequenceA :: Applicative f => t (f a) -> f (t a)
+ghci |   mapM :: Monad m => (a -> m b) -> t a -> m (t b)
+ghci |   sequence :: Monad m => t (m a) -> m (t a)
+ghci |   {-# MINIMAL traverse | sequenceA #-}
+ghci |   	-- Defined in ‘Data.Traversable’
+ghci | instance Traversable [] -- Defined in ‘Data.Traversable’
+ghci | instance Traversable Solo -- Defined in ‘Data.Traversable’
+ghci | instance Traversable Maybe -- Defined in ‘Data.Traversable’
+ghci | instance Traversable (Either a) -- Defined in ‘Data.Traversable’
+ghci | instance Traversable ((,) a) -- Defined in ‘Data.Traversable’
+ghci | 
+ghci | ===ghci_barrier_0.5485775656538567===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.5963150344296282===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.24841239085151634===
+    -> :complete repl 50 "  | isRegularPerson == Tru"
+ghci | 1 1 "  | isRegularPerson == "
+ghci | "True"
+ghci | 
+ghci | ===ghci_barrier_0.7858739411762288===
+    -> :doc Traversable
+ghci | ghc-9.2.8: Can't find any documentation for Data.Traversable.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.7308136586473031===
+    -> :info True
+ghci | type Bool :: *
+ghci | data Bool = ... | True
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.9349716442591662===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.28005410171566036===
+    -> :doc True
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.8655915807409085===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.752004546415004===
+    -> :complete repl 50 "  | isRegularPerson == True"
+ghci | 1 1 "  | isRegularPerson == "
+ghci | "True"
+ghci | 
+ghci | ===ghci_barrier_0.32269481547718093===
+    -> :info True
+ghci | type Bool :: *
+ghci | data Bool = ... | True
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.7374265412086871===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.28200479150629953===
+    -> :doc True
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.804829982574397===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9751238225032133===
+    -> :complete repl 50 "  | isRegularPerson == True "
+ghci | 50 528 "  | isRegularPerson == True "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci73.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.004682923947463502===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.4771355999230582===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.1996786929838692===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.8285613791796764===
+    -> :info =<<
+ghci | (=<<) :: Monad m => (a -> m b) -> m a -> m b
+ghci |   	-- Defined in ‘GHC.Base’
+ghci | infixr 1 =<<
+ghci | 
+ghci | ===ghci_barrier_0.5841138896261311===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.4926396904218626===
+    -> :doc =<<
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Base.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.35673292762557307===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.17153239932467335===
+    -> :complete repl 50 "  | isRegularPerson == True = "
+ghci | 50 528 "  | isRegularPerson == True = "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci81.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.6070290710143593===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.6401175350495942===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.07580675734960929===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.47395942075595854===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.8304862671793651===
+    -> :complete repl 50 "  | isRegularPerson == True  "
+ghci | 50 528 "  | isRegularPerson == True  "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci86.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.7944142103973841===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.19096460153926542===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9350018598515917===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.2748909713125771===
+    -> :info =<<
+ghci | (=<<) :: Monad m => (a -> m b) -> m a -> m b
+ghci |   	-- Defined in ‘GHC.Base’
+ghci | infixr 1 =<<
+ghci | 
+ghci | ===ghci_barrier_0.8604201624532619===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6006249207311845===
+    -> :doc =<<
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Base.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.4027728003471529===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.3238993492959594===
+    -> :complete repl 50 "  | isRegularPerson == True  = "
+ghci | 50 528 "  | isRegularPerson == True  = "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci94.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.5162959927054982===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.8139371902774672===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.10935799011168945===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.5842557392052183===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6658348013212068===
+    -> :complete repl 50 "  | isRegularPerson == True   "
+ghci | 50 528 "  | isRegularPerson == True   "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci99.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.046845102733607646===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.5710480454041011===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7709153129631434===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.502462725991442===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.8410018173455491===
+    -> :complete repl 50 "  | isRegularPerson == True  = "
+ghci | 50 528 "  | isRegularPerson == True  = "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci104.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.8885858899756593===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.2340060546238223===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6047374318840304===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.7022568075636428===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.5633471874181839===
+    -> :complete repl 50 "luckyPair isRegularPerson s0 = "
+ghci | 50 528 "luckyPair isRegularPerson s0 = "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci109.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.9668969905287748===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.82603832556565===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.5151768508713115===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.09779289812515546===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7512386267684696===
+    -> :complete repl 50 "luckyPair isRegularPerson s0 = (b"
+ghci | 1 1 "luckyPair isRegularPerson s0 = ("
+ghci | "break"
+ghci | 
+ghci | ===ghci_barrier_0.49162347824811503===
+    -> :info break
+ghci | break :: (a -> Bool) -> [a] -> ([a], [a]) 	-- Defined in ‘GHC.List’
+ghci | 
+ghci | ===ghci_barrier_0.5366188533764762===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.726304924777138===
+    -> :doc break
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.4859738707747574===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.2050434285666627===
+    -> :complete repl 50 "luckyPair isRegularPerson s0 = (b1"
+ghci | 0 0 "luckyPair isRegularPerson s0 = ("
+ghci | 
+ghci | ===ghci_barrier_0.2760603496548226===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.8647273404215088===
+    -> :complete repl 50 "luckyPair isRegularPerson s0 = (b1 "
+ghci | 50 528 "luckyPair isRegularPerson s0 = (b1 "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci121.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.14743468085939027===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.3756216216258501===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.503299399356036===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.7201884205836908===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.24124241120525203===
+    -> :complete repl 50 "luckyPair isRegularPerson s0 = (b1"
+ghci | 0 0 "luckyPair isRegularPerson s0 = ("
+ghci | 
+ghci | ===ghci_barrier_0.46905207520442715===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.38173569944154395===
+    -> :complete repl 50 "luckyPair isRegularPerson s0 = (b1, "
+ghci | 50 528 "luckyPair isRegularPerson s0 = (b1, "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci128.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.9837084871232429===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.6986116360444954===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.3907197923589747===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.4868013459516203===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.5020038597766245===
+    -> :complete repl 50 "luckyPair isRegularPerson s0 = (b1, s"
+ghci | 27 27 "luckyPair isRegularPerson s0 = (b1, "
+ghci | "scaleFloat"
+ghci | "scanl"
+ghci | "scanl1"
+ghci | "scanr"
+ghci | "scanr1"
+ghci | "seq"
+ghci | "sequence"
+ghci | "sequenceA"
+ghci | "sequence_"
+ghci | "show"
+ghci | "showChar"
+ghci | "showList"
+ghci | "showParen"
+ghci | "showString"
+ghci | "shows"
+ghci | "showsPrec"
+ghci | "significand"
+ghci | "signum"
+ghci | "sin"
+ghci | "sinh"
+ghci | "snd"
+ghci | "span"
+ghci | "splitAt"
+ghci | "sqrt"
+ghci | "subtract"
+ghci | "succ"
+ghci | "sum"
+ghci | 
+ghci | ===ghci_barrier_0.5938961971946419===
+    -> :info scaleFloat
+ghci | type RealFloat :: * -> Constraint
+ghci | class (RealFrac a, Floating a) => RealFloat a where
+ghci |   ...
+ghci |   scaleFloat :: Int -> a -> a
+ghci |   ...
+ghci |   	-- Defined in ‘GHC.Float’
+ghci | 
+ghci | ===ghci_barrier_0.5055665494401513===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.4106814192041208===
+    -> :doc scaleFloat
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Float.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.9282549647265332===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.12005443602508326===
+    -> :complete repl 50 "luckyPair isRegularPerson s0 = (b1, s1"
+ghci | 0 0 "luckyPair isRegularPerson s0 = (b1, "
+ghci | 
+ghci | ===ghci_barrier_0.13515184144633752===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.038015748188320764===
+    -> :complete repl 50 "luckyPair isRegularPerson s0 = (b1, s1) "
+ghci | 50 528 "luckyPair isRegularPerson s0 = (b1, s1) "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci140.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.9427162234058379===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.6944034440288007===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.10976807611649497===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.805557774330623===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6844627247634323===
+    -> :complete repl 50 "luckyPair isRegularPerson s0 = (b1, s1) w"
+ghci | 2 2 "luckyPair isRegularPerson s0 = (b1, s1) "
+ghci | "words"
+ghci | "writeFile"
+ghci | 
+ghci | ===ghci_barrier_0.057332090881759834===
+    -> :info words
+ghci | words :: String -> [String]
+ghci |   	-- Defined in ‘base-4.16.4.0:Data.OldList’
+ghci | 
+ghci | ===ghci_barrier_0.6653695161228013===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9399562274781075===
+    -> :doc words
+ghci | ghc-9.2.8: Can't find any documentation for Data.OldList.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.49606825599614757===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9256047469871551===
+    -> :complete repl 50 "luckyPair isRegularPerson s0 = (b1, s1) wh"
+ghci | 0 0 "luckyPair isRegularPerson s0 = (b1, s1) "
+ghci | 
+ghci | ===ghci_barrier_0.614429361771369===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7327928292345951===
+    -> :complete repl 50 "luckyPair isRegularPerson s0 = (b1, s1) whe"
+ghci | 0 0 "luckyPair isRegularPerson s0 = (b1, s1) "
+ghci | 
+ghci | ===ghci_barrier_0.029105321329670142===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.725842597537292===
+    -> :complete repl 50 "  b"
+ghci | 1 1 "  "
+ghci | "break"
+ghci | 
+ghci | ===ghci_barrier_0.2544027564644493===
+    -> :info break
+ghci | break :: (a -> Bool) -> [a] -> ([a], [a]) 	-- Defined in ‘GHC.List’
+ghci | 
+ghci | ===ghci_barrier_0.7365430912435689===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.2889752035637718===
+    -> :doc break
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.8487800565736525===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.29563341807267496===
+    -> :complete repl 50 "  b1"
+ghci | 0 0 "  "
+ghci | 
+ghci | ===ghci_barrier_0.8248822995450527===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9670537035367885===
+    -> :complete repl 50 "  b1 "
+ghci | 50 528 "  b1 "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci161.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.056333084969782066===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.03792869313975844===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7804399431124966===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.11177037045812299===
+    -> :info =<<
+ghci | (=<<) :: Monad m => (a -> m b) -> m a -> m b
+ghci |   	-- Defined in ‘GHC.Base’
+ghci | infixr 1 =<<
+ghci | 
+ghci | ===ghci_barrier_0.07260928012142709===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.3730751655741895===
+    -> :doc =<<
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Base.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.4350385825560601===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.243860847642001===
+    -> :complete repl 50 "  b1 = "
+ghci | 50 528 "  b1 = "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci169.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.8552497084066875===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.9214416814500581===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.27331608017662257===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.6112970348443805===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9858269867740441===
+    -> :complete repl 50 "  | isRegularPerson == True  = T"
+ghci | 6 6 "  | isRegularPerson == True  = "
+ghci | "Thank"
+ghci | "Traversable"
+ghci | "True"
+ghci | "TurnstileOutput"
+ghci | "TurnstileState"
+ghci | "Tut"
+ghci | 
+ghci | ===ghci_barrier_0.06711214084621187===
+    -> :info Thank
+ghci | type TurnstileOutput :: *
+ghci | data TurnstileOutput = Thank | ...
+ghci |   	-- Defined at /home/le/Projects/CodeExamples/Haskell/State.hs:8:24
+ghci | 
+ghci | ===ghci_barrier_0.019276012488900207===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.1291220434053011===
+    -> :doc Thank
+ghci | ghc-9.2.8: Can't find any documentation for State.
+ghci | This is probably because the module was loaded without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try running ':set -haddock' and :load the file again.
+ghci | 
+ghci | ===ghci_barrier_0.7144178836704524===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6350528250780696===
+    -> :complete repl 50 "  | isRegularPerson == True  = Tr"
+ghci | 2 2 "  | isRegularPerson == True  = "
+ghci | "Traversable"
+ghci | "True"
+ghci | 
+ghci | ===ghci_barrier_0.21307446201310465===
+    -> :info Traversable
+ghci | type Traversable :: (* -> *) -> Constraint
+ghci | class (Functor t, Foldable t) => Traversable t where
+ghci |   traverse :: Applicative f => (a -> f b) -> t a -> f (t b)
+ghci |   sequenceA :: Applicative f => t (f a) -> f (t a)
+ghci |   mapM :: Monad m => (a -> m b) -> t a -> m (t b)
+ghci |   sequence :: Monad m => t (m a) -> m (t a)
+ghci |   {-# MINIMAL traverse | sequenceA #-}
+ghci |   	-- Defined in ‘Data.Traversable’
+ghci | instance Traversable [] -- Defined in ‘Data.Traversable’
+ghci | instance Traversable Solo -- Defined in ‘Data.Traversable’
+ghci | instance Traversable Maybe -- Defined in ‘Data.Traversable’
+ghci | instance Traversable (Either a) -- Defined in ‘Data.Traversable’
+ghci | instance Traversable ((,) a) -- Defined in ‘Data.Traversable’
+ghci | 
+ghci | ===ghci_barrier_0.03358788626726339===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.97417828788204===
+    -> :doc Traversable
+ghci | ghc-9.2.8: Can't find any documentation for Data.Traversable.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.8593961214566133===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.1721838756765326===
+    -> :complete repl 50 "  | isRegularPerson == True  = Tru"
+ghci | 1 1 "  | isRegularPerson == True  = "
+ghci | "True"
+ghci | 
+ghci | ===ghci_barrier_0.5764514671308698===
+    -> :info True
+ghci | type Bool :: *
+ghci | data Bool = ... | True
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.6804229103545443===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.31223483255878426===
+    -> :doc True
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.15483063080047543===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7362744604182176===
+    -> :complete repl 50 "  | isRegularPerson == True  = True"
+ghci | 1 1 "  | isRegularPerson == True  = "
+ghci | "True"
+ghci | 
+ghci | ===ghci_barrier_0.7470365934478223===
+    -> :info True
+ghci | type Bool :: *
+ghci | data Bool = ... | True
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.03456104341841004===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.08189506971846261===
+    -> :doc True
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.7267095624233664===
+    -> :info b1
+ghci | 
+ghci | <interactive>:1:1-2: error: Not in scope: ‘b1’
+ghci | 
+ghci | ===ghci_barrier_0.21537740242659997===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6576559718072919===
+    -> :doc b1
+ghci | 
+ghci | <interactive>:1:1-2: error: Not in scope: ‘b1’
+ghci | 
+ghci | ===ghci_barrier_0.30634758671357987===
+    -> :info b1
+ghci | 
+ghci | <interactive>:1:1-2: error: Not in scope: ‘b1’
+ghci | 
+ghci | ===ghci_barrier_0.7493493975594014===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.09859310487179718===
+    -> :doc b1
+ghci | 
+ghci | <interactive>:1:1-2: error: Not in scope: ‘b1’
+ghci | 
+ghci | ===ghci_barrier_0.832584911863044===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.2813211102582187===
+    -> :complete repl 50 "  (b1, "
+ghci | 50 528 "  (b1, "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci200.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.4913540933808822===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.4149493425935342===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.008992324463453993===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.9626476308465866===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.25500067578561203===
+    -> :complete repl 50 "  (b1, s"
+ghci | 27 27 "  (b1, "
+ghci | "scaleFloat"
+ghci | "scanl"
+ghci | "scanl1"
+ghci | "scanr"
+ghci | "scanr1"
+ghci | "seq"
+ghci | "sequence"
+ghci | "sequenceA"
+ghci | "sequence_"
+ghci | "show"
+ghci | "showChar"
+ghci | "showList"
+ghci | "showParen"
+ghci | "showString"
+ghci | "shows"
+ghci | "showsPrec"
+ghci | "significand"
+ghci | "signum"
+ghci | "sin"
+ghci | "sinh"
+ghci | "snd"
+ghci | "span"
+ghci | "splitAt"
+ghci | "sqrt"
+ghci | "subtract"
+ghci | "succ"
+ghci | "sum"
+ghci | 
+ghci | ===ghci_barrier_0.5154052026453662===
+    -> :info scaleFloat
+ghci | type RealFloat :: * -> Constraint
+ghci | class (RealFrac a, Floating a) => RealFloat a where
+ghci |   ...
+ghci |   scaleFloat :: Int -> a -> a
+ghci |   ...
+ghci |   	-- Defined in ‘GHC.Float’
+ghci | 
+ghci | ===ghci_barrier_0.6011013217931149===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.10502958342007629===
+    -> :doc scaleFloat
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Float.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.06965977830900316===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.3198261683976684===
+    -> :complete repl 50 "  (b1, s1"
+ghci | 0 0 "  (b1, "
+ghci | 
+ghci | ===ghci_barrier_0.3326106169565839===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.16554989602560033===
+    -> :complete repl 50 "  | isRegularPerson == True  = True "
+ghci | 50 528 "  | isRegularPerson == True  = True "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci212.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.25137355882675383===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.9068351397819623===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.5146860087961553===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.9723411291184023===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7263481332208908===
+    -> :complete repl 50 "  | isRegularPerson == True  = True"
+ghci | 1 1 "  | isRegularPerson == True  = "
+ghci | "True"
+ghci | 
+ghci | ===ghci_barrier_0.09056607923023319===
+    -> :info True
+ghci | type Bool :: *
+ghci | data Bool = ... | True
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.4451173391094583===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6619523538573018===
+    -> :doc True
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.6250292624009057===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.45840424121275447===
+    -> :complete repl 50 "  | isRegularPerson == True  = Tru"
+ghci | 1 1 "  | isRegularPerson == True  = "
+ghci | "True"
+ghci | 
+ghci | ===ghci_barrier_0.9982345303655429===
+    -> :info True
+ghci | type Bool :: *
+ghci | data Bool = ... | True
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.35200617498935816===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.09345551696195487===
+    -> :doc True
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.39885332245244176===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6453771389799703===
+    -> :complete repl 50 "  | isRegularPerson == True  = Tr"
+ghci | 2 2 "  | isRegularPerson == True  = "
+ghci | "Traversable"
+ghci | "True"
+ghci | 
+ghci | ===ghci_barrier_0.20815002470976407===
+    -> :info Traversable
+ghci | type Traversable :: (* -> *) -> Constraint
+ghci | class (Functor t, Foldable t) => Traversable t where
+ghci |   traverse :: Applicative f => (a -> f b) -> t a -> f (t b)
+ghci |   sequenceA :: Applicative f => t (f a) -> f (t a)
+ghci |   mapM :: Monad m => (a -> m b) -> t a -> m (t b)
+ghci |   sequence :: Monad m => t (m a) -> m (t a)
+ghci |   {-# MINIMAL traverse | sequenceA #-}
+ghci |   	-- Defined in ‘Data.Traversable’
+ghci | instance Traversable [] -- Defined in ‘Data.Traversable’
+ghci | instance Traversable Solo -- Defined in ‘Data.Traversable’
+ghci | instance Traversable Maybe -- Defined in ‘Data.Traversable’
+ghci | instance Traversable (Either a) -- Defined in ‘Data.Traversable’
+ghci | instance Traversable ((,) a) -- Defined in ‘Data.Traversable’
+ghci | 
+ghci | ===ghci_barrier_0.7343250715690326===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.4609773125106871===
+    -> :doc Traversable
+ghci | ghc-9.2.8: Can't find any documentation for Data.Traversable.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.7764471821637451===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.09352834858604075===
+    -> :complete repl 50 "  | isRegularPerson == True  = T"
+ghci | 6 6 "  | isRegularPerson == True  = "
+ghci | "Thank"
+ghci | "Traversable"
+ghci | "True"
+ghci | "TurnstileOutput"
+ghci | "TurnstileState"
+ghci | "Tut"
+ghci | 
+ghci | ===ghci_barrier_0.5502937276981148===
+    -> :info Thank
+ghci | type TurnstileOutput :: *
+ghci | data TurnstileOutput = Thank | ...
+ghci |   	-- Defined at /home/le/Projects/CodeExamples/Haskell/State.hs:8:24
+ghci | 
+ghci | ===ghci_barrier_0.4375959537418448===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7874241124129313===
+    -> :doc Thank
+ghci | ghc-9.2.8: Can't find any documentation for State.
+ghci | This is probably because the module was loaded without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try running ':set -haddock' and :load the file again.
+ghci | 
+ghci | ===ghci_barrier_0.5716110671777348===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.09660712046509068===
+    -> :complete repl 50 "  | isRegularPerson == True  = (T"
+ghci | 6 6 "  | isRegularPerson == True  = ("
+ghci | "Thank"
+ghci | "Traversable"
+ghci | "True"
+ghci | "TurnstileOutput"
+ghci | "TurnstileState"
+ghci | "Tut"
+ghci | 
+ghci | ===ghci_barrier_0.538759709805686===
+    -> :info Thank
+ghci | type TurnstileOutput :: *
+ghci | data TurnstileOutput = Thank | ...
+ghci |   	-- Defined at /home/le/Projects/CodeExamples/Haskell/State.hs:8:24
+ghci | 
+ghci | ===ghci_barrier_0.36640510550188===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6138289314751477===
+    -> :doc Thank
+ghci | ghc-9.2.8: Can't find any documentation for State.
+ghci | This is probably because the module was loaded without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try running ':set -haddock' and :load the file again.
+ghci | 
+ghci | ===ghci_barrier_0.085402468779328===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.47259997577021284===
+    -> :complete repl 50 "  | isRegularPerson == True  = (Tr"
+ghci | 2 2 "  | isRegularPerson == True  = ("
+ghci | "Traversable"
+ghci | "True"
+ghci | 
+ghci | ===ghci_barrier_0.35173394864917396===
+    -> :info Traversable
+ghci | type Traversable :: (* -> *) -> Constraint
+ghci | class (Functor t, Foldable t) => Traversable t where
+ghci |   traverse :: Applicative f => (a -> f b) -> t a -> f (t b)
+ghci |   sequenceA :: Applicative f => t (f a) -> f (t a)
+ghci |   mapM :: Monad m => (a -> m b) -> t a -> m (t b)
+ghci |   sequence :: Monad m => t (m a) -> m (t a)
+ghci |   {-# MINIMAL traverse | sequenceA #-}
+ghci |   	-- Defined in ‘Data.Traversable’
+ghci | instance Traversable [] -- Defined in ‘Data.Traversable’
+ghci | instance Traversable Solo -- Defined in ‘Data.Traversable’
+ghci | instance Traversable Maybe -- Defined in ‘Data.Traversable’
+ghci | instance Traversable (Either a) -- Defined in ‘Data.Traversable’
+ghci | instance Traversable ((,) a) -- Defined in ‘Data.Traversable’
+ghci | 
+ghci | ===ghci_barrier_0.9903082696031713===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.19591088111439348===
+    -> :doc Traversable
+ghci | ghc-9.2.8: Can't find any documentation for Data.Traversable.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.16222821462053005===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.4772494293537759===
+    -> :complete repl 50 "  | isRegularPerson == True  = (Tru"
+ghci | 1 1 "  | isRegularPerson == True  = ("
+ghci | "True"
+ghci | 
+ghci | ===ghci_barrier_0.33525157276364426===
+    -> :info True
+ghci | type Bool :: *
+ghci | data Bool = ... | True
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.3308816530238219===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7455249725555655===
+    -> :doc True
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.9415931451687154===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9394045442614072===
+    -> :complete repl 50 "  | isRegularPerson == True  = (True"
+ghci | 1 1 "  | isRegularPerson == True  = ("
+ghci | "True"
+ghci | 
+ghci | ===ghci_barrier_0.9236202151563491===
+    -> :info True
+ghci | type Bool :: *
+ghci | data Bool = ... | True
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.842208599476141===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.5466889963053554===
+    -> :doc True
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.7516798507550522===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6646679498850316===
+    -> :complete repl 50 "  | isRegularPerson == True  = (True, "
+ghci | 50 528 "  | isRegularPerson == True  = (True, "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci257.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.20345465762526715===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.9088566855510614===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9127549180219485===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.19854536085634567===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.3493463406762112===
+    -> :complete repl 50 "  | isRegularPerson == True  = (True, U"
+ghci | 1 1 "  | isRegularPerson == True  = (True, "
+ghci | "Unlocked"
+ghci | 
+ghci | ===ghci_barrier_0.08995252695246103===
+    -> :info Unlocked
+ghci | type TurnstileState :: *
+ghci | data TurnstileState = ... | Unlocked
+ghci |   	-- Defined at /home/le/Projects/CodeExamples/Haskell/State.hs:5:32
+ghci | 
+ghci | ===ghci_barrier_0.8636420459922782===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.13995014585661059===
+    -> :doc Unlocked
+ghci | ghc-9.2.8: Can't find any documentation for State.
+ghci | This is probably because the module was loaded without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try running ':set -haddock' and :load the file again.
+ghci | 
+ghci | ===ghci_barrier_0.9407541817369882===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9307958173126993===
+    -> :complete repl 50 "  | isRegularPerson == True  = (True, Un"
+ghci | 1 1 "  | isRegularPerson == True  = (True, "
+ghci | "Unlocked"
+ghci | 
+ghci | ===ghci_barrier_0.05916071763341213===
+    -> :info Unlocked
+ghci | type TurnstileState :: *
+ghci | data TurnstileState = ... | Unlocked
+ghci |   	-- Defined at /home/le/Projects/CodeExamples/Haskell/State.hs:5:32
+ghci | 
+ghci | ===ghci_barrier_0.07609843559991014===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.5964891337453855===
+    -> :doc Unlocked
+ghci | ghc-9.2.8: Can't find any documentation for State.
+ghci | This is probably because the module was loaded without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try running ':set -haddock' and :load the file again.
+ghci | 
+ghci | ===ghci_barrier_0.1857879926813295===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.37250851484829184===
+    -> :complete repl 50 "  | isRegularPerson == True  = (True, Unk"
+ghci | 0 0 "  | isRegularPerson == True  = (True, "
+ghci | 
+ghci | ===ghci_barrier_0.5323398078692851===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.8859855187261436===
+    -> :complete repl 50 "  | isRegularPerson == True  = (True, L"
+ghci | 3 3 "  | isRegularPerson == True  = (True, "
+ghci | "LT"
+ghci | "Left"
+ghci | "Locked"
+ghci | 
+ghci | ===ghci_barrier_0.5425877424125582===
+    -> :info Left
+ghci | type Either :: * -> * -> *
+ghci | data Either a b = Left a | ...
+ghci |   	-- Defined in ‘Data.Either’
+ghci | 
+ghci | ===ghci_barrier_0.05738692292681913===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.07778520497610963===
+    -> :doc Left
+ghci | ghc-9.2.8: Can't find any documentation for Data.Either.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.8928189248956266===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6430992278112764===
+    -> :complete repl 50 "  | isRegularPerson == True  = (True, Lo"
+ghci | 1 1 "  | isRegularPerson == True  = (True, "
+ghci | "Locked"
+ghci | 
+ghci | ===ghci_barrier_0.2750990419902264===
+    -> :info Locked
+ghci | type TurnstileState :: *
+ghci | data TurnstileState = Locked | ...
+ghci |   	-- Defined at /home/le/Projects/CodeExamples/Haskell/State.hs:5:23
+ghci | 
+ghci | ===ghci_barrier_0.7458818388344026===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.8468585164905318===
+    -> :doc Locked
+ghci | ghc-9.2.8: Can't find any documentation for State.
+ghci | This is probably because the module was loaded without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try running ':set -haddock' and :load the file again.
+ghci | 
+ghci | ===ghci_barrier_0.714554287879881===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.968180847347383===
+    -> :complete repl 50 "  | isRegularPerson == True  = (True, Loc"
+ghci | 1 1 "  | isRegularPerson == True  = (True, "
+ghci | "Locked"
+ghci | 
+ghci | ===ghci_barrier_0.16506033179565005===
+    -> :info Locked
+ghci | type TurnstileState :: *
+ghci | data TurnstileState = Locked | ...
+ghci |   	-- Defined at /home/le/Projects/CodeExamples/Haskell/State.hs:5:23
+ghci | 
+ghci | ===ghci_barrier_0.8034681157072256===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.2572757779522763===
+    -> :doc Locked
+ghci | ghc-9.2.8: Can't find any documentation for State.
+ghci | This is probably because the module was loaded without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try running ':set -haddock' and :load the file again.
+ghci | 
+ghci | ===ghci_barrier_0.8885607044580124===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.3413312387516432===
+    -> :complete repl 50 "  | isRegularPerson == True  = (True, Lock"
+ghci | 1 1 "  | isRegularPerson == True  = (True, "
+ghci | "Locked"
+ghci | 
+ghci | ===ghci_barrier_0.28627836579129573===
+    -> :info Locked
+ghci | type TurnstileState :: *
+ghci | data TurnstileState = Locked | ...
+ghci |   	-- Defined at /home/le/Projects/CodeExamples/Haskell/State.hs:5:23
+ghci | 
+ghci | ===ghci_barrier_0.03269339653778913===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.3856514858439304===
+    -> :doc Locked
+ghci | ghc-9.2.8: Can't find any documentation for State.
+ghci | This is probably because the module was loaded without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try running ':set -haddock' and :load the file again.
+ghci | 
+ghci | ===ghci_barrier_0.21378664503228406===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7145664556543294===
+    -> :complete repl 50 "  | isRegularPerson == True  = (True, Locke"
+ghci | 1 1 "  | isRegularPerson == True  = (True, "
+ghci | "Locked"
+ghci | 
+ghci | ===ghci_barrier_0.18637629592819938===
+    -> :info Locked
+ghci | type TurnstileState :: *
+ghci | data TurnstileState = Locked | ...
+ghci |   	-- Defined at /home/le/Projects/CodeExamples/Haskell/State.hs:5:23
+ghci | 
+ghci | ===ghci_barrier_0.22646708816042938===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.2062510412710128===
+    -> :doc Locked
+ghci | ghc-9.2.8: Can't find any documentation for State.
+ghci | This is probably because the module was loaded without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try running ':set -haddock' and :load the file again.
+ghci | 
+ghci | ===ghci_barrier_0.3726207401222523===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.697104913119905===
+    -> :complete repl 50 "  | isRegularPerson == True  = (True, Locked"
+ghci | 1 1 "  | isRegularPerson == True  = (True, "
+ghci | "Locked"
+ghci | 
+ghci | ===ghci_barrier_0.9899774866612003===
+    -> :info Locked
+ghci | type TurnstileState :: *
+ghci | data TurnstileState = Locked | ...
+ghci |   	-- Defined at /home/le/Projects/CodeExamples/Haskell/State.hs:5:23
+ghci | 
+ghci | ===ghci_barrier_0.3460445513703265===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6992119657926905===
+    -> :doc Locked
+ghci | ghc-9.2.8: Can't find any documentation for State.
+ghci | This is probably because the module was loaded without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try running ':set -haddock' and :load the file again.
+ghci | 
+ghci | ===ghci_barrier_0.7906589657090659===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.365309613327528===
+    -> :complete repl 50 "  | "
+ghci | 50 528 "  | "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci304.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.42202985095741563===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.8085110184988522===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.12748748172431768===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.9341785914725012===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.8611500356080544===
+    -> :complete repl 50 "  | i"
+ghci | 11 11 "  | "
+ghci | "id"
+ghci | "init"
+ghci | "interact"
+ghci | "ioError"
+ghci | "isDenormalized"
+ghci | "isIEEE"
+ghci | "isInfinite"
+ghci | "isNaN"
+ghci | "isNegativeZero"
+ghci | "it"
+ghci | "iterate"
+ghci | 
+ghci | ===ghci_barrier_0.31016033711184754===
+    -> :info id
+ghci | id :: a -> a 	-- Defined in ‘GHC.Base’
+ghci | 
+ghci | ===ghci_barrier_0.9487821319814138===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.1823490351307262===
+    -> :doc id
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Base.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.8016614995227791===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.12339496426536556===
+    -> :complete repl 50 "  | is"
+ghci | 5 5 "  | "
+ghci | "isDenormalized"
+ghci | "isIEEE"
+ghci | "isInfinite"
+ghci | "isNaN"
+ghci | "isNegativeZero"
+ghci | 
+ghci | ===ghci_barrier_0.005582742937020546===
+    -> :info isDenormalized
+ghci | type RealFloat :: * -> Constraint
+ghci | class (RealFrac a, Floating a) => RealFloat a where
+ghci |   ...
+ghci |   isDenormalized :: a -> Bool
+ghci |   ...
+ghci |   	-- Defined in ‘GHC.Float’
+ghci | 
+ghci | ===ghci_barrier_0.6870977557511613===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7753510963907655===
+    -> :doc isDenormalized
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Float.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.5798969259137765===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6156805528233034===
+    -> :complete repl 50 "  | isr"
+ghci | 0 0 "  | "
+ghci | 
+ghci | ===ghci_barrier_0.9435415232488342===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7866309459609586===
+    -> :complete repl 50 "  | isre"
+ghci | 0 0 "  | "
+ghci | 
+ghci | ===ghci_barrier_0.5118516366417476===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9827315444062938===
+    -> :complete repl 50 "  | isr"
+ghci | 0 0 "  | "
+ghci | 
+ghci | ===ghci_barrier_0.5452699600901774===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9530448336008961===
+    -> :complete repl 50 "  | is"
+ghci | 5 5 "  | "
+ghci | "isDenormalized"
+ghci | "isIEEE"
+ghci | "isInfinite"
+ghci | "isNaN"
+ghci | "isNegativeZero"
+ghci | 
+ghci | ===ghci_barrier_0.5451955739365746===
+    -> :info isDenormalized
+ghci | type RealFloat :: * -> Constraint
+ghci | class (RealFrac a, Floating a) => RealFloat a where
+ghci |   ...
+ghci |   isDenormalized :: a -> Bool
+ghci |   ...
+ghci |   	-- Defined in ‘GHC.Float’
+ghci | 
+ghci | ===ghci_barrier_0.2504890227198793===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.0712101280429771===
+    -> :doc isDenormalized
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Float.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.9652392440532189===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.8872553138069204===
+    -> :complete repl 50 "  | isR"
+ghci | 0 0 "  | "
+ghci | 
+ghci | ===ghci_barrier_0.6127821844520471===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.13840715427608408===
+    -> :complete repl 50 "  | isRe"
+ghci | 0 0 "  | "
+ghci | 
+ghci | ===ghci_barrier_0.9455910090545308===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.8263571276050543===
+    -> :complete repl 50 "  | isRegularPerson "
+ghci | 50 528 "  | isRegularPerson "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci334.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.874930500236627===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.8474187648521105===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.13501073681082443===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.2212795926130109===
+    -> :info =<<
+ghci | (=<<) :: Monad m => (a -> m b) -> m a -> m b
+ghci |   	-- Defined in ‘GHC.Base’
+ghci | infixr 1 =<<
+ghci | 
+ghci | ===ghci_barrier_0.22380234463849003===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9385904006952532===
+    -> :doc =<<
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Base.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.8011863250694735===
+    -> :info ==
+ghci | type Eq :: * -> Constraint
+ghci | class Eq a where
+ghci |   (==) :: a -> a -> Bool
+ghci |   ...
+ghci |   	-- Defined in ‘GHC.Classes’
+ghci | infix 4 ==
+ghci | 
+ghci | ===ghci_barrier_0.4710238304849381===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9198688710809284===
+    -> :doc ==
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Classes.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.5029498427913512===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7862796350172951===
+    -> :complete repl 50 "  | isRegularPerson == "
+ghci | 50 528 "  | isRegularPerson == "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci345.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.23321681573896624===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.5494579665041226===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.011944377830878095===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.7183373236389072===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.16992719444214166===
+    -> :complete repl 50 "  | isRegularPerson == F"
+ghci | 7 7 "  | isRegularPerson == "
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | 
+ghci | ===ghci_barrier_0.282554129228777===
+    -> :info False
+ghci | type Bool :: *
+ghci | data Bool = False | ...
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.23434070877715274===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7845199981216218===
+    -> :doc False
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.05278360781231295===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.09169337999652427===
+    -> :complete repl 50 "  | isRegularPerson == Fa"
+ghci | 1 1 "  | isRegularPerson == "
+ghci | "False"
+ghci | 
+ghci | ===ghci_barrier_0.7793389398007278===
+    -> :info False
+ghci | type Bool :: *
+ghci | data Bool = False | ...
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.23535834845813164===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.08921515060501628===
+    -> :doc False
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.03183819478753258===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6690256249658939===
+    -> :complete repl 50 "  | isRegularPerson == Fal"
+ghci | 1 1 "  | isRegularPerson == "
+ghci | "False"
+ghci | 
+ghci | ===ghci_barrier_0.1825782721260627===
+    -> :info False
+ghci | type Bool :: *
+ghci | data Bool = False | ...
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.06070119629009385===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.27301185057766264===
+    -> :doc False
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.09642533341223003===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.5282466236681918===
+    -> :complete repl 50 "  | isRegularPerson == Fals"
+ghci | 1 1 "  | isRegularPerson == "
+ghci | "False"
+ghci | 
+ghci | ===ghci_barrier_0.6167310487765503===
+    -> :info False
+ghci | type Bool :: *
+ghci | data Bool = False | ...
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.7203121943154096===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9389413398931765===
+    -> :doc False
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.4414260653893274===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9121040590705414===
+    -> :complete repl 50 "  | isRegularPerson == False"
+ghci | 1 1 "  | isRegularPerson == "
+ghci | "False"
+ghci | 
+ghci | ===ghci_barrier_0.759717506361071===
+    -> :info False
+ghci | type Bool :: *
+ghci | data Bool = False | ...
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.201772939712213===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9512252818535982===
+    -> :doc False
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.39413412136762327===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.04369051581579586===
+    -> :complete repl 50 "  | isRegularPerson == Fals"
+ghci | 1 1 "  | isRegularPerson == "
+ghci | "False"
+ghci | 
+ghci | ===ghci_barrier_0.8862465085322706===
+    -> :info False
+ghci | type Bool :: *
+ghci | data Bool = False | ...
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.26375742736069907===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.47204874164328703===
+    -> :doc False
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.4938131533257415===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6200281902524314===
+    -> :complete repl 50 "  | isRegularPerson == Fal"
+ghci | 1 1 "  | isRegularPerson == "
+ghci | "False"
+ghci | 
+ghci | ===ghci_barrier_0.9951363941974112===
+    -> :info False
+ghci | type Bool :: *
+ghci | data Bool = False | ...
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.9548704121429792===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.32264510922683165===
+    -> :doc False
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.52740158229634===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7354144350963507===
+    -> :complete repl 50 "  | isRegularPerson == Fa"
+ghci | 1 1 "  | isRegularPerson == "
+ghci | "False"
+ghci | 
+ghci | ===ghci_barrier_0.9377676003318849===
+    -> :info False
+ghci | type Bool :: *
+ghci | data Bool = False | ...
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.14919977373987692===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.29857988390663626===
+    -> :doc False
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.30163683341817604===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.3870066861954271===
+    -> :complete repl 50 "  | isRegularPerson == F"
+ghci | 7 7 "  | isRegularPerson == "
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | 
+ghci | ===ghci_barrier_0.21099461250086682===
+    -> :info False
+ghci | type Bool :: *
+ghci | data Bool = False | ...
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.9127800151376919===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.060686685205006086===
+    -> :doc False
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.9299972095594018===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.28319378657481353===
+    -> :complete repl 50 "  | o"
+ghci | 3 3 "  | "
+ghci | "odd"
+ghci | "or"
+ghci | "otherwise"
+ghci | 
+ghci | ===ghci_barrier_0.7765900346674259===
+    -> :info odd
+ghci | odd :: Integral a => a -> Bool 	-- Defined in ‘GHC.Real’
+ghci | 
+ghci | ===ghci_barrier_0.4803507273499936===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.29301261492282116===
+    -> :doc odd
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Real.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.4846077328361704===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.5964057071315643===
+    -> :complete repl 50 "  | ot"
+ghci | 1 1 "  | "
+ghci | "otherwise"
+ghci | 
+ghci | ===ghci_barrier_0.17155263540171117===
+    -> :info otherwise
+ghci | otherwise :: Bool 	-- Defined in ‘GHC.Base’
+ghci | 
+ghci | ===ghci_barrier_0.1104338984039841===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9264721695852147===
+    -> :doc otherwise
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Base.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.48865348679873555===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.482541432463673===
+    -> :complete repl 50 "  | oth"
+ghci | 1 1 "  | "
+ghci | "otherwise"
+ghci | 
+ghci | ===ghci_barrier_0.2613820156372886===
+    -> :info otherwise
+ghci | otherwise :: Bool 	-- Defined in ‘GHC.Base’
+ghci | 
+ghci | ===ghci_barrier_0.11489142665165053===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.09645906425758377===
+    -> :doc otherwise
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Base.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.1836409768349545===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.8925125393020228===
+    -> :complete repl 50 "  | othe"
+ghci | 1 1 "  | "
+ghci | "otherwise"
+ghci | 
+ghci | ===ghci_barrier_0.2911344179865938===
+    -> :info otherwise
+ghci | otherwise :: Bool 	-- Defined in ‘GHC.Base’
+ghci | 
+ghci | ===ghci_barrier_0.1755959401197542===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.28444518830888943===
+    -> :doc otherwise
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Base.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.23276166604190873===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.191738874802182===
+    -> :complete repl 50 "  | other"
+ghci | 1 1 "  | "
+ghci | "otherwise"
+ghci | 
+ghci | ===ghci_barrier_0.6533349369482846===
+    -> :info otherwise
+ghci | otherwise :: Bool 	-- Defined in ‘GHC.Base’
+ghci | 
+ghci | ===ghci_barrier_0.8422005482989785===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.8355813795680034===
+    -> :doc otherwise
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Base.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.013281703498611463===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.8108902094394084===
+    -> :complete repl 50 "  | otherw"
+ghci | 1 1 "  | "
+ghci | "otherwise"
+ghci | 
+ghci | ===ghci_barrier_0.9687667139543241===
+    -> :info otherwise
+ghci | otherwise :: Bool 	-- Defined in ‘GHC.Base’
+ghci | 
+ghci | ===ghci_barrier_0.7013162989732438===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.025499498965303236===
+    -> :doc otherwise
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Base.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.8626434103793894===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.44848986366064025===
+    -> :complete repl 50 "  | otherwi"
+ghci | 1 1 "  | "
+ghci | "otherwise"
+ghci | 
+ghci | ===ghci_barrier_0.0653880530646509===
+    -> :info otherwise
+ghci | otherwise :: Bool 	-- Defined in ‘GHC.Base’
+ghci | 
+ghci | ===ghci_barrier_0.5896757788026643===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7232156095220994===
+    -> :doc otherwise
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Base.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.24531758628541267===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.30023524687202174===
+    -> :complete repl 50 "  | otherwis"
+ghci | 1 1 "  | "
+ghci | "otherwise"
+ghci | 
+ghci | ===ghci_barrier_0.5144176416250963===
+    -> :info otherwise
+ghci | otherwise :: Bool 	-- Defined in ‘GHC.Base’
+ghci | 
+ghci | ===ghci_barrier_0.05598649439649517===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.2672217830788455===
+    -> :doc otherwise
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Base.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.9743080974183191===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.023336258247405928===
+    -> :complete repl 50 "  | otherwise"
+ghci | 1 1 "  | "
+ghci | "otherwise"
+ghci | 
+ghci | ===ghci_barrier_0.21505126897133509===
+    -> :info otherwise
+ghci | otherwise :: Bool 	-- Defined in ‘GHC.Base’
+ghci | 
+ghci | ===ghci_barrier_0.21178567631303902===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.034169082306569676===
+    -> :doc otherwise
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Base.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.6689178448704385===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.04181547891726822===
+    -> :complete repl 50 "  | otherwise               = "
+ghci | 50 528 "  | otherwise               = "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci440.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.3975082357811828===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.08407491210286033===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.1506495267410548===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.33807037007381746===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9520186798990204===
+    -> :complete repl 50 "  | otherwise               = (F"
+ghci | 7 7 "  | otherwise               = ("
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | 
+ghci | ===ghci_barrier_0.18042213239243066===
+    -> :info False
+ghci | type Bool :: *
+ghci | data Bool = False | ...
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.8114813651082711===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9309611394384365===
+    -> :doc False
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.6544283062226837===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.5521506986160485===
+    -> :complete repl 50 "  | otherwise               = (Fa"
+ghci | 1 1 "  | otherwise               = ("
+ghci | "False"
+ghci | 
+ghci | ===ghci_barrier_0.1532214944758281===
+    -> :info False
+ghci | type Bool :: *
+ghci | data Bool = False | ...
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.24291951410047474===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.5190356512502385===
+    -> :doc False
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.5576496367321022===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.21159818592226998===
+    -> :complete repl 50 "  | otherwise               = (Fal"
+ghci | 1 1 "  | otherwise               = ("
+ghci | "False"
+ghci | 
+ghci | ===ghci_barrier_0.9799717973044075===
+    -> :info False
+ghci | type Bool :: *
+ghci | data Bool = False | ...
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.12356887168142161===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.988005053981053===
+    -> :doc False
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.44330806387552824===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.42967472990524413===
+    -> :complete repl 50 "  | otherwise               = (Fals"
+ghci | 1 1 "  | otherwise               = ("
+ghci | "False"
+ghci | 
+ghci | ===ghci_barrier_0.5404036747429584===
+    -> :info False
+ghci | type Bool :: *
+ghci | data Bool = False | ...
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.5274056646388903===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9346183399043797===
+    -> :doc False
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.6381877414666699===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.34196127749146643===
+    -> :complete repl 50 "  | otherwise               = (False"
+ghci | 1 1 "  | otherwise               = ("
+ghci | "False"
+ghci | 
+ghci | ===ghci_barrier_0.17464516701774668===
+    -> :info False
+ghci | type Bool :: *
+ghci | data Bool = False | ...
+ghci |   	-- Defined in ‘GHC.Types’
+ghci | 
+ghci | ===ghci_barrier_0.68805262963593===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.4453097495391176===
+    -> :doc False
+ghci | ghc-9.2.8: Can't find any documentation for GHC.Types.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.15191983024068234===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.5384672725398343===
+    -> :complete repl 50 "  | otherwise               = (False, "
+ghci | 50 528 "  | otherwise               = (False, "
+ghci | "!!"
+ghci | "$"
+ghci | "$!"
+ghci | "&&"
+ghci | "*"
+ghci | "**"
+ghci | "*>"
+ghci | "+"
+ghci | "++"
+ghci | "-"
+ghci | "."
+ghci | "/"
+ghci | "/="
+ghci | "<"
+ghci | "<$"
+ghci | "<$>"
+ghci | "<*"
+ghci | "<*>"
+ghci | "<="
+ghci | "<>"
+ghci | "=<<"
+ghci | "=="
+ghci | ">"
+ghci | ">="
+ghci | ">>"
+ghci | ">>="
+ghci | "Applicative"
+ghci | "Bool"
+ghci | "Bounded"
+ghci | "Char"
+ghci | "Double"
+ghci | "EQ"
+ghci | "Either"
+ghci | "Enum"
+ghci | "Eq"
+ghci | "False"
+ghci | "FilePath"
+ghci | "Float"
+ghci | "Floating"
+ghci | "Foldable"
+ghci | "Fractional"
+ghci | "Functor"
+ghci | "GT"
+ghci | "Ghci470.it"
+ghci | "IO"
+ghci | "IOError"
+ghci | "Int"
+ghci | "Integer"
+ghci | "Integral"
+ghci | "Just"
+ghci | 
+ghci | ===ghci_barrier_0.7659712336793312===
+    -> :info !!
+ghci | (!!) :: [a] -> Int -> a 	-- Defined in ‘GHC.List’
+ghci | infixl 9 !!
+ghci | 
+ghci | ===ghci_barrier_0.720284457163674===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9506656598183709===
+    -> :doc !!
+ghci | ghc-9.2.8: Can't find any documentation for GHC.List.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.4891510261285903===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9804273194656381===
+    -> :complete repl 50 "  | otherwise               = (False, L"
+ghci | 3 3 "  | otherwise               = (False, "
+ghci | "LT"
+ghci | "Left"
+ghci | "Locked"
+ghci | 
+ghci | ===ghci_barrier_0.324746231036634===
+    -> :info Left
+ghci | type Either :: * -> * -> *
+ghci | data Either a b = Left a | ...
+ghci |   	-- Defined in ‘Data.Either’
+ghci | 
+ghci | ===ghci_barrier_0.2019609931962416===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.43177736462144445===
+    -> :doc Left
+ghci | ghc-9.2.8: Can't find any documentation for Data.Either.
+ghci | This is probably because the module was compiled without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try re-compiling with '-haddock'.
+ghci | 
+ghci | ===ghci_barrier_0.06828693125896157===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.0871382252029893===
+    -> :complete repl 50 "  | otherwise               = (False, Lo"
+ghci | 1 1 "  | otherwise               = (False, "
+ghci | "Locked"
+ghci | 
+ghci | ===ghci_barrier_0.23562279129002395===
+    -> :info Locked
+ghci | type TurnstileState :: *
+ghci | data TurnstileState = Locked | ...
+ghci |   	-- Defined at /home/le/Projects/CodeExamples/Haskell/State.hs:5:23
+ghci | 
+ghci | ===ghci_barrier_0.2228201716604694===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.9278141152431312===
+    -> :doc Locked
+ghci | ghc-9.2.8: Can't find any documentation for State.
+ghci | This is probably because the module was loaded without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try running ':set -haddock' and :load the file again.
+ghci | 
+ghci | ===ghci_barrier_0.7375025042622052===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6050798649364715===
+    -> :complete repl 50 "  | otherwise               = (False, Loc"
+ghci | 1 1 "  | otherwise               = (False, "
+ghci | "Locked"
+ghci | 
+ghci | ===ghci_barrier_0.04753233958298697===
+    -> :info Locked
+ghci | type TurnstileState :: *
+ghci | data TurnstileState = Locked | ...
+ghci |   	-- Defined at /home/le/Projects/CodeExamples/Haskell/State.hs:5:23
+ghci | 
+ghci | ===ghci_barrier_0.2860833257165971===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.1945207663155457===
+    -> :doc Locked
+ghci | ghc-9.2.8: Can't find any documentation for State.
+ghci | This is probably because the module was loaded without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try running ':set -haddock' and :load the file again.
+ghci | 
+ghci | ===ghci_barrier_0.1751001273000663===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.06910336608334577===
+    -> :complete repl 50 "  | otherwise               = (False, Lock"
+ghci | 1 1 "  | otherwise               = (False, "
+ghci | "Locked"
+ghci | 
+ghci | ===ghci_barrier_0.13746501427414315===
+    -> :info Locked
+ghci | type TurnstileState :: *
+ghci | data TurnstileState = Locked | ...
+ghci |   	-- Defined at /home/le/Projects/CodeExamples/Haskell/State.hs:5:23
+ghci | 
+ghci | ===ghci_barrier_0.8135310275313448===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.04306637889639475===
+    -> :doc Locked
+ghci | ghc-9.2.8: Can't find any documentation for State.
+ghci | This is probably because the module was loaded without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try running ':set -haddock' and :load the file again.
+ghci | 
+ghci | ===ghci_barrier_0.45545526587590346===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.7017431018093907===
+    -> :complete repl 50 "  | otherwise               = (False, Locke"
+ghci | 1 1 "  | otherwise               = (False, "
+ghci | "Locked"
+ghci | 
+ghci | ===ghci_barrier_0.17443703655292087===
+    -> :info Locked
+ghci | type TurnstileState :: *
+ghci | data TurnstileState = Locked | ...
+ghci |   	-- Defined at /home/le/Projects/CodeExamples/Haskell/State.hs:5:23
+ghci | 
+ghci | ===ghci_barrier_0.5082485811405204===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.032289344350330706===
+    -> :doc Locked
+ghci | ghc-9.2.8: Can't find any documentation for State.
+ghci | This is probably because the module was loaded without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try running ':set -haddock' and :load the file again.
+ghci | 
+ghci | ===ghci_barrier_0.3341247885582552===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.3004512866743889===
+    -> :complete repl 50 "  | otherwise               = (False, Locked"
+ghci | 1 1 "  | otherwise               = (False, "
+ghci | "Locked"
+ghci | 
+ghci | ===ghci_barrier_0.5353853182975576===
+    -> :info Locked
+ghci | type TurnstileState :: *
+ghci | data TurnstileState = Locked | ...
+ghci |   	-- Defined at /home/le/Projects/CodeExamples/Haskell/State.hs:5:23
+ghci | 
+ghci | ===ghci_barrier_0.29005295766893924===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.6497421735440074===
+    -> :doc Locked
+ghci | ghc-9.2.8: Can't find any documentation for State.
+ghci | This is probably because the module was loaded without '-haddock',
+ghci | but it's also possible that the module contains no documentation.
+ghci | 
+ghci | Try running ':set -haddock' and :load the file again.
+ghci | 
+ghci | ===ghci_barrier_0.06972420113093869===
+    -> :info isRegularPerson
+ghci | 
+ghci | <interactive>:1:1-15: error: Not in scope: ‘isRegularPerson’
+ghci | 
+ghci | ===ghci_barrier_0.025522076066803567===
+    -> :m *State
+ghci | 
+ghci | ===ghci_barrier_0.5587979072525258===
+    -> :doc isRegularPerson
+ghci | 
+ghci | <interactive>:1:1-15: error: Not in scope: ‘isRegularPerson’
+ghci | 
+ghci | ===ghci_barrier_0.8844391689297104===
+    -> :set +c
+    |> :reload
+ghci | [1 of 1] Compiling State            ( /home/le/Projects/CodeExamples/Haskell/State.hs, interpreted )
+ghci | 
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:57:3: error:
+ghci |     parse error (possibly incorrect indentation or mismatched brackets)
+ghci | Failed, no modules loaded.
+ghci | 
+ghci | ===ghci_barrier_0.5371388878932364===
+    -> :show modules
+ghci | 
+ghci | ===ghci_barrier_0.33737531197671755===
+    -> :module
+ghci | 
+ghci | ===ghci_barrier_0.7011801509055464===
+    -> :m *undefined
+ghci | syntax:  :module [+/-] [*]M1 ... [*]Mn
+ghci | 
+ghci | ===ghci_barrier_0.4559326848953109===
+    -> :all-types
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(15,1)-(15,4): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(13,1)-(13,4): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(19,1)-(19,6): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(29,1)-(29,13): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(34,1)-(34,16): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(38,1)-(38,11): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(47,1)-(47,7): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,13)-(9,14): State.TurnstileOutput -> State.TurnstileOutput -> GHC.Types.Bool
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,17)-(9,20): GHC.Types.Int -> State.TurnstileOutput -> GHC.Show.ShowS
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,13)-(6,14): State.TurnstileState -> State.TurnstileState -> GHC.Types.Bool
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,17)-(6,20): GHC.Types.Int -> State.TurnstileState -> GHC.Show.ShowS
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(15,18)-(15,20): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(15,24)-(15,29): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(15,17)-(15,30): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(16,18)-(16,21): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(16,24)-(16,29): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(16,17)-(16,30): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(13,11)-(13,15): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(13,18)-(13,25): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(13,10)-(13,26): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(20,18)-(20,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(20,23)-(20,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(20,18)-(20,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(21,18)-(21,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(21,23)-(21,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(21,18)-(21,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(22,18)-(22,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(22,23)-(22,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(22,18)-(22,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(23,18)-(23,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(23,23)-(23,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(23,18)-(23,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(24,18)-(24,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(24,23)-(24,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(24,18)-(24,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(25,8)-(25,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(25,12)-(25,13): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(25,16)-(25,17): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(25,20)-(25,21): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(25,24)-(25,25): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(25,7)-(25,26): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(25,29)-(25,30): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(25,6)-(25,31): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(20,3)-(25,31): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(30,18)-(30,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(30,23)-(30,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(30,18)-(30,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(31,18)-(31,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(31,23)-(31,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(31,18)-(31,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(32,8)-(32,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(32,12)-(32,13): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(32,7)-(32,14): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(32,17)-(32,18): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(32,6)-(32,19): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(30,3)-(32,19): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(35,18)-(35,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(35,23)-(35,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(35,18)-(35,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(36,8)-(36,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(36,7)-(36,10): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(36,13)-(36,14): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(36,6)-(36,15): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(35,3)-(36,15): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(39,18)-(39,21): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(39,23)-(39,24): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(39,18)-(39,24): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(40,12)-(40,13): State.TurnstileOutput -> State.TurnstileOutput -> GHC.Types.Bool
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(40,9)-(40,10): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(40,15)-(40,18): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(40,9)-(40,18): GHC.Types.Bool
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(41,13)-(41,14): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(41,12)-(41,15): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(41,18)-(41,19): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(41,11)-(41,20): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(42,26)-(42,29): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(42,31)-(42,32): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(42,26)-(42,32): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(43,26)-(43,29): State.TurnstileState -> (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(43,31)-(43,32): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(43,26)-(43,32): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(44,16)-(44,17): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(44,20)-(44,21): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(44,24)-(44,25): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(44,15)-(44,26): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(44,29)-(44,30): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(44,14)-(44,31): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(42,11)-(44,31): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(40,6)-(44,31): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(39,3)-(44,31): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(48,18)-(48,30): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(48,35)-(48,36): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(48,18)-(48,36): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(49,18)-(49,28): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(49,35)-(49,36): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(49,18)-(49,36): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(50,18)-(50,33): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(50,35)-(50,36): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(50,18)-(50,36): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(51,18)-(51,28): State.TurnstileState -> ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(51,35)-(51,36): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(51,18)-(51,36): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,10)-(52,11): [State.TurnstileOutput] -> [State.TurnstileOutput] -> [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,7)-(52,8): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,16)-(52,17): [State.TurnstileOutput] -> [State.TurnstileOutput] -> [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,13)-(52,14): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,22)-(52,23): [State.TurnstileOutput] -> [State.TurnstileOutput] -> [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,19)-(52,20): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,25)-(52,26): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,19)-(52,26): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,13)-(52,26): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,7)-(52,26): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,29)-(52,30): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(52,6)-(52,31): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(48,3)-(52,31): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,13)-(9,14): GHC.Classes.Eq State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,13)-(9,14): (State.TurnstileOutput -> State.TurnstileOutput -> GHC.Types.Bool) -> GHC.Classes.Eq State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,13)-(9,14): (State.TurnstileOutput -> State.TurnstileOutput -> GHC.Types.Bool) -> (State.TurnstileOutput -> State.TurnstileOutput -> GHC.Types.Bool) -> GHC.Classes.Eq State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,13)-(9,14): State.TurnstileOutput -> State.TurnstileOutput -> GHC.Types.Bool
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,13)-(9,14): State.TurnstileOutput -> State.TurnstileOutput -> GHC.Types.Bool
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,17)-(9,20): GHC.Show.Show State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,17)-(9,20): ([State.TurnstileOutput] -> GHC.Show.ShowS) -> GHC.Show.Show State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,17)-(9,20): (State.TurnstileOutput -> GHC.Base.String) -> ([State.TurnstileOutput] -> GHC.Show.ShowS) -> GHC.Show.Show State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,17)-(9,20): (GHC.Types.Int -> State.TurnstileOutput -> GHC.Show.ShowS) -> (State.TurnstileOutput -> GHC.Base.String) -> ([State.TurnstileOutput] -> GHC.Show.ShowS) -> GHC.Show.Show State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,17)-(9,20): GHC.Types.Int -> State.TurnstileOutput -> GHC.Show.ShowS
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,17)-(9,20): State.TurnstileOutput -> GHC.Base.String
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(9,17)-(9,20): [State.TurnstileOutput] -> GHC.Show.ShowS
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,13)-(6,14): GHC.Classes.Eq State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,13)-(6,14): (State.TurnstileState -> State.TurnstileState -> GHC.Types.Bool) -> GHC.Classes.Eq State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,13)-(6,14): (State.TurnstileState -> State.TurnstileState -> GHC.Types.Bool) -> (State.TurnstileState -> State.TurnstileState -> GHC.Types.Bool) -> GHC.Classes.Eq State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,13)-(6,14): State.TurnstileState -> State.TurnstileState -> GHC.Types.Bool
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,13)-(6,14): State.TurnstileState -> State.TurnstileState -> GHC.Types.Bool
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,17)-(6,20): GHC.Show.Show State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,17)-(6,20): ([State.TurnstileState] -> GHC.Show.ShowS) -> GHC.Show.Show State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,17)-(6,20): (State.TurnstileState -> GHC.Base.String) -> ([State.TurnstileState] -> GHC.Show.ShowS) -> GHC.Show.Show State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,17)-(6,20): (GHC.Types.Int -> State.TurnstileState -> GHC.Show.ShowS) -> (State.TurnstileState -> GHC.Base.String) -> ([State.TurnstileState] -> GHC.Show.ShowS) -> GHC.Show.Show State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,17)-(6,20): GHC.Types.Int -> State.TurnstileState -> GHC.Show.ShowS
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,17)-(6,20): State.TurnstileState -> GHC.Base.String
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(6,17)-(6,20): [State.TurnstileState] -> GHC.Show.ShowS
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(15,6)-(15,11): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(16,6)-(16,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(13,6)-(13,6): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(19,8)-(19,9): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(20,8)-(20,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(20,12)-(20,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(20,7)-(20,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(21,8)-(21,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(21,12)-(21,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(21,7)-(21,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(22,8)-(22,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(22,12)-(22,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(22,7)-(22,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(23,8)-(23,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(23,12)-(23,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(23,7)-(23,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(24,8)-(24,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(24,12)-(24,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(24,7)-(24,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(29,15)-(29,16): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(30,8)-(30,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(30,12)-(30,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(30,7)-(30,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(31,8)-(31,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(31,12)-(31,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(31,7)-(31,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(34,18)-(34,19): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(35,8)-(35,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(35,12)-(35,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(35,7)-(35,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(38,13)-(38,14): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(39,8)-(39,9): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(39,12)-(39,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(39,7)-(39,14): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(42,16)-(42,17): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(42,20)-(42,21): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(42,15)-(42,22): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(43,16)-(43,17): State.TurnstileOutput
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(43,20)-(43,21): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(43,15)-(43,22): (State.TurnstileOutput, State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(47,9)-(47,10): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(48,8)-(48,9): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(48,12)-(48,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(48,7)-(48,14): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(49,8)-(49,9): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(49,12)-(49,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(49,7)-(49,14): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(50,8)-(50,9): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(50,12)-(50,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(50,7)-(50,14): ([State.TurnstileOutput], State.TurnstileState)
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(51,8)-(51,9): [State.TurnstileOutput]
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(51,12)-(51,13): State.TurnstileState
+ghci | /home/le/Projects/CodeExamples/Haskell/State.hs:(51,7)-(51,14): ([State.TurnstileOutput], State.TurnstileState)
+ghci | 
+ghci | ===ghci_barrier_0.07147250578587583===
+    -> :m *undefined
+ghci | syntax:  :module [+/-] [*]M1 ... [*]Mn
+ghci | 
+ghci | ===ghci_barrier_0.3562643815531852===
+    -> :info |
+ghci | 
+ghci | <interactive>:1:1: error: parse error on input ‘|’
+ghci | 
+ghci | ===ghci_barrier_0.9127865586567923===
+    -> :m *undefined
+ghci | syntax:  :module [+/-] [*]M1 ... [*]Mn
+ghci | 
+ghci | ===ghci_barrier_0.8225014657207945===
+    -> :doc |
+ghci | 
+ghci | <interactive>:1:1: error: parse error on input ‘|’
+ghci | 
+ghci | ===ghci_barrier_0.6659719428829121===
+    -> :m *undefined
+ghci | syntax:  :module [+/-] [*]M1 ... [*]Mn
+ghci | 
+ghci | ===ghci_barrier_0.439332966012981===
+    -> :m *undefined
+ghci | syntax:  :module [+/-] [*]M1 ... [*]Mn
+ghci | 
+ghci | ===ghci_barrier_0.24498759428922678===
+    -> :m *undefined
+ghci | syntax:  :module [+/-] [*]M1 ... [*]Mn
+ghci | 
+ghci | ===ghci_barrier_0.17011253780941948===
