@@ -21,6 +21,29 @@
     # pkgs is the set of all packages in the default home.nix implementation
     pkgs.sway
     pkgs.neovim
+    pkgs.swww
+    pkgs.waypaper
+    pkgs.git
+    pkgs.make
+    pkgs.pip
+    pkgs.python
+    pkgs.npm
+    pkgs.node
+    pkgs.cargo
+    pkgs.ripgrep
+    pkgs.lunarvim
+    pkgs.waybar-mpris
+    pkgs.alacritty
+    pkgs.cava
+    pkgs.discord
+    pkgs.spicetify-cli
+    pkgs.spotify
+    pkgs.ffmpeg
+    pkgs.htop
+    pkgs.krita-plugin-gmic
+    pkgs.nwg-dock
+    pkgs.rofi-wayland-unwrapped
+    pkgs.variety
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying

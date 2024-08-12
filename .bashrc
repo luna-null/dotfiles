@@ -49,7 +49,6 @@ alias l='ls -lah'
 alias rld='source .bashrc'
 alias glorp='rg -i';
 alias order_66='seek_destroy'
-alias ~='cd ~'
 alias ..='cd ..'
 alias this='pwd'
 alias chatgpt='firefox https://chat.openai.com/'
@@ -62,12 +61,9 @@ alias wttr='curl -s wttr.in/seattle'
 alias alacritty='alacritty --print-events > /home/le/.alacritty-events'
 alias redshift='redshift -l "$LATITUDE":"$LONGITUDE"'
 alias android-finder='firefox https://www.google.com/android/find/'
-# alias firefox='firefox-developer-edition'
-alias helix="hx"
 alias vim="nvim"
 # alias spotify="/home/le/.local/share/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify/spotify"
-alias emacs="doom run" 
-
+alias rust-repl="evcxr"; alias rusti="evcxr"
 # path shortcuts
 alias .keyboard-config="cd /usr/share/X11/xkb/symbols"
 alias .kernel-config="cd /usr/src/linux" # do ```make menuconfig``` here
@@ -145,6 +141,8 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+export XDG_HOME_DIR=/home/le
+
 export XDG_CURRENT_DESKTOP=Sway
 
 export FILE_MANAGER=ranger
@@ -153,12 +151,18 @@ export EDITOR=nvim
 export PDF_VIEWER=evince
 export term=alacritty; export TERM=alacritty
 
-export PATH=$PATH:/home/le/.spicetify
+export PATH=$PATH:"$XDG_HOME_DIR"/.spicetify:"$XDG_HOME_DIR"/.dotnet/tools:"$XDG_HOME_DIR"/.gem/ruby/3.2.0/bin:/usr/bin/hla
+
+export hlalib=/usr/bin/hla/hlalib
+export hlainc=/usr/bin/hla/include
 
 export WINEFSYNC=1
 export WINE_LARGE_ADDRESS_AWARE=1
 # WINEPREFIX=/usr/bin/setup_dxvk.sh install --symlink
 # WINEPREFIX=/usr/bin/setup_vkd3d_proton.sh install --symlink
+
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
 
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
