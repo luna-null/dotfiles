@@ -1,0 +1,18 @@
+{
+  "accounts": {
+    "elizetta420@gmail.com": [
+      "EPUB, TPZ",
+      true,
+      true
+    ]
+  },
+  "aliases": {},
+  "encryption": "TLS",
+  "from_": "luna-null@gmx.com",
+  "relay_host": "mail.gmx.com",
+  "relay_password": "41757341757352617573526175737e353631",
+  "relay_port": 587,
+  "relay_username": "luna-null@gmx.com",
+  "subjects": {},
+  "tags": {}
+}

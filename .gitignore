@@ -18,8 +18,7 @@
 .config/bless/history.xml
 .config/bless/last.session
 .config/sfwbar/
-!.config/variety/variety.conf
-.config/variety/*
+.config/variety/
 .config/obsidian/
 .config/keepassxc/
 .config/QDirStat/

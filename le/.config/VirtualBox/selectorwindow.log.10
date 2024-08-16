@@ -1,0 +1,25 @@
+00:00:00.150642 VirtualBox GUI VM Selector Window 7.0.18 r162988 linux.amd64 (May  2 2024 08:20:17) release log
+00:00:00.150644 Log opened 2024-08-04T23:24:12.958707000Z
+00:00:00.150645 Build Type: release
+00:00:00.150647 OS Product: Linux
+00:00:00.150649 OS Release: 6.10.2-arch1-1
+00:00:00.150650 OS Version: #1 SMP PREEMPT_DYNAMIC Sat, 27 Jul 2024 16:49:55 +0000
+00:00:00.150668 DMI Product Name: XPS 13 9360
+00:00:00.150676 DMI Product Version: 
+00:00:00.150681 Firmware type: UEFI
+00:00:00.150916 Secure Boot: Disabled
+00:00:00.150967 Host RAM: 15589MB (15.2GB) total, 10239MB (9.9GB) available
+00:00:00.150971 Executable: /nix/store/7vnpjiwjvhl0c23jq4ih0k8ysmm3w4fr-virtualbox-7.0.18/libexec/virtualbox/VirtualBox
+00:00:00.150971 Process ID: 27872
+00:00:00.150972 Package type: LINUX_64BITS_GENERIC (OSE)
+00:00:00.150992 Qt version: 5.15.14
+00:00:00.151753 GUI: UIMediumEnumerator: Initial medium-enumeration finished!
+00:00:00.155234 GUI: UIMediumEnumerator: Medium-enumeration started...
+00:00:00.155248 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:00:00.800832 GUI: UIDesktopWidgetWatchdog::sltHandleHostScreenAvailableGeometryCalculated: Screen 0 work area is actually resized to: 0x41 x 1600x859
+00:05:58.471467 GUI: UIMediumEnumerator: Medium with key={{a83f62e0-8bc7-4bc1-86b5-9ac149ec1c0d}} created
+00:05:58.653681 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:10:04.538480 GUI: UIMediumEnumerator: Medium with key={{006c9c22-8184-4b0b-9362-780c2601f437}} created
+00:10:04.663103 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:16:48.055808 GUI: UICommon: Handling aboutToQuit request..
+00:16:49.295593 GUI: UICommon: aboutToQuit request handled!

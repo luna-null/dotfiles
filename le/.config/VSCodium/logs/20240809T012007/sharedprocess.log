@@ -1,0 +1,59 @@
+2024-08-09 01:20:37.518 [info] Getting Manifest... haskell.haskell
+2024-08-09 01:20:37.641 [info] Installing extension: haskell.haskell {"isMachineScoped":false,"installPreReleaseVersion":false,"pinned":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/le/.vscode-oss/extensions/extensions.json","path":"/home/le/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true,"isApplicationScoped":false,"productVersion":{"version":"1.91.1","date":"2024-08-09T06:14:27.986Z"}}
+2024-08-09 01:20:37.787 [info] Getting Manifest... justusadam.language-haskell
+2024-08-09 01:20:38.155 [info] Installing extension: justusadam.language-haskell {"isMachineScoped":false,"installPreReleaseVersion":false,"pinned":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/le/.vscode-oss/extensions/extensions.json","path":"/home/le/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true,"isApplicationScoped":false,"productVersion":{"version":"1.91.1","date":"2024-08-09T06:14:27.986Z"},"context":{"dependecyOrPackExtensionInstall":true}}
+2024-08-09 01:20:38.382 [warning] Failed downloading vsix. End of central directory record signature not found. Either not a zip file, or file is truncated.. Retry again... justusadam.language-haskell
+2024-08-09 01:20:38.383 [warning] Failed downloading vsix. End of central directory record signature not found. Either not a zip file, or file is truncated.. Retry again... haskell.haskell
+2024-08-09 01:20:38.642 [warning] Failed downloading vsix. End of central directory record signature not found. Either not a zip file, or file is truncated.. Retry again... justusadam.language-haskell
+2024-08-09 01:20:38.643 [warning] Failed downloading vsix. End of central directory record signature not found. Either not a zip file, or file is truncated.. Retry again... haskell.haskell
+2024-08-09 01:20:38.845 [error] Error while installing the extension justusadam.language-haskell End of central directory record signature not found. Either not a zip file, or file is truncated. vscode-userdata:/home/le/.vscode-oss/extensions/extensions.json
+2024-08-09 01:20:38.847 [error] [uncaught exception in sharedProcess]: End of central directory record signature not found. Either not a zip file, or file is truncated.: Error: End of central directory record signature not found. Either not a zip file, or file is truncated.
+    at p (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:48:34121)
+    at /usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:48:35637
+    at /usr/share/vscodium/resources/app/node_modules.asar/yauzl/index.js:40:7
+    at /usr/share/vscodium/resources/app/node_modules.asar/yauzl/index.js:190:5
+    at /usr/share/vscodium/resources/app/node_modules.asar/yauzl/index.js:712:5
+    at /usr/share/vscodium/resources/app/node_modules.asar/yauzl/fd-slicer.js:33:7
+    at FSReqCallback.wrapper [as oncomplete] (node:fs:666:5)
+2024-08-09 01:20:39.140 [info] Extracted extension to file:///home/le/.vscode-oss/extensions/haskell.haskell-2.4.4-universal: haskell.haskell
+2024-08-09 01:20:39.154 [info] Renamed to /home/le/.vscode-oss/extensions/haskell.haskell-2.4.4-universal
+2024-08-09 01:20:39.213 [info] Rollback: Uninstalled extension haskell.haskell
+2024-08-09 01:20:39.216 [info] Marked extension as uninstalled haskell.haskell-2.4.4-universal
+2024-08-09 01:20:39.255 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/le/.vscode-oss/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/le/.vscode-oss/extensions/extensions.json.vsctmp'
+    at u.create (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:54:22080)
+    at d (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:54:22210)
+    at R.toFileSystemProviderError (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:59:47900)
+    at R.stat (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:59:38403)
+    at async s.stat (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:59:19760)
+    at async z.onDidFilesChange (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:105:146943)
+2024-08-09 01:20:51.053 [info] Getting Manifest... dramforever.vscode-ghc-simple
+2024-08-09 01:20:51.377 [info] Installing extension: dramforever.vscode-ghc-simple {"isMachineScoped":false,"installPreReleaseVersion":false,"pinned":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/le/.vscode-oss/extensions/extensions.json","path":"/home/le/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true,"isApplicationScoped":false,"productVersion":{"version":"1.91.1","date":"2024-08-09T06:14:27.986Z"}}
+2024-08-09 01:20:51.543 [info] Getting Manifest... justusadam.language-haskell
+2024-08-09 01:20:51.581 [info] Installing extension: justusadam.language-haskell {"isMachineScoped":false,"installPreReleaseVersion":false,"pinned":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/le/.vscode-oss/extensions/extensions.json","path":"/home/le/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true,"isApplicationScoped":false,"productVersion":{"version":"1.91.1","date":"2024-08-09T06:14:27.986Z"},"context":{"dependecyOrPackExtensionInstall":true}}
+2024-08-09 01:20:51.826 [warning] Failed downloading vsix. End of central directory record signature not found. Either not a zip file, or file is truncated.. Retry again... dramforever.vscode-ghc-simple
+2024-08-09 01:20:52.560 [info] Extracted extension to file:///home/le/.vscode-oss/extensions/justusadam.language-haskell-3.6.0-universal: justusadam.language-haskell
+2024-08-09 01:20:52.570 [info] Renamed to /home/le/.vscode-oss/extensions/justusadam.language-haskell-3.6.0-universal
+2024-08-09 01:20:52.618 [info] Extracted extension to file:///home/le/.vscode-oss/extensions/dramforever.vscode-ghc-simple-0.2.3-universal: dramforever.vscode-ghc-simple
+2024-08-09 01:20:52.627 [info] Renamed to /home/le/.vscode-oss/extensions/dramforever.vscode-ghc-simple-0.2.3-universal
+2024-08-09 01:20:52.645 [info] Extension installed successfully: justusadam.language-haskell vscode-userdata:/home/le/.vscode-oss/extensions/extensions.json
+2024-08-09 01:20:52.646 [info] Extension installed successfully: dramforever.vscode-ghc-simple vscode-userdata:/home/le/.vscode-oss/extensions/extensions.json
+2024-08-09 01:20:52.652 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/le/.vscode-oss/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/le/.vscode-oss/extensions/extensions.json.vsctmp'
+    at u.create (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:54:22080)
+    at d (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:54:22210)
+    at R.toFileSystemProviderError (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:59:47900)
+    at R.stat (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:59:38403)
+    at async s.stat (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:59:19760)
+    at async z.onDidFilesChange (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:105:146943)
+2024-08-09 01:20:59.185 [info] Getting Manifest... hoovercj.haskell-linter
+2024-08-09 01:21:12.299 [info] Getting Manifest... haskell.haskell
+2024-08-09 01:21:12.402 [info] Installing extension: haskell.haskell {"isMachineScoped":false,"installPreReleaseVersion":false,"pinned":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/le/.vscode-oss/extensions/extensions.json","path":"/home/le/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true,"isApplicationScoped":false,"productVersion":{"version":"1.91.1","date":"2024-08-09T06:14:27.986Z"}}
+2024-08-09 01:21:12.554 [info] Getting Manifest... justusadam.language-haskell
+2024-08-09 01:21:12.604 [info] Removed the extension from uninstalled list: haskell.haskell
+2024-08-09 01:21:12.624 [info] Extension installed successfully: haskell.haskell vscode-userdata:/home/le/.vscode-oss/extensions/extensions.json
+2024-08-09 01:21:12.691 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/le/.vscode-oss/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/le/.vscode-oss/extensions/extensions.json.vsctmp'
+    at u.create (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:54:22080)
+    at d (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:54:22210)
+    at R.toFileSystemProviderError (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:59:47900)
+    at R.stat (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:59:38403)
+    at async s.stat (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:59:19760)
+    at async z.onDidFilesChange (/usr/share/vscodium/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:105:146943)

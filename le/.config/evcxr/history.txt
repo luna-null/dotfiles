@@ -1,0 +1,17 @@
+#V2
+1 + 1
+fn f (x)
+fn f (x) { x + 1 }
+fn f (x) { return x + 1 }
+fn f (x) { return x + 1; }
+fn f (x:Int) { return x + 1; }
+fn f (x:int) { return x + 1; }
+fn f (x:i32) { return x + 1; }
+fn f (x:i32) { return (x + 1); }
+fn f (x:i32)->i32 { return (x + 1); }
+f(2)
+f(3)
+:help
+cxx
+imprt
+import

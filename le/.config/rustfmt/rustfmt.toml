@@ -1,0 +1,4 @@
+edition = "2021"
+
+brace_style = "AlwaysNextLine"
+
