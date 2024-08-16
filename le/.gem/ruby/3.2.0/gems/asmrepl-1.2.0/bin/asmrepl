@@ -1,5 +1,0 @@
-#!/bin/env ruby
-
-require "asmrepl"
-
-ASMREPL::REPL.new.start

@@ -5,6 +5,7 @@
 !bin
 .cache
 .cargo
+*.log
 
 # Config Section
 .config/VirtualBox/
@@ -34,6 +35,7 @@
 !.config/nwg-wrapper/
 !.config/nwg-dock/
 .config/nwg*
+.config/Signal/
 .config/todoist/
 .config/uer-dirs.*
 .config/yay/
@@ -45,6 +47,7 @@
 .config/tool_state
 .config/mimeapps.list
 .config/mc/
+.config/VSCodium/
 
 !.crpcrp/
 .dart-tool
@@ -55,6 +58,7 @@ dotfiles
 Downloads
 .elementary
 .flutter
+.gem/
 !.git/
 .gitconfig
 .git-credentials
@@ -89,6 +93,7 @@ result
 .spotdl/
 .thunderbird/
 !ugeeTablet-4.1.3/
+.vscode/
 .w3m
 .wget-hsts
 .xinitrc

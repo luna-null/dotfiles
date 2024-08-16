@@ -1,4 +1,0 @@
-2024-08-09 19:18:47.959 [info] Started local extension host with pid 144111.
-2024-08-09 19:18:50.933 [info] [perf] Render performance baseline is 43ms
-2024-08-09 19:18:51.859 [error] [Extension Host] Error checking /home/le/Projects/CodeExamples/Haskell/State.hs: stream closed
-2024-08-09 19:18:52.862 [error] stream closed
