@@ -180,4 +180,14 @@ configuration {
 */
 }
 
-@theme "/home/le/.local/share/rofi/themes/nord.rasi"
+//@theme "/home/le/.local/share/rofi/themes/nord.rasi"
+
+//@theme "/home/le/.local/share/rofi/themes/squared-nord.rasi"
+
+//@theme "/home/le/.local/share/rofi/themes/nord.rasi"
+
+//@theme "/usr/share/rofi/themes/Arc.rasi"
+
+//@theme "/home/le/.local/share/rofi/themes/rounded-nord-dark.rasi"
+
+@theme "/usr/share/rofi/themes/Arc.rasi"

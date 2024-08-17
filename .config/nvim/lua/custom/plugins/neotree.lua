@@ -22,4 +22,8 @@ return {
       },
     },
   },
+  config = function()
+    require('neo-tree').setup {}
+    vim.keymap.set('n', '=/', '<cmd>Neotree<CR>')
+  end,
 }

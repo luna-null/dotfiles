@@ -21,7 +21,7 @@ exec notify-send "$(systemctl --failed)"
 
 exec nm-applet --indicator
 workspace $ws12 
-exec "thunderbird; sleep 0.5"
+exec thunderbird; sleep 0.5
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id indicator-kdeconnect
 
@@ -29,7 +29,7 @@ exec --no-startup-id indicator-kdeconnect
 exec nwg-wrapper -t TODO -c todo.css -a start -p right -mt 50
 
 # Mac-like dock
-exec_always "pkill nwg-dock; nwg-dock -d -nolauncher -nows
+exec nwg-dock -d -nolauncher -nows &
 
 # Swww
 # exec_always "if ! pgrep swww-daemon &> /dev/null; then swww-daemon; sh ~/.scripts/swww_randomize.sh; fi"
@@ -38,7 +38,7 @@ exec_always "pkill nwg-dock; nwg-dock -d -nolauncher -nows
 # Variety
 exec_always pkill variety; variety
 
-
+# TODO get location through non-security-breaching means
 exec_always "pkill gammastep; gammastep -l 47.7:-122.3"
 
 ## Enable it in your local sway config to get a clipboard manager via $mod+y
@@ -54,9 +54,14 @@ exec "hash dbus-update-activation-environment 2>/dev/null; \
 
 exec wvkbd-mobintl --hidden --fn 'DejaVuSansMono Nerd Font 12' -l 'simple,special,emoji' -L 240
 
+workspace $ws1
+
 ### Idle configuration
 
 set $lock gtklock -b ~/Pictures/Wallpapers/color-black-hole.gif
+
+# set $lock swaylock
+
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -106,6 +111,7 @@ set $bindsym bindsym --no-repeat --to-code
 
 # Define names for workspaces
 set $ws0 O
+
 set $ws1 1
 set $ws2 2
 set $ws3 3
@@ -175,12 +181,17 @@ set $gnome-schema org.gnome.desktop.interface
 # swaymsg output DP-7 pos 3840 0 res 1920x1080
 
 # Disable the laptop screen when the lid is closed.
-bindswitch --reload --locked lid:on exec swaymsg output eDP-1 disable;
-bindswitch --reload --locked lid:off exec $lock; sleep 0.5 ;swaymsg output eDP-1 enable;
+bindswitch --reload --locked lid:on exec $lock
+# exec swaymsg output eDP-1 disable;
+# bindswitch --reload --locked lid:off 
+# exec $lock; sleep 0.5 ;swaymsg output eDP-1 enable;
+
 exec swayidle -w \
-         timeout 300 '$lock' \
-         timeout 600 'swaymsg output eDP-1 power off' resume 'swaymsg output eDP-1 power on'
-         
+          timeout 300 $lock \
+          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          before-sleep 'swaylock -f -c 000000'
+
+
 # before-sleep '$lock'
 
 
@@ -269,13 +280,13 @@ input "1267:8400:ELAN_Touchscreen" {
 
 
 # Color vars
-set $col_focused #35CE8D88
-set $col_focused_inactive #EEE82C88
-set $col_unfocused #7161EF55
+set $col_focused #35CE8Da0
+set $col_focused_inactive #EEE82Ca0
+set $col_unfocused #7161EF77
 set $col_text_dark #121420
 set $col_text_light #F7F0F0
-set $col_urgent #E4006688
-set $col_unfocused_border #12142099
+set $col_urgent #E40066a0
+set $col_unfocused_border #12142077
 
 # class                  border                 background             text             indicator              child_border
 client.focused           $col_focused           $col_focused           $col_text_dark   $col_focused           $col_focused
@@ -284,7 +295,7 @@ client.unfocused         $col_unfocused_border  $col_unfocused         $col_text
 client.urgent            $col_text_dark         $col_urgent            $col_text_dark   $col_urgent            $col_urgent
 
 # Titlebar
-font nerdfonts 11
+font nerdfonts 10
 titlebar_separator enable
 titlebar_padding 1
 title_align center
@@ -519,7 +530,7 @@ for_window [title=".*"] title_format %title
     bindsym --to-code $mod+Shift+Control+q kill
 
     # Start your launcher
-    $bindsym $mod+Space exec $menu
+    bindsym $mod+Space exec $menu
 
     # Reload the configuration file
     $bindsym $mod+Shift+c reload
@@ -565,6 +576,12 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
 #
 # Layout stuff:
 #
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+#    bindsym $mod+b splith
+#    bindsym $mod+v splitv
+
     # Switch the current container between different layout styles
     $bindsym $mod+s layout stacking
     $bindsym $mod+w layout tabbed
@@ -696,7 +713,8 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
         $bindsym $mod+Shift+F11 move container to workspace $ws21
         $bindsym $mod+Shift+F12 move container to workspace $ws22
 
-        $bindsym $mod+Shift+Backspace move workspace back_and_forth
+        $bindsym $mod+Shift+Backspace move container to workspace back_and_forth
+
 
 #####
 # Window and Workspace Configuration
@@ -744,7 +762,7 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
 #####
 
     ## Flameshot
-        $bindsym --locked Print exec flameshot screen
+        bindsym --locked Print exec flameshot screen
 
     ## Screenshot // Screenshot current window // <Print> ##
         # bindsym $mod+Print exec $BIN_DIR/screenshots.sh window
