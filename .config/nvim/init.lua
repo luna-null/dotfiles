@@ -87,8 +87,8 @@ P.S. You can delete this when you're done too. It's your config now! :)
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = '\\'
+vim.g.maplocalleader = '\\'
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
@@ -163,6 +163,8 @@ vim.opt.scrolloff = 10
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
@@ -375,8 +377,8 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-      vim.keymap.set('n', '=T', '<cmd>Telescope live_grep<CR>', { desc = '[T]elescope' })
-      vim.keymap.set('n', '-t', '<cmd>Telescope todo-comments<CR>', { desc = '[T]odo' })
+      vim.keymap.set('n', '<Space>T', '<cmd>Telescope live_grep<CR>', { desc = '[T]elescope' })
+      vim.keymap.set('n', '<Space>C', '<cmd>Telescope todo-comments<CR>', { desc = '[T]odo' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -388,7 +390,7 @@ require('lazy').setup({
       end, { desc = '[/] Fuzzily search in current buffer' })
 
       -- Neotree Tab
-      vim.keymap.set('n', '=t', '<cmd>tabnew<CR><cmd>Neotree<CR>', { desc = 'Open New [T]ab' })
+      vim.keymap.set('n', '<Space>n', '<cmd>tabnew<CR><cmd>Neotree<CR>', { desc = 'Open [N]ew Tab' })
 
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
@@ -651,7 +653,7 @@ require('lazy').setup({
 
   { -- Autoformat
     'stevearc/conform.nvim',
-    event = { 'BufWritePre' },
+    -- event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
     keys = {
       {
@@ -676,12 +678,12 @@ require('lazy').setup({
         }
       end,
       formatters_by_ft = {
-        lua = { 'stylua' },
+        lua = { 'stylua', 'stop_after_first' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { 'isort', 'black' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },

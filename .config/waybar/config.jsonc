@@ -58,7 +58,7 @@
 			//        "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
 			"framerate": 30,
 			"autosens": 1,
-			"bars": 16,
+			"bars": 12,
 			"lower_cutoff_freq": 32,
 			"higher_cutoff_freq": 16384,
 			"method": "pipewire",
@@ -86,7 +86,7 @@
 		"mpris": {
 			"format": "{status_icon} {dynamic}",
 			"interval": 1,
-			"dynamic-len": 25,
+			"dynamic-len": 22,
 			"status-icons": {
 				"playing": "▶",
 				"paused": "⏸",
@@ -112,13 +112,18 @@
 		},
 		"sway/scratchpad": {
 			"format": "{icon} {count}",
-			"show-empty": false,
+			"show-empty": true,
 			"format-icons": [
 				"",
 				""
 			],
 			"tooltip": true,
-			"tooltip-format": "{app}: {title}"
+			"tooltip-format": "{app}: {title}",
+			"menu": "on-click",
+			"menu-file": "~/.config/waybar/scratchpad.xml",
+			"menu-actions": {
+				"scratchpad": "swaymsg scratchpad show"
+			}
 		},
 		"tray": {
 			"icon-size": 14,
@@ -130,8 +135,9 @@
 		},
 		"clock": {
 			// "timezone": "America/New_York",
+			"interval": 1,
 			"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-			"format-alt": "{:%Y-%m-%d, %a %B}",
+			"format-alt": "{:%Y-%m-%d, %a %X}",
 			"calendar": {
 				"mode": "year",
 				"mode-mon-col": 3,

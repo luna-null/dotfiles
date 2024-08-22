@@ -6,6 +6,8 @@
 .cache
 .cargo
 *.log
+.location
+lix-install.sh
 
 # Config Section
 .config/VirtualBox/
@@ -48,8 +50,14 @@
 .config/mimeapps.list
 .config/mc/
 .config/VSCodium/
+.config/ghidra/
+.config/user-dirs.*
+.config/wireshark/
+.config/vlc/
+.config/rofi.le/
+.config/.dart-cli-completion/
 
-!.crpcrp/
+.crpcrp/
 .dart-tool
 .dmrc
 Documents

@@ -6,58 +6,11 @@
 
 
 # Read `man 5 sway` for a complete reference.
-
-### Daemons 
-
-# exec swaykbdd
-# exec easyeffects --gapplication-service
-# exec bash -c "exec -a random-background sh ~/.bin/random-background.sh &"
-# exec swayidle
-exec notify-send "$(systemctl --failed)"
-exec flameshot 
-
-### Autostart
-
-exec nm-applet --indicator
-workspace $ws12 
-exec thunderbird; sleep 0.5
-exec --no-startup-id /usr/lib/kdeconnectd
-exec --no-startup-id indicator-kdeconnect
-
-# Todo List
-exec nwg-wrapper -t TODO -c todo.css -a start -p right -mt 50
-
-# Mac-like dock
-exec nwg-dock -d -nolauncher -nows &
-
-# Swww
-# exec_always "if ! pgrep swww-daemon &> /dev/null; then swww-daemon; sh ~/.scripts/swww_randomize.sh; fi"
-#  TODO: implement swww into swaybg or variety.
-
-# Variety
-exec_always pkill variety; variety
-
-# TODO get location through non-security-breaching means
-exec_always "pkill gammastep; gammastep -l 47.7:-122.3"
-
-## Enable it in your local sway config to get a clipboard manager via $mod+y
-# exec wl-paste -t text --watch myclipman.sh
-
 set $gnome-schema org.gnome.desktop.interface
-
-
-exec "hash dbus-update-activation-environment 2>/dev/null; \
-     systemctl --user import-environment WAYLAND_DISPLAY DISPLAY SSH_AUTH_SOCK SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE; \
-     dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SSH_AUTH_SOCK SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE; \
-     systemctl --user start sway-session.target"
-
-exec wvkbd-mobintl --hidden --fn 'DejaVuSansMono Nerd Font 12' -l 'simple,special,emoji' -L 240
-
-workspace $ws1
 
 ### Idle configuration
 
-set $lock gtklock -b ~/Pictures/Wallpapers/color-black-hole.gif
+set $lock gtklock -b ~/Pictures/Wallpapers/Live/color-black-hole.gif
 
 # set $lock swaylock
 
@@ -90,14 +43,8 @@ set $term-float alacritty --class TERMINAL; for_window [app_id="TERMINAL"] float
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 
-# wofi
-# set $menu wofi --show drun --allow-images | xargs swaymsg exec --
-
 # bemenu
 # set $menu XDG_DATA_DIRS=/usr/share/:/usr/local/share/:/var/lib/flatpak/exports/share/:$HOME/.local/share/flatpak/exports/share/ j4-dmenu-desktop --dmenu="bemenu-run.sh -l 30" --term="alacritty" --no-generic --display-binary
-
-# fuzzel
-# set $menu fuzzel
 
 # rofi-wayland
 set $menu rofi -show drun
@@ -131,8 +78,47 @@ set $ws17 17
 set $ws18 18
 set $ws19 19
 set $ws20 20
-set $ws20 21
-set $ws20 22
+set $ws21 21
+set $ws22 22
+
+### Daemons 
+
+# exec swaykbdd
+# exec easyeffects --gapplication-service
+# exec bash -c "exec -a random-background sh ~/.bin/random-background.sh &"
+# exec swayidle
+exec notify-send "$(systemctl --failed)"
+exec flameshot 
+exec thunderbird
+
+# Todo List
+exec nwg-wrapper -t TODO -c todo.css -a start -p right -mt 50
+
+# Mac-like dock
+exec nwg-dock -d -nolauncher -nows &
+
+# Swww
+exec_always "if ! pgrep swww-daemon &> /dev/null; then swww-daemon --no-cache & swww-randomize $XDG_HOME_DIR/Pictures/Wallpapers/Live fi"
+#  TODO: implement swww into swaybg or variety.
+
+# Variety
+exec_always pkill variety; variety
+
+# TODO get location through non-security-breaching means
+exec_always bash $XDG_HOME_DIR/.scripts/gammastep.sh
+
+exec "hash dbus-update-activation-environment 2>/dev/null; \
+     systemctl --user import-environment WAYLAND_DISPLAY DISPLAY SSH_AUTH_SOCK SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE; \
+     dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SSH_AUTH_SOCK SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE; \
+     systemctl --user start sway-session.target"
+
+exec wvkbd-mobintl --hidden --fn 'DejaVuSansMono Nerd Font 12' -l 'simple,special,emoji' -L 240
+
+
+## Enable it in your local sway config to get a clipboard manager via $mod+y
+# exec wl-paste -t text --watch myclipman.sh
+
+
 
 # Inhibit Idle if a window is fullscreen
 for_window [class="^.*"] inhibit_idle fullscreen
@@ -233,7 +219,7 @@ seat seat0 xcursor_theme default 96
 input * {
     xkb_layout us,ru
     xkb_options {
-        "grp:alt_caps_toggle, lv3:ralt_switch, mod_led:compose, caps:backspace, compose:lwin-altgr, nbsp:level3n, shift:both_capslock_cancel, keypad:pointerkeys"
+        "grp:alt_caps_toggle, lv3:ralt_switch, caps:escape, mod_led:compose, compose:lwin-altgr, nbsp:level3n, shift:both_capslock_cancel, keypad:pointerkeys"
     }
     natural_scroll disabled 
     repeat_delay 250
@@ -659,7 +645,7 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
 
     ## Navigate Workspaces 0-22 ##
         # 0 is for showing desktop. Keep it clear.
-        $bindsym $mod+Escape workspace $ws0
+        $bindsym $mod+Control+Escape workspace $ws0
         $bindsym $mod+1 workspace $ws1
         $bindsym $mod+2 workspace $ws2
         $bindsym $mod+3 workspace $ws3
@@ -684,10 +670,9 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
         $bindsym $mod+F11 workspace $ws21
         $bindsym $mod+F12 workspace $ws22
 
-        $bindsym $mod+Backspace workspace back_and_forth
+        $bindsym $mod+Escape workspace back_and_forth
 
     ## Modify // Move window to workspace 1-22 // <Shift> ##
-        $bindsym $mod+Shift+Escape move container to workspace $ws0
         $bindsym $mod+Shift+1 move container to workspace $ws1
         $bindsym $mod+Shift+2 move container to workspace $ws2
         $bindsym $mod+Shift+3 move container to workspace $ws3
@@ -712,7 +697,7 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
         $bindsym $mod+Shift+F11 move container to workspace $ws21
         $bindsym $mod+Shift+F12 move container to workspace $ws22
 
-        $bindsym $mod+Shift+Backspace move container to workspace back_and_forth
+        $bindsym $mod+Shift+Escape move container to workspace back_and_forth
 
 
 #####

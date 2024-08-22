@@ -11,9 +11,6 @@ fi
 # PS1='[\u@\h \W]\$ '
 PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 
-# Alias and function location
-# source ~/.profile
-
 # powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
@@ -46,10 +43,9 @@ alias db='sudo updatedb'
 alias la='ls -a'
 alias l='ls -lah'
 # alias spotify='flatpak run com.spotify.Client'
-alias rld='source .bashrc'
+alias rld='source ~/.bashrc'
 alias glorp='rg -i';
 alias order_66='seek_destroy'
-alias ..='cd ..'
 alias this='pwd'
 alias chatgpt='firefox https://chat.openai.com/'
 alias sms='sway-focus kdeconnect-sms'
@@ -69,6 +65,8 @@ alias .keyboard-config="cd /usr/share/X11/xkb/symbols"
 alias .kernel-config="cd /usr/src/linux" # do ```make menuconfig``` here
 alias .portage-config="cd /etc/portage"
 alias .config-home="cd $XDG_CONFIG_HOME"
+alias zotify='zotify --root-path=$(pwd)'
+alias diff='diff --color=auto'
 
 mkcd() {
   mkdir "$1" && cd "$1"
@@ -163,6 +161,8 @@ export WINE_LARGE_ADDRESS_AWARE=1
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
+
+export PYTHONSTARTUP=~/.pyrc
 
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \

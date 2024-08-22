@@ -24,6 +24,6 @@ return {
   },
   config = function()
     require('neo-tree').setup {}
-    vim.keymap.set('n', '=/', '<cmd>Neotree<CR>')
+    vim.keymap.set('n', '<Space>.', '<cmd>Neotree<CR>', { desc='Open File Browser' })
   end,
 }
