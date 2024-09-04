@@ -58,22 +58,25 @@ button:hover {
 #workspaces {
     background-color: #c8c8c8;
     color: #04143d;
-    opacity: 0.95;
+    opacity: 0.95;    
+    border: dotted;
+    border-style: dotted;
+    border-color: #000000;
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 2px;
     background-color: transparent;
     color: #04143d;
     border-radius: 0;
 }
 
 #workspaces button:first-child {
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px 0 0 2px;
 }
 
 #workspaces button:last-child {
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 2px 5px 0;
 }
 
 #workspaces button:hover {
@@ -107,7 +110,7 @@ button:hover {
 #custom-weather,
 #temperature,
 #memory {
-    padding: 0 8px;
+    padding: 0 5px;
     background-color: #c8c8c8;
     color: #04143d;
     opacity: 0.95;

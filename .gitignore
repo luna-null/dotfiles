@@ -1,13 +1,11 @@
 .bash_history
 .bash_logout
-!.bash_profile
-!.bashrc
-!bin
 .cache
 .cargo
 *.log
 .location
 lix-install.sh
+.gnupg/
 
 # Config Section
 .config/VirtualBox/
@@ -56,6 +54,10 @@ lix-install.sh
 .config/vlc/
 .config/rofi.le/
 .config/.dart-cli-completion/
+.config/Element/
+.config/*.bac
+.config/clojure/
+.config/lvim/
 
 .crpcrp/
 .dart-tool
@@ -73,10 +75,7 @@ Downloads
 !.gitignore
 .gnupg
 go
-!.gtkrc-2.0
-!.gtkrc-2.0.mine
 !keyboard-layout-converter
-!le-ugee-conf.pcfg
 .local
 .mozilla
 Music
@@ -104,4 +103,3 @@ result
 .vscode/
 .w3m
 .wget-hsts
-.xinitrc

@@ -5,7 +5,7 @@
 [[ $- != *i* ]] && return
 
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec sway -c /home/le/.config/sway/config
+  exec sway -c /home/le/.config/sway/config --debug > ~/sway.log
 fi
 
 # PS1='[\u@\h \W]\$ '
@@ -67,6 +67,8 @@ alias .portage-config="cd /etc/portage"
 alias .config-home="cd $XDG_CONFIG_HOME"
 alias zotify='zotify --root-path=$(pwd)'
 alias diff='diff --color=auto'
+alias firefox='firefox-developer-edition'
+alias track='track-command'
 
 mkcd() {
   mkdir "$1" && cd "$1"
@@ -163,6 +165,11 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
 
 export PYTHONSTARTUP=~/.pyrc
+
+export PATH=$PATH:/usr/bin/hla
+export hlalib=/usr/bin/hla/hlalib
+export hlainc=/usr/bin/hla/include
+export XDG_BACKGROUND_DIR=$XDG_HOME_DIR/Pictures/Wallpapers/
 
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \

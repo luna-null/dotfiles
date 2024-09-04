@@ -1,64 +1,14 @@
-####################
-####################
-# 01 Init
-####################
-####################
+
 
 
 # Read `man 5 sway` for a complete reference.
-
-### Daemons 
-
-# exec mako
-# exec swaykbdd
-# exec easyeffects --gapplication-service
-# exec_always pkill kanshi; exec kanshi
-# exec bash -c "exec -a random-background sh ~/.bin/random-background.sh &"
-# exec swayidle
-exec notify-send "$(systemctl --failed)"
-
-### Autostart
-
-exec nm-applet --indicator
-workspace $ws12 
-exec thunderbird; sleep 0.5
-exec --no-startup-id /usr/lib/kdeconnectd
-exec --no-startup-id indicator-kdeconnect
-
-# Todo List
-exec nwg-wrapper -t TODO -c todo.css -a start -p right -mt 50
-
-# Mac-like dock
-exec nwg-dock -d -nolauncher -nows &
-
-# Swww
-# exec_always "if ! pgrep swww-daemon &> /dev/null; then swww-daemon; sh ~/.scripts/swww_randomize.sh; fi"
-#  TODO: implement swww into swaybg or variety.
-
-# Variety
-exec_always pkill variety; variety
-
-# TODO get location through non-security-breaching means
-exec_always "pkill gammastep; gammastep -l 47.7:-122.3"
-
-## Enable it in your local sway config to get a clipboard manager via $mod+y
-# exec wl-paste -t text --watch myclipman.sh
-
 set $gnome-schema org.gnome.desktop.interface
 
-
-exec "hash dbus-update-activation-environment 2>/dev/null; \
-     systemctl --user import-environment WAYLAND_DISPLAY DISPLAY SSH_AUTH_SOCK SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE; \
-     dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SSH_AUTH_SOCK SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE; \
-     systemctl --user start sway-session.target"
-
-exec wvkbd-mobintl --hidden --fn 'DejaVuSansMono Nerd Font 12' -l 'simple,special,emoji' -L 240
-
-workspace $ws1
+set $XDG_BACKGROUND_DIR ~/Pictures/Wallpapers/
 
 ### Idle configuration
 
-set $lock gtklock -b ~/Pictures/Wallpapers/color-black-hole.gif
+set $lock gtklock -b $XDG_BACKGROUND_DIR/Live/color-black-hole.gif
 
 # set $lock swaylock
 
@@ -74,6 +24,7 @@ font pango:FiraCode Nerd Font, FontAwesome, 12
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 set $alt Mod1
+set $CAPS 66
 
 # Directory to custom Scripts
 set $BIN_DIR ~/.local/bin/sway
@@ -91,14 +42,8 @@ set $term-float alacritty --class TERMINAL; for_window [app_id="TERMINAL"] float
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 
-# wofi
-# set $menu wofi --show drun --allow-images | xargs swaymsg exec --
-
 # bemenu
 # set $menu XDG_DATA_DIRS=/usr/share/:/usr/local/share/:/var/lib/flatpak/exports/share/:$HOME/.local/share/flatpak/exports/share/ j4-dmenu-desktop --dmenu="bemenu-run.sh -l 30" --term="alacritty" --no-generic --display-binary
-
-# fuzzel
-# set $menu fuzzel
 
 # rofi-wayland
 set $menu rofi -show drun
@@ -108,9 +53,10 @@ set $menu rofi -show drun
 
 # Helpful command for binding keys that don't repeat when held, and don't change with keyboard layouts
 set $bindsym bindsym --no-repeat --to-code 
+set $bindcode bindcode --no-repeat
 
 # Define names for workspaces
-set $ws0 O
+set $ws0 "\0"
 
 set $ws1 1
 set $ws2 2
@@ -125,15 +71,19 @@ set $ws10 10
 set $ws11 11
 set $ws12 12
 set $ws13 13
-set $ws14 14: 
+set $ws14 14
 set $ws15 15
 set $ws16 16
 set $ws17 17
 set $ws18 18
 set $ws19 19
 set $ws20 20
-set $ws20 21
-set $ws20 22
+set $ws21 21
+set $ws22 22
+
+# GTK settings
+set $gnome-schema org.gnome.desktop.interface
+
 
 # Inhibit Idle if a window is fullscreen
 for_window [class="^.*"] inhibit_idle fullscreen
@@ -151,14 +101,6 @@ mouse_warping none
 # Change normal to inverse to use left mouse button for resizing and right
 # mouse button for dragging.
 floating_modifier $mod normal
-
-# Config for sway
-# Read `man 5 sway` for a complete reference.
-#
-# All sway.d/99_*.conf files are in .gitignore
-
-include $HOME/.config/sway/config.d/*
-# include $HOME/.config/sway/$(hostname)/*
 
 set $gnome-schema org.gnome.desktop.interface
 
@@ -207,17 +149,22 @@ workspace_layout tabbed
 workspace_auto_back_and_forth no
 
 # assign program to workspace
-assign [class="Firefox"] $ws1
-assign [app_id="firefox"] $ws1
-assign [app_id="spotify"] $ws11
-assign [class="Thunderbird"] $ws12
-assign [app_id="thunderbird"] $ws12
+assign [app_id="firefox"] workspace $ws1
+assign [app_id="firefox-developer-edition"] workspace $ws1
+assign [class="Spotify"] workspace $ws11
+assign [class="thunderbird"] workspace $ws12
+assign [app_id="org.telegram.desktop"] workspace $ws13
+assign [class="discord"] workspace $ws13
+assign [class="Signal"] workspace $ws13
+assign [app_id="org.kde.kdeconnect.sms"] workspace $ws13
 
 
 # assign workspace to monitor
 #workspace $ws1 output eDP-1
 
 workspace $ws1
+
+
 
 
 ####################
@@ -231,10 +178,15 @@ workspace $ws1
 
 seat seat0 xcursor_theme default 96
 
-input * {
-    xkb_layout us,ru
-    xkb_options {
-        "grp:alt_caps_toggle, lv3:ralt_switch, mod_led:compose, caps:backspace, compose:lwin-altgr, nbsp:level3n, shift:both_capslock_cancel, keypad:pointerkeys"
+input "1:1:AT_Translated_Set_2_keyboard" 
+{
+    
+    # xkb_file ~/.config/xkb/symbols/mth
+
+    xkb_layout mth,ru
+    xkb_options 
+    {
+        "mod_led:compose"
     }
     natural_scroll disabled 
     repeat_delay 250
@@ -248,10 +200,6 @@ input type:touchpad {
     natural_scroll disabled
     drag enabled
     middle_emulation enabled
-
-}
-
-input "1:1:AT_Translated_Set_2_keyboard" {    
 
 }
 
@@ -302,22 +250,15 @@ title_align center
 titlebar_border_thickness 1
 
 # Borders
-default_border pixel 3
+default_border pixel 4
 smart_borders on
 
 # Gaps
 smart_gaps off
-gaps inner 4
-gaps outer 3
+gaps inner 2
+gaps outer 2
 
-# GTK settings
-set $gnome-schema org.gnome.desktop.interface
 
-exec_always {
-    gsettings set $gnome-schema cursor-theme 'Skyrim'
-    gsettings set $gonme-schema cursor-size 36
-
-}
 
 
 
@@ -427,7 +368,7 @@ default_dim_inactive 0.05
 default_floating_border normal
 
 for_window [app_id="."] inhibit_idle fullscreen gaps outer 5 hide_edge_borders both corner_radius 10 tiling_drag enable
-for_window [workspace="O"] move scratchpad
+for_window [workspace="z"] move scratchpad
 
 for_window [window_role = "pop-up"] floating enable
 for_window [window_role = "bubble"] floating enable
@@ -435,7 +376,11 @@ for_window [window_role = "dialog"] floating enable
 for_window [window_type = "menu"] floating enable
 for_window [app_id = "floating"] floating enable title_format %title
 for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
+
+assign [class = "thunderbird"] workspace $ws12 floating enable
 for_window [title = "Thunderbird Preferences"] floating enable
+for_window [app_id="(?i)Thunderbird" title=".*Reminder"] floating enable
+
 # for_window [name = "*Reminder"] floating enable
 for_window [title = "Manage KeeAgent.*"] floating enable
 for_window [app_id = "keepassxc"] floating enable, resize set 1276px 814px
@@ -444,7 +389,6 @@ for_window [class = "^zoom$"] floating enable
 for_window [title = "mpvfloat"] floating enable
 for_window [app_id = "nm-openconnect-auth-dialog"] floating enable
 for_window [title = "Open Database File"] floating enable
-for_window [app_id="(?i)Thunderbird" title=".*Reminder"] floating enable
 for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
 for_window [title="nmtui"] floating enable
 for_window [title="Save File"] floating enable
@@ -511,16 +455,33 @@ for_window [title=".*"] title_format %title
 # for_window [shell="xwayland"] title_format "%title"
 
 
-####################
-####################
+# Inhibit Idle if a window is fullscreen
+for_window [class="^.*"] inhibit_idle fullscreen
+for_window [app_id="^.*"] inhibit_idle fullscreen
+
+# Focus window when mouse hovers it
+focus_follows_mouse yes
+
+# Moves mouse to the newly created window
+mouse_warping none
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+set $gnome-schema org.gnome.desktop.interface
+
+
+
 
 ####################
 ####################
-
-
-#########
-### Key-Bindings
-#########
+# 07 Key-Bindings
+####################
+####################
 
 #
 # Basics:
@@ -537,7 +498,7 @@ for_window [title=".*"] title_format %title
 
     # Start your terminal
     $bindsym $mod+Return exec $term
-    $bindsym $mod+grave exec $term
+    $bindsym --release $mod+grave exec $term
 
     # Floating terminal
     $bindsym $mod+Shift+grave exec $term-float
@@ -660,7 +621,7 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
 
     ## Navigate Workspaces 0-22 ##
         # 0 is for showing desktop. Keep it clear.
-        $bindsym $mod+Escape workspace $ws0
+        $bindcode $mod+9 workspace $ws0
         $bindsym $mod+1 workspace $ws1
         $bindsym $mod+2 workspace $ws2
         $bindsym $mod+3 workspace $ws3
@@ -685,10 +646,9 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
         $bindsym $mod+F11 workspace $ws21
         $bindsym $mod+F12 workspace $ws22
 
-        $bindsym $mod+Backspace workspace back_and_forth
+        $bindcode $mod+$CAPS workspace back_and_forth
 
     ## Modify // Move window to workspace 1-22 // <Shift> ##
-        $bindsym $mod+Shift+Escape move container to workspace $ws0
         $bindsym $mod+Shift+1 move container to workspace $ws1
         $bindsym $mod+Shift+2 move container to workspace $ws2
         $bindsym $mod+Shift+3 move container to workspace $ws3
@@ -713,7 +673,7 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
         $bindsym $mod+Shift+F11 move container to workspace $ws21
         $bindsym $mod+Shift+F12 move container to workspace $ws22
 
-        $bindsym $mod+Shift+Backspace move container to workspace back_and_forth
+        $bindcode $mod+Shift+$CAPS move container to workspace back_and_forth
 
 
 #####
@@ -783,21 +743,6 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
 
 
 #####
-# Notifications
-#####
-
-    ## Notifications // Dismiss notification // <Alt><Space> ##
-        # bindsym $alt+space exec makoctl dismiss
-
-    ## Notifications // Dismiss all notifications // <Shift><Alt><Space> ##
-        # bindsym Shift+$alt+space exec makoctl dismiss --all
-
-    ## Notifications // Show notification actions // <Alt><Shift> m ##
-        # bindsym $alt+Shift+m exec makoctl menu $BIN_DIR/bemenu-run.sh -l 30
-
-
-
-#####
 # Fn keys
 #####
 
@@ -821,25 +766,67 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
 # # bindsym Control+Space exec makoctl dismiss
 # bindsym Control+Shift+Space exec makoctl dismiss --all
 
-# #bindsym $mod+l exec $lock
-# #bindsym $mod+End exec $wifi
-
-# # Floating mod key
-# floating_modifier $mod normal
-
-
-# # Disable focus on mouse moves
+# Disable focus on mouse moves
 # focus_follows_mouse no
 
-# # audio fix. hacky
-# #exec pacmd set-card-profile alsa_card.usb-BEHRINGER_UMC204HD_192k-00 off 
-# #exec pacmd set-card-profile alsa_card.usb-BEHRINGER_UMC204HD_192k-00 HiFi
-# # other alsa module, think its just the mobo audio
-# # module-alsa-card device_id="2" name="pci-0000_2f_00.4" card_name="alsa_card.pci-0000_2f_00.4" namereg_fail=false tsched=yes fixed_latency_range=no ignore_dB=no deferred_volume=yes use_ucm=yes avoid_resampling=no card_properties="module-udev-detect.discovered=1"
-# # ^ only works if theres an active audio stream.
-# # unloading and reloading the module might work 
-# #exec pacmd unload-module module-alsa-card
-# #exec pacmd load-module module-alsa-card device_id=0 name=usb-BEHRINGER_UMC204HD_192k-00 card_name=alsa_card.usb-BEHRINGER_UMC204HD_192k-00 namereg_fail=false tsched=yes fixed_latency_range=no ignore_dB=no deferred_volume=yes use_ucm=yes avoid_resampling=no card_properties=module-udev-detect.discovered=1
-# exec pacmd set-sink-volume alsa_output.usb-BEHRINGER_UMC204HD_192k-00.HiFi__umc204hd_stereo_out_U192k_0_0_1__sink 65535
-# #exec pacmd load-module module-alsa-card device_id="2" name="pci-0000_2f_00.4" card_name="alsa_card.pci-0000_2f_00.4" namereg_fail=false tsched=yes fixed_latency_range=no ignore_dB=no deferred_volume=yes use_ucm=yes avoid_resampling=no card_properties="module-udev-detect.discovered=1"
+####################
+####################
+# 08 Daemons
+####################
+####################
 
+# GTK settings
+exec_always {
+    gsettings set $gnome-schema cursor-theme 'Skyrim'
+    gsettings set $gonme-schema cursor-size 36
+
+}
+
+
+# exec easyeffects --gapplication-service
+# exec bash -c "exec -a random-background sh ~/.bin/random-background.sh &"
+
+exec notify-send "$(systemctl --failed)"
+
+exec "hash dbus-update-activation-environment 2>/dev/null; \
+     systemctl --user import-environment WAYLAND_DISPLAY DISPLAY SSH_AUTH_SOCK SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE; \
+     dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SSH_AUTH_SOCK SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE; \
+     systemctl --user start sway-session.target"
+
+exec wvkbd-mobintl --hidden --fn 'DejaVuSansMono Nerd Font 12' -l 'simple,special,emoji' -L 240
+
+
+exec flameshot
+
+# Email
+exec thunderbird
+
+# Social
+exec telegram-desktop
+exec discord
+exec signal-desktop
+
+# Todo List
+exec nwg-wrapper -t TODO -c todo.css -a start -p right -mt 50
+
+# Mac-like dock
+exec nwg-dock -d -nolauncher -nows
+
+# Swww
+exec_always swww-randomize $XDG_BACKGROUND_DIR
+#  TODO: implement swww into swaybg or variety.
+
+# Variety
+exec_always "if [ $(pgrep swww | wc -l) -lt 2 ]; then pkill variety; variety; fi"
+
+# TODO get location through non-security-breaching means
+exec_always auto-gammastep;
+
+## Enable it in your local sway config to get a clipboard manager via $mod+y
+# exec wl-paste -t text --watch myclipman.sh
+
+
+## KDEConnect
+exec kdeconnectd
+exec --no-startup-id kdeconnect-indicator
+exec kde-connect-sms
