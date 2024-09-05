@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # This allows you to control which image to init the daemon with according
 # to the time of day. You may change the match cases as you see fit.

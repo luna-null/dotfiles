@@ -7,8 +7,8 @@ return {
     vim.keymap.set('n', 'gp', '<cmd>Lspsaga peek_definition<CR>')
     vim.keymap.set('n', '<Space>r', '<cmd>Lspsaga rename<CR>')
     vim.keymap.set('n', '<Space>o', '<cmd>Lspsaga outline<CR>')
-    vim.keymap.set('n', '<leader>qn', '<cmd>Lspsaga diagnostic_jump_next<CR>')
-    vim.keymap.set('n', '<leader>qN', '<cmd>Lspsaga diagnostic_jump_prev<CR>')
+    vim.keymap.set('n', '<leader>q', '<cmd>Lspsaga diagnostic_jump_next<CR>')
+    vim.keymap.set('n', '<leader>Q', '<cmd>Lspsaga diagnostic_jump_prev<CR>')
   end,
   dependencies = {
     'nvim-treesitter/nvim-treesitter', -- optional

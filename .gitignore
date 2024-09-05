@@ -58,6 +58,7 @@ lix-install.sh
 .config/*.bac
 .config/clojure/
 .config/lvim/
+.config/kdeconnect/
 
 .crpcrp/
 .dart-tool

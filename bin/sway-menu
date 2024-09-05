@@ -1,4 +1,4 @@
-#! /usr/bin/env -S python -B
+#!/usr/bin/env -S python -B
 # https://gitlab.com/wef/dotfiles/-/blob/master/bin/sway-menu
 
 TIME_STAMP="20230730.113706"

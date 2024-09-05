@@ -1,3 +1,4 @@
+// vim: set filetype=xkb : //
 default partial xkb_types "default" {
 
     // Defines types with an eight-level shift, similar to the three-level

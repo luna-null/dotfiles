@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+LATITUDE=$(curl ipinfo.io | jq -r '.loc | split(",") | .[0]')
+LONGITUDE=$(curl ipinfo.io | jq -r '.loc | split(",") | .[1]')
+
+if ! pgrep gammastep &>/dev/null; then
+	gammastep -l "$LATITUDE":"$LONGITUDE" &
+fi

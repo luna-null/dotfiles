@@ -161,28 +161,59 @@ vim.opt.scrolloff = 10
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Move normally while holding down Alt
-vim.keymap.set({ 'n', 'v', 'i' }, '<M-h>', '<Left>')
-vim.keymap.set({ 'n', 'v', 'i' }, '<M-j>', '<Down>')
-vim.keymap.set({ 'n', 'v', 'i' }, '<M-k>', '<Up>')
-vim.keymap.set({ 'n', 'v', 'i' }, '<M-l>', '<Right>')
+vim.keymap.set({ 'n', 'i' }, '<M-h>', '<Left>')
+vim.keymap.set({ 'n', 'i' }, '<M-j>', '<Down>')
+vim.keymap.set({ 'n', 'i' }, '<M-k>', '<Up>')
+vim.keymap.set({ 'n', 'i' }, '<M-l>', '<Right>')
 vim.keymap.set({ 'n', 'i' }, '<M-Esc>', '<Backspace>')
+
 
 -- Copy, Paste
 vim.keymap.set({ 'n', 'v' }, '<C-S-c>', '"+y')
 vim.keymap.set({ 'n', 'v' }, '<C-S-v>', '"+p')
 
-vim.api.nvim_set_keymap('n', '<D-h>', ':wincmd h<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<D-j>', ':wincmd j<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<D-k>', ':wincmd k<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<D-l>', ':wincmd l<CR>', { noremap = true, silent = true })
-
 
 -- Remove all trailing whitespace by pressing F5
-vim.keymap.set('n', '<Space>w', ":let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar><CR>")
+vim.keymap.set('n', '<Space>W', ":let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar><CR>")
 
+-- Function for removing all trailing whitespace. Will remove §'s in line.  TODO: Fix that
+local function remove_whitespace()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local function remover()
+    -- Places a § dummy variable at the cursor,
+    -- then removes all spaces before and after, 
+    -- then removes all §'s on the line. 
+    -- 'silent!' is there to keep the function from
+    -- stopping itself from continuing on to the next
+    -- command in case one of them errors.
+    vim.cmd('normal ha§')
+    vim.cmd('silent! s/\\s\\+§\\s\\+//')
+    vim.cmd('silent! s/§\\s\\+//')
+    vim.cmd('silent! s/\\s\\+§//')
+    vim.cmd('silent! s/\\s§//')
+    vim.cmd('silent! s/§\\s//')
+    vim.cmd('silent! s/§//g')
+  end
+    
+  local success, result_or_error = pcall(remover)
+
+  if success then
+    local message = string.format("Removed whitespace at %d:%d", line, col)
+    print(message)
+  else
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    local message = string.format("Removed whitespace at %d:%d", line, col)
+    print(message)
+  end
+  -- local cmd_cursor_alignment = string.format('<cmd>call cursor(%d,%d)<CR>',line, col)
+  -- vim.cmd(cmd_cursor_alignment)
+  vim.api.nvim_win_set_cursor(0, {line, col})
+end
+
+vim.keymap.set('n', '<Space>w', remove_whitespace, { desc = 'Remove [w]hitespace at Cursor'})
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>qq', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<Space>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -232,6 +263,20 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.expandtab = true
   end,
 })
+
+-- Set the mapping when Neovim starts
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        vim.api.nvim_set_keymap('v', '<', '<gv', { noremap = true, silent = true })
+    end
+})
+-- Set the mapping when Neovim starts
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        vim.api.nvim_set_keymap('v', '>', '>gv', { noremap = true, silent = true })
+    end
+})
+
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info

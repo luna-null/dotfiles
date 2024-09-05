@@ -1,3 +1,5 @@
+// vim: set filetype=xkb : //
+
 partial alphanumeric_keys modifier_keys keypad_keys
 
 xkb_symbols "mth"
@@ -473,9 +475,9 @@ xkb_symbols "mth"
 	key <RTSH>
 	{[
 		Shift_R,		Caps_Lock,
-		Shift_R,		Caps_Lock,
-		Shift_R,		Caps_Lock,
-		Shift_R,		Caps_Lock
+		Shift_R,		Shift_R,
+		Shift_R,		Shift_R,
+		Shift_R,		Shift_R
 
 	]};
 

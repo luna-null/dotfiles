@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # This is a script to help you schedule image switching at different times of
 # the day. You may use it as-is or as inspiration for something else

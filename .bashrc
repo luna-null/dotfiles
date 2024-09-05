@@ -174,3 +174,9 @@ export XDG_BACKGROUND_DIR=$XDG_HOME_DIR/Pictures/Wallpapers/
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
     . /usr/share/bash-completion/bash_completion
+
+PATH="/home/le/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/le/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/le/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/le/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/le/perl5"; export PERL_MM_OPT;
