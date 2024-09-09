@@ -43,8 +43,9 @@
 		"sway/workspaces":
 		{			"all-outputs": true,
 			"warp-on-scroll": false,
-			"enable-bar-scroll": true,
+			"enable-bar-scroll": false,
 			"disable-scroll-wraparound": true,
+			"disable-auto-back-and-forth": false,
 			"format": "{icon}",
 			// "format-icons":
 			// {
@@ -165,7 +166,7 @@
 
 		"clock": 
 		{
-			// "timezone": "America/New_York",
+			"timezone": "America/Los_Angeles",
 			"interval": 1,
 			"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
 			"format-alt": "{:%Y-%m-%d, %a %X}",

@@ -264,16 +264,16 @@ xkb_symbols "mth"
 	{
 		[
 			Escape,			BackSpace,
-			BackSpace,		NoSymbol,
-			BackSpace,		NoSymbol,
-			BackSpace,		NoSymbol
+			ISO_Level3_Lock,	BackSpace,
+			ISO_Level5_Lock,	BackSpace,
+			NoSymbol,		BackSpace	// would be ISO_Level7_Lock, but that doesn't exist for some reason
 		],
 		actions[Group1] = 
 		[ 
-			NoAction(),		NoAction(),
-			NoAction(),		LockMods(mods=Mod5), 
-			NoAction(),		LockMods(mods=Mod3),
-			NoAction(),		LockMods(mods=Mod5+Mod3) 
+			NoAction(),			NoAction(),
+			LockMods(mods=Mod5),		LockMods(mods=Mod5), 
+			LockMods(mods=Mod3),		LockMods(mods=Mod3),
+			LockMods(mods=Mod5+Mod3),	LockMods(mods=Mod5+Mod3) 
 		],
 		repeat=yes
 	};

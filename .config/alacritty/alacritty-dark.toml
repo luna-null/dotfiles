@@ -110,8 +110,9 @@ action = "ScrollToBottom"
 key = "End"
 mode = "~Alt"
 mods = "Shift"
+
 [scrolling]
-history = 5000
+history = 16352
 
 [window]
 dynamic_padding = true
