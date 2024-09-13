@@ -2,19 +2,19 @@ version = "0.1"
 
 [assemblers]
 gas = true
-go = false
-z80 = false
-masm = false
+go = true
+z80 = true
+masm = true
 nasm = true
 
 [instruction_sets]
 x86 = true
 x86_64 = true
 z80 = false
-arm = false
+arm = true
 riscv = false
 
 [opts]
-compiler = "clang"
+# compiler = "gcc"
 diagnostics = true
 default_diagnostics = true

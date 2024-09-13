@@ -171,6 +171,8 @@ export hlalib=/usr/bin/hla/hlalib
 export hlainc=/usr/bin/hla/include
 export XDG_BACKGROUND_DIR=$XDG_HOME_DIR/Pictures/Wallpapers/
 
+wmname LG3D # For ghidra to run
+
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
     . /usr/share/bash-completion/bash_completion

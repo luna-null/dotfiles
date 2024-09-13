@@ -14,10 +14,85 @@ xkb_symbols "mth"
 	//		Level7: AltGr + rCtrl		Level8: Shift + AltGr + rCtrl
 
 
+	//// Function Row
+	//// --------------------------------------------------------------
+
+	key.type = "Controllable";
+
+	key <F1>
+	{[
+		F1,		XF86_Switch_VT_1
+	]};
+
+	key <F2>
+	{[
+		F2,		XF86_Switch_VT_2
+	]};
+
+	key <F3>
+	{[
+		F3,		XF86_Switch_VT_3
+	]};
+
+	key <F4>
+	{[
+		F4,		XF86_Switch_VT_4
+	]};
+
+	key <F5>
+	{[
+		F5,		XF86_Switch_VT_5
+	]};
+
+	key <F6>
+	{[
+		F6,		XF86_Switch_VT_6
+	]};
+
+	key <F7>
+	{[
+		F7,		XF86_Switch_VT_7
+	]};
+
+	key <F8>
+	{[
+		F8,		XF86_Switch_VT_8
+	]};
+
+	key <F9>
+	{[
+		F9,		XF86_Switch_VT_9
+	]};
+
+	key <F10>
+	{[
+		F10,		XF86_Switch_VT_10
+	]};
+
+	key <F11>
+	{[
+		F11,		XF86_Switch_VT_11
+	]};
+
+	key <F12>
+	{[
+		F12,		XF86_Switch_VT_12
+	]};
+
+
 	//// Number Row
 	//// --------------------------------------------------------------
 
 	key.type[Group1] = "EIGHT_LEVEL_WITH_LEVEL5_LOCK";
+
+	key <ESC> 
+	{[ 
+		Escape,		Escape,
+		Escape,		Escape,
+		Escape,		Escape,
+		Escape,		Escape
+
+	]};
 
 	key <TLDE> 
 	{[
@@ -175,7 +250,7 @@ xkb_symbols "mth"
 	key <AD04>
 	{[
 		r,			R,	
-		dollarsign,		asterisk,
+		dollar,			asterisk,
 		NoSymbol,		NoSymbol,
 		Greek_rho,		U211D	
 	]};
@@ -231,7 +306,7 @@ xkb_symbols "mth"
 	key <AD11>
 	{[
 		bracketleft,		braceleft,	    
-		U017F,			U2212,
+		U27E8,			NoSymbol,
 		NoSymbol,		NoSymbol,
 		Greek_final,		partialderivative	    
 	]};
@@ -239,7 +314,7 @@ xkb_symbols "mth"
 	key <AD12>
 	{[
 		bracketright,		braceright,	    
-		U017F,			NoSymbol,
+		U27E9,			NoSymbol,
 		NoSymbol,		NoSymbol,
 		integral,		NoSymbol
 	]};
@@ -313,7 +388,7 @@ xkb_symbols "mth"
 	key <AC05>
 	{[
 		g,			G,	    
-		dollarsign,		exclam,
+		dollar,			exclam,
 		NoSymbol,		NoSymbol,
 		Greek_gamma,		Greek_GAMMA	    
 	]};

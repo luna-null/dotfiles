@@ -8,6 +8,7 @@ Description=Turns on gammastep for the display.
 
 [Service]
 Type=simple
+ExecStartPre=/bin/bash -c 'until pgrep sway >/dev/null; do sleep 5; done'
 ExecStart=/home/le/bin/auto-gammastep
 Environment="XDG_SESSION_ID=1"
 Environment="XDG_RUNTIME_DIR=/run/user/1000"

@@ -8,6 +8,7 @@ Description=Turns on gammastep for the display.
 
 [Service]
 Type=oneshot
+ExecStartPre=/bin/bash -c 'until pgrep sway >/dev/null; do sleep 5; done'
 ExecStart=/home/le/bin/swww-randomize		# Change if another script is desired.
 
 [Install]

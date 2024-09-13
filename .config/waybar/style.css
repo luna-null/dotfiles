@@ -56,27 +56,23 @@ button:hover {
 } */
 
 #workspaces {
-    background-color: #c8c8c8;
-    color: #04143d;
-    opacity: 0.95;    
-    border: dotted;
-    border-style: dotted;
-    border-color: #000000;
+    background-color: #282828;
+    opacity: 0.95;
 }
 
 #workspaces button {
-    padding: 0 2px;
+    padding: 0 5px;
     background-color: transparent;
-    color: #04143d;
+    color: #ebdbb2;
     border-radius: 0;
 }
 
 #workspaces button:first-child {
-    border-radius: 5px 0 0 2px;
+    border-radius: 5px 0 0 5px;
 }
 
 #workspaces button:last-child {
-    border-radius: 0 2px 5px 0;
+    border-radius: 0 5px 5px 0;
 }
 
 #workspaces button:hover {
@@ -84,8 +80,8 @@ button:hover {
 }
 
 #workspaces button.focused {
-    background-color: #9aa5ac;
-    box-shadow: inset 0 -3px #ffffff;
+    background-color: #665c54;
+    /* box-shadow: inset 0 -3px #ffffff; */
 }
 
 #workspaces button.urgent {
@@ -107,12 +103,11 @@ button:hover {
 #load,
 #cpu,
 #bluetooth,
-#custom-weather,
 #temperature,
 #memory {
-    padding: 0 5px;
-    background-color: #c8c8c8;
-    color: #04143d;
+    padding: 0 10px;
+    background-color: #282828;
+    color: #ebdbb2;
     opacity: 0.95;
 }
 
@@ -138,7 +133,7 @@ button:hover {
 
 #battery.charging,
 #battery.plugged {
-    background-color: #46b551;
+    background-color: #98971a;
     color: #282828;
 }
 
@@ -168,12 +163,18 @@ label:focus {
     background-color: #458588;
 }
 
+#tray>.active {
+    color: #ebdbb2;
+}
+
 #tray>.passive {
     -gtk-icon-effect: dim;
+    color: #ebdbb2;
 }
 
 #tray>.needs-attention {
     -gtk-icon-effect: highlight;
+    color: #ebdbb2;
 }
 
 #mpris.playing {
@@ -183,6 +184,7 @@ label:focus {
 
 #tray menu {
     font-family: sans-serif;
+    color: #000000;
 }
 
 #scratchpad.empty {

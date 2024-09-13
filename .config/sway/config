@@ -4,13 +4,12 @@
 # Read `man 5 sway` for a complete reference.
 set $gnome-schema org.gnome.desktop.interface
 
-set $XDG_BACKGROUND_DIR ~/Pictures/Wallpapers/
+set $XDG_BACKGROUND_DIR /home/le/Pictures/Wallpapers/
 
 ### Idle configuration
 
-set $lock gtklock -b $XDG_BACKGROUND_DIR/Live/color-black-hole.gif
+set $lock swaylock -i $XDG_BACKGROUND_DIR/Live/color-black-hole.gif
 
-# set $lock swaylock
 
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -123,11 +122,6 @@ set $gnome-schema org.gnome.desktop.interface
 # swaymsg output eDP-1 pos 1920 0 res 1920x1080
 # swaymsg output DP-7 pos 3840 0 res 1920x1080
 
-# Disable the laptop screen when the lid is closed.
-bindswitch --reload --locked lid:on exec $lock
-# exec swaymsg output eDP-1 disable;
-# bindswitch --reload --locked lid:off 
-# exec $lock; sleep 0.5 ;swaymsg output eDP-1 enable;
 
 exec swayidle -w \
           timeout 300 $lock \
@@ -391,7 +385,6 @@ for_window [app_id = "nm-openconnect-auth-dialog"] floating enable
 for_window [title = "Open Database File"] floating enable
 for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
 for_window [title="nmtui"] floating enable
-for_window [class="thunderbird"] floating enable
 for_window [title="Save File"] floating enable
 for_window [app_id="wdisplays"] floating enable
 for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, sticky enable, resize set width 30 ppt height 40 ppt
@@ -623,7 +616,7 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
 
     ## Navigate Workspaces 0-22 ##
         # 0 is for showing desktop. Keep it clear.
-        $bindcode $mod+$ESC mark --toggle "~"; workspace $ws0
+        bindcode $mod+$ESC workspace $ws0
         $bindsym $mod+1 workspace $ws1
         $bindsym $mod+2 workspace $ws2
         $bindsym $mod+3 workspace $ws3
@@ -797,7 +790,7 @@ exec "hash dbus-update-activation-environment 2>/dev/null; \
      dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SSH_AUTH_SOCK SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE; \
      systemctl --user start sway-session.target"
 
-exec wvkbd-mobintl --hidden --fn 'DejaVuSansMono Nerd Font 12' -l 'simple,special,emoji' -L 240
+exec wvkbd-mobintl --hidden --fn 'DejaVuSansMono Nerd Font 13' -l 'simple,special,emoji' -L 240
 
 
 exec flameshot
@@ -817,11 +810,15 @@ exec nwg-wrapper -t TODO -c todo.css -a start -p right -mt 50
 exec nwg-dock -d -nolauncher -nows
 
 # Swww
-exec_always swww-randomize $XDG_BACKGROUND_DIR
+exec_always "swww-randomize $XDG_BACKGROUND_DIR"
 #  TODO: implement swww into swaybg or variety.
 
-# Variety
-exec_always "if [ $(pgrep swww | wc -l) -lt 2 ]; then pkill variety; variety; fi"
+# Variety, if swww fails
+exec_always "if [ $(pgrep swww | wc -l) -lt 2 ]; then pkill variety; variety --verbose; fi"
+
+# Swaybg, if the others fail
+exec_always "if [ $(pgrep swww | wc -l) -lt 2 ]; then pkill variety; swaybg-randomize; fi"
+
 
 # TODO get location through non-security-breaching means
 exec_always auto-gammastep;
@@ -834,3 +831,9 @@ exec_always auto-gammastep;
 exec kdeconnectd
 exec --no-startup-id kdeconnect-indicator
 exec kde-connect-sms
+
+# Disable the laptop screen when the lid is closed.
+bindswitch --reload --locked lid:on exec_always "$lock & systemctl suspend"
+bindswitch --reload --locked lid:off exec_always "if ! pgrep waybar &>/dev/null; then waybar; fi"
+
+

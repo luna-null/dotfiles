@@ -153,7 +153,7 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
--- [[ Basic Keymaps ]]
+-- [[ Keymaps ]]
 --  See `:help vim.keymap.set()`
 
 -- Clear highlights on search when pressing <Esc> in normal mode
@@ -212,6 +212,24 @@ end
 
 vim.keymap.set('n', '<Space>w', remove_whitespace, { desc = 'Remove [w]hitespace at Cursor'})
 
+
+local function toggle_relativenumber()
+
+  local relNumState = vim.wo.relativenumber
+
+  if relNumState then
+    vim.wo.relativenumber = false
+    print('relativenumbers off')
+
+  else
+    vim.wo.relativenumber = true
+    print('relativenumbers on')
+  end
+end
+
+vim.keymap.set('n', '<leader>tl', toggle_relativenumber, { desc = '[T]oggle relativenumbers for [l]ines'})
+
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<Space>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -232,14 +250,10 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 
-vim.api.nvim_set_keymap('n', '<D-h>', ':wincmd h<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<D-j>', ':wincmd j<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<D-k>', ':wincmd k<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<D-l>', ':wincmd l<CR>', { noremap = true, silent = true })
 
 --  See `:help wincmd` for a list of all window commands
 
--- [[ Basic Autocommands ]]
+-- [[ Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
 -- Highlight when yanking (copying) text
@@ -664,10 +678,9 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
+        gopls = {},
+        pyright = {},
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -929,6 +942,126 @@ require('lazy').setup({
     end,
   },
 
+{ -- Autoformat
+    'stevearc/conform.nvim',
+    -- event = { 'BufWritePre' },
+    cmd = { 'ConformInfo' },
+    keys = {
+      {
+        '<leader>f',
+        function()
+          require('conform').format { async = true, lsp_fallback = true }
+        end,
+        mode = '',
+        desc = '[F]ormat buffer',
+      },
+    },
+    opts = {
+      function()
+        require("conform").setup({
+          -- Map of filetype to formatters
+          formatters_by_ft = {
+            lua = { "stylua" },
+            -- Conform will run multiple formatters sequentially
+            go = { "goimports", "gofmt" },
+            -- You can also customize some of the format options for the filetype
+            rust = { "rustfmt", lsp_format = "fallback" },
+            -- You can use a function here to determine the formatters dynamically
+            python = function(bufnr)
+              if require("conform").get_formatter_info("ruff_format", bufnr).available then
+                return { "ruff_format" }
+              else
+                return { "isort", "black" }
+              end
+            end,
+            -- Use the "*" filetype to run formatters on all filetypes.
+            ["*"] = { "codespell" },
+            -- Use the "_" filetype to run formatters on filetypes that don't
+            -- have other formatters configured.
+            ["_"] = { "trim_whitespace" },
+          },
+          -- Set this to change the default values when calling conform.format()
+          -- This will also affect the default values for format_on_save/format_after_save
+          default_format_opts = {
+            lsp_format = "fallback",
+          },
+          -- If this is set, Conform will run the formatter on save.
+          -- It will pass the table to conform.format().
+          -- This can also be a function that returns the table.
+          -- format_on_save = {
+          --   -- I recommend these options. See :help conform.format for details.
+          --   lsp_format = "fallback",
+          --   timeout_ms = 500,
+          -- },
+          -- If this is set, Conform will run the formatter asynchronously after save.
+          -- It will pass the table to conform.format().
+          -- This can also be a function that returns the table.
+          format_after_save = {
+            lsp_format = "fallback",
+          },
+          -- Set the log level. Use `:ConformInfo` to see the location of the log file.
+          log_level = vim.log.levels.ERROR,
+          -- Conform will notify you when a formatter errors
+          notify_on_error = true,
+          -- Conform will notify you when no formatters are available for the buffer
+          notify_no_formatters = true,
+          -- Custom formatters and overrides for built-in formatters
+          formatters = {
+            my_formatter = {
+              -- This can be a string or a function that returns a string.
+              -- When defining a new formatter, this is the only field that is required
+              command = "my_cmd",
+              -- A list of strings, or a function that returns a list of strings
+              -- Return a single string instead of a list to run the command in a shell
+              args = { "--stdin-from-filename", "$FILENAME" },
+              -- If the formatter supports range formatting, create the range arguments here
+              range_args = function(self, ctx)
+                return { "--line-start", ctx.range.start[1], "--line-end", ctx.range["end"][1] }
+              end,
+              -- Send file contents to stdin, read new contents from stdout (default true)
+              -- When false, will create a temp file (will appear in "$FILENAME" args). The temp
+              -- file is assumed to be modified in-place by the format command.
+              stdin = true,
+              -- A function that calculates the directory to run the command in
+              cwd = require("conform.util").root_file({ ".editorconfig", "package.json" }),
+              -- When cwd is not found, don't run the formatter (default false)
+              require_cwd = true,
+              -- When stdin=false, use this template to generate the temporary file that gets formatted
+              tmpfile_format = ".conform.$RANDOM.$FILENAME",
+              -- When returns false, the formatter will not be used
+              condition = function(self, ctx)
+                return vim.fs.basename(ctx.filename) ~= "README.md"
+              end,
+              -- Exit codes that indicate success (default { 0 })
+              exit_codes = { 0, 1 },
+              -- Environment variables. This can also be a function that returns a table.
+              env = {
+                VAR = "value",
+              },
+              -- Set to false to disable merging the config with the base definition
+              inherit = true,
+              -- When inherit = true, add these additional arguments to the beginning of the command.
+              -- This can also be a function, like args
+              prepend_args = { "--use-tabs" },
+              -- When inherit = true, add these additional arguments to the end of the command.
+              -- This can also be a function, like args
+              append_args = { "--trailing-comma" },
+            },
+            -- These can also be a function that returns the formatter
+            other_formatter = function(bufnr)
+              return {
+                command = "my_cmd",
+              }
+            end,
+          },
+        })
+      end;
+
+    }
+},
+
+
+
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
@@ -938,19 +1071,19 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  require 'kickstart.plugins.debug',
-  require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
-  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'plugins.debug',
+  require 'plugins.indent_line',
+  require 'plugins.lint',
+  -- require 'plugins.autopairs',
+  -- require 'plugins.neo-tree',
+  require 'plugins.gitsigns', -- adds gitsigns recommend keymaps
 
-  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
+  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  { import = 'custom.plugins' },
+  { import = 'plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

@@ -9,6 +9,7 @@ Wants=git-backup.timer
 
 [Service]
 Type=oneshot
+ExcStartPre=/bin/bash -c 'until pgrep sway >/dev/null; do sleep 5; done'
 ExecStart=/home/le/bin/git-backup
 
 [Install]
