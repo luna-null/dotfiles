@@ -1,3 +1,5 @@
+### Dark theme
+
 [colors]
 draw_bold_text_with_bright_colors = true
 
@@ -116,7 +118,7 @@ history = 16352
 
 [window]
 dynamic_padding = true
-opacity = 0.85
+opacity = 0.75
 title = "Alacritty"
 
 [window.class]

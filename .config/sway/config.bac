@@ -8,9 +8,11 @@ set $XDG_BACKGROUND_DIR ~/Pictures/Wallpapers/
 
 ### Idle configuration
 
+#gtklock
 set $lock gtklock -b $XDG_BACKGROUND_DIR/Live/color-black-hole.gif
 
 # set $lock swaylock
+set $lock swaylock -i $XDG_BACKGROUND_DIR/Live/color-black-hole.gif
 
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -25,6 +27,7 @@ font pango:FiraCode Nerd Font, FontAwesome, 12
 set $mod Mod4
 set $alt Mod1
 set $CAPS 66
+set $ESC 9
 
 # Directory to custom Scripts
 set $BIN_DIR ~/.local/bin/sway
@@ -56,7 +59,7 @@ set $bindsym bindsym --no-repeat --to-code
 set $bindcode bindcode --no-repeat
 
 # Define names for workspaces
-set $ws0 "\0"
+set $ws0 "\."
 
 set $ws1 1
 set $ws2 2
@@ -184,10 +187,6 @@ input "1:1:AT_Translated_Set_2_keyboard"
     # xkb_file ~/.config/xkb/symbols/mth
 
     xkb_layout mth,ru
-    xkb_options 
-    {
-        "mod_led:compose"
-    }
     natural_scroll disabled 
     repeat_delay 250
     repeat_rate 36
@@ -621,7 +620,7 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
 
     ## Navigate Workspaces 0-22 ##
         # 0 is for showing desktop. Keep it clear.
-        $bindcode $mod+9 workspace $ws0
+        $bindcode $mod+$ESC workspace $ws0
         $bindsym $mod+1 workspace $ws1
         $bindsym $mod+2 workspace $ws2
         $bindsym $mod+3 workspace $ws3
@@ -649,6 +648,7 @@ $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "
         $bindcode $mod+$CAPS workspace back_and_forth
 
     ## Modify // Move window to workspace 1-22 // <Shift> ##
+        $bindcode $mod+Shift+$ESC move container to workspace $ws0
         $bindsym $mod+Shift+1 move container to workspace $ws1
         $bindsym $mod+Shift+2 move container to workspace $ws2
         $bindsym $mod+Shift+3 move container to workspace $ws3

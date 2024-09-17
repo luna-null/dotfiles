@@ -1,4 +1,4 @@
-### Dark theme
+### Light theme
 
 [colors]
 draw_bold_text_with_bright_colors = true
@@ -112,12 +112,11 @@ action = "ScrollToBottom"
 key = "End"
 mode = "~Alt"
 mods = "Shift"
-
 [scrolling]
-history = 16352
+history = 5000
 
 [window]
-dynamic_padding = true
+dynamic_padding = false
 opacity = 0.75
 title = "Alacritty"
 
@@ -131,35 +130,79 @@ y = 6
 
 
 
-# Colors (Challenger Deep)
-
 # Default colors
 [colors.primary]
-background = '#1e1c31'
-foreground = '#cbe1e7'
+background = '#EFF1F5' # base
+foreground = '#4C4F69' # text
+# Bright and dim foreground colors
+dim_foreground = '#4C4F69' # text
+bright_foreground = '#4C4F69' # text
 
+# Cursor colors
 [colors.cursor]
-text = '#ff271d'
-cursor = '#fbfcfc'
+text = '#EFF1F5' # base
+cursor = '#DC8A78' # rosewater
+
+[colors.vi_mode_cursor]
+text = '#EFF1F5' # base
+cursor = '#7287FD' # lavender
+
+# Search colors
+[colors.search.matches]
+foreground = '#EFF1F5' # base
+background = '#6C6F85' # subtext0
+
+[colors.search.focused_match]
+foreground = '#EFF1F5' # base
+background = '#40A02B' # green
+
+[colors.footer_bar]
+foreground = '#EFF1F5' # base
+background = '#6C6F85' # subtext0
+
+# Keyboard regex hints
+[colors.hints.start]
+foreground = '#EFF1F5' # base
+background = '#DF8E1D' # yellow
+
+[colors.hints.end]
+foreground = '#EFF1F5' # base
+background = '#6C6F85' # subtext0
+
+# Selection colors
+[colors.selection]
+text = '#EFF1F5' # base
+background = '#DC8A78' # rosewater
 
 # Normal colors
 [colors.normal]
-black   = '#141228'
-red     = '#ff5458'
-green   = '#62d196'
-yellow  = '#ffb378'
-blue    = '#65b2ff'
-magenta = '#906cff'
-cyan    = '#63f2f1'
-white   = '#a6b3cc'
+black = '#5C5F77' # subtext1
+red = '#D20F39' # red
+green = '#40A02B' # green
+yellow = '#DF8E1D' # yellow
+blue = '#1E66F5' # blue
+magenta = '#EA76CB' # pink
+cyan = '#179299' # teal
+white = '#ACB0BE' # surface2
 
 # Bright colors
 [colors.bright]
-black   = '#565575'
-red     = '#ff8080'
-green   = '#95ffa4'
-yellow  = '#ffe9aa'
-blue    = '#91ddff'
-magenta = '#c991e1'
-cyan    = '#aaffe4'
-white   = '#cbe3e7'
+black = '#6C6F85' # subtext0
+red = '#D20F39' # red
+green = '#40A02B' # green
+yellow = '#DF8E1D' # yellow
+blue = '#1E66F5' # blue
+magenta = '#EA76CB' # pink
+cyan = '#179299' # teal
+white = '#BCC0CC' # surface1
+
+# Dim colors
+[colors.dim]
+black = '#5C5F77' # subtext1
+red = '#D20F39' # red
+green = '#40A02B' # green
+yellow = '#DF8E1D' # yellow
+blue = '#1E66F5' # blue
+magenta = '#EA76CB' # pink
+cyan = '#179299' # teal
+white = '#ACB0BE' # surface2

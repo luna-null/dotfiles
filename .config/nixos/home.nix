@@ -1,23 +1,37 @@
 { config, pkgs, ... }:
-
+# let
+#   unstableTarball = fetchTarball {
+#       url = https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
+#   };
+# in
 {
+  # imports = [
+  #   ./modules/spicetify.nix
+  # ];
+
+#   nixpkgs.config = {
+#     packageOverrides = pkgs: {
+#       unstable = import unstableTarball {
+#     config = config.nixpkgs.config;
+#   };
+
+
+  home-manager.extraSpecialArgs = { inherit unstable };
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "le";
   home.homeDirectory = "/home/le";
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  xresources.properties = {
+    "Xcursor.size" = 36;
+    "Xcursor.theme" = "Skyrim";
+  };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  nixpkgs.config.allowUnfree = true;
+  home.packages = with pkgs; [
     # pkgs is the set of all packages in the default home.nix implementation
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -33,19 +47,113 @@
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
     # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
+    #   echo "Hello, ${config.home.le}!"
     # '')
 
-    # pkgs.swayfx
-    # pkgs.neovim
-    pkgs.waybar
-    # pkgs.nwg-wrapper
-    pkgs.gammastep
-    pkgs.rofi
-    # pkgs.xkbd
-    pkgs.cava
+	# desktop utils
+	alacritty
+	waybar
+	wl-clipboard
+	flameshot
+	light
+	pipewire
+	swww
+	gammastep
+	tree
+	gnupg
+	radare2
+	mpd-small
+	nomacs
+	mpv
+	wev
+	mako
+	nwg-dock
+	nwg-wrapper
+	kdeconnect
+	localsend
+	android-file-transfer
+	rofi-wayland
+	keepassxc
+	pulseaudio
+	variety
+	qbittorrent
+	firefox-devedition
 
+	# tools
+	neofetch
+	qdirstat
+	jq
+	wmname
+	ripgrep
+	jellyfin-ffmpeg
+	htop-vim
+	sysstat
+	pciutils
+	usbutils
+	fzf
+	lm_sensors
+
+	# social media
+	discord
+	telegram-desktop
+	element
+	signal-desktop
+
+	# games
+	steam
+	playonlinux
+
+	# network & bluetooth
+	bluez
+	blueman
+	nmap
+	wireshark
+
+	# music
+	reaper
+	spicetify-cli
+	spotdl
+	# zotify
+	spotify
+
+	# images & animation
+	blender
+	krita
+	inkscape
+	gimp
+
+	# productivity
+	thunderbird
+	neomutt
+	obsidian
+	libreoffice
+	virtualbox
+	docker
+	glow
+	lsof
+
+	# programming
+	evcxr
+	rappel
+	gdb
+	neovim
+	ghidra
+	# android-studio
   ];
+
+
+  programs.git = {
+    enable = true;
+    userName = "luna-null";
+    userEmail = "elliqua@gmail.com";
+  };
+
+
+
+
+
+
+
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -93,6 +201,43 @@
     EDITOR = "nvim";
   };
 
+
+
+    # outputs = { nixpkgs, spicetify-nix, ...}: let # notice spicetify-nix here
+    #     pkgs = import nixpkgs { system = "x84_64-linux"; };
+    # in {
+    #   homeConfigurations."le" =  {
+    #     inherit pkgs;
+    #     extraSpecialArgs = {inherit spicetify-nix;};
+    #     modules = [
+    #         ./home.nix
+    #         ./spicetify.nix # file where you configure spicetify
+    #     ];
+    #   };
+    # };
+
+
+
+  # outputs = { nixpkgs, spicetify-nix, ...}: let # notice spicetify-nix here
+  #     pkgs = import nixpkgs { system = "x84_64-linux"; };
+  # in {
+  #   homeConfigurations."le" = home-manager.lib.homeManagerConfiguration {
+  #     inherit pkgs;
+  #     extraSpecialArgs = {inherit spicetify-nix;};
+  #     modules = [
+  #         ./home.nix
+  #         ./spicetify.nix # file where you configure spicetify
+  #     ];
+  #   };
+  # };
+
   # Let Home Manager install and manage itself.
+
+  # This value determines the Home Manager release that your configuration is
+  # compatible with. This helps avoid breakage when a new Home Manager release
+  # introduces backwards incompatible changes.
+  home.stateVersion = "24.05";
+
   programs.home-manager.enable = true;
 }
+

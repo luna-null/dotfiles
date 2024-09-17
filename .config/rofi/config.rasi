@@ -190,4 +190,8 @@ configuration {
 
 //@theme "/home/le/.local/share/rofi/themes/rounded-nord-dark.rasi"
 
-@theme "/usr/share/rofi/themes/Arc.rasi"
+//@theme "/usr/share/rofi/themes/Arc.rasi"
+
+//@theme "/home/le/.local/share/rofi/themes/squared-everforest.rasi"
+
+@theme "/nix/store/55f1ng3k9vdp32fwivyys3ylnx8wg0hf-rofi-1.7.5+wayland3/share/rofi/themes/Arc.rasi"

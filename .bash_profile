@@ -78,7 +78,6 @@ cps(){
 cheat() {
       curl cht.sh/$@
 }
-<<<<<<< HEAD
 
 power() {
     currentP=$(cat /sys/class/power_supply/BAT0/charge_now)
@@ -95,11 +94,8 @@ fi
 
 export FILE_MANAGER=ranger
 export XDG_CONFIG_HOME=/home/le/.config
-<<<<<<< HEAD
 export EDITOR=nvim
 export PDF_VIEWER=evince
-=======
->>>>>>> 67261ada362766d19b2095a9f6a492ddc45110bb
 
 export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 

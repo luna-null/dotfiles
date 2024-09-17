@@ -1,0 +1,1 @@
+{"steam_dirs":["$HOME/.local/share/Steam/steamapps"],"menu_command":"rofi -theme sidebar -mesg 'eidolon game:' -p '> ' -dmenu","prefix_command":"","blocked":["steamworks_common_redistributables","proton_3.7","proton_3.7_beta"]}

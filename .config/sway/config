@@ -179,10 +179,6 @@ input "1:1:AT_Translated_Set_2_keyboard"
     # xkb_file ~/.config/xkb/symbols/mth
 
     xkb_layout mth,ru
-    xkb_options 
-    {
-        "mod_led:compose"
-    }
     natural_scroll disabled 
     repeat_delay 250
     repeat_rate 36
@@ -372,8 +368,9 @@ for_window [window_type = "menu"] floating enable
 for_window [app_id = "floating"] floating enable title_format %title
 for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
 
-for_window [title = "Thunderbird Preferences"] floating enable
-for_window [app_id="(?i)Thunderbird" title=".*Reminder"] floating enable
+for_window [title = "thunderbird Preferences"] floating enable
+for_window [app_id="(?i)thunderbird" title=".*Reminder"] floating enable
+for_window [title = "" app_id = "thunderbird"] floating enable
 
 # for_window [name = "*Reminder"] floating enable
 for_window [title = "Manage KeeAgent.*"] floating enable
@@ -809,15 +806,19 @@ exec nwg-wrapper -t TODO -c todo.css -a start -p right -mt 50
 # Mac-like dock
 exec nwg-dock -d -nolauncher -nows
 
-# Swww
+# Swww-randomize: for getting a random wallpaper
 exec_always "swww-randomize $XDG_BACKGROUND_DIR"
 #  TODO: implement swww into swaybg or variety.
 
+# If that fails, just put on 
+exec_always "if [ $(pgrep swww | wc -l) -lt 2 ]; then swww-daemon & swww img $XDG_BACKGROUND_DIR/Live/normandy-sr2.gif; fi"
+
+
 # Variety, if swww fails
-exec_always "if [ $(pgrep swww | wc -l) -lt 2 ]; then pkill variety; variety --verbose; fi"
+exec_always "if [ $(pgrep variety & > /dev/null) -lt 1 ]; variety; fi"
 
 # Swaybg, if the others fail
-exec_always "if [ $(pgrep swww | wc -l) -lt 2 ]; then pkill variety; swaybg-randomize; fi"
+# exec_always "if [ $(pgrep swww | wc -l) -lt 2 ]; then pkill variety; swaybg-randomize; fi"
 
 
 # TODO get location through non-security-breaching means
