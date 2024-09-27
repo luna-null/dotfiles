@@ -13,6 +13,7 @@ return {
   dependencies = {
     -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
+    'theHamsta/nvim-dap-virtual-text',
 
     -- Required dependency for nvim-dap-ui
     'nvim-neotest/nvim-nio',
@@ -24,6 +25,7 @@ return {
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
     'mfussenegger/nvim-dap-python',
+
   },
   keys = function(_, keys)
     local dap = require 'dap'
@@ -65,6 +67,7 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        'debugpy',
       },
     opts = function(_, opts)
      -- add more things to the ensure_installed table protecting against community packs modifying it
@@ -220,7 +223,7 @@ return {
     dap.adapters.gdb = {
       type = "executable",
       command = "gdb",
-      args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
+      args = { "--interpreter=dap", "--init-eval-command", "set print pretty on" }
     }
     dap.configurations.c = {
       {
@@ -231,7 +234,7 @@ return {
           return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
         end,
         cwd = "${workspaceFolder}",
-        stopAtBeginningOfMainSubprogram = false,
+        stopAtBeginningOfMainSubprogram = true,
       },
       {
         name = "Select and attach to process",
@@ -246,64 +249,9 @@ return {
         end,
         cwd = '${workspaceFolder}'
       },
-      {
-        name = 'Attach to gdbserver :1234',
-        type = 'gdb',
-        request = 'attach',
-        target = 'localhost:1234',
-        program = function()
-           return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        end,
-        cwd = '${workspaceFolder}'
-      },
     }
-
-    require('dap-python').setup() -- Debug with default settings.
-    
-    -- We can set additional custom config by below mechanism as well
-    --[[
-    table.insert(require('dap').configurations.python,
-    {
-      type = 'python',
-      request = 'launch',
-      name = 'My custom launch configuration',
-      program = '${file}',
-      cwd = vim.fn.getcwd(),
-      console= "integratedTerminal",
-    })
-    --]]
-    
-    table.insert(require('dap').configurations.python,
-    {
-        name= "Pytest: Current File",
-        type= "python",
-        request= "launch",
-        module= "pytest",
-        args= {
-            "${file}",
-            "-sv",
-            "--log-cli-level=INFO",
-            "--log-file=test_out.log"
-        },
-        console= "integratedTerminal",
-      })
-    table.insert(require('dap').configurations.python,
-      {
-        name= "Profile python: Current File",
-        type= "python",
-        request= "launch",
-        module= "cProfile",
-        args= {
-            "-o",
-            "/tmp/profile.dat",
-            "${file}"
-        },
-        console= "integratedTerminal",
-      })
-
-
-
-
+    dap.configurations.cpp = dap.configurations.c
+    dap.configurations.rust = dap.configurations.c
 
     dap.set_log_level 'TRACE'
   end,

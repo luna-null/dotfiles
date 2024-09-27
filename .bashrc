@@ -4,10 +4,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec sway -c /home/le/.config/sway/config --debug > ~/sway.log
-fi
-
+# Moved to .bash_profile
+# if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+#   dbus-run-session sway -c /home/le/.config/sway/config -Dv > ~/sway.log
+# fi
+#
 # PS1='[\u@\h \W]\$ '
 PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 
@@ -67,7 +68,7 @@ alias .portage-config="cd /etc/portage"
 alias .config-home="cd $XDG_CONFIG_HOME"
 alias zotify='zotify --root-path=$(pwd)'
 alias diff='diff --color=auto'
-alias firefox='firefox-devedition'
+# alias firefox='firefox-devedition'
 alias track='track-command'
 
 mkcd() {
@@ -76,7 +77,7 @@ mkcd() {
 
 google() {
   url=https://www.google.com/search?q="$1"
-  firefox "$url"
+  firefox-devedition "$url"
 }
 
 set_path() {
@@ -142,13 +143,13 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 export XDG_HOME_DIR=/home/le
-
 export XDG_CURRENT_DESKTOP=Sway
-
-export FILE_MANAGER=ranger
 export XDG_CONFIG_HOME=/home/le/.config
+# export NIXOS_XDG_OPEN_USE_PORTAL=1
+
+export FILE_MANAGER=lf
 export EDITOR=nvim
-export PDF_VIEWER=evince
+export PDF_VIEWER=firefox-devedition
 export term=alacritty; export TERM=alacritty
 
 export PATH=$PATH:"$XDG_HOME_DIR"/.spicetify:"$XDG_HOME_DIR"/.dotnet/tools:"$XDG_HOME_DIR"/.gem/ruby/3.2.0/bin:/usr/bin/hla
@@ -161,7 +162,7 @@ export WINE_LARGE_ADDRESS_AWARE=1
 # WINEPREFIX=/usr/bin/setup_dxvk.sh install --symlink
 # WINEPREFIX=/usr/bin/setup_vkd3d_proton.sh install --symlink
 
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export DOTNET_CLI_TELEMETRY_OPTOUT=0
 export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
 
 export PYTHONSTARTUP=~/.pyrc
@@ -173,8 +174,29 @@ PERL_LOCAL_LIB_ROOT="/home/le/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT
 PERL_MB_OPT="--install_base \"/home/le/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/le/perl5"; export PERL_MM_OPT;
 
+export NIX_PATH="$NIX_PATH:nixpkgs-overlays=/etc/nixos/overlays"
+# export GTK_USE_PORTAL=1
+
+export NIXOS_XDG_OPEN_USE_PORTAL=1
+export _JAVA_AWT_WM_NONREPARENTING=1
+export MOZ_ENABLE_WAYLAND="1"
+
+
+
+
+
+
+LFCD="$GOPATH/src/github.com/gokcehan/lf/etc/lfcd.sh"  # source
+LFCD="$XDG_CONFIG_HOME/lf/lfcd.sh"                                #  pre-built binary, make sure to use absolute path
+if [ -f "$LFCD" ]; then
+    source "$LFCD"
+fi
 
 wmname LG3D # For ghidra to run
+
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
 
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \

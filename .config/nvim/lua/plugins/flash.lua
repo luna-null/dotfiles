@@ -1,23 +1,8 @@
-return
-{
+return {
   "folke/flash.nvim",
   event = "VeryLazy",
   ---@type Flash.Config
-  opts = {},
-  -- stylua: ignore
-  keys = {
-    { "s", mode = { "n", "x", "o" }, function() require("flash").jump({
-      remote_op = {
-        restore = true,
-        motion = true,
-      }
-    }) end, desc = "Flash" },
-    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-    { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-    { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-    { "<c-s>", mode = { "c" }, function() require("flash").toggle(true) end, desc = "Toggle Flash Search" },
-  },
-  config = {
+  opts = {
     -- labels = "abcdefghijklmnopqrstuvwxyz",
     labels = "asdfghjklqwertyuiopzxcvbnm",
     search = {
@@ -46,7 +31,6 @@ return
         "notify",
         "cmp_menu",
         "noice",
-        "flash_prompt",
         function(win)
           -- exclude non-focusable windows
           return not vim.api.nvim_win_get_config(win).focusable
@@ -55,11 +39,11 @@ return
       -- Optional trigger character that needs to be typed before
       -- a jump label can be used. It's NOT recommended to set this,
       -- unless you know what you're doing
-      trigger = "",
+      trigger = "`",
       -- max pattern length. If the pattern length is equal to this
       -- labels will no longer be skipped. When it exceeds this length
       -- it will either end in a jump or terminate the search
-      max_length = false, ---@type number|false
+      max_length = 2, ---@type number|false
     },
     jump = {
       -- save location in the jumplist
@@ -108,9 +92,9 @@ return
       -- Enable this to use rainbow colors to highlight labels
       -- Can be useful for visualizing Treesitter ranges.
       rainbow = {
-        enabled = false,
+        enabled = true,
         -- number between 1 and 9
-        shade = 5,
+        shade = 9,
       },
       -- With `format`, you can change how the label is rendered.
       -- Should return a list of `[text, highlight]` tuples.
@@ -121,7 +105,7 @@ return
       ---@field after boolean
       ---@type fun(opts:Flash.Format): string[][]
       format = function(opts)
-        return { { opts.match.label, opts.hl_group } }
+        return { { opts.match.label, opts.hl_group, } }
       end,
     },
     highlight = {
@@ -158,7 +142,7 @@ return
         -- when `true`, flash will be activated during regular search by default.
         -- You can always toggle when searching with `require("flash").toggle()`
         enabled = false,
-        highlight = { backdrop = false },
+        highlight = { backdrop = true },
         jump = { history = true, register = true, nohlsearch = true },
         search = {
           -- `forward` will be automatically set to the search direction
@@ -272,5 +256,13 @@ return
       -- `nil`: act as `true` for remote windows, `false` for the current window
       motion = false,
     },
-  }
+  },
+  -- stylua: ignore
+  keys = {
+    { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+    { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+    { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+    { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+  },
 }

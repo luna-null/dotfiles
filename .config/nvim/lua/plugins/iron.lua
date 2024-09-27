@@ -1,5 +1,5 @@
--- return {
---   "Vigemus/iron.nvim",
+return {
+  "Vigemus/iron.nvim",
 --   config = {
 --   -- Whether a repl should be discarded or not
 --     scratch_repl = true,
@@ -12,7 +12,7 @@
 --       },
 --       python = {
 --         command = { "python3" },  -- or { "ipython", "--no-autoindent" }
---         -- format = require("iron.fts.common").bracketed_paste_python
+--         format = require("iron.fts.common").bracketed_paste_python
 --       }
 --     },
 --     -- How the repl window will be displayed
@@ -50,4 +50,4 @@
 --   vim.keymap.set('n', '<space>rr', '<cmd>IronRestart<cr>'),
 --   vim.keymap.set('n', '<space>rf', '<cmd>IronFocus<cr>'),
 --   vim.keymap.set('n', '<space>rh', '<cmd>IronHide<cr>')
-return {}
+}

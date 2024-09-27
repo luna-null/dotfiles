@@ -147,7 +147,7 @@ workspace_auto_back_and_forth no
 assign [app_id="firefox"] workspace $ws1
 assign [app_id="firefox-developer-edition"] workspace $ws1
 assign [class="Spotify"] workspace $ws11
-assign [class="thunderbird"] workspace $ws12
+assign [app_id="thunderbird"] workspace $ws12
 assign [app_id="org.telegram.desktop"] workspace $ws13
 assign [class="discord"] workspace $ws13
 assign [class="Signal"] workspace $ws13
@@ -256,7 +256,7 @@ gaps outer 2
 seat seat0 xcursor_theme 'Skyrim' 36
 
 ### Bar
-exec_always 'pkill waybar; waybar 
+exec_always "pkill waybar; waybar"
 
 
 #########
@@ -370,7 +370,6 @@ for_window [app_id = "floating_update"] floating enable, resize set width 1000px
 
 for_window [title = "thunderbird Preferences"] floating enable
 for_window [app_id="(?i)thunderbird" title=".*Reminder"] floating enable
-for_window [title = "" app_id = "thunderbird"] floating enable
 
 # for_window [name = "*Reminder"] floating enable
 for_window [title = "Manage KeeAgent.*"] floating enable
@@ -509,8 +508,8 @@ set $gnome-schema org.gnome.desktop.interface
 # For toggling the bottom bar
 $bindsym $mod+b bar bottom mode toggle
 
-$bindsym $mod+Control+minus exec "bash ~/.scripts/show_background/show_background.sh"
-$bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "$WAIT_APPS" -eq 1 ]] && echo export WAIT_APPS=0 > ~/.scripts/show_background/cache"
+# $bindsym $mod+Control+minus exec "bash ~/.scripts/show_background/show_background.sh"
+# $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "$WAIT_APPS" -eq 1 ]] && echo export WAIT_APPS=0 > ~/.scripts/show_background/cache"
 
 
 ### Launches
@@ -782,10 +781,6 @@ exec_always {
 
 exec notify-send "$(systemctl --failed)"
 
-exec "hash dbus-update-activation-environment 2>/dev/null; \
-     systemctl --user import-environment WAYLAND_DISPLAY DISPLAY SSH_AUTH_SOCK SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE; \
-     dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SSH_AUTH_SOCK SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE; \
-     systemctl --user start sway-session.target"
 
 exec wvkbd-mobintl --hidden --fn 'DejaVuSansMono Nerd Font 13' -l 'simple,special,emoji' -L 240
 
@@ -804,37 +799,30 @@ exec signal-desktop
 exec nwg-wrapper -t TODO -c todo.css -a start -p right -mt 50
 
 # Mac-like dock
-exec nwg-dock -d -nolauncher -nows
+# exec nwg-dock -d -nolauncher -nows
 
 # Swww-randomize: for getting a random wallpaper
-exec_always "swww-randomize $XDG_BACKGROUND_DIR"
-#  TODO: implement swww into swaybg or variety.
+exec waypaper --random
 
-# If that fails, just put on 
-exec_always "if [ $(pgrep swww | wc -l) -lt 2 ]; then swww-daemon & swww img $XDG_BACKGROUND_DIR/Live/normandy-sr2.gif; fi"
-
-
-# Variety, if swww fails
-exec_always "if [ $(pgrep variety & > /dev/null) -lt 1 ]; variety; fi"
-
-# Swaybg, if the others fail
-# exec_always "if [ $(pgrep swww | wc -l) -lt 2 ]; then pkill variety; swaybg-randomize; fi"
-
-
-# TODO get location through non-security-breaching means
-exec_always auto-gammastep;
+exec auto-gammastep
 
 ## Enable it in your local sway config to get a clipboard manager via $mod+y
 # exec wl-paste -t text --watch myclipman.sh
 
 
 ## KDEConnect
-exec kdeconnectd
 exec --no-startup-id kdeconnect-indicator
-exec kde-connect-sms
+exec kdeconnect-sms
 
 # Disable the laptop screen when the lid is closed.
 bindswitch --reload --locked lid:on exec_always "$lock & systemctl suspend"
 bindswitch --reload --locked lid:off exec_always "if ! pgrep waybar &>/dev/null; then waybar; fi"
 
 
+
+
+
+exec "hash dbus-update-activation-environment 2>/dev/null; \
+     systemctl --user import-environment WAYLAND_DISPLAY DISPLAY SSH_AUTH_SOCK SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE; \
+     dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SSH_AUTH_SOCK SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE; \
+     systemctl --user start sway-session.target"

@@ -1,7 +1,9 @@
 return {
   'nvimdev/lspsaga.nvim',
   config = function()
-    require('lspsaga').setup {}
+    require('lspsaga').setup ({
+
+    })
     vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<CR>')
     vim.keymap.set('n', '<Space>f', '<cmd>Lspsaga finder<CR>')
     vim.keymap.set('n', 'gp', '<cmd>Lspsaga peek_definition<CR>')

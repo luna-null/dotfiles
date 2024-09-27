@@ -1,0 +1,786 @@
+// vim: set filetype=xkb : //
+
+partial alphanumeric_keys modifier_keys keypad_keys
+
+xkb_symbols "mth"
+{
+
+	// Captions for the large table below
+	// --------------------------------------------------------------
+	// Xorg: Access key ::
+	//		Level1: none			Level2:	Shift
+	//		Level3: AltGr			Level4: Shift + AltGr
+	//		Level5: rCtrl			Level6: Shift + rCtrl
+	//		Level7: AltGr + rCtrl		Level8: Shift + AltGr + rCtrl
+
+
+	//// Function Row
+	//// --------------------------------------------------------------
+
+	key.type = "Controllable";
+
+	key <F1>
+	{[
+		F1,			XF86_Switch_VT_1
+	]};
+
+	key <F2>
+	{[
+		F2,			XF86_Switch_VT_2
+	]};
+
+	key <F3>
+	{[
+		F3,			XF86_Switch_VT_3
+	]};
+
+	key <F4>
+	{[
+		F4,			XF86_Switch_VT_4
+	]};
+
+	key <F5>
+	{[
+		F5,			XF86_Switch_VT_5
+	]};
+
+	key <F6>
+	{[
+		F6,			XF86_Switch_VT_6
+	]};
+
+	key <F7>
+	{[
+		F7,			XF86_Switch_VT_7
+	]};
+
+	key <F8>
+	{[
+		F8,			XF86_Switch_VT_8
+	]};
+
+	key <F9>
+	{[
+		F9,			XF86_Switch_VT_9
+	]};
+
+	key <F10>
+	{[
+		F10,		XF86_Switch_VT_10
+	]};
+
+	key <F11>
+	{[
+		F11,		XF86_Switch_VT_11
+	]};
+
+	key <F12>
+	{[
+		F12,		XF86_Switch_VT_12
+	]};
+
+
+	//// Number Row
+	//// --------------------------------------------------------------
+
+	key.type[Group1] = "EIGHT_LEVEL_WITH_LEVEL5_LOCK";
+
+	key <ESC>
+	{[
+		Escape,				Escape,
+		Escape,				Escape,
+		Escape,				Escape,
+		Escape,				Escape
+
+	]};
+
+	key <TLDE>
+	{[
+		grave,				U007E,
+		dead_grave,			dead_tilde,
+		dead_grave,			dead_tilde,
+		NoSymbol,			U02DE
+	]};
+
+	key <AE01>
+	{[
+		1,					exclam,
+		percent,			exclam,
+		exclamdown,			ordfeminine,
+		onesubscript,		onesuperior
+	]};
+
+	key <AE02>
+	{[
+		2,						at,
+		U005E,					at,
+		section,				masculine,
+		twosuperior,			twosubscript
+	]};
+
+	key <AE03>
+	{[
+		3,						numbersign,
+		ampersand,				numbersign,
+		numerosign,				logicaland,
+		threesuperior,			threesubscript
+	]};
+
+	key <AE04>
+	{[
+		4,						dollar,
+		bar,					dollar,
+		EuroSign,				U203A,
+		U22A5,					femalesymbol
+	]};
+
+	key <AE05>
+	{[
+		5,						percent,
+		5,						percent,
+		U2039,					logicalor,
+		U2221,					U2039
+	]};
+
+	key <AE06>
+	{[
+		6,						U005E,
+		slash,					slash,
+		sterling,				cent,
+		U2225,					periodcentered
+	]};
+
+	key <AE07>
+	{[
+		7,						ampersand,
+		asterisk,				asterisk,
+		currency,				U26A5,
+		rightarrow,				NoSymbol
+	]};
+
+	key <AE08>
+	{[
+		8,						asterisk,
+		minus,					minus,
+		Tab,					ISO_Left_Tab,
+		partialderivative,	NoSymbol
+	]};
+
+	key <AE09>
+	{[
+		9,						parenleft,
+		U27E8,					U22EE,
+		dead_belowdot,			dead_breve,
+		variation,				NoSymbol
+	]};
+
+	key <AE10>
+	{[
+		0,						parenright,
+		U27E9,					NoSymbol,
+		dead_abovering,			dead_dasia,
+		U20DE,					zerosubscript
+	]};
+
+	key <AE11>
+	{[
+		minus,					underscore,
+		emptyset,				U2011,
+		dead_macron,			dead_belowdot,
+		enfilledcircbullet,		NoSymbol
+	]};
+
+	key <AE12>
+	{[
+		equal,					plus,
+		multiply,				division,
+		dead_doubleacute,		dead_horn,
+		NoSymbol,				NoSymbol
+	]};
+
+	key <BKSP>
+	{[
+		BackSpace,				BackSpace,
+		BackSpace,				BackSpace,
+		BackSpace,				BackSpace,
+		BackSpace,				BackSpace
+	]};
+
+
+	//// Top row
+	//// --------------------------------------------------------------
+
+	key.type[Group1] = "EIGHT_LEVEL_ALPHABETIC_WITH_LEVEL5_LOCK";
+
+	// The Tab key has Compose on the Seventh and Eighth layer (AltGr + rCtrl + Tab)
+	// --------------------------------------------------------------
+
+	key <TAB>
+	{[
+	    Tab,			ISO_Left_Tab,
+	    Multi_key,		Multi_key,
+	    Multi_key,		Multi_key,
+	    Multi_key,		Multi_key
+	]};
+
+	key <AD01>
+	{[
+		q,				Q,
+		exclam,			percent,
+		NoSymbol,		NoSymbol,
+		Greek_xi,		U211A
+	]};
+
+	key <AD02>
+	{[
+		w,				W,
+		at,				U005E,
+		NoSymbol,		NoSymbol,
+		U03C9,			U03A9
+	]};
+
+	key <AD03>
+	{[
+		e,				E,
+		numbersign,		ampersand,
+		NoSymbol,		NoSymbol,
+		Greek_epsilon,	U2203
+	]};
+
+	key <AD04>
+	{[
+		r,				R,
+		dollar,			asterisk,
+		NoSymbol,		NoSymbol,
+		Greek_rho,		U211D
+	]};
+
+	key <AD05>
+	{[
+		t,				T,
+		grave,			U007E,
+		NoSymbol,		NoSymbol,
+		Greek_tau,		NoSymbol
+	]};
+
+	key <AD06>
+	{[
+		y,				Y,
+		KP_7,			KP_Home,
+		NoSymbol,		NoSymbol,
+		Greek_theta,	Greek_THETA
+	]};
+
+	key <AD07>
+	{[
+		u,				U,
+		KP_8,			KP_Up,
+		NoSymbol,		NoSymbol,
+		Greek_upsilon,	union
+	]};
+
+	key <AD08>
+	{[
+		i,				I,
+		KP_9,			KP_Prior,
+		NoSymbol,		NoSymbol,
+		Greek_iota,		U2207
+	]};
+
+	key <AD09>
+	{[
+		o,				O,
+		plus,			plus,
+		NoSymbol,		NoSymbol,
+		Greek_phi,		Greek_PHI
+	]};
+
+	key <AD10>
+	{[
+		p,				P,
+		ampersand,		NoSymbol,
+		NoSymbol,		NoSymbol,
+		Greek_pi,		Greek_PI
+	]};
+
+	key <AD11>
+	{[
+		bracketleft,	braceleft,
+		U27E8,			NoSymbol,
+		NoSymbol,		NoSymbol,
+		Greek_final,	partialderivative
+	]};
+
+	key <AD12>
+	{[
+		bracketright,	braceright,
+		U27E9,			NoSymbol,
+		NoSymbol,		NoSymbol,
+		integral,		NoSymbol
+	]};
+
+	key.type[Group1] = "EIGHT_LEVEL_WITH_LEVEL5_LOCK";
+
+	key <BKSL>
+	{[
+		backslash,		bar,
+		backslash,		bar,
+		NoSymbol,		NoSymbol,
+		NoSymbol,	    NoSymbol
+	]};
+
+
+	//// Middle Row
+	//// --------------------------------------------------------------
+
+	key.type[Group1] = "EIGHT_LEVEL_ALPHABETIC_WITH_LEVEL5_LOCK";
+
+	key <CAPS>
+	{
+		[
+			Escape,						NoSymbol,
+			ISO_Level3_Lock,			NoSymbol,
+			ISO_Level5_Lock,			NoSymbol,
+			NoSymbol,					NoSymbol	// would be ISO_Level7_Lock, but that doesn't exist for some reason
+		],
+		actions[Group1] =
+		[
+			NoAction(),					NoAction(),
+			LockMods(mods=Mod5),		LockMods(mods=Mod5),
+			LockMods(mods=Mod3),		LockMods(mods=Mod3),
+			LockMods(mods=Mod5+Mod3),	LockMods(mods=Mod5+Mod3)
+		],
+		repeat=yes
+	};
+
+	key <AC01>
+	{[
+		a,						A,
+		asterisk,				ampersand,
+		aacute,					Aacute,
+		Greek_alpha,			U2135
+	]};
+
+	key <AC02>
+	{[
+		s,						S,
+		slash,					backslash,
+		ssharp,					section,
+		Greek_sigma,			Greek_SIGMA
+	]};
+
+	key <AC03>
+	{[
+		d,						D,
+		equal,					plus,
+		NoSymbol,				NoSymbol,
+		Greek_delta,			Greek_DELTA
+	]};
+
+	key <AC04>
+	{[
+		f,						F,
+		minus,					underscore,
+		NoSymbol,				integral,
+		Greek_phi,				Greek_PHI
+	]};
+
+	key <AC05>
+	{[
+		g,						G,
+		dollar,					exclam,
+		NoSymbol,				NoSymbol,
+		Greek_gamma,			Greek_GAMMA
+	]};
+
+	key <AC06>
+	{[
+		h,						H,
+		KP_4,					KP_Left,
+		NoSymbol,				NoSymbol,
+		Greek_eta,				NoSymbol
+	]};
+
+	key <AC07>
+	{[
+		j,						J,
+		KP_5,					KP_Begin,
+		NoSymbol,				NoSymbol,
+		Greek_psi,				Greek_PSI
+	]};
+
+	key <AC08>
+	{[
+		k,						K,
+		KP_6,					KP_Right,
+		NoSymbol,				NoSymbol,
+		Greek_kappa,			U211D
+	]};
+
+	key <AC09>
+	{[
+		l,						L,
+		plus,					plus,
+		NoSymbol,				NoSymbol,
+		Greek_lambda,			Greek_LAMBDA
+	]};
+
+	key <AC10>
+	{[
+		semicolon,				colon,
+		dollar,					U2113,
+		dead_ogonek,			dead_diaeresis,
+		leftsinglequotemark,	leftdoublequotemark
+	]};
+
+	key <AC11>
+	{[
+		apostrophe,				quotedbl,
+		at,						at,
+		dead_acute,				dead_hook,
+		rightsinglequotemark,	rightdoublequotemark
+	]};
+
+	key <RTRN>
+	{[
+		Return,					Return,
+		Return,					Return,
+		Return,					Return,
+		Return,					Return
+	]};
+
+
+	//// Bottom Row
+	//// --------------------------------------------------------------
+
+	key.type[Group1] = "EIGHT_LEVEL_ALPHABETIC_WITH_LEVEL5_LOCK";
+
+	key <LFSH>
+	{[
+		Shift_L,		Shift_L,
+		Shift_L,		Shift_L,
+		Shift_L,		Shift_L,
+		Shift_L,		Shift_L
+	]};
+
+	key <AB01>
+	{[
+		z,				Z,
+		bracketleft,	bracketright,
+		NoSymbol,		NoSymbol,
+		Greek_zeta,		U2124
+	]};
+
+	key <AB02>
+	{[
+		x,				X,
+		parenleft,		parenright,
+		NoSymbol,		NoSymbol,
+		U03F5,			intersection
+	]};
+
+	key <AB03>
+	{[
+		c,				C,
+		braceleft,		braceright,
+		NoSymbol,		NoSymbol,
+		Greek_chi,		U2102
+	]};
+
+	key <AB04>
+	{[
+		v,				V,
+		less,			greater,
+		NoSymbol,		NoSymbol,
+		U2200,			U21D0
+	]};
+
+	key <AB05>
+	{[
+		b,				B,
+		KP_0,			KP_Insert,
+		NoSymbol,		NoSymbol,
+		Greek_beta,		U21D2
+	]};
+
+	key <AB06>
+	{[
+		n,				N,
+		KP_1,			KP_End,
+		NoSymbol,		NoSymbol,
+		Greek_nu,		U2115
+	]};
+
+	key <AB07>
+	{[
+		m,				M,
+		KP_2,			KP_Down,
+		NoSymbol,		NoSymbol,
+		Greek_mu,		U2133
+	]};
+
+	key.type[Group1] = "EIGHT_LEVEL_WITH_LEVEL5_LOCK";
+
+	key <AB08>
+	{[
+		comma,			less,
+		KP_3,			KP_Next,
+		dead_cedilla,	dead_caron,
+		ifonlyif,		U27E8
+	]};
+
+	key <AB09>
+	{[
+		period,			greater,
+		period,			KP_Delete,
+		dead_abovedot,	dead_circumflex,
+		radical,		U27E9
+	]};
+
+	key.type[Group1] = "EIGHT_LEVEL_ALPHABETIC_WITH_LEVEL5_LOCK";
+
+	key <AB10>
+	{[
+		slash,			question,
+		KP_Enter,		KP_Enter,
+		dead_stroke,	questiondown,
+		Greek_theta,	Greek_THETA
+	]};
+
+	key <RTSH>
+	{[
+		Shift_R,		Caps_Lock,
+		Shift_R,		Shift_R,
+		Shift_R,		Shift_R,
+		Shift_R,		Shift_R
+
+	]};
+
+
+	//// Very Bottom Row
+	//// --------------------------------------------------------------
+	key.type[Group1] = "EIGHT_LEVEL_WITH_LEVEL5_LOCK";
+
+	key <LCTL>
+	{[
+		Control_L,		Control_L,
+		Control_L,		Control_L,
+		Control_L,		Control_L,
+		Control_L,		Control_L
+	]};
+
+	key <LWIN>
+	{[
+		Super_L,		Super_L,
+		Super_L,		Super_L,
+		Super_L,		Super_L,
+		Super_L,		Super_L
+	]};
+
+	key <LALT>
+	{[
+		Alt_L,			Meta_L,
+		Alt_L,			Meta_L,
+		Alt_L,			Meta_L,
+		Alt_L,			Meta_L
+
+	]};
+
+	key <SPCE>
+	{[
+		space,				space,
+		space,				space,
+		space,				nobreakspace,
+		ISO_Next_Group,		ISO_Next_Group
+	]};
+
+	key <RALT>
+	{
+		[
+			ISO_Level3_Shift,	ISO_Level3_Shift,
+			ISO_Level3_Shift,	ISO_Level3_Shift,
+			ISO_Level3_Shift,	ISO_Level3_Shift,
+			ISO_Level3_Shift,	ISO_Level3_Shift
+		] // ,
+		// actions[Group1] =
+		// [
+		// 	NoAction(),			NoAction(),
+		// 	NoAction(),			NoAction(),
+		// 	NoAction(),			NoAction(),
+		// 	NoAction(),			NoAction()
+		// ]
+	};
+
+	key <RCTL>
+	{[
+		ISO_Level5_Shift,	ISO_Level5_Shift,
+		ISO_Level5_Shift,	ISO_Level5_Shift,
+		ISO_Level5_Shift,	ISO_Level5_Shift,
+		ISO_Level5_Shift,	ISO_Level5_Shift
+	]};
+
+
+	//// Numpad Keys
+	//// --------------------------------------------------------------
+
+	// The former Numlock key:
+
+	key <NMLK>
+	{[
+		Tab,			ISO_Left_Tab,
+		equal,	    	approxeq,
+		notequal,		Pointer_EnableKeys,
+		identical,		NoSymbol
+	]};
+
+	// Topmost row
+	// --------------------------------------------------------------
+	key <KPDV>
+	{[
+		NoSymbol,		NoSymbol,
+		division,		U2300,
+		U2044,			NoSymbol,
+		U2223,			NoSymbol
+	]};
+
+	key <KPMU>
+	{[
+		KP_Multiply,	KP_Multiply,
+		U22C5,	    	U2299,
+		multiply,		NoSymbol,
+		U2297,	    	NoSymbol
+	]};
+
+	key <KPSU>
+	{[
+		KP_Subtract,	KP_Subtract,
+		U2212,	    	U2296,
+		U2216,			NoSymbol,
+		U2238,	    	NoSymbol
+	]};
+
+	// Top row
+	// --------------------------------------------------------------
+	key <KP7>
+	{[
+		KP_7,			U2714,
+		U2195,			U226A,
+		KP_Home,    	KP_Home,
+		upstile,		NoSymbol
+	]};
+
+	key <KP8>
+	{[
+		KP_8,			U2718,
+		uparrow,    	intersection,
+		KP_Up,			KP_Up,
+		U22C2,	    	NoSymbol
+	]};
+
+	key <KP9>
+	{[
+		KP_9,	    	dagger,
+		U20D7,			U226B,
+		KP_Prior,   	KP_Prior,
+		U2309,			NoSymbol
+	]};
+
+	key <KPAD>
+	{[
+		KP_Add,			KP_Add,
+		plusminus,  	U2295,
+		U2213,			NoSymbol,
+		U2214,			NoSymbol
+	]};
+
+	// Middle row
+	// --------------------------------------------------------------
+
+	key <KP4>
+	{[
+		KP_4,	    	club,
+		leftarrow,  	includedin,
+		KP_Left,    	KP_Left,
+		U2286,	    	NoSymbol
+	]};
+
+	key  <KP5>
+	{[
+		KP_5,			EuroSign,
+		colon,			U22B6,
+		KP_Begin,		KP_Begin,
+		U22B7,			NoSymbol
+	]};
+
+	key  <KP6>
+	{[
+		KP_6,	    	U2023,
+		rightarrow,		includes,
+		KP_Right,   	KP_Right,
+		U2287,			NoSymbol
+	]};
+
+	// Bottom row
+	// --------------------------------------------------------------
+
+	key <KP1>
+	{[
+		KP_1,	    	diamond,
+		U2194,	    	lessthanequal,
+		KP_End,	    	KP_End,
+		downstile,		NoSymbol
+	]};
+
+	key <KP2>
+	{[
+		KP_2,	    	heart,
+		downarrow,		union,
+		KP_Down,    	KP_Down,
+		U22C3,	    	NoSymbol
+	]};
+
+	key <KP3>
+	{[
+		KP_3,	    	U2660,
+		U21CC,	    	greaterthanequal,
+		KP_Next,		KP_Next,
+		U230B,			NoSymbol
+	]};
+
+	key <KPEN>
+	{[
+		KP_Enter,		KP_Enter,
+		KP_Enter,		KP_Enter,
+		KP_Enter,		KP_Enter,
+		KP_Enter,		KP_Enter
+	]};
+
+	key <KPEQ>
+	{[
+		KP_Equal,   	KP_Equal,
+		KP_Equal,   	KP_Equal,
+		KP_Equal,   	KP_Equal,
+		KP_Equal,   	KP_Equal
+	]};
+
+	// Bottommost row
+	// --------------------------------------------------------------
+
+	key <KP0>
+	{[
+		KP_0,			U2423,
+		percent,		NoSymbol,
+		permille,		U25A1,
+		NoSymbol,		NoSymbol
+	]};
+
+	key <KPDL>
+	{[
+		KP_Separator,	period,
+		comma,			minutes,
+		KP_Delete,		KP_Delete,
+		seconds,		NoSymbol
+	]};
+
+};
+
