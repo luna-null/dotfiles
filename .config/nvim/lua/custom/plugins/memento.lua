@@ -1,3 +1,0 @@
-return {
-    'gaborvecsei/memento.nvim',
-}

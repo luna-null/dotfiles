@@ -4,25 +4,25 @@
 draw_bold_text_with_bright_colors = true
 
 [env]
-# TERM = "xterm-256color"
+TERM = "xterm-256color"
 
 [font]
 size = 14.0
 
 [font.bold]
-family = "SauceCodePro Nerd Font Mono"
+family = "Source Code Pro"
 style = "Bold"
 
 [font.bold_italic]
-family = "SauceCodePro Nerd Font Mono"
+family = "Source Code Pro"
 style = "Bold Italic"
 
 [font.italic]
-family = "SauceCodePro Nerd Font Mono"
+family = "Source Code Pro"
 style = "Italic"
 
 [font.normal]
-family = "SauceCodePro Nerd Font Mono"
+family = "Source Code Pro"
 style = "Regular"
 
 [font.offset]

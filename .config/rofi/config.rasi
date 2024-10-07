@@ -196,4 +196,10 @@ configuration {
 
 //@theme "/nix/store/55f1ng3k9vdp32fwivyys3ylnx8wg0hf-rofi-1.7.5+wayland3/share/rofi/themes/Arc.rasi"
 
+//@theme "/nix/store/w4xrwdaijpf2f7rl275n3swkfllgk8fs-rofi-1.7.5+wayland3/share/rofi/themes/Adapta-Nokto.rasi"
+
+//@theme "/nix/store/55f1ng3k9vdp32fwivyys3ylnx8wg0hf-rofi-1.7.5+wayland3/share/rofi/themes/Adapta-Nokto.rasi"
+
+//@theme "/home/le/.local/share/rofi/themes/squared-everforest.rasi"
+
 @theme "/nix/store/w4xrwdaijpf2f7rl275n3swkfllgk8fs-rofi-1.7.5+wayland3/share/rofi/themes/Adapta-Nokto.rasi"

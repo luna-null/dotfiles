@@ -1,3 +1,0 @@
-return {
-  'davidgranstrom/osc.nvim',
-}

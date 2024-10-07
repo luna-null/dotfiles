@@ -89,7 +89,7 @@ xkb_symbols "mth"
 	{[
 		Escape,				Escape,
 		Escape,				Escape,
-		Escape,				Escape,
+		U238B,				Escape,
 		Escape,				Escape
 
 	]};
@@ -177,7 +177,7 @@ xkb_symbols "mth"
 	key <AE10>
 	{[
 		0,						parenright,
-		U27E9,					NoSymbol,
+		U23DD,					U23DC,
 		dead_abovering,			dead_dasia,
 		U20DE,					zerosubscript
 	]};
@@ -202,10 +202,9 @@ xkb_symbols "mth"
 	{[
 		BackSpace,				BackSpace,
 		BackSpace,				BackSpace,
-		BackSpace,				BackSpace,
+		BackSpace,				U232B,
 		BackSpace,				BackSpace
 	]};
-
 
 	//// Top row
 	//// --------------------------------------------------------------
@@ -219,7 +218,7 @@ xkb_symbols "mth"
 	{[
 	    Tab,			ISO_Left_Tab,
 	    Multi_key,		Multi_key,
-	    Multi_key,		Multi_key,
+	    U2B7E,			Multi_key,
 	    Multi_key,		Multi_key
 	]};
 
@@ -251,7 +250,7 @@ xkb_symbols "mth"
 	{[
 		r,				R,
 		dollar,			asterisk,
-		NoSymbol,		NoSymbol,
+		NoSymbol,		U2622,
 		Greek_rho,		U211D
 	]};
 
@@ -260,7 +259,7 @@ xkb_symbols "mth"
 		t,				T,
 		grave,			U007E,
 		NoSymbol,		NoSymbol,
-		Greek_tau,		NoSymbol
+		Greek_tau,		U2122
 	]};
 
 	key <AD06>
@@ -283,7 +282,7 @@ xkb_symbols "mth"
 	{[
 		i,				I,
 		KP_9,			KP_Prior,
-		NoSymbol,		NoSymbol,
+		U2148,			integral,
 		Greek_iota,		U2207
 	]};
 
@@ -291,7 +290,7 @@ xkb_symbols "mth"
 	{[
 		o,				O,
 		plus,			plus,
-		NoSymbol,		NoSymbol,
+		NoSymbol,			NoSymbol,
 		Greek_phi,		Greek_PHI
 	]};
 
@@ -299,24 +298,24 @@ xkb_symbols "mth"
 	{[
 		p,				P,
 		ampersand,		NoSymbol,
-		NoSymbol,		NoSymbol,
+		NoSymbol,		U23FB,
 		Greek_pi,		Greek_PI
 	]};
 
 	key <AD11>
 	{[
 		bracketleft,	braceleft,
-		U27E8,			NoSymbol,
-		NoSymbol,		NoSymbol,
-		Greek_final,	partialderivative
+		U2264,			U226A,
+		U27E8,			U22A2,
+		Greek_omega,	Greek_OMEGA
 	]};
 
 	key <AD12>
 	{[
 		bracketright,	braceright,
-		U27E9,			NoSymbol,
-		NoSymbol,		NoSymbol,
-		integral,		NoSymbol
+		U2265,			U226B,
+		U27E9,			U22A3,
+		U2295,			U2297
 	]};
 
 	key.type[Group1] = "EIGHT_LEVEL_WITH_LEVEL5_LOCK";
@@ -338,7 +337,7 @@ xkb_symbols "mth"
 	key <CAPS>
 	{
 		[
-			Escape,						NoSymbol,
+			Escape,						Return,
 			ISO_Level3_Lock,			NoSymbol,
 			ISO_Level5_Lock,			NoSymbol,
 			NoSymbol,					NoSymbol	// would be ISO_Level7_Lock, but that doesn't exist for some reason
@@ -357,7 +356,7 @@ xkb_symbols "mth"
 	{[
 		a,						A,
 		asterisk,				ampersand,
-		aacute,					Aacute,
+		aacute,					U2200,
 		Greek_alpha,			U2135
 	]};
 
@@ -373,7 +372,7 @@ xkb_symbols "mth"
 	{[
 		d,						D,
 		equal,					plus,
-		NoSymbol,				NoSymbol,
+		partialderivative,		U00D0,
 		Greek_delta,			Greek_DELTA
 	]};
 
@@ -397,15 +396,15 @@ xkb_symbols "mth"
 	{[
 		h,						H,
 		KP_4,					KP_Left,
-		NoSymbol,				NoSymbol,
-		Greek_eta,				NoSymbol
+		U210f,					U210b,
+		Greek_eta,				U210d
 	]};
 
 	key <AC07>
 	{[
 		j,						J,
 		KP_5,					KP_Begin,
-		NoSymbol,				NoSymbol,
+		U2149,					NoSymbol,
 		Greek_psi,				Greek_PSI
 	]};
 
@@ -414,14 +413,14 @@ xkb_symbols "mth"
 		k,						K,
 		KP_6,					KP_Right,
 		NoSymbol,				NoSymbol,
-		Greek_kappa,			U211D
+		Greek_kappa,			NoSymbol
 	]};
 
 	key <AC09>
 	{[
 		l,						L,
 		plus,					plus,
-		NoSymbol,				NoSymbol,
+		U2113,					U2112,
 		Greek_lambda,			Greek_LAMBDA
 	]};
 
@@ -445,7 +444,7 @@ xkb_symbols "mth"
 	{[
 		Return,					Return,
 		Return,					Return,
-		Return,					Return,
+		U23CE,					Return,
 		Return,					Return
 	]};
 
@@ -459,8 +458,8 @@ xkb_symbols "mth"
 	{[
 		Shift_L,		Shift_L,
 		Shift_L,		Shift_L,
-		Shift_L,		Shift_L,
-		Shift_L,		Shift_L
+		U21E7,			Shift_L,
+		U21EA,			Shift_L
 	]};
 
 	key <AB01>
@@ -565,8 +564,8 @@ xkb_symbols "mth"
 	{[
 		Control_L,			Control_L,
 		Control_L,			Control_L,
-		Control_L,			Control_L,
-		Control_L,			Control_L
+		U2303,				Control_L,
+		Control_L,			U2303
 	]};
 
 	key <LWIN>
@@ -581,7 +580,7 @@ xkb_symbols "mth"
 	{[
 		Alt_L,				Meta_L,
 		Alt_L,				Meta_L,
-		Alt_L,				Meta_L,
+		U2325,				Meta_L,
 		Alt_L,				Meta_L
 
 	]};
@@ -590,7 +589,7 @@ xkb_symbols "mth"
 	{[
 		space,				space,
 		space,				space,
-		space,				nobreakspace,
+		U2423,				nobreakspace,
 		ISO_Next_Group,		ISO_Next_Group
 	]};
 

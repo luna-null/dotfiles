@@ -4,13 +4,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Moved to .bash_profile
-# if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-#   dbus-run-session sway -c /home/le/.config/sway/config -Dv > ~/sway.log
-# fi
-#
-# PS1='[\u@\h \W]\$ '
-PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\n\$ "
 
 # powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
@@ -154,9 +148,6 @@ export term=alacritty; export TERM=alacritty
 
 export PATH=$PATH:"$XDG_HOME_DIR"/.spicetify:"$XDG_HOME_DIR"/.dotnet/tools:"$XDG_HOME_DIR"/.gem/ruby/3.2.0/bin:/usr/bin/hla
 
-export hlalib=/usr/bin/hla/hlalib
-export hlainc=/usr/bin/hla/include
-
 export WINEFSYNC=1
 export WINE_LARGE_ADDRESS_AWARE=1
 # WINEPREFIX=/usr/bin/setup_dxvk.sh install --symlink
@@ -177,11 +168,12 @@ PERL_MM_OPT="INSTALL_BASE=/home/le/perl5"; export PERL_MM_OPT;
 export NIX_PATH="$NIX_PATH:nixpkgs-overlays=/etc/nixos/overlays"
 # export GTK_USE_PORTAL=1
 
-export NIXOS_XDG_OPEN_USE_PORTAL=1
+# export NIXOS_XDG_OPEN_USE_PORTAL=1
 export _JAVA_AWT_WM_NONREPARENTING=1
 export MOZ_ENABLE_WAYLAND="1"
 
-
+# systemctl --user import-environment PATH
+# systemctl --user restart xdg-desktop-portal.service
 
 
 
