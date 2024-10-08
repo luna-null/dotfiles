@@ -1,0 +1,243 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/myautotype
+
+TIME_STAMP="20220627.203350"
+
+# Copyright (C) 2019-2021 Bob Hepple < bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+initialise() {
+    PROG="$(basename "$0")"
+    VERSION="$TIME_STAMP"
+    STRING_FILE="$HOME/.config/$PROG"
+    ARGUMENTS="<key>"
+    SHORT_DESC=""
+    USAGE="
+
+Autotype using xvkdb/xdotool/ydotool/wtype using a key-value pair from
+$STRING_FILE indexed by <key>.
+
+Format of the configurations file is one line per key:
+
+<n> text <string>
+<n> lookup <string> ... uses the 'lookup' program (same as 'exec lookup <string>')
+<n> exec <command>  ... executes the command
+<n> copy <string>   ... copies the string to CLIPBOARD (using wl-copy)
+<n> key <keyname>   ... presses the keyname(s) 
+...
+
+<n> is the key number (ignored - but it's a good idea to keep them in
+order)
+
+<keyname> differs between ydotool and wtype:
+for ydotool, use KEY_ keycodes from /usr/include/linux/input-event-codes.h eg 28:1 28:0 is 'KEY_ENTER down and up'
+for wtype, see keynames in /usr/include/xkbcommon/xkbcommon-keysyms.h eg 'Return'
+
+<string> can include \\n characters (but no other control characters)
+"
+    ARGS="
+ARGP_DELETE=quiet
+ARGP_VERSION=$VERSION
+ARGP_PROG=$PROG
+ARGP_PREFIX=
+##############################################################
+#OPTIONS:
+#name=default  sname arg       type range   description
+##############################################################
+COPY_TO_KEY='' c     index     i    '0-9'   copy clipboard to key <i>
+PRIMARY=''     p     ''        b    ''      use primary rather than clipboard
+LIST=''        l     ''        b    ''      list key assignments
+WTYPE=''       w     ''        b    ''      force wtype/xvkbd (default is ydotool/xdotool)
+DELAY='20'     d     delay     i    ''      delay between chars (wtype does not have this)
+GUI=''         g     ''        b    ''      use a gui (wofi) to select a string
+##############################################################
+ARGP_ARGS=[--] $ARGUMENTS
+ARGP_SHORT=$SHORT_DESC
+ARGP_USAGE=$USAGE"
+
+    exec 4>&1
+    eval "$(echo "$ARGS" | argp.sh "$@" 3>&1 1>&4 || echo exit $? )"
+    exec 4>&-
+
+    NEW_ARGS=( "$@" )
+    return 0
+}
+
+print_strings() {
+    i=0
+    for each in "${STRINGS[@]}"; do
+        printf '%i %s\n' $i "${each}"
+        i=$(( i + 1 ))
+    done
+}
+
+type argp.sh &> /dev/null && initialise "$@" && set -- "${NEW_ARGS[@]:-}"
+
+[[ "$LIST" ]] && {
+    cat "$STRING_FILE"
+    exit 0
+}
+
+# read strings file:
+mapfile -t STRINGS < <( sed -r 's/^[0-9]+ //' "$STRING_FILE" )
+
+[[ "${COPY_TO_KEY:-}" ]] && {
+    NEWSTRING=$(
+        # shellcheck disable=SC2030
+        if [[ "$SWAYSOCK" ]]; then
+            OPT=""
+            [[ "${PRIMARY}" ]] && OPT=-p
+            wl-paste $OPT
+        else
+            OPT="-selection clipboard"
+            [[ "${PRIMARY}" ]] && OPT=""
+            # shellcheck disable=SC2086
+            xclip $OPT -o
+        fi | head -n 1
+    )
+
+    [[ "$NEWSTRING" ]] && {
+        STRINGS[COPY_TO_KEY]="$NEWSTRING"
+        cp -p "$STRING_FILE" "${STRING_FILE}~"
+        print_strings > "$STRING_FILE"
+    }
+    exit 0
+}
+
+if [[ "$GUI" ]]; then
+    STRING=$( myautotype -l | wofi --cache-file=/dev/null --dmenu) || exit 0
+    [[ -z "$STRING" ]] && exit 0
+    STRING="${STRING#* }" # remove the number
+else
+    INDEX=${1:-1}
+    STRING="${STRINGS[INDEX]}"
+fi
+
+ADD_RETURN=
+KEY_FLAG=
+case "$STRING" in
+    "lookup"*)
+        STRING=${STRING#lookup }
+        STRING=$(lookup "$STRING")
+        ADD_RETURN="set"
+        ;;
+    "exec"*)
+        STRING=${STRING#exec }
+        STRING=$( bash -c "$STRING" )
+        ;;
+    "key"*)
+        STRING=${STRING#key }
+        KEY_FLAG="set"
+        ;;
+    "copy"*)
+        STRING=${STRING#copy }
+        echo -e "$STRING" | wl-copy
+        STRING=""
+        ;;
+    "text"*) 
+        STRING=${STRING#text }
+        ;;
+    # STRING with no keyword falls straight through and is treated as 'text'
+esac
+
+[[ "$STRING" ]] || exit 0
+
+# shellcheck disable=SC2031
+if [[ "$SWAYSOCK" ]]; then
+    if type ydotool &>/dev/null && [[ -z "$WTYPE" ]]; then
+        TOOL=ydotool
+    else
+        TOOL=wtype
+    fi
+else
+    if type xvkbd &>/dev/null && [[ -z "$WTYPE" ]]; then
+        TOOL=xvkbd
+    else
+        TOOL=xdotool
+    fi
+fi
+
+[[ "$VERBOSE" ]] && set -x
+
+# use a delay here to give a chance to release the keys as otherwise
+# it can cause problems
+sleep 0.4
+
+if [[ "$KEY_FLAG" ]]; then
+    case $TOOL in
+        wtype)
+            wtype "$STRING"
+            ;;
+        ydotool)
+            sudo ydotool key -- "$STRING"
+            ;;
+        xvkbd)
+            xvkbd -text "$STRING"
+            ;;
+        xdotool)
+            xdotool key "$STRING"
+            ;;
+    esac
+    exit 0
+fi
+
+# expand \n (FIXME: other control sequences not implemented)
+mapfile -t TEXT < <( echo -e "$STRING" )
+DO_ENTER="" # add a Return keystroke on all but the last line
+for T in "${TEXT[@]}"; do
+    case $TOOL in
+        wtype)
+            [[ "$DO_ENTER" ]] && wtype -k Return
+            [[ "$T" ]] && wtype -- "$T"
+            ;;
+        ydotool)
+            [[ "$DO_ENTER" ]] && sudo ydotool key KEY_ENTER
+            [[ "$T" ]] && sudo ydotool type --key-delay "$DELAY" -- "$T"
+            ;;
+        xvkbd)
+            [[ "$DO_ENTER" ]] && xvkbd -text '\n' 2>/dev/null
+            [[ "$T" ]] && xvkbd -delay "$DELAY" -text "$T" 2>/dev/null
+            ;;
+        xdotool)
+            [[ "$DO_ENTER" ]] && xdotool key Return
+            xdotool type --delay "$DELAY" "$T" # no '--' support - eg can't have STRING=--windows
+            ;;
+    esac
+        
+    [[ "$ADD_RETURN" ]] && {
+        case $TOOL in
+            wtype)
+                wtype -k Return
+                ;;
+            ydotool)
+                sudo ydotool key KEY_ENTER
+                ;;
+            xvkbd)
+                xvkbd -text '\n'
+                ;;
+            xdotool)
+                xdotool key Return
+                ;;
+        esac
+    }
+    DO_ENTER="set"
+done
+exit 0
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:

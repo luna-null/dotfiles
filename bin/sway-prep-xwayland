@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/sway-prep-xwayland
+# shellcheck disable=SC2034
+TIME_STAMP="20220627.152146"
+
+# Copyright (C) 2020-2021 Bob Hepple <bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+[[ "$1" ]] && {
+    echo "Usage: $( basename "$0" ) once sway is running, load up xwayland's xrdb database, etc"
+    exit 0
+}
+
+XMODMAP="$HOME/.Xmodmap"
+MODMAPVNC="$HOME/.Xmodmap.vnc"
+XRESOURCES="$HOME/.Xresources"
+H=$(hostname -s)
+XRESOURCES_HOST="$XRESOURCES.$H"
+XMODMAP_HOST="$XMODMAP.$H"
+
+# .Xresources is the modern way - why did they make such a random
+# change from .Xdefaults?
+[ -r "$XRESOURCES" ] && xrdb -merge "$XRESOURCES"
+[ -r "$XMODMAP" ] && xmodmap "$XMODMAP"
+[ "$VNCDESKTOP" ] && [ -r "$MODMAPVNC" ] && xmodmap "$MODMAPVNC"
+[ -z "$NX_CLIENT$VNCDESKTOP$X2GO_SESSION" ] && {
+    [ -r "$XRESOURCES_HOST" ] && xrdb -merge "$XRESOURCES_HOST"
+    [ -r "$XMODMAP_HOST" ] && xmodmap "$XMODMAP_HOST"
+}
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
+

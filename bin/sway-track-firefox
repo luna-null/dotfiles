@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/sway-track-firefox
+# shellcheck disable=SC2034
+TIME_STAMP="20230307.174944"
+
+# Copyright (C) 2020-2022 Bob Hepple <bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+PROG=$( basename "$0" )
+VERBOSE="" # set to 'non-null' to debug
+swaymsg_verbosity="-q"
+
+case $1 in
+    -h|--help)
+        echo "$PROG: Usage: when firefox gets focus, bind Shift+Insert to paste PRIMARY
+when firefox loses focus, unbind Shift+Insert"
+        exit 0
+        ;;
+    -v|--verbose)
+        VERBOSE="set"
+        swaymsg_verbosity=""
+        ;;
+esac
+
+# don't put -q on swaymsg here as it stops it working!
+swaymsg -m -t subscribe '["window"]'  |
+jq --unbuffered -r 'select(.change == "focus") | (.container.app_id, .container.window_properties.class)' |
+while read -r new_app; do
+    read -r class
+    [[ "$VERBOSE" ]] && echo "$( date ): $PROG: app_id=$new_app / x11_class=$class focused"
+    bindit=yes
+    case "$new_app" in
+        foot|kitty|alacrity|emacs|dropdown-term)
+            bindit=no
+            ;;
+        null) # X11 applications:
+            case $class in
+                "Diffuse")
+                    bindit=yes
+                    ;;
+            esac
+            ;;
+        *)
+            bindit=yes
+            ;;
+    esac
+    
+    if [[ "$bindit" == "yes" ]]; then
+        [[ "$VERBOSE" ]] && echo "$PROG: binding Shift+Insert"
+        # use '&&' instead of ';' otherwise sway parses it!! Also, 'ydotool -f -' fails, so use /dev/stdin
+        # shellcheck disable=SC2086
+        swaymsg $swaymsg_verbosity -- 'bindsym Shift+Insert exec sleep 0.4 && wl-paste -p -n | sudo ydotool type --file /dev/stdin'
+        #swaymsg $swaymsg_verbosity -- 'bindsym Shift+Insert exec wtype "$( wl-paste -p -n )"'
+    else
+        [[ "$VERBOSE" ]] && echo "$PROG: unbinding Shift+Insert"
+        # shellcheck disable=SC2086
+        swaymsg $swaymsg_verbosity -- "unbindsym Shift+Insert"
+    fi
+done
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:

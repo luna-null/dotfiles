@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+swaymsg -t get_tree | jq '
+walk(
+    if type == "object" and (has("nodes") or has("floating_nodes")) then
+        if .nodes != [] or .floating_nodes != [] then
+            .type + ": " + .name + " (" + .layout + ")", .nodes + .floating_nodes
+        else
+            .app_id + .window_properties.instance + ": " + .name
+        end
+    else 
+        .
+    end
+)
+'

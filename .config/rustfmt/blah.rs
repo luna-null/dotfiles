@@ -1,0 +1,3 @@
+fn blah() {
+    println!("Hi");
+}

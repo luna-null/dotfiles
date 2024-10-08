@@ -1,0 +1,346 @@
+#!/usr/bin/env -S python -B
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/toggle-devices
+
+TIME_STAMP="20230813.045227"
+
+"""
+    Contact info:
+    bob dot hepple at gmail dot com
+    
+    Copyright (C) 2021-23 Bob Hepple
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; see the file COPYING. If not, write to
+    the Free Software Foundation, Inc., 51 Franklin Street, Fifth
+    Floor, Boston, MA 02110-1301 USA
+"""
+
+import getopt, sys, os, json
+import gi
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk, Gdk
+
+sys.dont_write_bytecode = True
+
+debug = False
+
+def system(cmd):
+    if debug: print(f"system: command='{cmd}'", file=sys.stderr)
+    retval = os.system(cmd)
+    if debug: print(f"returning {retval}", file=sys.stderr)
+    return(retval)
+
+class Device:
+    def __init__(self, name):
+        self.name = name
+        self.start_cmd = []
+        self.stop_cmd = []
+        self.status_cmd = []
+        
+    def add_start_cmd(self, cmd):
+        self.start_cmd.append( cmd )
+        return
+
+    def add_stop_cmd(self, cmd):
+        self.stop_cmd.append( cmd )
+        return
+
+    def add_status_cmd(self, cmd):
+        self.status_cmd.append( cmd )
+        return
+    
+    def status(self):
+        for cmd in self.status_cmd:
+            return(system(cmd) == 0)
+
+    def start(self):
+        i = 0
+        for cmd in self.start_cmd:
+            i = system(cmd)
+        return i
+
+    def stop(self):
+        i = 0
+        for cmd in self.stop_cmd:
+            i = system(cmd)
+        return i
+        
+class Top_level:
+    def __init__(self, root):
+        self.root = root
+
+        self.topbox = Gtk.Box(orientation="vertical")
+        root.add(self.topbox)
+        self.mainbox = Gtk.Box(orientation="vertical")
+        self.buttonbox = Gtk.Box(orientation="horizontal")
+
+        self.topbox.pack_start(self.mainbox, True, True, 0)
+        self.topbox.pack_start(self.buttonbox, True, True, 0)
+        root.connect("key-press-event", self.on_keypress)
+
+        self.devices = []
+        
+    def add_device(self, device):
+        device.button = Gtk.CheckButton(label=device.name)
+        self.mainbox.pack_start(device.button, True, True, 0)
+        self.devices.append( device )
+        
+    def add_devices(self):
+        with open(config_file, "r") as fp:
+            config = json.load(fp)
+
+        for device in config:
+            d = Device(device['name'])
+            for cmd in device['status_cmds']:
+                d.add_status_cmd(cmd)
+            for cmd in device['start_cmds']:
+                d.add_start_cmd(cmd)
+            for cmd in device['stop_cmds']:
+                d.add_stop_cmd(cmd)
+            self.add_device(d)
+        self.refresh(None)
+        
+    def build_gui(self):
+        self.all_button = Gtk.CheckButton(label="All")
+        self.all_button.connect("clicked", self.all)
+        self.mainbox.add(self.all_button)
+
+        self.add_devices()
+
+        quit_b=Gtk.Button(label="Quit")
+        quit_b.connect("clicked", self.quit)
+        self.buttonbox.add(quit_b)
+        
+        refresh_b=Gtk.Button(label="Refresh")
+        refresh_b.connect("clicked", self.refresh)
+        self.buttonbox.pack_start(refresh_b, True, True, 0)
+
+        ok_b = Gtk.Button(label="OK")
+        ok_b.connect("clicked", self.ok)
+        self.buttonbox.pack_start(ok_b, True, True, 0)
+        
+    def print(self):
+        for device in self.devices:
+            print(device.name, "=", device.button.get_active())
+        print("")
+    
+    def quit(self, data):
+        print(data)
+        sys.exit(0)
+        
+    def ok(self, data):
+        print("================ OK ================", file=sys.stderr)
+        for device in self.devices:
+            is_wanted = device.button.get_active()
+            if is_wanted != device.status():
+                if is_wanted:
+                    device.start()
+                else:
+                    device.stop()
+        self.refresh(data)
+
+    def on_keypress(self, window, event):
+        modifier = event.get_state() & Gdk.ModifierType.MODIFIER_MASK
+        if modifier & Gdk.ModifierType.CONTROL_MASK:
+            if event.keyval == Gdk.KEY_q:
+                self.quit(window)
+        if modifier == 0:
+            if event.keyval == Gdk.KEY_Escape:
+                self.quit(window)
+            if event.keyval == Gdk.KEY_Return:
+                self.ok(window)
+                return True
+        return False
+        
+    def refresh(self, data):
+        self.all_button.set_active(0)
+        for device in self.devices:
+            device.button.set_active(device.status())
+            
+    def all(self, data):
+        stat = self.all_button.get_active()
+        for device in self.devices:
+            device.button.set_active(stat)
+
+def usage():
+    print(f"""Usage: {progName} [OPTIONS]
+
+Display a list of buttons as defined in the config file:
+    ~/.config/{progName}/config.<hostname>.json
+
+The config file also contains commands to be run according to the state
+of the buttons.
+
+OPTIONS:
+-h, --help:      this help
+-d, --debug:     debug to stdout
+-c, --config:    use config from ~/.config/<name>/config.json
+-V, --version:   print the version and exit
+
+""")
+    print("""Here's a sample config file:
+
+[
+    {
+        "name": "bluetooth",
+        "start_cmds": [
+            "rfkill unblock bluetooth"
+        ],
+        "stop_cmds": [
+            "rfkill block bluetooth"
+        ],
+        "status_cmds": [
+            "rfkill --json|jq '.[]|.[]|select(.type==\"bluetooth\")|.soft' | grep -q '\"unblocked\"'"
+        ]
+    },
+    {
+        "name": "pipewire",
+        "start_cmds": [
+            "systemctl --user start pipewire.socket # .service will autostart"
+        ],
+        "stop_cmds": [
+            "systemctl --user stop pipewire.socket && systemctl --user stop pipewire.service"
+        ],
+        "status_cmds": [
+            "systemctl --user status pipewire.service >/dev/null"
+        ]
+    },
+    {
+        "name": "wifi (wlp3s0)",
+        "start_cmds": [
+            "sudo ip link set wlp3s0 up"
+        ],
+        "stop_cmds": [
+            "sudo systemctl stop nordvpnd.service",
+            "sudo ip link set wlp3s0 down"
+        ],
+        "status_cmds": [
+            "ip --json link show wlp3s0 | jq \".[] | .flags\" | grep -q '\"UP\"'"
+        ]
+    },
+    {
+        "name": "ether (enp6s0)",
+        "start_cmds": [
+            "sudo ip link set enp6s0 up"
+        ],
+        "stop_cmds": [
+            "sudo ip link set enp6s0 down"
+        ],
+        "status_cmds": [
+            "ip --json link show enp6s0 | jq \".[] | .flags\" | grep -q '\"UP\"'"
+        ]
+    },
+    {
+        "name": "Network Services (autofs, nfs)",
+        "status_cmds": [
+            "systemctl status nfs-utils.service > /dev/null"
+        ],
+        "stop_cmds": [
+            "sudo systemctl stop autofs.service",
+            "sudo systemctl stop nfs-utils.service"
+        ],
+        "start_cmds": [
+            "sudo systemctl restart nfs-utils.service",
+            "sudo systemctl restart autofs.service",
+            "vpn start"
+        ]
+    },
+    {
+        "name": "mythfrontend",
+        "status_cmds": [
+            "pgrep --exact mythfrontend"
+        ],
+        "stop_cmds": [
+            "pkill --exact mythfrontend"
+        ],
+        "start_cmds": [
+            "mythfrontend &"
+        ]
+    },
+    {
+        "name": "firefox",
+        "status_cmds": [
+            "pgrep -f '.*/firefox$'"
+        ],
+        "stop_cmds": [
+            "pkill -f '.*/firefox$'"
+        ],
+        "start_cmds": [
+            "firefox &"
+        ]
+    },
+    {
+        "name": "easyeffects",
+        "status_cmds": [
+            "pgrep --exact easyeffects"
+        ],
+        "stop_cmds": [
+            "pkill --exact easyeffects"
+        ],
+        "start_cmds": [
+            "easyeffects &"
+        ]
+    },
+    {
+        "name": "firewall",
+        "status_cmds": [
+            "systemctl status firewalld.service"
+        ],
+        "stop_cmds": [
+            "sudo systemctl stop firewalld.service"
+        ],
+        "start_cmds": [
+            "sudo systemctl start firewalld.service"
+        ]
+    }
+]
+    
+""")
+
+# Here be main()!!
+if __name__ == '__main__':
+    dirName, progName = os.path.split(sys.argv[0])
+    version = TIME_STAMP
+    config_file = os.getenv("HOME")+"/.config/"+progName+"/config."+os.getenv("HOSTNAME")+".json"
+    
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "hdn:V", ["help", "debug", "config=", "version"])
+    except getopt.GetoptError as errmsg:
+        sys.stderr.write("%s: %s\n" % (progName, errmsg))
+        sys.stderr.write("Use -h/--help for help\n")
+        sys.exit(2)
+
+    for o, a in opts:
+        if o in ("-h", "--help"):
+            usage()
+            sys.exit(0)
+        if o in ("-V", "--version"):
+            print(f"{progName} version {version}")
+            sys.exit(0)
+        if o in ("-d", "--debug"):
+            debug = True
+        if o in ("-n", "--config"):
+            config_file = a
+
+    root = Gtk.Window(title=progName)
+    top = Top_level(root)
+    top.build_gui()
+    root.show_all()
+    root.connect("destroy", Gtk.main_quit)
+    Gtk.main()
+
+# Local variables:
+# mode: python
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:

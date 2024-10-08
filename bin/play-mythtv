@@ -1,0 +1,192 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/play-mythtv
+# shellcheck disable=SC2034
+TIME_STAMP="20230601.123411"
+
+# Copyright (C) 2019-2023 Bob Hepple < bob dot hepple at gmail dot com >
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+PROG=$( basename "$0" )
+
+# configuration:
+MYTH_BACKEND="nina" # the name of the mythtv backend
+MYTH_USER="nina"
+MYTH_HOME="/home/nina" # on the backend
+MYTH_REPO="mythtv/recordings"
+PLAYER="mpv --really-quiet"
+LINKS="$MYTH_HOME/$MYTH_REPO/softlinks"
+# configuration end
+
+REPO="$MYTH_HOME/$MYTH_REPO"
+[[ -d "$REPO" ]] || {
+    echo "$PROG: can't see $REPO - trying nfs" >&2
+    REPO="/net/$MYTH_BACKEND/export/$REPO"
+    [[ -d "$REPO" ]] || {
+        echo "$PROG: can't see $REPO" >&2
+        exit 1
+    }
+}
+
+CREATE_LINKS=""
+RECGROUP="Default"
+
+while [[ "$1" ]]; do
+    case $1 in
+        -l|--link)
+            CREATE_LINKS="set"
+            ;;
+
+        -d|--list-deleted)
+            RECGROUP="Deleted"
+            ;;
+
+        -t|--live-tv)
+            RECGROUP="LiveTV"
+            ;;
+        
+        -p|--play)
+            # internal option only - not user-callable
+            PLAY="set"
+            ;;
+        
+        -h|--help|?*)
+            echo "Usage: $PROG"
+            echo
+            echo "lists all mythtv recordings in fzf and plays the one selected."
+            echo "Must run on the backend (running mythtv-backend) or have"
+            echo "$REMOTE_REPO mounted by autofs."
+            echo
+            echo "Use ENTER to view a video and terminate."
+            echo "Use f1 to view a video and return to the list."
+            echo "Use f2 to copy a video file to \$PWD instead of playing it."
+            echo "Use C-y to copy a video filename to CLIPBOARD and description to PRIMARY instead of playing it."
+            echo
+            echo "-l,--link:    instead, create links in $LINKS (must be on backend)"
+            echo "-d,--list-deleted:"
+            echo "              list recordings that have been recently deleted"
+            echo "-t,--live-tv: list recording that are live TV"
+            echo
+            echo 'needs ~/.my.cnf set up:'
+            echo
+            echo '[mysql]'
+            echo 'user      = mythtv'
+            echo 'password  = ######'
+            echo 'database  = mythconverg'
+
+            exit 0
+            ;;
+    esac
+    shift
+done
+
+get_titles() {
+    sql="select starttime,filesize,title,subtitle"
+    if [[ "$CREATE_LINKS" ]]; then
+        sql+=",basename"
+    else
+        sql+=",description,basename"
+    fi
+    sql+=" from recorded where recgroup = '$RECGROUP'" # Default, LiveTV or Deleted AFAIK
+
+    mysql -h "$MYTH_BACKEND" mythconverg --skip-column-names --execute "$sql" |
+    awk '{
+# SQL has no easy way to convert to localtime (!) so do it in awk:
+# convert "$1 $2" from UTC to local time:
+# pop off date:
+d=$1; $1=""; sub(" ","",$0)
+# pop off time:
+t=$1; $1=""; sub(" ","",$0)
+"date -d \"" d " " t "UTC\" +\"%Y-%m-%d-%H_%M\"" | getline localtime
+
+# pop off filesize:
+s=$1; $1=""; sub(" ","",$0)
+size=int(s/(1024*1024*1024) + 0.5)
+
+filename=$NF; $NF=""
+printf "%23s %16s %1sGb %s\n", filename, localtime, size, $0
+}
+'
+}
+
+build_filename() {
+    # shellcheck disable=SC2048,SC2086
+    set -- $*
+    filename=$1; shift
+    localtime=$1; shift
+    size=$1; shift
+    
+    # shellcheck disable=SC2048,SC2086
+    description=$( echo -n "${*%% }" | tr -c '0-9a-zA-Z.-' '_' )
+    f="${filename%_*}"
+    
+    echo "${localtime}-${f}-${description}.ts"
+}
+
+[[ "$PLAY" ]] && {
+    [[ "$CREATE_LINKS" ]] && {
+        echo "$PROG: ack! can't give --play and --link together!" >&2
+        exit 1
+    }
+    # shellcheck disable=SC2048,SC2086
+    set -- $*
+    filename=$1
+    {
+        echo "Playing: $REPO/$filename"
+        $PLAYER "$REPO/$filename"
+    } >/dev/tty
+    exit 0
+}
+
+[[ "$CREATE_LINKS" ]] && {
+
+    [[ $( hostname ) == "$MYTH_BACKEND" ]] || {
+        echo "$PROG: you must be on the mythtv backend for this!" >&2
+        exit 1
+    }
+
+    [[ -w "$LINKS" ]] || {
+        echo "$PROG: can't write to $LINKS" >&2
+        exit 1
+    }
+
+    cd "$LINKS" || exit 1
+    rm ./* 2>/dev/null # !!!! hence the 'exit' above if it fails!!!
+    get_titles | 
+    while read -r filename localtime size description; do
+        # shellcheck disable=SC2048,SC2086
+        dest=$( build_filename "$filename" "$localtime" "$size" "$description" )
+        ln -s "../$filename" "$dest"
+    done
+    exit 0
+} # end of CREATE_LINKS
+
+file=$(
+    # shellcheck disable=SC2016
+    get_titles |
+    sort -r -k2 | # reverse sort on starttime
+    fzf --exact --prompt 'ENTER/f1 to play, f2 to copy, C-y to yank, ESC to exit > ' --bind "f1:execute($PROG -p {})" --bind "f2:execute(set -x; cp $REPO/{1} "'$(echo -n {1} | sed "s/\.ts\$//")-$( echo -n {4..} | tr -c "a-zA-Z0-9" "-").ts; echo Press Enter >/dev/tty; read)' --bind "ctrl-y:execute-silent(echo -n $REPO/{1} | wl-copy; echo -n {4..} | wl-copy -p)" |
+    awk '{print $1}'
+)
+
+[[ "$file" ]] && {
+    echo "Playing: $REPO/$file"
+    $PLAYER "$REPO/$file"
+}
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
+

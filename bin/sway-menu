@@ -1,0 +1,593 @@
+#!/usr/bin/env -S python -B
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/sway-menu
+
+TIME_STAMP="20230730.113706"
+
+# Copyright (C) 2021-23 Bob Hepple <bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+import sys, os, json, re, gi, subprocess, argparse, socket, struct
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk
+
+sys.dont_write_bytecode = True
+
+# globals, cos I'm old and lazy:
+my_globals = { }
+my_globals['focused'] = 0
+my_globals['dirName'], my_globals['progName'] = os.path.split(sys.argv[0])
+my_globals['debug'] = False
+my_globals['notify'] = True
+my_globals['lock'] = False
+
+def initialise():
+    my_globals['config_file'] = os.getenv("HOME")+"/.config/sway/config"
+
+    parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,
+                                     description="Provide a menu for sway(1) using GTK.",
+                                     epilog="""
+
+This provides a GUI menu for sway(1) commands.
+
+A quick way to see the sort of thing it can do, is this:
+
+    TMP=$( mktemp ); sway-menu -a > $TMP; sway-menu -c $TMP; rm $TMP
+
+The contents of the GUI can be fine-tuned by adding specially
+formatted comments to the sway config file immediately before the
+'bindsym' statements. A first stab at the markup can be done
+automatically with the -a option.
+
+The syntax for the comments is:
+
+    #### category[#ordering][/sub-category[#ordering]] description
+
+eg
+
+    #### _Run Terminal
+    bindsym Mod4+Return exec $term
+
+The '#### ' prefix is required.
+
+_Run is the category ie the top level menu. It can be anything you
+like such as _Run, _Window, W_orkspace, Outpu_t and _Global categories.
+The underscore indicates that the following character is to be the menu
+mnemonic character - in this case, 'R'.
+
+A sub-category can be added to the category using '/' eg _Window/Move eg:
+
+    #### _Window/Move
+    bindsym  Mod4+Shift+minus move scratchpad
+
+Sub-categories are displayed in sub-menus.
+
+Ordering of the categories is alphabetic but can be adjusted by adding
+#ordering to at least one of the cateory entries. It does not need to
+be on every one. If more than one category is given an ordering label,
+then the last one encountered will be used. eg
+
+    #### _Run#1 Terminal
+    #### _Window#2 Float toggle
+
+Ordering of items within a sub-category is the alphabetic order of the
+description. This can be adjusted by using the <ordering#> field on
+the sub-category eg
+
+    #### _Window/Move_window_in_direction#1 left
+    bindsym  $mod+Shift+Left  move left
+
+Note that space characters in the sub-category must be replaced by '_'
+and are not allowed in the ordering field.
+
+Anything after the category[/sub-category[#ordering]] word is the
+description which will appear in the menu together with the keyboard
+shortcut. If the description is blank, then the corresponding sway
+command in the following line is used.
+
+If you want menu items without corresponding keyboard shortcuts, use a
+#bindsym-dummy comment eg
+
+    #### Outpu_t Move to output left
+    #bindsym-dummy move container to output right;  focus output right
+
+If your config file is similar to the 'standard' sway config in
+/etc/sway/config, then this program can annotate it for you eg:
+
+    sway-menu -a > ~/.config/sway/annotated-config
+
+... the results may not be perfect, so check the output carefully!!
+
+You can test that config with:
+
+    sway-menu -c ~/.config/sway/annotated-config
+
+When you are happy with the result you can:
+
+    mv ~/.config/sway/config ~/.config/sway/config.bak
+    mv ~/.config/sway/annotated-config ~/.config/sway/config
+
+See a fairly complex example at https://gitlab.com/wef/dotfiles/-/blob/master/.config/sway/bindsym
+""")
+    parser.add_argument("-d", "--debug", help="increase output", action="store_true")
+    parser.add_argument("-c", "--config-file", help="sway config file - default is ~/.config/sway/config", action="store", default=my_globals['config_file'])
+    parser.add_argument("-n", "--no-notify", help="don't notify", action="store_true", dest="no_notify")
+    parser.add_argument("-l", "--lock", help="don't close after execution", action="store_true")
+    parser.add_argument("-a", "--annotate-config", help="output an annotated config file to stdout", action="store_true")
+    my_globals['args'] = parser.parse_args()
+
+    my_globals['notify'] = not my_globals['args'].no_notify
+    my_globals['config_file'] = my_globals['args'].config_file
+    my_globals['debug'] = my_globals['args'].debug
+    my_globals['lock'] = my_globals['args'].lock
+
+def stderr_msg(msg):
+    print(msg, file=sys.stderr)
+
+def swaymsg(cmd):
+    if my_globals['debug']:
+        stderr_msg(f"swaymsg: command='{cmd}'")
+    SWAYSOCK = os.environ['SWAYSOCK']
+    magic = b'i3-ipc'
+    with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as s:
+        s.connect(SWAYSOCK)
+        prefix = magic + struct.pack('ii', len(cmd), 0)
+        s.sendall(prefix + cmd.encode())
+        resp = s.recv(len(prefix))
+        size, code = struct.unpack('ii', resp[len(magic):])
+        resp = s.recv(size)
+
+def system(cmd):
+    "from https://docs.python.org/3/library/subprocess.html#replacing-os-system"
+    if my_globals['debug']:
+        stderr_msg(f"system: command='{cmd}'")
+    try:
+        retval = subprocess.call(cmd, shell = True)
+        if retval < 0:
+            stderr_msg(f"Child was terminated by signal {retval}")
+    except OSError as e:
+        stderr_msg(f"Execution failed: {e}")
+
+    if my_globals['debug']:
+        stderr_msg(f"returning {retval}")
+    return retval
+
+def backtick(command):
+    """
+    Equivalent of Bourne shell's backtick
+    See http://www.python.org/doc/2.5.1/lib/node534.html
+    """
+    from subprocess import Popen, PIPE
+    if my_globals['debug']:
+        stderr_msg(f"backtick: command='{command}'")
+    value = Popen(["bash", "-c", command], stdout=PIPE).communicate()[0].rstrip().decode("utf-8")
+    if my_globals['debug']:
+        stderr_msg(f"returning '{value}'")
+    return value
+
+def check_for(pattern, line, annotation):
+    if re.search(pattern, line, re.IGNORECASE):
+        print(annotation)
+
+def print_annotated_config():
+    with open(my_globals['config_file'], "r") as fp:
+        while True:
+            line = fp.readline()
+            if not line:
+                break
+            check_for("bindsym .* exec \\$term",                 line,"    #### _Run#1 Terminal")
+            check_for("bindsym .* kill$",                        line,"    #### _Window#2 Kill")
+            check_for("bindsym .* exec \\$menu",                 line,"    #### _Run Program Launcher")
+            check_for("bindsym .* reload$",                      line,"    #### _Global#6 Reload sway")
+            check_for("bindsym .* exec swaynag .*exit shortcut", line,"    #### _Global Exit sway")
+            check_for("bindsym .* focus left",                   line,"    #### _Window/Focus#1 left")
+            check_for("bindsym .* focus right",                  line,"    #### _Window/Focus#2 right")
+            check_for("bindsym .* focus up",                     line,"    #### _Window/Focus#3 up")
+            check_for("bindsym .* focus down",                   line,"    #### _Window/Focus#4 down")
+            check_for("bindsym .* move left$",                   line,"    #### _Window/Move#1 left")
+            check_for("bindsym .* move right$",                  line,"    #### _Window/Move#2 right")
+            check_for("bindsym .* move up$",                     line,"    #### _Window/Move#3 up")
+            check_for("bindsym .* move down$",                   line,"    #### _Window/Move#4 down")
+            check_for("bindsym .*[0-9] workspace number 1$",     line,"    #### W_orkspace#3/Jump to w/s 1")
+            check_for("bindsym .*[0-9] workspace number 2",      line,"    #### W_orkspace/Jump to w/s 2")
+            check_for("bindsym .*[0-9] workspace number 3",      line,"    #### W_orkspace/Jump to w/s 3")
+            check_for("bindsym .*[0-9] workspace number 4",      line,"    #### W_orkspace/Jump to w/s 4")
+            check_for("bindsym .*[0-9] workspace number 5",      line,"    #### W_orkspace/Jump to w/s 5")
+            check_for("bindsym .*[0-9] workspace number 6",      line,"    #### W_orkspace/Jump to w/s 6")
+            check_for("bindsym .*[0-9] workspace number 7",      line,"    #### W_orkspace/Jump to w/s 7")
+            check_for("bindsym .*[0-9] workspace number 8",      line,"    #### W_orkspace/Jump to w/s 8")
+            check_for("bindsym .*[0-9] workspace number 9",      line,"    #### W_orkspace/Jump to w/s 9")
+            check_for("bindsym .* to workspace number 1$",       line,"    #### _Window/Move to w/s 1")
+            check_for("bindsym .* to workspace number 2",        line,"    #### _Window/Move to w/s 2")
+            check_for("bindsym .* to workspace number 3",        line,"    #### _Window/Move to w/s 3")
+            check_for("bindsym .* to workspace number 4",        line,"    #### _Window/Move to w/s 4")
+            check_for("bindsym .* to workspace number 5",        line,"    #### _Window/Move to w/s 5")
+            check_for("bindsym .* to workspace number 6",        line,"    #### _Window/Move to w/s 6")
+            check_for("bindsym .* to workspace number 7",        line,"    #### _Window/Move to w/s 7")
+            check_for("bindsym .* to workspace number 8",        line,"    #### _Window/Move to w/s 8")
+            check_for("bindsym .* to workspace number 9",        line,"    #### _Window/Move to w/s 9")
+            check_for("bindsym .* splith$",                      line,"    #### _Window/Split horizontal")
+            check_for("bindsym .* splitv$",                      line,"    #### _Window/Split vertical")
+            check_for("bindsym .* layout stacking",              line,"    #### _Window/Layout stacking")
+            check_for("bindsym .* layout tabbed",                line,"    #### _Window/Layout tabbed")
+            check_for("bindsym .* layout toggle split",          line,"    #### _Window/Layout toggle")
+            check_for("bindsym .* fullscreen$",                  line,"    #### _Window Fullscreen")
+            check_for("bindsym .* floating toggle",              line,"    #### _Floaters#4 Toggle focus with floating")
+            check_for("bindsym .* focus mode_toggle",            line,"    #### _Floaters Swap focus with floating")
+            check_for("bindsym .* focus parent",                 line,"    #### _Window Focus parent")
+            check_for("bindsym .* move scratchpad",              line,"    #### _Window/Move to scratchpad")
+            check_for("bindsym .* scratchpad show",              line,"    #### W_orkspace Show next scratchpad")
+            check_for("bindsym .* mode \"resize\"",              line,"#### _Global Resize Mode (Esc to exit)")
+
+            # these are handy functions that don't have keybinds in the default config:
+            check_for("include /etc/sway/config.d/*",            line,"""
+#### _Window/Sticky enable
+#bindsym-dummy sticky toggle
+#### _Window/Sticky disable
+#bindsym-dummy sticky toggle
+#### _Window/Sticky toggle
+#bindsym-dummy sticky toggle
+
+set $gaps 10
+#### W_orkspace/Gaps plus $gaps
+#bindsym-dummy gaps inner current plus $gaps
+#### W_orkspace/Gaps minus $gaps
+#bindsym-dummy gaps inner current minus $gaps
+#### W_orkspace/Gaps toggle $gaps
+#bindsym-dummy gaps inner current toggle $gaps
+
+#### _Global/Gaps plus $gaps
+#bindsym-dummy gaps inner all plus $gaps
+#### _Global/Gaps minus $gaps
+#bindsym-dummy gaps inner all minus $gaps
+#### _Global/Gaps toggle $gaps
+#bindsym-dummy gaps inner all toggle $gaps
+
+#### _Window/Layout default
+#bindsym-dummy layout default
+#### _Window/Layout splith
+#bindsym-dummy layout splith
+#### _Window/Layout splitv
+#bindsym-dummy layout splitv
+
+#### W_orkspace/Layout default
+#bindsym-dummy [workspace="__focused__"] layout default
+#### W_orkspace/Layout splith
+#bindsym-dummy [workspace="__focused__"] layout splith
+#### W_orkspace/Layout splitv
+#bindsym-dummy [workspace="__focused__"] layout splitv
+#### W_orkspace/Layout stacking
+#bindsym-dummy [workspace="__focused__"] layout stacking
+#### W_orkspace/Layout tabbed
+#bindsym-dummy [workspace="__focused__"] layout tabbed
+#### W_orkspace/Layout toggle
+#bindsym-dummy [workspace="__focused__"] layout toggle all
+
+#### _Global/Focus_follows_mouse yes
+#bindsym-dummy focus_follows_mouse yes
+#### _Global/Focus_follows_mouse no*
+#bindsym-dummy focus_follows_mouse no
+#### _Global/Focus_follows_mouse always
+#bindsym-dummy focus_follows_mouse always
+
+#### _Global/Focus_on_window_activation smart
+#bindsym-dummy focus_on_window_activation smart
+#### _Global/Focus_on_window_activation urgent*
+#bindsym-dummy focus_on_window_activation urgent
+#### _Global/Focus_on_window_activation focus
+#bindsym-dummy focus_on_window_activation focus
+#### _Global/Focus_on_window_activation none
+#bindsym-dummy focus_on_window_activation none
+
+#### _Global/Focus_wrapping yes*
+#bindsym-dummy focus_wrapping yes
+#### _Global/Focus_wrapping no
+#bindsym-dummy focus_wrapping no
+#### _Global/Focus_wrapping force
+#bindsym-dummy focus_wrapping force
+#### _Global/Focus_wrapping workspace
+#bindsym-dummy focus_wrapping workspace
+
+#### _Global/Hide_edge_borders none
+#bindsym-dummy hide_edge_borders none
+#### _Global/Hide_edge_borders vertical
+#bindsym-dummy hide_edge_borders vertical
+#### _Global/Hide_edge_borders horizontal
+#bindsym-dummy hide_edge_borders horizontal
+#### _Global/Hide_edge_borders both
+#bindsym-dummy hide_edge_borders both
+#### _Global/Hide_edge_borders smart
+#bindsym-dummy hide_edge_borders smart
+#### _Global/Hide_edge_borders smart_no_gaps
+#bindsym-dummy hide_edge_borders smart_no_gaps
+
+#### _Global/Smart_borders on
+#bindsym-dummy smart_borders on
+#### _Global/Smart_borders no_gaps
+#bindsym-dummy smart_borders no_gaps
+#### _Global/Smart_borders off*
+#bindsym-dummy smart_borders off
+
+#### _Global/Smart_gaps on
+#bindsym-dummy smart_gaps on
+#### _Global/Smart_gaps off*
+#bindsym-dummy smart_gaps off
+#### _Global/Smart_gaps toggle
+#bindsym-dummy smart_gaps toggle
+#### _Global/Smart_gaps inverse_outer
+#bindsym-dummy smart_gaps inverse_outer
+
+#### _Global/Mouse_warping#5 output*
+#bindsym-dummy mouse_warping output
+#### _Global/Mouse_warping container
+#bindsym-dummy mouse_warping container
+#### _Global/Mouse_warping none
+#bindsym-dummy mouse_warping none
+
+#### _Global/Popup_during_fullscreen smart*
+#bindsym-dummy popup_during_fullscreen smart
+#### _Global/Popup_during_fullscreen ignore
+#bindsym-dummy popup_during_fullscreen ignore
+#### _Global/Popup_during_fullscreen leave_fullscreen
+#bindsym-dummy popup_during_fullscreen leave_fullscreen
+
+#### _Global/Show_marks yes*
+#bindsym-dummy show_marks yes
+#### _Global/Show_marks no
+#bindsym-dummy show_marks no
+
+#### _Global/Title_align left*
+#bindsym-dummy title_align left
+#### _Global/Title_align center
+#bindsym-dummy title_align center
+#### _Global/Title_align right
+#bindsym-dummy title_align right
+
+#### _Global/Urgent enable*
+#bindsym-dummy urgent enable
+#### _Global/Urgent disable
+#bindsym-dummy urgent disable
+#### _Global/Urgent allow
+#bindsym-dummy urgent allow
+#### _Global/Urgent deny
+#bindsym-dummy urgent deny
+
+            """)
+
+            sys.stdout.write(line)
+
+def on_quit(thing):
+    Gtk.main_quit()
+
+def on_key(win, eventkey):
+    if eventkey.keyval == gi.repository.Gdk.KEY_Escape or \
+       eventkey.keyval == gi.repository.Gdk.KEY_q or \
+       eventkey.keyval == gi.repository.Gdk.KEY_Q:
+        on_quit(win)
+    return False # to allow further processing of the keystroke
+
+def on_lock(button):
+    my_globals['lock'] = button.get_active()
+
+def on_command(thing, command):
+    if my_globals['debug']:
+        stderr_msg(f"on_command:{command}")
+    if my_globals['focused']:
+        swaymsg("[con_id="+my_globals['focused']+"] focus")
+    # do the deed:
+    swaymsg(command['command'])
+
+    if my_globals['notify'] and command['shortcut']:
+        system("notify-send --expire-time 5000 '"+command['sub']+" "+command['desc']+" is "+command['shortcut']+"'")
+    if not my_globals['lock']:
+        on_quit(thing)
+
+# FIXME: there must be a more pythonesque way to do this!
+def get_category(conf, name):
+    for cat in conf:
+        if cat["category-name"] == name:
+            return cat
+    cat={ }
+    cat["category-name"] = name
+    cat["bindings"] = [ ]
+    cat['ordering'] = ''
+    conf.append(cat)
+    return cat
+
+token_pattern = re.compile(r"^(\S+)\s*(.*)$")
+def get_token(line):
+    line = line.strip()
+    m = token_pattern.match(line)
+    if m:
+        t1, t2 = m.group(1), m.group(2)
+    else:
+        t1 = t2 = ""
+    return t1, t2
+
+# parsing the sway config file:
+def read_bindsym():
+    bindsym_dummy = "#bindsym-dummy"
+
+    conf=[ ]
+    with open(my_globals['config_file'], "r") as fp:
+        while True:
+            line = fp.readline()
+            if not line:
+                break
+            #if my_globals['debug']:
+            #    stderr_msg(line)
+            orig_line = line.strip()
+            token, line = get_token(line)
+            if token == "####":
+                cat, desc = get_token(line)
+                if cat == "":
+                    stderr_msg(f"{my_globals['progName']}: can't recognise '{orig_line}'")
+                    next
+                sub = ''
+                ordering = ''
+                top_ordering = ''
+                if '/' in cat:
+                    cat, sub = cat.split('/', 1)
+                    if '#' in sub:
+                        sub, ordering = sub.split('#', 1)
+                if '#' in cat:
+                    cat, top_ordering = cat.split('#', 1)
+                category = get_category(conf, cat)
+
+                # look for next bindsym or #bindsym-dummy line:
+                while True:
+                    line = fp.readline()
+                    if not line:
+                        stderr_msg(f"{my_globals['progName']}: Unexpected EOF - missing 'bindsym' for '{orig_line}'")
+                        sys.exit(1)
+                    if my_globals['debug']:
+                        stderr_msg(line)
+                    token, line = get_token(line)
+                    if token in ( "bindsym", "bindcode", bindsym_dummy):
+                        break
+                if token == bindsym_dummy:
+                    shortcut = ""
+                    command = line
+                else:
+                    # skip any --locked or other options:
+                    shortcut = "--"
+                    while shortcut[0:2] == "--":
+                        shortcut, line = get_token(line)
+                    command = line
+
+                # store the information away in a structure:
+                item = { }
+                item['sub'] = sub.replace('_', ' ')
+                item['ordering'] = ordering
+                if desc == '':
+                    item['desc'] = command
+                else:
+                    item['desc'] = desc
+                item['shortcut'] = shortcut
+                item['command'] = command
+                if my_globals['debug']:
+                    stderr_msg(f"cat:'{cat}' "+str(item))
+                category['bindings'].append(item)
+                if top_ordering:
+                    category['ordering'] = top_ordering
+    return conf
+
+def find_menu_item(menu, label):
+    for item in menu.get_children():
+        if item.get_label() == label:
+            return item
+    return None
+
+def create_gui():
+        # Create the GUI:
+    menubar = Gtk.MenuBar()
+
+    my_globals['config'].sort(key=lambda x:x['ordering']+x['category-name'])
+    for category in my_globals['config']:
+        category_menu = Gtk.Menu()
+        category_item = Gtk.MenuItem.new_with_mnemonic(label=category['category-name'])
+        category_item.set_use_underline(True)
+        category_item.set_submenu(category_menu)
+        menubar.append(category_item)
+
+        category['bindings'].sort(key=lambda x:(x['sub']+x['ordering']+x['desc']).lower())
+        for binding in category['bindings']:
+            if binding['command']:
+                desc = binding['desc']
+                if binding['shortcut']:
+                    desc = desc + " ["+binding['shortcut']+"]"
+                menu_item = Gtk.MenuItem(label=desc)
+                menu_item.connect("activate", on_command, binding)
+                menu_item.set_tooltip_text(binding['command'])
+
+                if binding['sub']:
+                    sub = find_menu_item(category_menu, binding['sub'])
+                    if not sub:
+                        sub = Gtk.MenuItem(label = binding['sub'])
+                        sub.set_submenu(Gtk.Menu())
+                        category_menu.append(sub)
+                    sub.get_submenu().append(menu_item)
+                else:
+                    category_menu.append(menu_item)
+        category_menu.append(Gtk.SeparatorMenuItem())
+
+    exit_button = Gtk.Button(label='Cancel')
+    exit_button.connect("clicked", on_quit)
+
+    lock_button = Gtk.ToggleButton(label='Lock')
+    if my_globals['lock']:
+        lock_button.set_active(True)
+    lock_button.connect("toggled", on_lock)
+    lock_button.set_tooltip_text("Don't quit after executing")
+    text = Gtk.Label()
+    text.set_markup('<span foreground="blue" size="x-large"><i>Sway Menu</i></span>')
+
+    l = focused_label = None
+    if my_globals['focused_info']:
+        try:
+            l = my_globals['focused_info']["app_id"]
+        except:
+            try:
+                l = my_globals['focused_info']["window_properties"]["class"]
+            except:
+                pass
+    if l:
+        focused_label = Gtk.Label(label = f"Window = '{l}'")
+
+    hbox = Gtk.HBox()
+    hbox.pack_start(menubar, expand = False, fill = True, padding = 0)
+    hbox.pack_start(exit_button, expand = False, fill = True, padding = 0)
+    hbox.pack_start(lock_button, expand = False, fill = True, padding = 0)
+    vbox = Gtk.VBox()
+    vbox.pack_start(hbox, expand = False, fill = True, padding = 0)
+    vbox.pack_start(text, expand = False, fill = True, padding = 0)
+    if focused_label:
+        vbox.pack_start(focused_label, expand = False, fill = True, padding = 0)
+
+    window = Gtk.Window(title="Sway Menu")
+    window.add(vbox)
+    window.connect("key-press-event", on_key)
+    window.connect("destroy", Gtk.main_quit)
+    window.show_all()
+
+# Here be main()!!
+if __name__ == '__main__':
+
+    initialise()
+
+    if my_globals['args'].annotate_config:
+        print_annotated_config()
+        sys.exit(0)
+
+    # before we popup our own window, let's find out which one was focused:
+    my_globals['focused_info'] = json.loads(backtick("swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true)'"))
+    if my_globals['focused_info']:
+        my_globals['focused'] = str(my_globals['focused_info']['id'])
+    #stderr_msg(f"sway-menu: focus is id='{my_globals['focused']}'")
+    # now make sure we are a floater (somehow the sticky doesn't work unless it's separated):
+    swaymsg(f"""for_window [app_id="{my_globals['progName']}"] floating enable""")
+    swaymsg(f"""for_window [app_id="{my_globals['progName']}"] sticky enable""")
+    swaymsg(f"""for_window [app_id="{my_globals['progName']}"] move position pointer""")
+
+    my_globals['config'] = read_bindsym()
+
+    create_gui()
+
+    Gtk.main()
+
+# Local variables:
+# mode: python
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:

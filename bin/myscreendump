@@ -1,0 +1,185 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/myscreendump
+# shellcheck disable=SC2034
+TIME_STAMP="20230104.152356"
+
+# Copyright (C) 2019-2021 Bob Hepple < bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+set -eu
+
+initialise() {
+    local TEMP
+
+    PROG=$(basename "$0")
+    VERSION="$TIME_STAMP"
+    TYPE="f"
+    ARGUMENTS="[ window|frame|rectangle|magnify|root ]"
+    SHORT_DESC=""
+    USAGE="Take a screendump with a choice of window, frame, rectangle, magnify or root.
+If no argument is given then a choice dialog is popped up."
+    ARGS="
+ARGP_DELETE=quiet
+ARGP_VERSION=$VERSION
+ARGP_PROG=$PROG
+ARGP_PREFIX=FOO_
+##############################################################
+#OPTIONS:
+#name=default sname arg       type range   description
+##############################################################
+##############################################################
+ARGP_ARGS=[--] $ARGUMENTS
+ARGP_SHORT=$SHORT_DESC
+ARGP_USAGE=$USAGE"
+
+    TYPE='f'
+
+    exec 4>&1
+    eval "$(echo "$ARGS" | argp.sh "$@" 3>&1 1>&4 || echo exit $? )"
+    exec 4>&-
+
+    NEW_ARGS=( "$@" )
+    return 0
+}
+
+# query key bindings from sway config file:
+get_binding_for() {
+    TARGET=$1
+
+    awk "/^bindsym.* $PROG.* $TARGET/ { print \$2; exit 0 }" "${XDG_CONFIG_DIR:-$HOME/.config}/sway/bindsym"
+}
+
+initialise "$@" && set -- "${NEW_ARGS[@]:-}"
+
+WINDOW=$( get_binding_for 'window' )
+WINDOW_FRAME=$( get_binding_for 'frame' )
+RECT=$( get_binding_for 'rect' )
+ROOT=$( get_binding_for 'root' )
+MAG=$( get_binding_for 'mag' )
+
+if [[ "$1" == "" ]]; then
+    VAL=$( echo "Focused Window [$WINDOW]
+Focused Window Including Frame [$WINDOW_FRAME]
+Rectangle [$RECT]
+Magnify [$MAG ]
+Screen [$ROOT]" |
+           wofi --dmenu --lines=6 --cache-file=/dev/null -p "Screendump - select type" ) || exit 0
+
+    case "$VAL" in
+        "Focused Window Incl"*) VAL="frame"   ;;
+        "Focused Window"*)      VAL="window"  ;;
+        Rect*)                  VAL="rect"    ;;
+        Mag*)                   VAL="mag"     ;;
+        Screen*)                VAL="root"    ;;
+        *) exit 0       ;;
+    esac
+
+    set -- $VAL
+fi
+
+TMP=/tmp/dump.png
+trap 'rm -f $TMP' EXIT
+
+if [[ "$SWAYSOCK" ]]; then
+    DEPENDANTS="grim slurp"
+    # shellcheck disable=SC2086
+    prereqs $DEPENDANTS || exit 1
+
+    case "${1:-}" in
+        root)
+            # G=$( swaymsg -t get_outputs|jq -r 'select(.[].focused)|.[]|.current_mode|"\(.width)x\(.height)"' )
+            grim - > $TMP
+            ;;
+        window)
+            G=$( swaymsg -t get_tree | jq -r '.. | (.nodes? // empty)[] | if (.focused) then select(.focused) | "\(.rect.x),\(.rect.y) \(.rect.width)x\(.rect.height)" else (.floating_nodes? // empty)[] | select(.visible) | select(.focused) | "\(.rect.x),\(.rect.y) \(.rect.width)x\(.rect.height)" end' )
+            grim -g "$G" - > $TMP
+            ;;
+        frame)
+            T=$( swaymsg -t get_tree | jq -r '.. | (.nodes? // empty)[] | if (.focused) then select(.focused) else (.floating_nodes? // empty)[] | select(.visible) | select(.focused) end' )
+            W_WIDTH=$( echo "$T" | jq -r '.rect.width' )
+            W_HEIGHT=$( echo "$T" | jq -r '.rect.height' )
+            X=$( echo "$T" | jq -r '.rect.x' )
+            Y=$( echo "$T" | jq -r '.rect.y' )
+            DECO_WIDTH=$( echo "$T" | jq -r '.deco_rect.width' )
+            DECO_HEIGHT=$( echo "$T" | jq -r '.deco_rect.height' )
+            WIDTH=$W_WIDTH # $(( W_WIDTH + DECO_WIDTH ))
+            HEIGHT=$(( W_HEIGHT + DECO_HEIGHT ))
+            Y=$(( Y - DECO_HEIGHT ))
+            BORDER=$( echo "$T" | jq -r '.current_border_width' )
+            X=$(( X - BORDER ))
+            Y=$(( Y - BORDER ))
+            WIDTH=$(( WIDTH + BORDER * 2 ))
+            HEIGHT=$(( HEIGHT + BORDER * 2 ))
+            grim -g "$X,$Y ${WIDTH}x${HEIGHT}" - > $TMP
+            ;;
+        *)
+            grim -g "$(slurp)" - > $TMP
+            ;;
+    esac
+
+    mv $TMP ~/tmp
+    case $1 in
+        mag*)
+            imv -u nearest_neighbour ~/tmp/dump.png
+            ;;
+        *)
+            # swappy reads from -f ~/tmp/dump.png, writes to $XDG_DESKTOP_DIR/swappy-20221109_114139.png
+            # ~/tmp/dump.png is unaltered
+            XDG_DESKTOP_DIR=~/tmp swappy -f ~/tmp/dump.png
+            ;;
+    esac
+    exit
+    
+else # X11
+    DEPENDENTS="pnmtopng xwdtopnm import"
+    # shellcheck disable=SC2086
+    prereqs $DEPENDENTS || exit 1
+
+    case "$1" in
+        "window")    VAL=""        ;;
+        "frame")     VAL="-frame"  ;;
+        "rect")      VAL="-rect"   ;;
+        "root")      VAL="-root"   ;;
+    esac
+		set -- $VAL
+
+    case "${1:-}" in
+        -rect)
+            import $TMP
+            ;;
+        *)
+            xwd "$@" | # -frame | -root | -screen | -nobdrs
+            xwdtopnm 2>/dev/null |
+            pnmtopng > $TMP
+            ;;
+    esac
+    VIEWER=feh
+fi
+
+$VIEWER $TMP
+
+F=$(
+    zenity --file-selection --file-filter='*.png' --filename="$HOME/dump.png" \
+        --title="Save window dump" --save # --confirm-overwrite
+) || exit 0
+
+mv $TMP "$F"
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
+

@@ -1,0 +1,17 @@
+# This service unit is for testing timer units 
+# By David Both
+# Licensed under GPL V2
+#
+
+[Unit]
+Description=Backs up github repository for dotfiles.
+Wants=git-backup.timer
+
+[Service]
+Type=oneshot
+ExcStartPre=/bin/bash -c 'until pgrep sway >/dev/null; do sleep 5; done'
+ExecStart=/home/le/bin/git-backup
+
+[Install]
+WantedBy=multi-user.target
+

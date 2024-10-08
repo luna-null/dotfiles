@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+temp_file=$(date "+%N" | sha256sum | awk '{print $1}').log
+temp_dir=/tmp/"$temp_file"
+touch "$temp_dir"
+
+$@ | tee "$temp_dir" &
+pid=$!
+
+
+read -r -d '' SCRIPT <<'EOS'
+use strict;
+use warnings;
+
+my $string = <>;
+
+# List of queries to search for in command
+my @queryList = 
+(
+	# pacman commands
+	"==> Packages to",
+	"[Y/n]",
+	"sudo",
+	"==> Diffs to",
+	"Proceed with installation",
+
+	# etc, ...
+);
+
+my $indicator;
+
+foreach my $query (@queryList)
+{
+	if ( $query =~ /$string/) {
+		$indicator = 1;
+		last;
+	}
+	else {
+		$indicator = 0;
+	}
+}
+
+print $indicator;
+
+EOS
+
+history1="1"
+
+while ps -p $pid &> /dev/null; do
+	latest=$(tail -n 4 "$temp_dir")
+	sleep 1
+	out=$(echo $latest | perl -e "$SCRIPT")
+	# if newest line in file matches string, then send command to notify daemon
+	if [ $out -eq 1 ] && [ "$history" != "$latest" ]; then
+		notify-send "$pid" "Attention needed!"
+		history=$(tail -n 4 "$temp_dir")
+
+	fi
+
+done
+
+# # Make sure it's dead
+# kill $pid

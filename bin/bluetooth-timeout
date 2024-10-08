@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/sway-start-apps
+# shellcheck disable=SC2034
+TIME_STAMP="20230807.152946"
+
+# Copyright (C) 2020-2023 Bob Hepple <bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+PROG=$( basename "$0" )
+timeout=600
+sleeptime=60
+debug=""
+
+while [[ "$1" ]]; do
+    case "$1" in
+        -h|--help)
+            # shellcheck disable=SC2016
+            echo "Usage: $PROG [OPTIONS]
+Power off bluetooth after a timeout. Run this from cron or systemd as you prefer
+perhaps with setid.
+
+  -t, --timeout               timeout in seconds (default: ${timeout}secs)
+  -s, --sleep                 time to sleep between cycles (default: ${sleeptime}secs)
+  -d, --debug                 don't daemonise; turn on debug"
+            exit 0
+            ;;
+        -t|--timeout)
+            timeout=$2
+            shift 2
+            ;;
+        -s|--sleep)
+            sleeptime=$2
+            shift 2
+            ;;
+        -d|--debug)
+            debug="set"
+            shift
+            ;;
+    esac
+done
+
+# we need to run in background, independant of the terminal and as
+# immune as possible from signals:
+
+if [[ "$debug" ]]; then
+    set -x
+else
+    cd /
+    trap '' INT HUP
+    exec 1>/dev/null 2>&1 </dev/null
+fi
+
+counter=0
+while true; do
+    if bluetoothctl show |grep -q 'Powered: yes'; then
+        devices="$( bluetoothctl devices Connected )"
+        if [[ "$devices" ]]; then
+            counter=0
+        else
+            if (( counter > timeout )); then
+                bluetoothctl power off
+                counter=0
+            else
+                counter=$(( counter + sleeptime ))
+            fi
+        fi
+    else
+        counter=0
+    fi
+    sleep "$sleeptime"
+done
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
+
