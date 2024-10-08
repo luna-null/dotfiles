@@ -62,7 +62,7 @@ alias .portage-config="cd /etc/portage"
 alias .config-home="cd $XDG_CONFIG_HOME"
 alias zotify='zotify --root-path=$(pwd)'
 alias diff='diff --color=auto'
-# alias firefox='firefox-devedition'
+alias firefox='firefox-devedition'
 alias track='track-command'
 
 mkcd() {

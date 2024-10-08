@@ -564,8 +564,8 @@ xkb_symbols "mth"
 	{[
 		Control_L,			Control_L,
 		Control_L,			Control_L,
-		U2303,				Control_L,
-		Control_L,			U2303
+		Control_L,			U2303,
+		Control_L,			Control_L
 	]};
 
 	key <LWIN>
