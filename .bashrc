@@ -52,7 +52,7 @@ alias wttr='curl -s wttr.in/seattle'
 alias alacritty='alacritty --print-events > /home/le/.alacritty-events'
 alias redshift='redshift -l "$LATITUDE":"$LONGITUDE"'
 alias android-finder='firefox https://www.google.com/android/find/'
-alias vim="nvim"
+alias vim="nvim"; alias vi="nvim"; alias nivm="nvim"
 # alias spotify="/home/le/.local/share/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify/spotify"
 alias rust-repl="evcxr"; alias rusti="evcxr"
 # path shortcuts

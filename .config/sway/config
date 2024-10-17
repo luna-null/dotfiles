@@ -138,7 +138,7 @@ assign [app_id="firefox-developer-edition"] workspace $ws1
 assign [class="Spotify"] workspace $ws11
 assign [app_id="thunderbird"] workspace $ws12
 assign [app_id="org.telegram.desktop"] workspace $ws13
-assign [class="discord"] workspace $ws13
+assign [class="vesktop"] workspace $ws13
 assign [class="Signal"] workspace $ws13
 assign [app_id="org.kde.kdeconnect.sms"] workspace $ws13
 
@@ -376,11 +376,13 @@ for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, s
 for_window [app_id="floating_shell"] floating enable, border pixel 1, sticky enable
 for_window [app_id = "qt5ct"] floating enable
 for_window [app_id = "gnome-tweaks"] floating enable
+for_window [app_id = "org.gnome.Calculator"] floating enable
 for_window [class = "Bluetooth-sendto" instance = "bluetooth-sendto"] floating enable
 for_window [window_role = "Preferences"] floating enable
 for_window [title = "Picture in picture"] floating enable, sticky enable
 for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
-for_window [title = "Firefox - Choose User Profile" ] floating enable
+for_window [title = "Firefox - Choose User Profile"] floating enable
+for_window [title = "Blender Render" ] floating enable
 for_window [class = "yad"] floating enable
 for_window [app_id = "wdisplays"] resize set width 1150px height 480px
 for_window [app_id = "nwg-look"] floating enable, resize set width 580px height 480px
@@ -800,7 +802,7 @@ exec thunderbird
 
 # Social
 exec telegram-desktop
-exec discord
+exec vesktop
 exec signal-desktop
 
 # Todo List
