@@ -39,7 +39,7 @@
 !.config/spicetify/
 !.config/rustfmt/
 !.config/spicetify/
-!.config/sway/
+!.config/sway/config
 !.config/systemd/
 !.config/waybar/
 !.config/waypaper/
