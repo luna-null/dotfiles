@@ -1,0 +1,105 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/check-links
+
+TIME_STAMP="20230204.164957"
+
+# Copyright (C) 2021-2022 Bob Hepple < bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+initialise() {
+    PROG=$(basename "$0")
+    VERSION="$TIME_STAMP"
+    ARGUMENTS=""
+    USAGE="Check links from dotfiles - NB 'cd \$HOME first!!!!'"
+
+    NEW_ARGS=( )
+
+    ARGS="
+ARGP_DELETE=quiet
+ARGP_VERSION=$VERSION
+ARGP_PROG=$PROG
+##############################################################   
+#OPTIONS:
+#name=default     sname arg        type range   description
+##############################################################   
+FIX=''            f     ''         b    ''      fix any broken links
+TOPDIR='dotfiles' t     dotfiles   s    ''      top directory to links.
+DRYRUN=''         n     ''         b    ''      dry run
+##############################################################   
+ARGP_ARGS=[--] $ARGUMENTS
+ARGP_SHORT=$SHORT_DESC
+ARGP_USAGE=$USAGE"
+
+    exec 4>&1
+    eval "$(echo "$ARGS" | argp.sh "$@" 3>&1 1>&4 || echo exit $? )"
+    exec 4>&-
+
+    NEW_ARGS=( "$@" )
+
+    return 0
+}
+
+initialise "$@" && set -- "${NEW_ARGS[@]:-}"
+
+root=$TOPDIR
+start=$PWD
+[[ "$DRYRUN" ]] && DRYRUN="echo"
+
+cd "$root" || {
+    echo "$PROG: you need to cd to the parent of '$root'" >&2
+    exit $?
+}
+find . -name .git -prune -o -type f |
+sort |
+while read -r dotfile; do
+    # eg dotfile=./.config/sway/config
+    dotfile=${dotfile#./}
+    b=$( basename "$dotfile" ) # config
+    d=$( dirname "$dotfile" )  # ./.config/sway
+    
+    case "$b" in
+        README*|LICENSE*|.git*)
+            continue
+            ;;
+    esac
+            
+    if [[ -f "$start/$dotfile" && ! -L "$start/$dotfile" ]]; then
+        echo "$start/$dotfile is a regular file!!! Aborting ..." >&2
+        echo "diff $root/$dotfile $dotfile" >&2
+        exit 1
+    fi
+
+    if [[ "$(readlink -e "$start/$dotfile")" != "$(readlink -e "$start/$root/$dotfile")" ]]; then
+        echo "'$start/$dotfile' is not pointing at '$start/$root/$dotfile'" >&2
+        [[ "$FIX$DRYRUN" ]] && (
+            cd "$start" || exit 1
+            $DRYRUN rm -f "$dotfile"
+            $DRYRUN mkdir -p "$d" || exit $?
+            r=""
+            [[ "$d" == "." ]] || r=$( echo "$d/" | sed -r 's;[^/]+/;../;g' )
+            echo "Fixing with: ln -s '$r$root/$dotfile' '$start/$dotfile'"
+            $DRYRUN ln -s "$r$root/$dotfile" "$start/$dotfile" || exit $?
+            exit
+        )
+    elif [[ "$VERBOSE" ]]; then
+        ls -l "$start/$dotfile"
+    fi
+done
+    
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:

@@ -1,0 +1,319 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/wnc
+# shellcheck disable=SC2034
+TIME_STAMP="20230903.075024"
+
+# Copyright (C) 2009-2023 Bob Hepple <bob.hepple@gmail.com>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, see <http://www.gnu.org/licenses/>.
+
+HEADLESS_CONFIG="\${XDG_CONFIG_DIR:-\$HOME/.config}/sway/headless"
+
+USAGE="Connects remmina to the Nth sway session for the 'user'
+on the remote 'host', starting (headless) sway and/or wayvnc if necessary.
+
+Assumptions:
+
+* wayvnc is installed on the remote system
+* passwordless (ie key-based) ssh access is available to the remote system
+* remmina is installed on the local system
+* wofi, rofi or dmenu is installed on the local system
+* argp.sh is in the PATH (get it from the same place you found this)
+
+If no sway session is running on the remote system then a new headless
+session will be started.
+
+When running a new headless session on the remote, it is assumed that there
+is a configuration file for it at $HEADLESS_CONFIG
+(or use the -c option).
+"
+
+VNC_VIEWER="remmina --enable-fullscreen"
+
+ARGS="
+ARGP_DELETE=quiet
+ARGP_VERSION=$VERSION
+ARGP_PROG=$PROG
+##############################################################   
+#OPTIONS:
+#name=default            sname arg       type range   description
+##############################################################   
+NEW=''                    N     ''        b    ''   don't look for an existing vnc session on the remote - create a new one.
+SSHPORT='22'              p     port      i    '0-' port to use for ssh.
+LIST=''                   l     ''        b    ''   list sway sessions and wayvnc pids/ports on remote
+VIA=''                    ''    ''        b    ''   use 'vncviewer --via <host> localhost:<vnc-port>' ie ssh tunnel.
+KILL=''                   k     ''        b    ''   kill wayvnc on the Nth sway session.
+KILL_SESSION=''           K     ''        b    ''   kill the Nth sway session (careful! no confirmation is offered).
+CONFIG='$HEADLESS_CONFIG' c     config    s    ''   sway config to use when starting a new headless session.
+VNC_VIEWER='$VNC_VIEWER'  ''    viewer    s    ''   prefer <viewer> over remmina (eg vncviewer, gnome-connections, vinagre).
+##############################################################   
+ARGP_ARGS=[--] [user@]host[:vnc-port] [N]
+ARGP_SHORT=$SHORT_DESC
+ARGP_USAGE=$USAGE"
+
+exec 4>&1
+eval "$(echo "$ARGS" | argp.sh "$@" 3>&1 1>&4 || echo exit $? )"
+exec 4>&-
+
+[[ "$SSHPORT" ]] && {
+    SSHPORT="-p $SSHPORT"
+}
+
+REMOTE_USER=$USER
+PORT=
+REMOTE="$1"
+ORDINAL="$2"
+[[ "$ORDINAL" =~ ^[0-9]+$ ]] || ORDINAL="0"
+
+case "$REMOTE" in
+    *:*)
+        PORT=${REMOTE#*:}
+        REMOTE=${REMOTE%:*}
+        ;;
+esac
+        
+case "$REMOTE" in
+    *@*)
+        REMOTE_USER=${REMOTE%@*}
+        REMOTE_HOST=${REMOTE#*@}
+        ;;
+    *)
+        REMOTE_HOST=$REMOTE
+        ;;
+esac
+
+[[ "$PORT" ]] && {
+    if [[ "$PORT" =~ ^[0-9]+$ ]]; then
+        :
+    else
+        echo "$PROG: PORT must be numeric!">&2
+        exit 1
+    fi
+    
+    (( PORT < 20 )) && PORT=$(( PORT + 5900 ))
+}
+
+[[ "$VERBOSE" ]] && set -x
+
+# shellcheck disable=SC2029,SC2087,SC2086
+RESULT=$( ssh -T $SSHPORT "$REMOTE_USER@$REMOTE_HOST" << EOF
+    get_sock_from_user_and_sway_pid() {
+        ID="\$1"
+        SWAY_PID="\$2"
+        echo "/run/user/\$ID/sway-ipc.\$ID.\$SWAY_PID.sock"
+    }
+
+    get_env_param_from_pid() {
+        PID="\$1"
+        PARAM="\$2"
+        [[ "\$PID" ]] && sudo cat /proc/\$PID/environ | tr "\0" "\n" | awk -F '=' "/^\$PARAM/"' {print \$2}'
+    }
+
+    get_wayvnc_port_from_pid() {
+        PID="\$1"
+        P=\$( cat /proc/\$PID/cmdline | tr '\0' '\n' | tail -n 1 )
+        [[ "\$P" =~ ^[0-9]+$ ]] || P=5900
+        echo "\$P"
+    }
+
+    get_pids_of() {
+        ID="\$1"
+        prog="\$2"
+        pgrep --euid "\$ID" --exact "\$prog"
+    }
+
+    get_wayvnc_pid_for_swaysock() {
+        SOCK="\$1"
+        for WAYVNC_PID in \$( get_pids_of "\$ID" wayvnc); do
+            S=\$( get_env_param_from_pid "\$WAYVNC_PID" "SWAYSOCK" )
+            case \$S in
+                \$SOCK)
+                    echo "\$WAYVNC_PID"
+                    return
+                    ;;
+                *)
+                    ;;
+            esac
+        done
+    }
+
+    [[ "$VERBOSE" ]] && set -x
+    ID=\$( id -u "$REMOTE_USER" )
+    PORT="$PORT"
+
+    [[ "$LIST" ]] && {
+        N=0
+        for SWAY_PID in \$( get_pids_of "\$ID" sway ); do
+            echo -n "\$N: sway pid:\$SWAY_PID "
+            SOCK=\$( get_sock_from_user_and_sway_pid "\$ID" "\$SWAY_PID" )
+            WAYVNC_PID=\$( get_wayvnc_pid_for_swaysock \$SOCK )
+            PORT=
+            if [[ "\$WAYVNC_PID" ]]; then
+                PORT="\$( get_wayvnc_port_from_pid "\$WAYVNC_PID" )"
+            fi
+            if [[ "\$PORT" ]]; then
+                echo "waynvc pid/port: \$WAYVNC_PID/\$PORT"
+            else
+                echo "no wayvnc"
+            fi
+            N=\$(( N + 1 ))
+        done
+        exit 0
+    }
+
+    # look for an existing sway session corresponding to ORDINAL
+    N=0
+    SWAY_PID=
+    for PID in \$( get_pids_of "\$ID" sway ); do
+        if (( N == ORDINAL )); then
+            SWAY_PID="\$PID"
+            break
+        fi
+        N=\$(( N + 1 ))
+    done
+
+    [[ "$KILL_SESSION" ]] && {
+        if [[ "\$SWAY_PID" ]]; then
+            kill "\$SWAY_PID"
+            exit 0
+        else
+            echo "$PROG: no such session #$ORDINAL" >&2
+            exit 1
+        fi
+    }
+
+    [[ "$KILL" ]] && {
+        if [[ "\$SWAY_PID" ]]; then
+            SOCK="\$( get_sock_from_user_and_sway_pid "\$ID" "\$SWAY_PID" )"
+            WAYVNC_PID="\$( get_wayvnc_pid_for_swaysock "\$SOCK" )"
+            if [[ "\$WAYVNC_PID" ]]; then
+                 kill "\$WAYVNC_PID"
+                 exit 0
+            else
+                echo "$PROG: no wayvnc on session #$ORDINAL" >&2
+                exit 1
+            fi
+        else
+            echo "$PROG: no such session #$ORDINAL" >&2
+            exit 1
+        fi
+    }
+
+    [[ -z "\$SWAY_PID" || "$NEW" ]] && {
+        # start a new session:
+        export WLR_BACKENDS=headless 
+        export WLR_LIBINPUT_NO_DEVICES=1 
+        sway --config "$HEADLESS_CONFIG" > ~/.wsession-errors.headless 2>&1 &
+        SWAY_PID=\$!
+        NEW_SWAY_PID=\$SWAY_PID
+        sleep 1 # to give /run/user/$ID/wayland-? time to be created
+    }
+
+    [[ "\$SWAY_PID" ]] && {
+        [[ "\$SOCK" ]] || SOCK=\$( get_sock_from_user_and_sway_pid "\$ID" "\$SWAY_PID" )
+
+        [[ "\$WAYVNC_PID" ]] || WAYVNC_PID="\$( get_wayvnc_pid_for_swaysock "\$SOCK" )"
+
+        if [[ -z "\$WAYVNC_PID" ]]; then
+            # no wayvnc running, so start one:
+            export SWAYSOCK="\$SOCK"
+            export XDG_RUNTIME_DIR=/run/user/"\$ID"
+            export WAYLAND_DISPLAY=""
+            WAYLAND_DISPLAY="\$( get_env_param_from_pid "\$SWAY_PID" "WAYLAND_DISPLAY" )"
+            WAYLAND_DISPLAY=\${WAYLAND_DISPLAY:-\$( cd /run/user/\$ID; ls wayland-? | head -n 1 )}
+            WAYLAND_DISPLAY=\${WAYLAND_DISPLAY:-wayland-1} # stab in the dark!!
+            XDG_SEAT="\$( get_env_param_from_pid "\$SWAY_PID" "XDG_SEAT" )"
+            export XDG_SEAT
+
+            # find an unused port:
+            WAYVNC_PID=
+            for (( P=5900; P < 5920; P++ )); do
+                # try running wayvnc on that port and see if it survives:
+                # redirect fd's 0, 1 and 2 otherwise this scriptlet can't terminate!!!!
+                wayvnc "0.0.0.0" "\$P" </dev/null >/dev/null 2>&1 & WAYVNC_PID="\$!"
+                sleep 2
+                kill -0 "\$WAYVNC_PID" && {
+                    PORT=\$P
+                    break
+                }
+            done
+            [[ "\$WAYVNC_PID" ]] || {
+                echo "$PROG: can't run wayvnc" >&2
+                exit 1
+            }               
+        fi
+
+        [[ "\$PORT" ]] || PORT="\$( get_wayvnc_port_from_pid "\$WAYVNC_PID" )"
+
+        # test that wayvnc is still running - for some reason a new
+        # sway session (and therefore wayvnc) sometimes fails
+        if [[ "\$WAYVNC_PID" ]] && kill -0 "\$WAYVNC_PID" ; then
+            [[ "\$PORT" ]] || PORT=5900
+            echo PORT="\$PORT"
+            echo NEW_SWAY_PID="\$NEW_SWAY_PID"
+            exit 0
+        else
+            echo "Remote wayvnc died"
+            exit 1
+        fi
+    }
+EOF
+) || exit $?
+
+case $RESULT in
+    PORT=[0-9]*)
+        eval "$RESULT"
+        VNC_OPTS="-QualityLevel 9 -CompressLevel 9"
+        if [[ "$VIA" ]]; then
+            # shellcheck disable=SC2016,2086
+            vncviewer $VNC_OPTS -via "$REMOTE" "localhost::$PORT"
+        else
+            if [[ -z "$VNC_VIEWER" ]] && type vncviewer > /dev/null 2>&1; then
+                # shellcheck disable=2086
+                vncviewer $VNC_OPTS "$REMOTE_HOST::$PORT" > /dev/null 2>&1
+            else
+                $VNC_VIEWER "vnc://$REMOTE_HOST:$PORT" > /dev/null 2>&1
+            fi
+        fi
+        [[ "$NEW_SWAY_PID" ]] && {
+            ANS=$( echo -e 'yes\nno' | {
+                       p="Keep remote session going?"
+                       if type wofi >/dev/null 2>&1; then
+                           wofi --show dmenu -p "$p"
+                       elif type rofi >/dev/null 2>&1; then
+                           rofi -dmenu -p "$p"
+                       else
+                           dmenu -p "$p"
+                       fi
+                   }
+               )
+                
+            [[ "$ANS" == "no" ]] && {
+                # shellcheck disable=SC2029,SC2086
+                ssh $SSHPORT "$REMOTE_USER@$REMOTE_HOST" kill "$NEW_SWAY_PID"
+            }
+        }
+        ;;
+    *)
+        echo "$RESULT"
+        ;;
+esac
+
+exit 0
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
+

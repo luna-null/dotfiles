@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/sway-count
+# shellcheck disable=SC2034
+TIME_STAMP="20230505.082312"
+
+# Copyright (C) 2023 Bob Hepple <bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+PROG=$( basename "$0" )
+
+verbose=""
+countdown=10
+sleep=1
+kill=""
+
+pidfile="/tmp/sway-count-pid"
+trap "rm -f $pidfile" EXIT
+
+while [[ "$1" ]]; do
+    case "$1" in
+        -h|--help)
+            echo "Usage: $PROG <secs>"
+            echo
+            echo "countdown <secs> seconds, default 10 (uses nwg-wrapper)"
+            echo "Options:"
+            echo "-s|--sleep secs   time between counts (default 1)"
+            exit 0
+            ;;
+        -s|--sleep)
+            sleep=$2
+            shift 2
+            ;;
+        -v|--verbose)
+            verbose="set"
+            shift
+            ;;
+        [0-9]*)
+            countdown="$1"
+            shift
+            ;;
+        -k|--kill)
+            [[ -e "$pidfile" ]] && kill $( cat "$pidfile" )
+            exit 0
+            ;;
+        *)
+            echo "$PROG: error '$@'" >&2
+            exit 1
+            ;;
+    esac
+done
+
+[[ "$verbose" ]] && {
+    echo "countdown=$countdown"
+    echo "sleep=$sleep"
+    set -x
+}
+
+mypid=$$
+
+CSS=~/.config/nwg-wrapper/style.css
+NWG_OPT=""
+[[ -r "$CSS" ]] && NWG_OPT="-c $CSS"
+while (( countdown > 0 )); do
+    echo "<span size='100000' foreground='yellow'>$countdown</span>" |
+    nwg-wrapper $NWG_OPT --position right --alignment start --layer 3 -t /dev/stdin > /dev/null & pid=$!
+    echo "$mypid $pid" > "$pidfile"
+    sleep "$sleep"
+    kill $pid
+    countdown=$(( countdown - 1 ))
+done
+
+rm -f "$pidfile"
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
+

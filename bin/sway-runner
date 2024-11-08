@@ -1,0 +1,187 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/sway-join
+# shellcheck disable=SC2034
+TIME_STAMP="20230903.073444"
+
+# Copyright (C) 2023 Bob Hepple <bob.hepple@gmail.com>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, see <http://www.gnu.org/licenses/>.
+
+PROG=$(basename "$0")
+HEADLESS_CONFIG="${XDG_CONFIG_DIR:-$HOME/.config}/sway/headless"
+USAGE="Run a swaymsg(1) command on the Nth sway session, typically from a
+ssh tty or from cron(1) or at(1). Obviously, in a sway session, you'd
+just run the swaymsg(1) command from a terminal.
+
+If no sway session is running then a headless session will be started.
+
+When running a new headless session, it is assumed that there is a
+configuration file for it at $HEADLESS_CONFIG
+(or use the -c option).
+
+eg to start wayvnc on an existing sway session from a ssh session (ie
+not from the sway session itself):
+
+\$ $PROG exec wayvnc
+
+eg to control a sway session from an ssh tty logged in as another user:
+\$ sudo su - <sway-user> -- $PROG 'workspace number 3'
+
+eg to run xeyes on a an existing sway session on a remote system:
+\$ ssh <sway-user>@<remote-system> 'export PATH=\$PATH:\$HOME/bin; $PROG -- exec xeyes'
+
+eg to run xclock at 6pm:
+\$ echo '$PROG exec xclock' | at 18:00
+
+
+Pre-requisite: argp.sh from the same place you found this.
+"
+
+ARGS="
+ARGP_DELETE=quiet
+ARGP_VERSION=$VERSION
+ARGP_PROG=$PROG
+##############################################################   
+#OPTIONS:
+#name=default             sname arg       type range description
+##############################################################
+NTH='0'                   n     n         i    0-    ordinal of the sway session.
+NEW=''                    N     ''        b    ''    don't look for an existing session - create a new headless one.
+ALL_SESSIONS=''           a     ''        b    ''    run on all sessions
+LIST=''                   l     ''        b    ''    list sway sessions
+KILL_SESSION=''           k     ''        b    ''    kill the sway session (careful! no confirmation is offered)
+CONFIG='$HEADLESS_CONFIG' c     config    s    ''    sway config to use when starting a new headless session.
+DRY_RUN=''                d     ''        b    ''    dry-run
+##############################################################   
+ARGP_ARGS=command
+ARGP_SHORT=$SHORT_DESC
+ARGP_USAGE=$USAGE"
+
+exec 4>&1
+eval "$(echo "$ARGS" | argp.sh "$@" 3>&1 1>&4 || echo exit $? )"
+exec 4>&-
+
+[[ "$NTH" =~ ^[0-9]+$ ]] || NTH="0"
+
+get_env_from_pid() {
+    PID="$1"
+    [[ "$PID" ]] && {
+        env_file="/proc/$PID/environ"
+        sudo cat "$env_file" | tr "\0" "\n"
+    }
+}
+
+get_env_param_from_pid() {
+    PID="$1"
+    PARAM="$2"
+    get_env_from_pid "$PID" | awk "/^$PARAM=/ {gsub(\"^$PARAM=\",\"\"); print \$0}"
+}
+
+# shellcheck disable=SC2029,SC2087,SC2086
+get_sock_from_user_and_sway_pid() {
+    ID="$1"
+    SWAY_PID="$2"
+    XDG_RUNTIME_DIR=$( get_env_param_from_pid "$SWAY_PID" XDG_RUNTIME_DIR )
+    echo "${XDG_RUNTIME_DIR}/sway-ipc.$ID.$SWAY_PID.sock"
+}
+
+get_pids_of() {
+    ID="$1"
+    prog="$2"
+    pgrep --euid "$ID" --exact "$prog"
+}
+
+[[ "$VERBOSE" ]] && set -x
+
+USER_ID=$( id -u )
+
+[[ "$LIST" ]] && {
+    n=0
+    for SWAY_PID in $( get_pids_of "$USER_ID" sway ); do
+        SOCK=$( get_sock_from_user_and_sway_pid "$USER_ID" "$SWAY_PID" )
+        echo -n "$n: PID=$SWAY_PID: $SOCK: "
+        cat "/proc/$SWAY_PID/cmdline"
+        echo
+        n=$(( n + 1 ))
+    done
+    exit 0
+}
+
+# look for existing sway sessions
+SWAY_PIDS=()
+for PID in $( get_pids_of "$USER_ID" sway ); do
+    SWAY_PIDS+=("$PID")
+done
+
+(( NTH >= ${#SWAY_PIDS[@]} )) && {
+    echo "$PROG: no such sway instance $NTH" >&2
+    exit 1
+}
+NTH_PID="${SWAY_PIDS[NTH]}"
+
+[[ "$ALL_SESSIONS" ]] || SWAY_PIDS=( "$NTH_PID" )
+
+[[ -z "${SWAY_PIDS[*]}" || "$NEW" ]] && {
+    # start a new session:
+    export WLR_BACKENDS=headless 
+    export WLR_LIBINPUT_NO_DEVICES=1
+    if [[ "$DRY_RUN" ]]; then
+        echo "sway --config '$HEADLESS_CONFIG' > ~/.wsession-errors.headless 2>&1"
+        exit 0
+    fi
+    sway --config "$HEADLESS_CONFIG" > ~/.wsession-errors.headless 2>&1 & SWAY_PID=$!
+    sleep 3 # to give /run/user/$USER_ID/wayland-? time to be created
+    SWAY_PIDS+=( "$SWAY_PID" )
+    NTH="${#SWAY_PIDS[@]}"
+}
+
+for SWAY_PID in "${SWAY_PIDS[@]}"; do
+    [[ "$KILL_SESSION" ]] && {
+        if [[ "$ALL_SESSIONS" ]] || (( SWAY_PID == NTH_PID )); then
+            if [[ "$DRY_RUN" ]]; then
+                echo kill "$SWAY_PID"
+            else
+                kill "$SWAY_PID"
+            fi
+            continue
+        fi
+    }
+
+    (( $# > 0 )) || {
+        echo "$PROG: no command given; doing nothing" >&2
+        exit 1
+    }
+
+    [[ "$SOCK" ]] || SOCK=$( get_sock_from_user_and_sway_pid "$USER_ID" "$SWAY_PID" )
+
+    if [[ "$DRY_RUN" ]]; then
+        echo "swaymsg -q -s $SOCK -- $*"
+    else
+        get_env_from_pid "$SWAY_PID" | {
+            while read env_line; do
+                param=$( echo "$env_line" | sed -r 's/=.*$//' )
+                val=$( echo "$env_line" | sed -r 's/^[^=]+=//' )
+                eval $param="'$val'"
+                export $param
+            done
+            swaymsg -q -s "$SOCK" -- "$*"
+        }
+    fi
+done
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:

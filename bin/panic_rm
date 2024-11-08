@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+for target in "$@" 
+do
+	# match: {/}{0-inf word chars}{maybe a /}{end of string}
+	indicator1=$(perl -e 'my $arg = shift; if ($arg =~ /(\/)(\w*)(\/?)\z/) {print 1;} else {print 0;}' "$target")
+	
+	if [ "$indicator1" -eq 1 ]
+	then
+		echo -e "WARNING! You are about to delete files in the ROOT DIRECTORY!\nAre you sure you want to continue with deleting $target ?\n\nIf so, please type in the name of the file/dir you want to delete: "
+		read -r ans
+		indicator2=$(perl -e 'my $answer = shift; my $TARGET = uc shift; if ($answer =~ /\/[A-Z]+\b/ && $answer =~ /^$TARGET$/ ) { print 1; } else { print 0; }' "$ans" "$target")
+		
+		if [ "$indicator2" -eq 1 ]
+		then
+			echo "$target deleted"
+		fi
+	fi
+done

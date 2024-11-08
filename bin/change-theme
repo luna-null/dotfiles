@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+if [ -f "$XDG_CONFIG_HOME"/alacritty/alacritty-light.toml ]; then
+	mv "$XDG_CONFIG_HOME"/alacritty/alacritty.toml "$XDG_CONFIG_HOME"/alacritty/alacritty-dark.toml
+	mv "$XDG_CONFIG_HOME"/alacritty/alacritty-light.toml "$XDG_CONFIG_HOME"/alacritty/alacritty.toml
+
+	if  [ -f "$XDG_CONFIG_HOME"/waybar/style-light.css ]; then
+	mv "$XDG_CONFIG_HOME"/waybar/style.css "$XDG_CONFIG_HOME"/waybar/style-dark.css
+	mv "$XDG_CONFIG_HOME"/waybar/style-light.css "$XDG_CONFIG_HOME"/waybar/style.css
+	pkill waybar; waybar &
+	fi
+
+
+elif [ -f "$XDG_CONFIG_HOME"/alacritty/alacritty-dark.toml ]; then
+	mv "$XDG_CONFIG_HOME"/alacritty/alacritty.toml "$XDG_CONFIG_HOME"/alacritty/alacritty-light.toml
+	mv "$XDG_CONFIG_HOME"/alacritty/alacritty-dark.toml "$XDG_CONFIG_HOME"/alacritty/alacritty.toml
+
+	if  [ -f "$XDG_CONFIG_HOME"/waybar/style-dark.css ]; then
+	mv "$XDG_CONFIG_HOME"/waybar/style.css "$XDG_CONFIG_HOME"/waybar/style-light.css
+	mv "$XDG_CONFIG_HOME"/waybar/style-dark.css "$XDG_CONFIG_HOME"/waybar/style.css
+	pkill waybar; waybar &
+	fi
+
+
+fi
+

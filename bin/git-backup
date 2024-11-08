@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# Copies config files to the dotfiles repository and sends a message to commit
+
+GIT_DOTFILES_DIR=$XDG_HOME_DIR/Projects/dotfiles/
+
+cp $XDG_HOME_DIR/.bashrc $GIT_DOTFILES_DIR
+
+cp $XDG_HOME_DIR/.config/alacritty $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/gtk-* $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/font* $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/asm-lsp $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/cava $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/home-manager $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/mako $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/nixos $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/nvim $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/nwg-wrapper $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/ranger $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/rofi* $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/rustfmt $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/spicetify $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/sway $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/systemd $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/waybar $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/waypaper $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/xkb $GIT_DOTFILES_DIR -r
+cp $XDG_HOME_DIR/.config/zotify $GIT_DOTFILES_DIR -r
+
+cp $XDG_HOME_DIR/.profile $GIT_DOTFILES_DIR
+cp $XDG_HOME_DIR/.nix-profile/ $GIT_DOTFILES_DIR
+cp $XDG_HOME_DIR/.ghci $GIT_DOTFILES_DIR
+cp $XDG_HOME_DIR/.bash_profile $GIT_DOTFILES_DIR
+cp $XDG_HOME_DIR/.xinitrc $GIT_DOTFILES_DIR
+cp $XDG_HOME_DIR/.Xresources $GIT_DOTFILES_DIR
+
+swaymsg exec 'notify-send Git files updated!" "Ready to commit"'

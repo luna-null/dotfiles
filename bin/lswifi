@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/lswifi
+# shellcheck disable=SC2034
+TIME_STAMP="20220627.144436"
+
+PROG=$( basename "$0" )
+CONFIG_FILE="${XDG_CONFIG_DIR:-$HOME/.config}/$PROG/config"
+
+case "$1" in
+    -h|--help)
+        echo "Usage: $PROG"
+        echo
+        echo "calls nmcli and adds location data from $CONFIG_FILE in the format:
+
+F8:CA:59:3A:60:2E=netcom router (study)
+88:40:3B:EA:97:1E=huawei modem (study)
+68:FF:7B:DE:88:D4=tp-link A (lounge)
+
+ie <MAC ADDRESS OF ACCESS POINT>=<description>
+"
+        exit 0
+        ;;
+esac
+
+[[ -r "$CONFIG_FILE" ]] || {
+    echo "$PROG: no config file found at $CONFIG_FILE" >&2
+    exit 1
+}
+
+script=$( cat << "EOF"
+BEGIN {
+    while (getline < CF) {
+        split($0,ft,"=")
+        location[ft[1]]=ft[2]
+    }
+}
+
+/^IN-USE/ { print $0, "Location" }
+!/^IN-USE/ { print $0, location[$NF] }
+EOF
+)
+
+# if you change the fields here, make sure IN-USE is first and BSSID is last:
+nmcli --fields IN-USE,SSID,CHAN,FREQ,SIGNAL,SECURITY,BSSID device wifi list | awk -v CF="$CONFIG_FILE" "$script"
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:

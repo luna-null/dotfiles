@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+LATITUDE=$(curl ipinfo.io | jq -r '.loc | split(",") | .[0]')
+LONGITUDE=$(curl ipinfo.io | jq -r '.loc | split(",") | .[1]')
+
+n=0
+gammaOn=0
+while [ "$n" -le 600 ] && [ "$gammaOn" -ne 1 ]; do
+	if [ "$WAYLAND_DISPLAY" == "wayland-1" ] && ! pgrep gammastep &>/dev/null; then
+		gammastep -l "$LATITUDE":"$LONGITUDE" &
+		let "gammaOn = 1"
+	fi
+
+	let "n = n + 1"
+done

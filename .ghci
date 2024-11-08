@@ -1,0 +1,29 @@
+-- To run: 
+--    cabal repl -b pretty-simple
+--
+-- Colorizing and pretty-printing ghci output
+:set -package pretty-simple
+:set -interactive-print=Text.Pretty.Simple.pPrint
+
+-- green bold lambdas and multiline mode
+:set prompt      "\ESC[1;35mλ> \ESC[m"
+:set prompt-cont "\ESC[1;32m   \ESC[m"
+
+-- useful flags
+-- :set -fprint-explicit-foralls
+
+:set +m
+:set +s
+:set +t
+
+-- useful extensions by default
+:set -XTypeApplications -XKindSignatures
+
+-- useful default imports
+import Data.Kind (Type, Constraint)
+
+-- helpful macros
+:def pretty \_ -> return (":set -interactive-print=Text.Pretty.Simple.pPrint")
+:def no-pretty \_ -> return (":set -interactive-print System.IO.print")
+:def package \m -> return $ ":! ghc-pkg --simple-output find-module " ++ m
+:def rr \_ -> return ":script ~/.ghci"

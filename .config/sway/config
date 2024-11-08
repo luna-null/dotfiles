@@ -1,0 +1,843 @@
+
+
+
+# Read `man 5 sway` for a complete reference.
+set $gnome-schema org.gnome.desktop.interface
+
+set $XDG_BACKGROUND_DIR /home/le/Pictures/Wallpapers/
+
+### Idle configuration
+
+set $lock swaylock -i $XDG_BACKGROUND_DIR/Live/color-black-hole.gif
+
+
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:DejaVuSansM Nerd Font Mono 13
+# font pango:FiraCode Nerd Font, FontAwesome, 13
+
+
+### Variables
+
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+set $alt Mod1
+set $ESC 9
+set $CAPS 66
+
+# Directory to custom Scripts
+set $BIN_DIR ~/.local/bin/sway
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term alacritty
+set $term-float alacritty --class TERMINAL; for_window [app_id="TERMINAL"] floating enable
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+
+# bemenu
+# set $menu XDG_DATA_DIRS=/usr/share/:/usr/local/share/:/var/lib/flatpak/exports/share/:$HOME/.local/share/flatpak/exports/share/ j4-dmenu-desktop --dmenu="bemenu-run.sh -l 30" --term="alacritty" --no-generic --display-binary
+
+# rofi-wayland
+set $menu rofi -show drun
+
+# Preferred lock command
+# set $lock $BIN_DIR/lock.sh
+
+# Helpful command for binding keys that don't repeat when held, and don't change with keyboard layouts
+set $bindsym bindsym --no-repeat --to-code 
+set $bindcode bindcode --no-repeat
+
+# Define names for workspaces
+set $ws0 "."
+
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
+set $ws11 11
+set $ws12 12
+set $ws13 13
+set $ws14 14
+set $ws15 15
+set $ws16 16
+set $ws17 17
+set $ws18 18
+set $ws19 19
+set $ws20 20
+set $ws21 21
+set $ws22 22
+
+# GTK settings
+set $gnome-schema org.gnome.desktop.interface
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+set $gnome-schema org.gnome.desktop.interface
+
+####################
+####################
+# 02 Output
+####################
+####################
+
+### Output configuration (man 5 sway-output / swaymsg -t get_outputs)
+### For a dynamic output configuration take a look at the provided kanshi example
+
+# output eDP-1 pos 0 0 scale 2.0 bg /home/le/Pictures/background-images/back1.jpg fill
+
+#output DP-4 pos 1920 0 res 1920x1080
+#output DP-5 pos 3840 0 res 1920x1080
+
+# swaymsg -t get_outputs | jq -r '.[] | .name'
+# swaymsg output eDP-1 pos 1920 0 res 1920x1080
+# swaymsg output DP-7 pos 3840 0 res 1920x1080
+
+
+exec swayidle -w \
+          timeout 300 $lock \
+          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          before-sleep 'swaylock -f -c 000000'
+
+
+# before-sleep '$lock'
+
+
+####################
+####################
+# 03 Workspaces
+####################
+####################
+
+
+workspace_layout tabbed
+
+workspace_auto_back_and_forth no
+
+# assign program to workspace
+assign [app_id="firefox"] workspace $ws1
+assign [app_id="firefox-developer-edition"] workspace $ws1
+assign [class="Spotify"] workspace $ws11
+assign [app_id="thunderbird"] workspace $ws12
+assign [app_id="org.telegram.desktop"] workspace $ws13
+assign [class="vesktop"] workspace $ws13
+assign [class="Signal"] workspace $ws13
+assign [app_id="org.kde.kdeconnect.sms"] workspace $ws13
+
+
+# assign workspace to monitor
+#workspace $ws1 output eDP-1
+
+workspace $ws1
+
+
+
+
+####################
+####################
+# 04 Input
+####################
+####################
+
+
+### Input configuration (man 5 sway-input / swaymsg -t get_inputs)
+
+seat seat0 xcursor_theme default 96
+
+input "1:1:AT_Translated_Set_2_keyboard" 
+{
+    
+    # xkb_file ~/.config/xkb/symbols/mth
+
+    xkb_layout mth,ru
+    natural_scroll disabled 
+    repeat_delay 250
+    repeat_rate 36
+}
+
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    tap_button_map lrm
+    natural_scroll disabled
+    drag enabled
+    middle_emulation enabled
+
+}
+
+input "1133:16399:Logitech_K750" {
+    xkb_layout us,ru
+    repeat_delay 200
+    repeat_rate 50
+}
+
+input "1267:8400:ELAN_Touchscreen" {
+    drag enabled
+    events disabled_on_external_mouse
+    dwt enabled
+    scroll_factor 10.0
+    accel_profile adaptive
+    pointer_accel 1
+
+}
+
+
+####################
+####################
+# 05 Theme
+####################
+####################
+
+
+# Color vars
+set $col_focused #35CE8Da0
+set $col_focused_inactive #EEE82Ca0
+set $col_unfocused #7161EF77
+set $col_text_dark #121420
+set $col_text_light #F7F0F0
+set $col_urgent #E40066a0
+set $col_unfocused_border #12142077
+
+# class                  border                 background             text             indicator              child_border
+client.focused           $col_focused           $col_focused           $col_text_dark   $col_focused           $col_focused
+client.focused_inactive  $col_focused_inactive  $col_focused_inactive  $col_text_dark   $col_focused_inactive  $col_focused_inactive
+client.unfocused         $col_unfocused_border  $col_unfocused         $col_text_light  $col_unfocused         $col_unfocused
+client.urgent            $col_text_dark         $col_urgent            $col_text_dark   $col_urgent            $col_urgent
+
+# Titlebar
+font NotoSans-Italic 12
+titlebar_separator enable
+titlebar_padding 1
+title_align center
+titlebar_border_thickness 1
+
+# Borders
+default_border pixel 4
+smart_borders on
+
+# Gaps
+smart_gaps off
+gaps inner 2
+gaps outer 2
+
+
+
+
+
+seat seat0 xcursor_theme 'Skyrim' 36
+
+### Bar
+exec_always "pkill waybar; waybar"
+
+
+#########
+# SwayFx
+#########
+
+### Window blur
+# blur enable
+
+### This will set floating windows to blur based on the background, not the windows below.
+### You probably want to set this to disable :)
+# blur_xray enable 
+
+# <Integer value 0 - 10>
+blur_passes 10
+blur_radius 10
+
+# <Float value 0 - 1>
+# blur_noise 0.8
+
+# <Float value 0 - 2>
+# blur_brightness 1
+# blur_contrast 1
+# blur_saturation 1
+
+###Corner radius
+corner_radius 10
+
+### Window shadows
+
+# shadows enable
+
+# Note: The shadow might not fit some windows for the next option
+# shadows_on_csd enable
+
+# <Integer value 0 - 100>
+# shadow_blur_radius 30
+
+# <Hex color with alpha> ex, #0000007F
+# shadow_color #0000007F
+# shadow_inactive_color #0000007F
+
+# <X offset> <Y offset>
+# shadow_offset 0 0
+
+
+### LayerShell effects (to blur panels / notifications etc):
+
+# <Layer namespace> <Effects>
+# layer_effects <layer namespace> <effects>
+
+# The current layer namespaces can be shown with:
+# swaymsg -r -t get_outputs | jq '.[0].layer_shell_surfaces | .[] | .namespace'
+
+# Example: layer_effects "waybar" blur enable; shadows enable; corner_radius 6
+# Note: If an application uses gtk, its namespace is likely to be "gtk-layer-shell"
+
+
+
+# SwayIPC Example: 
+# layer_effects 'gtk-layer-shell' 'blur enable; shadows enable; corner_radius 6'
+
+
+# Available Effects:
+
+# <Enable|Disable>
+# blur enable
+# blur_ignore_transparent enable
+# shadows enable
+
+# <Int>
+# corner_radius 10
+
+
+### Dim unfocused windows:
+
+# <Float value 0.0 - 1.0>
+default_dim_inactive 0.05
+
+# for_window [CRITERIA_HERE] dim_inactive <float value 0.0 - 1.0>
+
+
+# <Hex color> ex, #000000FF
+
+# dim_inactive_colors.unfocused #000000FF
+# dim_inactive_colors.urgent #900000FF
+
+# Application saturation:
+# for_window [CRITERIA HERE] saturation <set|plus|minus> <val 0.0 <-> 2.0>
+
+####################
+####################
+# 06 Window Settings
+####################
+####################
+
+
+# Display window as floating. Find out wayland app_id with "swaymsg -t get_tree | jq '.' | grep app_id" and xorg class with xprop
+
+default_floating_border normal
+
+for_window [app_id="."] inhibit_idle fullscreen gaps outer 5 hide_edge_borders both corner_radius 10 tiling_drag enable
+for_window [workspace="\."] move scratchpad
+
+for_window [window_role = "pop-up"] floating enable
+for_window [window_role = "bubble"] floating enable
+for_window [window_role = "dialog"] floating enable
+for_window [window_type = "menu"] floating enable
+for_window [app_id = "floating"] floating enable title_format %title
+for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
+
+for_window [title = "thunderbird Preferences"] floating enable
+for_window [app_id="(?i)thunderbird" title=".*Reminder"] floating enable
+
+# for_window [name = "*Reminder"] floating enable
+for_window [title = "Manage KeeAgent.*"] floating enable
+for_window [app_id = "keepassxc"] floating enable, resize set 1276px 814px
+for_window [title = "^Open File$"] floating enable
+for_window [class = "^zoom$"] floating enable
+for_window [title = "mpvfloat"] floating enable
+for_window [app_id = "nm-openconnect-auth-dialog"] floating enable
+for_window [title = "Open Database File"] floating enable
+for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
+for_window [title="nmtui"] floating enable
+for_window [title="Save File"] floating enable
+for_window [app_id="wdisplays"] floating enable
+for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, sticky enable, resize set width 30 ppt height 40 ppt
+for_window [app_id="floating_shell"] floating enable, border pixel 1, sticky enable
+for_window [app_id = "qt5ct"] floating enable
+for_window [app_id = "gnome-tweaks"] floating enable
+for_window [app_id = "org.gnome.Calculator"] floating enable
+for_window [class = "Bluetooth-sendto" instance = "bluetooth-sendto"] floating enable
+for_window [window_role = "Preferences"] floating enable
+for_window [title = "Picture in picture"] floating enable, sticky enable
+for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+for_window [title = "Firefox - Choose User Profile"] floating enable
+for_window [title = "Blender Render" ] floating enable
+# for_window [app_id="blender"] floating disable
+for_window [class = "yad"] floating enable
+for_window [app_id = "wdisplays"] resize set width 1150px height 480px
+for_window [app_id = "nwg-look"] floating enable, resize set width 580px height 480px
+for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
+for_window [app_id="(?i)(?:blueman-manager|azote|gnome-disks|nwg-shell-config)"] floating enable
+for_window [app_id="(?i)(?:pavucontrol|nm-connection-editor|gsimplecal|galculator)"] floating enable
+for_window [class="Tor Browser"] floating enable
+
+# Zoom
+for_window [app_id="zoom"] floating enable
+for_window [app_id="zoom" title="Choose ONE of the audio conference options"] floating enable
+for_window [app_id="zoom" title="zoom"] floating enable
+for_window [app_id="zoom" title="Zoom Meeting"] floating disable
+for_window [app_id="zoom" title="Zoom - Free Account"] floating disable
+
+# https://github.com/ValveSoftware/steam-for-linux/issues/1040
+for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [title="^Steam Keyboard$"] floating enable
+
+# Scratchpad terminal
+for_window [title="(?i)$criteria"] floating enable, move absolute position 1500px 300px, resize set 1200px 700px, move to scratchpad, mark $criteria
+
+# Waybar Tooltips don't steal focus
+no_focus [app_id="waybar"]
+for_window [app_id="waybar" floating] {
+    move position cursor
+    move down 60px # adjust if some menus still don't fit
+}
+
+# Titlebars get resized when text with a different height gets picked up.
+# This includes emoji and Hangul. This neat hack makes all titlebars higher.
+# See https://github.com/swaywm/sway/issues/4992
+for_window [title=".*"] title_format %title
+
+# App Icons
+# for_window [app_id="(?i)firefox"] title_format "%title"
+# for_window [app_id="Alacritty"] title_format "%title"
+# for_window [app_id="thunderbird"] title_format "%title"
+# for_window [app_id="code-oss"] title_format "%title"
+# for_window [app_id="codium-url-handler"] title_format "%title"
+
+# Tag xwayland windows with [X]
+# for_window [shell="xwayland"] title_format "%title"
+
+
+# Inhibit Idle if a window is fullscreen
+for_window [class="^.*"] inhibit_idle fullscreen
+for_window [app_id="^.*"] inhibit_idle fullscreen
+
+# Focus window when mouse hovers it
+focus_follows_mouse yes
+focus_wrapping workspace
+
+# Moves mouse to the newly created window
+mouse_warping none
+
+# Moves mouse to the newly created window
+mouse_warping none
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+# floating_modifier $mod normal
+
+set $gnome-schema org.gnome.desktop.interface
+
+
+
+
+####################
+####################
+# 07 Key-Bindings
+####################
+####################
+
+#
+# Basics:
+#
+    # Kill focused window
+    $bindsym $mod+Shift+q kill
+    bindsym --to-code $mod+Shift+Control+q kill
+
+    # Start your launcher
+    bindsym $mod+Space exec $menu
+
+    # Reload the configuration file
+    $bindsym $mod+Shift+c reload
+
+    # Start your terminal
+    $bindsym $mod+Return exec $term
+    $bindsym --release $mod+grave exec $term
+
+    # Floating terminal
+    $bindsym $mod+Shift+grave exec $term-float
+    $bindsym $mod+Shift+Return exec $term-float
+
+    # Exit sway (logs you out of your Wayland session)
+    $bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+    # bindsym $mod+comma exec wlrctl pointer click left
+    # bindsym $mod+period exec wlrctl pointer click middle
+    # bindsym $mod+slash exec wlrctl pointer click right
+   
+
+    # Kills waybar 
+    # bindsym $mod+Control+Space exec "pkill waybar"; mode "waybar_off"
+    # mode "waybar_off" {
+    #     bindsym $mod+Control+Space exec "waybar"; mode "default"
+    #     bindsym Escape exec "waybar"; mode "default"
+    # }
+
+# For toggling the bottom bar
+## $bindsym $mod+b bar bottom mode toggle
+
+# $bindsym $mod+Control+minus exec "bash ~/.scripts/show_background/show_background.sh"
+# $bindsym $mod+Control+Shift+minus exec ". ~/.scripts/show_background/cache; [[ "$WAIT_APPS" -eq 1 ]] && echo export WAIT_APPS=0 > ~/.scripts/show_background/cache"
+
+
+### Launches
+
+    ## Launch // Color Picker // c ##
+    $bindsym $mod+c exec $BIN_DIR/color-picker.sh
+
+    ## Launch // Browser // <XF86HomePage> ##
+    $bindsym $mod+Shift+f exec firefox
+
+    ## Launch // Clipboard manager // y ##
+    # bindsym $mod+y exec clipman pick -t CUSTOM --tool-args="bemenu-run.sh -l 30 -p Clipboard"
+
+
+
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+#    bindsym $mod+b splith
+#    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    $bindsym $mod+s layout stacking
+    $bindsym $mod+w layout tabbed
+    $bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    $bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    $bindsym $mod+Shift+space floating toggle
+
+    # Move focus to the parent container
+    $bindsym $mod+a focus parent
+    $bindsym $mod+Shift+a focus child
+    $bindsym $mod+Control+a focus mode_toggle
+
+
+
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    $bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    $bindsym $mod+minus scratchpad show
+
+
+#
+# Resizing containers:
+#
+    mode "resize" {
+        # left will shrink the containers width
+        # right will grow the containers width
+        # up will shrink the containers height
+        # down will grow the containers height
+        bindsym --to-code $left resize shrink width 10px
+        bindsym --to-code $down resize grow height 10px
+        bindsym --to-code $up resize shrink height 10px
+        bindsym --to-code $right resize grow width 10px
+
+        # Ditto, with arrow keys
+        bindsym Left resize shrink width 10px
+        bindsym Down resize grow height 10px
+        bindsym Up resize shrink height 10px
+        bindsym Right resize grow width 10px
+
+        # Return to default mode
+        $bindsym Return mode "default"
+        $bindsym Escape mode "default"
+    }
+    $bindsym $mod+r mode "resize"
+
+#####
+# Window and Workspace Navigation
+#####
+
+    ## Navigate // Relative Window // ↑ ↓ ← → ##
+        $bindsym $mod+Left focus left
+        $bindsym $mod+Down focus down
+        $bindsym $mod+Up focus up
+        $bindsym $mod+Right focus right
+    # vim controls
+        $bindsym $mod+$left focus left
+        $bindsym $mod+$down focus down
+        $bindsym $mod+$up focus up
+        $bindsym $mod+$right focus right
+
+
+        $bindsym $mod+Tab focus next
+        $bindsym $mod+Shift+Tab focus prev
+
+
+
+    ## Navigate Workspaces 0-22 ##
+        # 0 is for showing desktop. Keep it clear.
+        bindcode $mod+$ESC workspace $ws0
+        $bindsym $mod+1 workspace $ws1
+        $bindsym $mod+2 workspace $ws2
+        $bindsym $mod+3 workspace $ws3
+        $bindsym $mod+4 workspace $ws4
+        $bindsym $mod+5 workspace $ws5
+        $bindsym $mod+6 workspace $ws6
+        $bindsym $mod+7 workspace $ws7
+        $bindsym $mod+8 workspace $ws8
+        $bindsym $mod+9 workspace $ws9
+        $bindsym $mod+0 workspace $ws10
+
+        $bindsym $mod+F1 workspace $ws11
+        $bindsym $mod+F2 workspace $ws12
+        $bindsym $mod+F3 workspace $ws13
+        $bindsym $mod+F4 workspace $ws14
+        $bindsym $mod+F5 workspace $ws15
+        $bindsym $mod+F6 workspace $ws16
+        $bindsym $mod+F7 workspace $ws17
+        $bindsym $mod+F8 workspace $ws18
+        $bindsym $mod+F9 workspace $ws19
+        $bindsym $mod+F10 workspace $ws20
+        $bindsym $mod+F11 workspace $ws21
+        $bindsym $mod+F12 workspace $ws22
+
+        $bindcode $mod+$CAPS workspace back_and_forth
+        $bindsym $mod+bracketleft workspace prev
+        $bindsym $mod+bracketright workspace next
+        $bindsym $mod+period exec sway-next-empty-workspace
+
+    ## Modify // Move window to workspace 1-22 // <Shift> ##
+        $bindsym $mod+Shift+1 move container to workspace $ws1
+        $bindsym $mod+Shift+2 move container to workspace $ws2
+        $bindsym $mod+Shift+3 move container to workspace $ws3
+        $bindsym $mod+Shift+4 move container to workspace $ws4
+        $bindsym $mod+Shift+5 move container to workspace $ws5
+        $bindsym $mod+Shift+6 move container to workspace $ws6
+        $bindsym $mod+Shift+7 move container to workspace $ws7
+        $bindsym $mod+Shift+8 move container to workspace $ws8
+        $bindsym $mod+Shift+9 move container to workspace $ws9
+        $bindsym $mod+Shift+0 move container to workspace $ws10
+
+        $bindsym $mod+Shift+F1 move container to workspace $ws11
+        $bindsym $mod+Shift+F2 move container to workspace $ws12
+        $bindsym $mod+Shift+F3 move container to workspace $ws13
+        $bindsym $mod+Shift+F4 move container to workspace $ws14
+        $bindsym $mod+Shift+F5 move container to workspace $ws15
+        $bindsym $mod+Shift+F6 move container to workspace $ws16
+        $bindsym $mod+Shift+F7 move container to workspace $ws17
+        $bindsym $mod+Shift+F8 move container to workspace $ws18
+        $bindsym $mod+Shift+F9 move container to workspace $ws19
+        $bindsym $mod+Shift+F10 move container to workspace $ws20
+        $bindsym $mod+Shift+F11 move container to workspace $ws21
+        $bindsym $mod+Shift+F12 move container to workspace $ws22
+
+        $bindcode $mod+Shift+$CAPS move container to workspace back_and_forth
+        $bindsym $mod+Shift+bracketleft move container to workspace prev
+        $bindsym $mod+Shift+bracketright move container to workspace next
+
+
+#####
+# Marks
+#####
+    
+    $bindsym $mod+m+j mark --toggle "j"
+    $bindsym $mod+m+k mark --toggle "k"
+    $bindsym $mod+m+l mark --toggle "l"
+    $bindsym $mod+m+semicolon mark --toggle ";"
+
+#####
+# Window and Workspace Configuration
+#####
+
+    ## Modify // Window Position // <Shift> ↑ ↓ ← → ##
+        bindsym $mod+Shift+Left move left
+        bindsym $mod+Shift+Down move down
+        bindsym $mod+Shift+Up move up
+        $bindsym $mod+Shift+Right move right
+
+    ## Modify // Split horizontal // h ##
+        $bindsym $mod+Shift+h splith
+
+    ## Modify // Split vertical // v ##
+        $bindsym $mod+Shift+v splitv
+
+    # Autotiling automatically sets splith and splitv.
+    # Because of this the layout only changes for the selected window and not for all windows if no layout is set, which is default in sway.
+    # To restore the "original behaviour", the layout needs to be reset before changing it.
+    # "Move"ing the windows first, resets the layout.
+
+    ## Modify // Window Fullscreen Global Toggle // <Shift> f ##
+        $bindsym $mod+Control+f fullscreen global
+
+    ## Modify // Container Fullscreen Toggle // <Shift> f ##
+        # bindsym $mod+f focus parent; fullscreen; focus child
+
+    ## Modify // Copy wayland clipboard to PRIAMRY // <Shift><Alt> s ##
+        # bindsym Shift+$alt+s exec wl-paste | xclip -selection clipboard | notify-send "PRIMARY Clipboard synced with Wayland"
+
+
+
+#####
+# Session Management
+#####
+
+    ## Session // Lock screen // l ##
+        $bindsym $mod+Control+l exec $lock
+
+
+
+#####
+# Screenshot
+#####
+
+    ## Flameshot
+       bindsym --locked Print exec flameshot screen
+
+    ## Screenshot // Screenshot current window // <Print> ##
+        # bindsym $mod+Print exec $BIN_DIR/screenshots.sh window
+        # bindsym $mod+Print exec swaymsg -t get_tree | jq -r '.. | (.nodes? // empty)[] | select(.focused) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | grim -g - - | swappy -f -
+        bindsym $mod+Print exec /usr/share/sway/scripts/grimshot --notify save active - | swappy -f - & SLIGHT=$(light -G) && light -A 30 && sleep 0.1 && light -S $SLIGHT
+
+
+    ## Screenshot // Screenshot selected region // <Shift><Print> ##
+        # bindsym $mod+Shift+Print exec $BIN_DIR/screenshots.sh region
+        # bindsym $mod+Shift+Print exec grim -g "$(slurp -b '#AFAFAFAF' -c '#FF4F3FAF' -s '#00000000' -w 3 -d)" - | swappy -f -
+        bindsym $mod+Shift+Print exec /usr/share/sway/scripts/grimshot --notify save area - | swappy -f - && SLIGHT=$(light -G) && light -A 30 && sleep 0.1 && light -S $SLIGHT
+
+    ## Flameshot
+        # bindsym $mod+Shift+Print exec flameshot gui
+
+    ## Screenshot // Select window to screenshot // ## 
+        # bindsym /usr/share/sway/scripts/grimshot save window - | swappy -f -
+
+
+#####
+# Fn keys
+#####
+
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    $bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    $bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    bindsym --locked XF86MonBrightnessDown exec light -U 5
+    bindsym --locked XF86MonBrightnessUp exec light -A 5
+    $bindsym --locked XF86AudioPlay exec playerctl --all-players play-pause
+    $bindsym --locked XF86AudioNext exec playerctl next
+    $bindsym --locked XF86AudioPrev exec playerctl previous
+    $bindsym XF86Search exec /home/le/bin/filesearch.sh
+    $bindsym --locked $mod+z input 1267:8400:ELAN_Touchscreen events toggle enabled disabled
+    $bindsym --locked $mod+Control+Shift+z input type:touchpad tap disabled
+    $bindsym --locked $mod+Control+z input type:touchpad tap enabled
+    $bindsym $mod+g input type:touchpad dwt toggle enabled disabled
+
+
+# fAutumn stuff
+
+# #bindsym --to-code Print $screenshot
+# #bindsym --to-code Shift+Print $screenclip
+# # Notifications
+# # bindsym Control+Space exec makoctl dismiss
+# bindsym Control+Shift+Space exec makoctl dismiss --all
+
+####################
+####################
+# 08 Daemons
+####################
+####################
+
+# GTK settings
+exec_always {
+    gsettings set $gnome-schema cursor-theme 'Skyrim'
+    gsettings set $gonme-schema cursor-size 36
+
+}
+
+
+# exec easyeffects --gapplication-service
+# exec bash -c "exec -a random-background sh ~/.bin/random-background.sh &"
+
+exec notify-send "$(systemctl --failed)"
+
+
+exec wvkbd-mobintl --hidden --fn 'DejaVuSansMono Nerd Font 13' -l 'simple,special,emoji' -L 240
+
+
+exec flameshot
+
+# Email
+exec thunderbird
+
+# Social
+exec telegram-desktop
+exec vesktop
+exec signal-desktop
+
+# Todo List
+exec nwg-wrapper -t TODO -c todo.css -a start -p right -mt 50
+
+# Mac-like dock
+# exec nwg-dock -d -nolauncher -nows
+
+# Swww-randomize: for getting a random wallpaper
+exec waypaper --random
+
+exec auto-gammastep
+
+## Enable it in your local sway config to get a clipboard manager via $mod+y
+# exec wl-paste -t text --watch myclipman.sh
+
+
+## KDEConnect
+exec --no-startup-id kdeconnect-indicator
+exec kdeconnect-sms
+
+# Disable the laptop screen when the lid is closed.
+bindswitch --reload --locked lid:on exec_always "$lock & systemctl suspend"
+bindswitch --reload --locked lid:off exec_always "if ! pgrep waybar &>/dev/null; then waybar; fi"
+
+
+
+
+
+exec "hash dbus-update-activation-environment 2>/dev/null; \
+     systemctl --user import-environment WAYLAND_DISPLAY DISPLAY SSH_AUTH_SOCK SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE; \
+     dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SSH_AUTH_SOCK SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE; \
+     systemctl --user start sway-session.target"

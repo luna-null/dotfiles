@@ -1,0 +1,4 @@
+#!/bin/bash
+
+gtklock -b $XDG_BACKGROUND_DIR/Live/color-black-hole.gif
+

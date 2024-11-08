@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/toggle-easyeffects
+# shellcheck disable=SC2034
+TIME_STAMP="20230715.173345"
+
+# Copyright 2021-2023 Bob Hepple < bob dot hepple at gmail dot com >
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+# launch a process into background and add prefix to all output
+# suitable for logging
+
+case "$1" in
+    -h|--help) echo "$( basename "$0" ): run easyeffects if not running; else kill it"; exit 0 ;;
+esac
+
+pkill easyeffects || {
+    sway-toolwait --waitfor com.github.wwmm.easyeffects easyeffects
+
+    # Global bypass. 1 to enable, 2 to disable and 3 to get status:
+    easyeffects --bypass 1
+}
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:

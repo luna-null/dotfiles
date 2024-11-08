@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/singleton
+# shellcheck disable=SC2034
+TIME_STAMP="20220909.082508"
+
+# Copyright (C) 2022 Bob Hepple <bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+restart=""
+
+case "$1" in
+    -h|--help)
+        echo "Usage: $( basename "$0" ) <program>"
+        echo "make sure there is one <program> running in _this_ session"
+        echo
+        echo "Options:"
+        echo "  -r, --restart        kill an existing instance"
+        exit 0
+        ;;
+    -r|--restart)
+        restart="set"
+        shift
+        ;;
+esac
+
+app="$1"
+
+# this assumes there's only one session running - we should really
+# check that it's the current session eg look at $SWAYSOCK/$DISPLAY???
+if [[ "$SWAYSOCK" ]]; then
+    match_name="SWAYSOCK"
+    match="$SWAYSOCK"
+elif [[ "$DISPLAY" ]]; then
+    match_name="DISPLAY"
+    match="$DISPLAY"
+else
+    match=""
+    # gnome/wayland? kde/wayland?
+fi
+
+singleton=""
+while read -r user pid cmd; do
+    [[ "$user" == "$USER" ]] || continue
+    [[ "$$" == "$pid" ]] && continue
+    [[ "$cmd" =~ $app ]] || continue
+    [[ "$match" ]] && {
+        cmd_value="$( tr '\0' '\n' 2>/dev/null < /proc/"$pid"/environ | grep "^${match_name}=" )"
+        [[ "$cmd_value" == "${match_name}=${match}" ]] || continue
+    }
+    if [[ "$restart" ]]; then
+        kill "$pid" 2>/dev/null # may have already died?
+    else
+        singleton="$pid"
+    fi
+done < <( ps -eo "user,pid,args" )
+
+[[ "$singleton" ]] || exec "$@"
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
+

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+
+version=v$(swww --version | awk '{print $2}')
+
+SWWW_CACHE_DIR=$XDG_HOME_DIR/.cache/swww/
+
+rm $SWWW_CACHE_DIR/*_"$version"
