@@ -36,6 +36,7 @@
 !.config/pipewire/
 !.config/ranger/
 !.config/rofi/
+.config/rofi/images
 !.config/rustfmt/
 !.config/spicetify/
 !.config/rustfmt/
