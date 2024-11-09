@@ -39,6 +39,8 @@
 !.config/spicetify/
 !.config/rustfmt/
 !.config/spicetify/
+.config/spicetify/Extracted
+.config/spicetify/Backup
 !.config/sway/config
 !.config/systemd/
 !.config/waybar/
