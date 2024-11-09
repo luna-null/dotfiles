@@ -17,6 +17,7 @@
 .config/*
 
 !.config/alacritty/
+.config/alacritty/images
 !.config/asm-lsp/
 
 !.config/autostart/
